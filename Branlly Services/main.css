@@ -1,0 +1,723 @@
+/* 1. GLOBAL STYLES & VARIABLES */
+:root {
+    --primary-purple: #4A245D;    /* Brand Purple */
+    --accent-magenta: #D81B60;   /* Brand Magenta */
+    --soft-blue: #A2C2E8;        /* Brand Sky Blue */
+    --text-dark: #333333;
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* 2. NAVIGATION BAR (Used across all pages) */
+.center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.menu {
+    width: 90%;
+    max-width: 1200px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-purple);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+}
+
+.navbar-logo {
+    height: 100px;    /* Adjust this height to fit your navbar */
+    width: auto;     /* Maintains aspect ratio */
+    display: block;
+}
+
+#menu{
+    display: none;
+}
+
+.items{
+    display: flex;
+    gap: 10px;
+}
+
+.item {
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: 0.3s;
+    border-radius: 5mm;
+}
+
+.item:hover {
+    background: var(--soft-blue);
+    color: var(--primary-purple);
+}
+
+/* --- MOBILE RESPONSIVENESS FIX --- */
+
+@media screen and (max-width: 768px) {
+    .menu {
+        flex-wrap: wrap; /* Allows items to drop below the logo */
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .logo {
+        width: 100%; /* Force logo container to take full width to push items down */
+        display: flex;
+        justify-content: space-between; /* Logo on left, Hamburger on right */
+    }
+
+    /* SHOW THE HAMBURGER BUTTON */
+    .logo label {
+        display: block; 
+        cursor: pointer;
+        position: relative;
+        width: 30px;
+        height: 30px;
+    }
+
+    .logo label::before {
+        content: "menu";
+        font-family: "Material Symbols Outlined";
+        font-size: 32px;
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        color: #4A245D;
+        position: absolute;
+        top: 0;
+        right: 0;
+        text-transform: none;
+    }
+
+    /* MOBILE MENU ITEMS */
+    .items {
+        width: 100%;
+        flex-direction: column;
+        max-height: 0; /* Hidden by default */
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out, opacity 0.3s;
+        opacity: 0;
+        background: white;
+    }
+
+    /* SHOW MENU WHEN CHECKBOX IS CLICKED */
+    #menu:checked ~ .items {
+        max-height: 500px; /* Large enough to fit all links */
+        opacity: 1;
+        padding-bottom: 20px;
+    }
+
+    .item {
+        width: 100%;
+        text-align: center;
+        padding: 15px;
+        border-top: 1px solid #eee;
+        border-radius: 0;
+    }
+}
+
+/* 3. HERO SECTION */
+.hero {
+    background: linear-gradient(rgba(74, 36, 93, 0.8), rgba(74, 36, 93, 0.8)), 
+                url('homepage_picture.jpeg') center/cover;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.hero h1 span {
+    color: var(--soft-blue);
+}
+
+.cta-btn {
+    background: var(--accent-magenta);
+    color: var(--white);
+    padding: 15px 35px;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.cta-btn:hover {
+    transform: scale(1.05);
+    background: #b0154e;
+}
+
+/* 4. SERVICES PREVIEW (Grid Layout) */
+.services-overview {
+    padding: 80px 10%;
+    text-align: center;
+}
+
+.services-overview h2 span {
+    color: var(--primary-purple);
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-card {
+    padding: 40px;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    border-bottom: 4px solid var(--soft-blue);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-magenta);
+}
+
+/* 5. ABOUT US / "BRANLLY MAGIC" */
+.about-us {
+    display: flex;
+    align-items: center;
+    padding: 80px 10%;
+    background: var(--light-bg);
+    gap: 50px;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+}
+
+.about-text h2 span {
+    color: var(--accent-magenta);
+}
+
+/* 6. STATS BAR */
+.stats-bar {
+    background: var(--primary-purple);
+    color: var(--white);
+    display: flex;
+    justify-content: space-around;
+    padding: 60px 10%;
+    text-align: center;
+}
+
+.stat-item h3 {
+    font-size: 40px;
+    margin-bottom: 5px;
+    color: var(--soft-blue);
+}
+
+/* 7. CLIENT LOGO CLOUD */
+.clients-section {
+    padding: 80px 0;
+    text-align: center;
+    background: var(--white);
+    overflow: hidden;
+}
+
+.logo-slider {
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+}
+
+.logo-cloud {
+    display: flex;
+    gap: 80px; /* Increased spacing between enlarged logos */
+    animation: slideLeft 25s linear infinite; /* Adjust time for speed */
+}
+
+.logo-wrapper {
+    flex-shrink: 0; /* Prevents logos from squishing */
+    width: 200px;  /* Enlarged width */
+    height: 100px; /* Enlarged height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    filter: none; /* Keeps original brand colors  */
+    opacity: 1;
+    transition: transform 0.3s;
+}
+
+.logo-wrapper img:hover {
+    transform: scale(1.1);
+}
+
+/* THE SLIDE ANIMATION */
+@keyframes slideLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* This moves the cloud by exactly half its width (the first set of logos) */
+        transform: translateX(calc(-50% - 40px)); 
+    }
+}
+
+/* Pause animation on hover for better user experience */
+.logo-slider:hover .logo-cloud {
+    animation-play-state: paused;
+}
+
+/* 8. FOOTER (Shared across pages) */
+footer {
+    background: #222;
+    color: #bbb;
+    padding: 40px 10%;
+    text-align: center;
+}
+
+footer a {
+    color: var(--soft-blue);
+    text-decoration: none;
+}
+
+/* 9. RESPONSIVE DESIGN */
+@media screen and (max-width: 768px) {
+    .about-us {
+        flex-direction: column;
+    }
+    .stats-bar {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+/* --- Services Page Layout --- */
+.services-page {
+    padding-top: 100px; /* Offset for fixed navbar */
+}
+
+.services-hero {
+    padding: 100px 10% 60px;
+    text-align: center;
+    background-color: #fbfaf8; /* Very light beige */
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 300;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+    color: #666;
+}
+
+.services-list {
+    padding: 80px 10%;
+}
+
+.service-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.service-text {
+    flex: 1;
+}
+
+.service-text span {
+    display: block;
+    color: #c4a484;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.service-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.service-text p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* --- The Hourglass Styles (From our previous step) --- */
+
+/* --- Past Work Section Styling --- */
+.past-work {
+  margin-top: 100px;
+  width: 100%;
+  overflow: hidden; /* Important boundary */
+  perspective: 1500px; /* Crucial for the 3D hourglass effect */
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-header h2 {
+  font-size: 2.2rem;
+  color: #2c2c2c;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* 1. The Hourglass Mask - Controls vertical thinning in the center */
+.hourglass-mask {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  /* Fades edges to transparency, keeping center sharp-ish but thin */
+  -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+  mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+}
+
+/* 2. The Animation Track - Moves all content together */
+.slideshow-track {
+  display: flex;
+  flex-direction: column; /* Stacks the two rows */
+  width: 200%; /* Total width = Main Set (100%) + Duplicate Set (100%) */
+  animation: smoothFlow 40s linear infinite; /* Adjust speed here */
+}
+
+/* 3. Defining the Rows (2 rows) */
+.slide-row {
+  display: flex;
+  width: 100%; /* Row occupies full track width */
+  margin-bottom: 20px; /* Gap between rows */
+  transform-style: preserve-3d; /* Allows rows to have independent 3D transforms */
+}
+
+/* --- 3D 'Hourglass' Width Adjustments --- */
+/* The top row angles slightly back to look thinner, 
+   but we boost translateZ on the track (4.) to push edges out */
+.top-row {
+  transform: rotateX(-5deg); 
+}
+
+/* The bottom row angles slightly forward */
+.bottom-row {
+  transform: rotateX(5deg);
+}
+
+/* 4. Defining the individual image columns (4 columns) */
+.work-col {
+  flex: 0 0 12.5%; /* Defines 1/8th of the track (4 items + 4 dupes = 8 columns total) */
+  height: 250px; /* Define uniform height */
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.5s ease; /* Smooth interaction if added later */
+}
+
+.work-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures images crop nicely within the thin columns */
+  display: block;
+}
+
+/* Optional: Slight opacity fade on edges as they approach the center */
+.work-col::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 100%);
+  pointer-events: none; /* Allows clicks through this overlay */
+}
+
+/* --- The Seamless Flow Animation --- */
+@keyframes smoothFlow {
+  0% { transform: translateX(0); }
+  /* We move the track 50% left. Since the duplicate 
+     set is the second 50%, it seamlessly resets. */
+  100% { transform: translateX(-50%); } 
+}
+
+/* Pauses on hover (useful for viewing work) */
+.hourglass-mask:hover .slideshow-track {
+  animation-play-state: paused;
+}
+
+/* --- The Quote Section --- */
+.portfolio-quote {
+  max-width: 800px;
+  margin: 80px auto 0;
+  text-align: center;
+  font-family: 'Playfair Display', serif; /* Use a classy serif for the quote */
+  border-top: 1px solid #c4a484;
+  padding-top: 40px;
+}
+
+.portfolio-quote blockquote {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.portfolio-quote p {
+  color: #c4a484; /* Use your accent color */
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Ensure you include the .past-work, .hourglass-mask, 
+   and .slideshow-track CSS from the previous message here! */
+
+.badge {
+    background: #c4a484;
+    color: white;
+    padding: 5px 15px;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.service-detail-block {
+    padding: 100px 10%;
+}
+
+.service-detail-block.reverse .content-wrap {
+    flex-direction: row-reverse;
+}
+
+.content-wrap {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.text-side {
+    flex: 1;
+}
+
+.image-side {
+    flex: 1;
+}
+
+.img-placeholder {
+    width: 100%;
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+    background-color: #f0f0f0;
+}
+
+.detailed-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.detailed-list li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.detailed-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #c4a484;
+}
+
+/* Methodology Grid */
+.methodology-section {
+    background: #1a1a1a;
+    color: white;
+    padding: 100px 10%;
+    text-align: center;
+}
+
+.methodology-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.method-card {
+    padding: 40px;
+    border: 1px solid #333;
+    transition: border-color 0.3s;
+}
+
+.method-card:hover {
+    border-color: #c4a484;
+}
+
+.method-card h3 {
+    color: #c4a484;
+    margin-bottom: 20px;
+}
+
+/* --- Contact Page Styling --- */
+.contact-page {
+    padding-top: 120px;
+    background-color: #fbfaf8;
+    min-height: 100vh;
+}
+
+.contact-hero {
+    text-align: center;
+    padding: 0 10% 60px;
+}
+
+.contact-hero h1 {
+    font-size: 3rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Info on left, Form on right */
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto 100px;
+    padding: 0 20px;
+}
+
+/* Info Cards */
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.info-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.info-card i {
+    color: #c4a484; /* Your brand accent color */
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.info-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-card p, .info-card a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+/* Contact Form */
+.contact-form-wrapper {
+    background: white;
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.contact-form-wrapper h2 {
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #eee;
+    background: #fdfdfd;
+    border-radius: 4px;
+    font-family: inherit;
+    outline: none;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #c4a484;
+}
+
+.contact-btn {
+    background: #1a1a1a;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+}
+
+.contact-btn:hover {
+    background: #c4a484;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+}
