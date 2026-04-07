@@ -142,6 +142,122 @@ body {
         border-top: 1px solid #eee;
         border-radius: 0;
     }
+    /* THE HERO FIX (Applies to both Home and Services) */
+    .hero, .services-hero {
+        height: auto !important; /* Forces it to grow with text */
+        min-height: 80vh;        /* Keeps a good minimum size */
+        padding: 140px 20px 60px !important; /* Extra top padding to clear the navbar */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .hero-content h1, .services-hero h1 {
+        font-size: 2.2rem !important;
+        line-height: 1.2;
+        letter-spacing: 1px;
+    }
+
+    .hero-content p, .services-hero p {
+        font-size: 1rem !important;
+        max-width: 100%;
+    }
+
+    /* Service Blocks on Services Page */
+    .content-wrap {
+        flex-direction: column !important;
+        gap: 30px;
+    }
+    .service-detail-block.reverse .content-wrap {
+        flex-direction: column !important; /* Stops the reverse on mobile */
+    }
+    .image-side, .img-placeholder {
+        height: 250px !important; /* Smaller images on mobile */
+    }
+
+    /* Stats & About Us */
+    .about-us {
+        flex-direction: column;
+    }
+    .stats-bar {
+        flex-direction: column;
+        gap: 30px;
+    }
+    /* 1. Prevent the entire page from leaking sideways */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+    }
+
+    /* 2. Fix the Hourglass Slideshow */
+    .past-work {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%); /* Centers it if it's inside a container */
+        perspective: none; /* 3D perspective often causes invisible overflow on mobile */
+    }
+
+    .slideshow-track {
+        width: 400%; /* Give the track more room so images aren't squashed */
+    }
+
+    .work-col {
+        flex: 0 0 25%; /* Show fewer images at once on mobile */
+        height: 180px;  /* Shorter height for mobile screens */
+    }
+
+    /* 3. Fix the Methodology Grid */
+    .methodology-section {
+        padding: 60px 20px; /* Reduced padding for mobile */
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+   /* 1. Force the grid to become a single vertical column */
+    .methodology-grid {
+        display: flex !important;
+        flex-direction: column !important; /* This creates the 1x1 stack */
+        gap: 30px; /* Space between the stacked cards */
+        width: 100% !important;
+        padding: 0;
+        margin-top: 40px;
+    }
+
+    /* 2. Ensure each card takes full width and stays visible */
+    .method-card {
+        width: 100% !important;
+        display: block !important;
+        box-sizing: border-box; /* Includes padding in width to prevent overflow */
+        padding: 30px 20px !important;
+        border: 1px solid #c4a484; /* Highlight the border to see the card clearly */
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .method-card h3 {
+        font-size: 1.4rem !important;
+        margin-bottom: 15px;
+        color: #c4a484;
+        display: block !important; /* Prevents text from disappearing */
+        width: 100%;
+    }
+
+    /* 4. Fix Service Detail Blocks */
+    .content-wrap {
+        display: block; /* Stack text and image */
+        width: 100%;
+        flex-direction: column !important;
+        gap: 30px;
+    }
+
+    .image-side, .img-placeholder {
+        width: 100% !important;
+        margin-top: 20px;
+    }
+
+    .service-detail-block {
+        padding: 60px 20px;
+    }
+
 }
 
 /* 3. HERO SECTION */
@@ -718,6 +834,175 @@ footer a {
 /* Responsive */
 @media (max-width: 900px) {
     .contact-container {
+        grid-template-columns: 1fr;
+    }
+    .portfolio-item {
+        flex: 0 0 100%;
+    }
+    .portfolio-hero h1 {
+        font-size: 2.2rem;
+    }
+    .portfolio-filters {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 20px;
+    }
+}
+
+/* --- Portfolio Specific Styles --- */
+.portfolio-page {
+    padding-top: 80px;
+    background: #fff;
+}
+
+.portfolio-hero {
+    text-align: center;
+    padding: 80px 10%;
+    background: #fbfaf8;
+}
+
+.portfolio-filters {
+    text-align: center;
+    padding: 40px 0;
+    position: sticky;
+    top: 80px;
+    background: white;
+    z-index: 100;
+}
+
+.filter-btn {
+    padding: 10px 25px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    background: none;
+    cursor: pointer;
+    border-radius: 30px;
+    font-family: inherit;
+    transition: 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--primary-purple);
+    color: white;
+    border-color: var(--primary-purple);
+}
+
+/* The Grid */
+.portfolio-grid {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 5%;
+    gap: 20px;
+    margin-bottom: 80px;
+}
+
+.portfolio-item {
+    flex: 0 0 calc(33.333% - 14px);
+    display: none; /* Controlled by JS */
+}
+
+.portfolio-item.show {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.item-inner {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.item-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.item-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    color: white;
+}
+
+.item-inner:hover img {
+    transform: scale(1.1);
+}
+
+.tags {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.tags span {
+    font-size: 0.7rem;
+    background: rgba(196, 164, 132, 0.4);
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--soft-blue);
+}
+
+/* Standards Section */
+.experience-standards {
+    padding: 100px 10%;
+    background: var(--primary-purple);
+    color: white;
+    text-align: center;
+}
+
+.standards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.standard-card span {
+    font-size: 40px;
+    color: var(--soft-blue);
+    margin-bottom: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Pricing Cards */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.price-card input {
+    display: none; /* Hide the radio button */
+}
+
+.card-content {
+    border: 2px solid #eee;
+    padding: 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.price-card input:checked + .card-content {
+    border-color: #c4a484; /* Branlly Tan */
+    background: #fbfaf8;
+}
+
+/* Mobile Pricing Stack */
+@media (max-width: 768px) {
+    .pricing-grid {
         grid-template-columns: 1fr;
     }
 }

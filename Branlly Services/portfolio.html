@@ -31,9 +31,99 @@
         </div>
     </div>
 
+    <main class="portfolio-page">
+        <section class="portfolio-hero">
+            <span class="badge">Success Stories</span>
+            <h1>The <span>Branlly Magic</span> in Action</h1>
+            <p>From high-impact product launches to global executive summits, we deliver zero-chaos experiences[cite: 159].</p>
+        </section>
 
+        <div class="portfolio-filters">
+            <button class="filter-btn active" onclick="filterSelection('all')">All Work</button>
+            <button class="filter-btn" onclick="filterSelection('corporate')">Corporate Summits</button>
+            <button class="filter-btn" onclick="filterSelection('launch')">Product Launches</button>
+            <button class="filter-btn" onclick="filterSelection('technical')">Technical Sets</button>
+        </div>
 
+        <div class="portfolio-grid">
+            <div class="portfolio-item corporate show">
+                <div class="item-inner">
+                    <img src="reimagine_education.jpg" alt="ALU Summit">
+                    <div class="item-info">
+                        <h3>Reimagine Education 2025</h3>
+                        <p>ALU / ALCHE | Hyatt Regency [cite: 126]</p>
+                        <div class="tags"><span>Pure LED Backdrop</span><span>Executive Staging</span></div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="portfolio-item corporate show">
+                <div class="item-inner">
+                    <img src="wobn_awards.jpg" alt="WOBN Awards">
+                    <div class="item-info">
+                        <h3>4th Annual WOBN Awards</h3>
+                        <p>Gender Diversity Gala | 2024 [cite: 69, 71]</p>
+                        <div class="tags"><span>Cinematic Lighting</span><span>Premium Aesthetics</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item launch show">
+                <div class="item-inner">
+                    <img src="kstar_launch.jpg" alt="KSTAR Launch">
+                    <div class="item-info">
+                        <h3>KSTAR Product Launch</h3>
+                        <p>High-Impact Retail Reveal </p>
+                        <div class="tags"><span>Video Reveals</span><span>Spotlight Staging</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item technical show">
+                <div class="item-inner">
+                    <img src="technical_set.jpg" alt="Technical Set">
+                    <div class="item-info">
+                        <h3>Technical Infrastructure</h3>
+                        <p>Custom Stage & Sound [cite: 49, 58]</p>
+                        <div class="tags"><span>Confidence Monitors</span><span>Audio Engineering</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="experience-standards">
+            <h2>Our Experience <span>Design Standards</span></h2>
+            <div class="standards-grid">
+                <div class="standard-card">
+                    <span class="material-symbols-outlined">verified_user</span>
+                    <h4>Zero Chaos</h4>
+                    <p>Meticulous attention to detail ensures a seamless flow from arrival to departure[cite: 11, 159].</p>
+                </div>
+                <div class="standard-card">
+                    <span class="material-symbols-outlined">shutter_speed</span>
+                    <h4>Fast Check-In</h4>
+                    <p>Our branded registration systems ensure guest check-in times are kept under 60 seconds.</p>
+                </div>
+                <div class="standard-card">
+                    <span class="material-symbols-outlined">layers</span>
+                    <h4>Modern Elegance</h4>
+                    <p>We utilize acrylic welcome signs, matte finishes, and premium branded environments[cite: 53].</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("portfolio-item");
+            if (c == "all") c = "";
+            for (i = 0; i < x.length; i++) {
+                x[i].classList.remove("show");
+                if (x[i].className.indexOf(c) > -1) x[i].classList.add("show");
+            }
+        }
+    </script>
 
      <footer>
         <div class="footer-bottom">
