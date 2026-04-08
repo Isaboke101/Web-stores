@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const encodedText = encodeURIComponent(whatsappDraft);
             
             // Branlly WhatsApp Number
-            const branllyNumber = "254712098026"; // Replace with your actual number in international format without '+' or dashes
+            const branllyNumber = "254720775160"; // Replace with your actual number in international format without '+' or dashes
             
             // Construct the final URL and open it
             const whatsappURL = `https://wa.me/${branllyNumber}?text=${encodedText}`;
