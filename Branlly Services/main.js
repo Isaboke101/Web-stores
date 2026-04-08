@@ -15,6 +15,36 @@ document.addEventListener("DOMContentLoaded", () => {
         
         dateInput.min = `${yyyy}-${mm}-${dd}`;
     }
+
+    // --- WhatsApp Contact Form Logic ---
+    // Changed "whatsappContactForm" back to "contactForm" below:
+    const waForm = document.getElementById("contactForm"); 
+    
+    if (waForm) {
+        waForm.addEventListener("submit", (e) => {
+            e.preventDefault(); 
+            
+            // Grab the values from the form
+            const name = document.getElementById("waName").value.trim();
+            const email = document.getElementById("waEmail").value.trim();
+            const message = document.getElementById("waMessage").value.trim();
+            
+            // Format the message for WhatsApp 
+            const whatsappDraft = `Hello Branlly Services!\n\nI am reaching out from your website's contact page.\n\n*Name:* ${name}\n*Email:* ${email}\n*Message:* ${message}`;
+            
+            // Encode the text
+            const encodedText = encodeURIComponent(whatsappDraft);
+            
+            // Branlly WhatsApp Number
+            const branllyNumber = "254712098026"; // Replace with your actual number in international format without '+' or dashes
+            
+            // Construct the final URL and open it
+            const whatsappURL = `https://wa.me/${branllyNumber}?text=${encodedText}`;
+            
+            window.open(whatsappURL, "_blank");
+            waForm.reset();
+        });
+    }
     
     // 1. RE-PASTE YOUR GOOGLE DEPLOYMENT URL HERE
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxVixXjiLfs2RBzcAQGxgwCKA67C_n3Gjej83ien-yzkJZ9pkwdLCqRU0DSspSIhnNh/exec'; 
