@@ -323,6 +323,23 @@ body {
      .pricing-grid {
         grid-template-columns: 1fr;
     }
+
+    /* --- Reserve Page Mobile Fixes --- */
+    .reserve-container {
+        padding: 40px 20px !important; /* Reduces massive padding on phones */
+        margin: 0 10px; /* Keeps it from touching the absolute edges */
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr !important; /* Forces 1 column */
+        gap: 20px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .tier-grid {
+        grid-template-columns: 1fr !important; /* Stacks the service tiers vertically */
+        gap: 15px !important;
+    }
 }
 
 /* 3. HERO SECTION */
@@ -1206,4 +1223,28 @@ footer a {
 
 @keyframes progress {
     100% { right: 100%; }
+}
+
+/* --- Real-Time Validation Styling --- */
+.validation-msg {
+    display: block;
+    font-size: 0.75rem;
+    margin-top: 5px;
+    height: 15px; /* Keeps the form from jumping up and down when text appears */
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Invalid (Red) State */
+.validation-msg.invalid { color: #d9534f; }
+.form-group input.invalid { 
+    border-color: #d9534f; 
+    background-color: #fffafa; /* Very light red tint */
+}
+
+/* Valid (Green) State */
+.validation-msg.valid { color: #5cb85c; }
+.form-group input.valid { 
+    border-color: #5cb85c; 
+    background-color: #fafffa; /* Very light green tint */
 }

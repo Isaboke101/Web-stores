@@ -40,9 +40,21 @@
                     <label>Event Type</label>
                     <select name="event_type" required>
                         <option value="corporate">Corporate Summit / Gala</option>
-                        <option value="launch">Product Launch [cite: 9, 39]</option>
-                        <option value="teambuilding">Strategic Team Building [cite: 88, 95]</option>
+                        <option value="launch">Product Launch</option>
+                        <option value="teambuilding">Strategic Team Building</option>
                     </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="client_email" id="client_email" placeholder="e.g., director@organization.com" required>
+                    <span class="validation-msg" id="email_msg"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" name="client_phone" id="client_phone" placeholder="e.g., 0720 000 000" required>
+                     <span class="validation-msg" id="phone_msg"></span>
                 </div>
 
                 <div class="form-group">
