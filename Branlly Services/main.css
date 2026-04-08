@@ -258,6 +258,71 @@ body {
         padding: 60px 20px;
     }
 
+    /* 1. Ensure the container allows wrapping */
+    .portfolio-grid {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 10px !important;
+        padding: 10px !important;
+    }
+
+    /* 2. THE ALTERNATING MATH */
+    
+    /* Row 1, Item 1: Wide (60%) */
+    .portfolio-item:nth-child(4n+1) {
+        flex: 0 0 calc(60% - 5px) !important;
+    }
+
+    /* Row 1, Item 2: Narrow (40%) */
+    .portfolio-item:nth-child(4n+2) {
+        flex: 0 0 calc(40% - 5px) !important;
+    }
+
+    /* Row 2, Item 3: Narrow (40%) - Swapping sides */
+    .portfolio-item:nth-child(4n+3) {
+        flex: 0 0 calc(40% - 5px) !important;
+    }
+
+    /* Row 2, Item 4: Wide (60%) */
+    .portfolio-item:nth-child(4n+4) {
+        flex: 0 0 calc(60% - 5px) !important;
+    }
+
+    /* 3. Adjusting heights so they don't look stretched */
+    .item-inner {
+        height: 200px !important;
+        border-radius: 8px !important;
+    }
+
+    /* Hide complex text on small screens to keep it clean */
+    .item-info p, .tags {
+        display: none !important;
+    }
+    
+    .item-info h3 {
+        font-size: 0.85rem !important;
+    }
+
+    /* Mobile Pricing Stack */
+     .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 9. RESPONSIVE DESIGN */
+    .about-us {
+        flex-direction: column;
+    }
+    .stats-bar {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .form-grid, .tier-grid { grid-template-columns: 1fr; }
+    .reserve-container { padding: 30px 20px; }
+
+    /* Mobile Pricing Stack */
+     .pricing-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* 3. HERO SECTION */
@@ -429,16 +494,6 @@ footer a {
     text-decoration: none;
 }
 
-/* 9. RESPONSIVE DESIGN */
-@media screen and (max-width: 768px) {
-    .about-us {
-        flex-direction: column;
-    }
-    .stats-bar {
-        flex-direction: column;
-        gap: 30px;
-    }
-}
 
 /* --- Services Page Layout --- */
 .services-page {
@@ -1000,9 +1055,155 @@ footer a {
     background: #fbfaf8;
 }
 
-/* Mobile Pricing Stack */
-@media (max-width: 768px) {
-    .pricing-grid {
-        grid-template-columns: 1fr;
-    }
+
+.reserve-page {
+    background: #fbfaf8;
+    padding: 120px 5% 80px;
+    min-height: 100vh;
+}
+
+.reserve-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 60px;
+    border-radius: 4px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+}
+
+.executive-form label {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: #888;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* Target the select element specifically */
+.form-group select {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #eee;
+    background-color: #fdfdfd;
+    border-radius: 4px;
+    font-family: 'Poppins', sans-serif; /* Explicitly re-declare font */
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
+    appearance: none; /* Removes the default browser arrow in some browsers */
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23c4a484%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); /* Adds a custom Branlly-Tan arrow */
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 0.65rem auto;
+}
+
+/* Ensure the focus state matches your inputs */
+.form-group select:focus {
+    border-color: #c4a484;
+    outline: none;
+    box-shadow: 0 0 5px rgba(196, 164, 132, 0.2);
+}
+
+.tier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0 40px;
+}
+
+.tier-card input { display: none; }
+
+.tier-content {
+    border: 1px solid #eee;
+    padding: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tier-card input:checked + .tier-content {
+    border-color: #c4a484;
+    background: #fdfaf8;
+}
+
+/* --- Notification Toast Styling --- */
+.toast {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    border-radius: 12px;
+    background: #fff;
+    padding: 20px 35px 20px 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-left: 6px solid #c4a484; /* Branlly Tan */
+    overflow: hidden;
+    transform: translateX(calc(100% + 40px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+    z-index: 2000;
+}
+
+.toast.active {
+    transform: translateX(0%);
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+}
+
+.toast-content .material-symbols-outlined {
+    color: #c4a484;
+    font-size: 35px;
+}
+
+.toast-content .message {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+.message .text {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666;
+}
+
+.message .text.text-1 {
+    font-weight: 600;
+    color: #4A245D; /* Brand Purple */
+}
+
+/* Progress Bar Animation */
+.toast .progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: #f2f2f2;
+}
+
+.toast .progress:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background: #c4a484;
+}
+
+.toast.active .progress:before {
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    100% { right: 100%; }
 }

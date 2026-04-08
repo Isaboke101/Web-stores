@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Branlly Services Limited</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel="icon" type="image/png" href="logo1.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=menu" />
+    <script src='main.js'></script>
+</head>
+<body>
+    <div class="center">
+        <div class="menu">
+            <div class="logo">
+                <a href="homepage.html">
+                    <img src="logo1.png" alt="Branlly Services Logo" class="navbar-logo">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main class="reserve-page">
+    <section class="reserve-container">
+        <div class="reserve-header">
+            <span class="badge">Consultation Booking</span>
+            <h1>Design Your <span>Experience</span></h1>
+            <p>Tell us about your event goals. Our 3-tier risk management team will review your brief and contact you within 24 hours[cite: 100, 216].</p>
+        </div>
+
+        <form id="reservationForm" class="executive-form">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Organization Name</label>
+                    <input type="text" name="organization" placeholder="e.g., ALU or SBM Bank" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Event Type</label>
+                    <select name="event_type" required>
+                        <option value="corporate">Corporate Summit / Gala</option>
+                        <option value="launch">Product Launch [cite: 9, 39]</option>
+                        <option value="teambuilding">Strategic Team Building [cite: 88, 95]</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Target Date</label>
+                    <input type="date" name="event_date" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Estimated Guests</label>
+                    <input type="number" name="guests" placeholder="e.g., 200" required>
+                </div>
+            </div>
+
+            <div class="tier-selection">
+                <h3>Select Service Tier [cite: 25, 100]</h3>
+                <div class="tier-grid">
+                    <label class="tier-card">
+                        <input type="radio" name="service_level" value="logistics" checked>
+                        <div class="tier-content">
+                            <h4>Logistics & Strategy</h4>
+                            <p>Vendor management, budgeting, and site planning[cite: 42, 45].</p>
+                        </div>
+                    </label>
+
+                    <label class="tier-card">
+                        <input type="radio" name="service_level" value="production">
+                        <div class="tier-content">
+                            <h4>Full Technical Production</h4>
+                            <p>LED setups, set design, and technical direction[cite: 50, 63].</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <label>Event Objectives</label>
+                <textarea name="message" rows="4" placeholder="Describe the 'Branlly Magic' you want to achieve..."></textarea>
+            </div>
+
+            <button type="submit" class="cta-btn">Submit Brief for Review</button>
+        </form>
+    </section>
+</main>
+
+
+
+<div id="notification-toast" class="toast">
+    <div class="toast-content">
+        <span class="material-symbols-outlined">check_circle</span>
+        <div class="message">
+            <span class="text text-1">Success</span>
+            <span class="text text-2">Your event brief has been sent to the dashboard.</span>
+        </div>
+    </div>
+    <div class="progress"></div>
+</div>
+
+
+
+
+
+     <footer>
+        <div class="footer-bottom">
+            <p>&copy; Elgeyo Marakwet Road, Elgeyo Square, Nairobi </br> <a href="tel">+254720775160</a> </br> <a href="branllyltd@gmail.com">branllyltd@gmail.com</a></p>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
