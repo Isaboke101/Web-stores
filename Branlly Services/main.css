@@ -1248,3 +1248,17 @@ footer a {
     border-color: #5cb85c; 
     background-color: #fafffa; /* Very light green tint */
 }
+/* --- Clickable Info Cards --- */
+a.info-card {
+    text-decoration: none; /* Removes the blue underline */
+    color: inherit; /* Keeps your original text colors */
+    display: block; /* Ensures it takes up the right amount of space */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* Adds a nice pop effect when hovered */
+a.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
