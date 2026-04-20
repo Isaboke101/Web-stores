@@ -1145,6 +1145,21 @@ footer a {
     transition: 0.3s;
 }
 
+/* Highlights the 360 End-to-End package */
+.tier-card.premium-tier {
+    grid-column: 1 / -1; /* Forces it to span the full width of the grid */
+}
+
+/* Optional: Make the premium tier stand out a bit more */
+.tier-card.premium-tier .tier-content {
+    background: #fbfaf8; 
+}
+
+.tier-card.premium-tier input:checked + .tier-content {
+    background: #fdfaf8;
+    border-color: #c4a484;
+}
+
 .tier-card input:checked + .tier-content {
     border-color: #c4a484;
     background: #fdfaf8;
