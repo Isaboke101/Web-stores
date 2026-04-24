@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Event | Pro Gigs Audio Visual</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .booking-hero {
+            background: var(--primary-dark);
+            padding: 4rem 5%;
+            text-align: center;
+            color: var(--white);
+        }
+        .booking-hero h1 { color: var(--secondary-cyan); margin-bottom: 1rem; }
+        
+        .form-container {
+            max-width: 800px;
+            margin: -3rem auto 5rem;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--primary-dark);
+        }
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .form-control:focus { outline: 2px solid var(--secondary-cyan); }
+        
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        /* Success Message Styling */
+        .success-message {
+            display: none; /* Hidden by default */
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        .success-message h2 { color: var(--secondary-cyan); margin-bottom: 1rem; font-size: 2rem;}
+        .success-message p { font-size: 1.1rem; color: var(--primary-dark); margin-bottom: 2rem; }
+        
+        @media (max-width: 600px) {
+            .checkbox-grid { grid-template-columns: 1fr; }
+            .form-container { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo-link">
+            <img src="src/logo.svg" alt="Pro Gigs Logo" class="nav-logo">
+        </a>
+        <a href="index.html" style="color: white; text-decoration: none;">&larr; Back to Home</a>
+    </nav>
+
+    <header class="booking-hero">
+        <h1>Plan Your Event</h1>
+        <p>Fill out the details below, and our team will get back to you immediately.</p>
+    </header>
+
+    <section class="section">
+        <div class="form-container">
+            
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" class="form-control" required>
+                </div>
+                
+                <div class="grid-2-col" style="margin-top:0;">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Company / Organization Name (Optional)</label>
+                    <input type="text" id="company" class="form-control">
+                </div>
+
+                <div class="grid-2-col" style="margin-top:0; border-top: 1px solid #eee; padding-top: 1.5rem;">
+                    <div class="form-group">
+                        <label for="eventType">Type of Event *</label>
+                        <select id="eventType" class="form-control" required>
+                            <option value="">Select Event Type...</option>
+                            <option value="Corporate Summit">Corporate Summit / Conference</option>
+                            <option value="Brand Activation">Brand Activation / Product Launch</option>
+                            <option value="Gala Dinner">Gala Dinner / Awards</option>
+                            <option value="Team Building">Team Building</option>
+                            <option value="Private Event">Private Event / Special Occasion</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDate">Estimated Event Date *</label>
+                        <input type="date" id="eventDate" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-group" style="border-top: 1px solid #eee; padding-top: 1.5rem;">
+                    <label>Services Required (Select all that apply) *</label>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="services" value="Event Management"> Event Management
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="services" value="Audio Visual Solutions"> Audio Visual Solutions
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="services" value="Set Design & Technical Production"> Set Design & Production
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="services" value="Logistics & Vendors"> Logistics & Vendors
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="services" value="Team Building Facilitation"> Team Building Facilitation
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inquiries">Additional Inquiries or Custom Services</label>
+                    <textarea id="inquiries" class="form-control" rows="4" placeholder="Need something not listed above? Describe your specific needs, venue ideas, or questions here..."></textarea>
+                </div>
+
+                <button type="submit" id="submit-btn" class="btn-primary" style="width: 100%; font-size: 1.1rem; padding: 1.2rem;">Submit Booking Request</button>
+            </form>
+
+            <div id="success-message" class="success-message">
+                <h2>Request Received! ✨</h2>
+                <p>Thank you for reaching out to Pro Gigs Audio Visual. We have received your event details and our team will contact you shortly to begin planning.</p>
+                <a href="index.html" class="btn-secondary" style="display: inline-block; width: auto;">Return to Homepage</a>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="book.js"></script>
+</body>
+</html>
