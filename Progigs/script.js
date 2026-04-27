@@ -1,36 +1,94 @@
-// --- Mobile Hamburger Menu Logic ---
+/* Pro Gigs Audio Visual — Main Script */
+
+// ── NAVBAR: Scroll shrink + Hamburger ──────────────────────
+const navbar    = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
-const navItems = document.querySelectorAll('.nav-links a');
+const navLinks  = document.getElementById('nav-links');
+const overlay   = document.getElementById('nav-overlay');
 
-// Toggle menu when clicking the hamburger icon
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
+// Shrink navbar on scroll
+window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// Open / close mobile menu
+function toggleMenu(open) {
+    const isOpen = open !== undefined ? open : !navLinks.classList.contains('active');
+    hamburger.classList.toggle('active', isOpen);
+    navLinks.classList.toggle('active', isOpen);
+    overlay.classList.toggle('active', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
+hamburger.addEventListener('click', () => toggleMenu());
+overlay.addEventListener('click', () => toggleMenu(false));
+
+// Close on link click
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => toggleMenu(false));
 });
 
-// Close the menu automatically when a navigation link is clicked
-navItems.forEach(item => {
-    item.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
+// Close on Escape
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') toggleMenu(false);
+});
+
+
+// ── ACTIVE NAV LINK on scroll ──────────────────────────────
+const sections    = document.querySelectorAll('section[id], header[id]');
+const navAnchors  = document.querySelectorAll('.nav-links a[href^="#"]');
+
+const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            navAnchors.forEach(a => {
+                a.style.color = a.getAttribute('href') === `#${entry.target.id}`
+                    ? 'var(--cyan)'
+                    : '';
+            });
+        }
     });
+}, { threshold: 0.35 });
+
+sections.forEach(s => sectionObserver.observe(s));
+
+
+// ── SCROLL REVEAL ──────────────────────────────────────────
+const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.scroll-reveal').forEach(el => {
+    revealObserver.observe(el);
 });
 
 
-// --- WhatsApp Form Logic ---
-document.getElementById('whatsapp-form').addEventListener('submit', function(event) {
-    event.preventDefault(); 
+// ── WHATSAPP FORM ──────────────────────────────────────────
+const waForm = document.getElementById('whatsapp-form');
+if (waForm) {
+    waForm.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-    const name = document.getElementById('clientName').value;
-    const eventType = document.getElementById('eventType').value;
-    const message = document.getElementById('clientMessage').value;
+        const name    = document.getElementById('clientName').value.trim();
+        const type    = document.getElementById('eventType').value.trim();
+        const message = document.getElementById('clientMessage').value.trim();
 
-    const phoneNumber = "254720440062"; 
+        if (!name || !type || !message) {
+            alert('Please fill in all fields before sending.');
+            return;
+        }
 
-    const text = `Hello Pro Gigs, my name is ${name}. I am inquiring about a ${eventType} event. ${message}`;
-    const encodedText = encodeURIComponent(text);
+        const phoneNumber = '254720440062';
+        const text = `Hello Pro Gigs! 👋\n\nMy name is *${name}*.\nI'm enquiring about a *${type}* event.\n\n${message}\n\nLooking forward to hearing from you!`;
+        const encodedText = encodeURIComponent(text);
+        const waURL = `https://wa.me/${phoneNumber}?text=${encodedText}`;
 
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
-    window.open(whatsappUrl, '_blank');
-});
+        window.open(waURL, '_blank', 'noopener,noreferrer');
+    });
+}

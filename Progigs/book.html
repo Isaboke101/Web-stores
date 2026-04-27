@@ -3,117 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book your event with Pro Gigs Audio Visual Limited — Nairobi's premier event management company. Submit your event details and we'll get back to you.">
     <title>Book Your Event | Pro Gigs Audio Visual</title>
+    <link rel="icon" type="image/png" href="./src/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        .booking-hero {
-            background: var(--primary-dark);
-            padding: 4rem 5%;
-            text-align: center;
-            color: var(--white);
-        }
-        .booking-hero h1 { color: var(--secondary-cyan); margin-bottom: 1rem; }
-        
-        .form-container {
-            max-width: 800px;
-            margin: -3rem auto 5rem;
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 10;
-        }
-
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: var(--primary-dark);
-        }
-        .form-control {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        .form-control:focus { outline: 2px solid var(--secondary-cyan); }
-        
-        .checkbox-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: normal;
-            cursor: pointer;
-        }
-
-        /* Success Message Styling */
-        .success-message {
-            display: none; /* Hidden by default */
-            text-align: center;
-            padding: 3rem 1rem;
-        }
-        .success-message h2 { color: var(--secondary-cyan); margin-bottom: 1rem; font-size: 2rem;}
-        .success-message p { font-size: 1.1rem; color: var(--primary-dark); margin-bottom: 2rem; }
-        
-        @media (max-width: 600px) {
-            .checkbox-grid { grid-template-columns: 1fr; }
-            .form-container { padding: 1.5rem; }
-        }
-    </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <a href="index.html" class="logo-link">
-            <img src="src/logo.svg" alt="Pro Gigs Logo" class="nav-logo">
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="logo-link" aria-label="Pro Gigs Audio Visual - Home">
+            <img src="src/logo.svg" alt="Pro Gigs Audio Visual Logo" class="nav-logo">
         </a>
-        <a href="index.html" style="color: white; text-decoration: none;">&larr; Back to Home</a>
+        <a href="index.html" class="btn-ghost" style="font-size:0.88rem; padding: 0.5rem 1.2rem; border-color: rgba(255,255,255,0.3);">← Back to Home</a>
     </nav>
 
     <header class="booking-hero">
         <h1>Plan Your Event</h1>
-        <p>Fill out the details below, and our team will get back to you immediately.</p>
+        <p>Fill out the details below — our team will respond promptly to begin planning your perfect event.</p>
     </header>
 
-    <section class="section">
+    <section style="background: var(--off); padding-bottom: 5rem;">
         <div class="form-container">
-            
-            <form id="booking-form">
+
+            <form id="booking-form" novalidate>
+
                 <div class="form-group">
                     <label for="fullName">Full Name *</label>
-                    <input type="text" id="fullName" class="form-control" required>
+                    <input type="text" id="fullName" class="form-control" placeholder="Your full name" required autocomplete="name">
                 </div>
-                
-                <div class="grid-2-col" style="margin-top:0;">
+
+                <div class="grid-2-col">
                     <div class="form-group">
                         <label for="email">Email Address *</label>
-                        <input type="email" id="email" class="form-control" required>
+                        <input type="email" id="email" class="form-control" placeholder="you@example.com" required autocomplete="email">
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" class="form-control" required>
+                        <input type="tel" id="phone" class="form-control" placeholder="+254 7XX XXX XXX" required autocomplete="tel">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="company">Company / Organization Name (Optional)</label>
-                    <input type="text" id="company" class="form-control">
+                    <label for="company">Company / Organization (Optional)</label>
+                    <input type="text" id="company" class="form-control" placeholder="Your company or organisation name" autocomplete="organization">
                 </div>
 
-                <div class="grid-2-col" style="margin-top:0; border-top: 1px solid #eee; padding-top: 1.5rem;">
+                <div class="grid-2-col" style="border-top: 1px solid #eef2fb; padding-top: 1.8rem; margin-top: 0.5rem;">
                     <div class="form-group">
                         <label for="eventType">Type of Event *</label>
                         <select id="eventType" class="form-control" required>
-                            <option value="">Select Event Type...</option>
+                            <option value="">Select Event Type…</option>
                             <option value="Corporate Summit">Corporate Summit / Conference</option>
                             <option value="Brand Activation">Brand Activation / Product Launch</option>
                             <option value="Gala Dinner">Gala Dinner / Awards</option>
@@ -128,7 +70,7 @@
                     </div>
                 </div>
 
-                <div class="form-group" style="border-top: 1px solid #eee; padding-top: 1.5rem;">
+                <div class="form-group" style="border-top: 1px solid #eef2fb; padding-top: 1.8rem;">
                     <label>Services Required (Select all that apply) *</label>
                     <div class="checkbox-grid">
                         <label class="checkbox-label">
@@ -138,33 +80,73 @@
                             <input type="checkbox" name="services" value="Audio Visual Solutions"> Audio Visual Solutions
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="services" value="Set Design & Technical Production"> Set Design & Production
+                            <input type="checkbox" name="services" value="Set Design & Production"> Set Design &amp; Production
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="services" value="Logistics & Vendors"> Logistics & Vendors
+                            <input type="checkbox" name="services" value="Logistics & Vendors"> Logistics &amp; Vendors
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="services" value="Team Building Facilitation"> Team Building Facilitation
+                            <input type="checkbox" name="services" value="Team Building Facilitation"> Team Building
                         </label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="inquiries">Additional Inquiries or Custom Services</label>
-                    <textarea id="inquiries" class="form-control" rows="4" placeholder="Need something not listed above? Describe your specific needs, venue ideas, or questions here..."></textarea>
+                    <label for="inquiries">Additional Details or Custom Requirements</label>
+                    <textarea id="inquiries" class="form-control" rows="5" placeholder="Describe any specific needs, venue ideas, expected attendance, or questions you have for our team…"></textarea>
                 </div>
 
-                <button type="submit" id="submit-btn" class="btn-primary" style="width: 100%; font-size: 1.1rem; padding: 1.2rem;">Submit Booking Request</button>
+                <button type="submit" id="submit-btn" class="btn-primary" style="width: 100%; font-size: 1.05rem; padding: 1.1rem; border-radius: 10px; margin-top: 0.5rem;">
+                    Submit Booking Request
+                </button>
+
+                <p style="text-align:center; font-size:0.82rem; color:var(--muted); margin-top: 1rem;">
+                    Our team will be in touch within 24 hours of receiving your request.
+                </p>
             </form>
 
+            <!-- Success State -->
             <div id="success-message" class="success-message">
-                <h2>Request Received! ✨</h2>
-                <p>Thank you for reaching out to Pro Gigs Audio Visual. We have received your event details and our team will contact you shortly to begin planning.</p>
-                <a href="index.html" class="btn-secondary" style="display: inline-block; width: auto;">Return to Homepage</a>
+                <div style="font-size: 3.5rem; margin-bottom: 1rem;">🎉</div>
+                <h2>Request Received!</h2>
+                <p>Thank you for reaching out to Pro Gigs Audio Visual. We've received your event details and our team will contact you shortly to begin planning your extraordinary event.</p>
+                <a href="index.html" class="btn-primary" style="display: inline-block; width: auto;">Return to Homepage</a>
             </div>
 
         </div>
     </section>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" aria-label="Pro Gigs home">
+                    <img src="src/logo.svg" alt="Pro Gigs Logo" class="footer-logo">
+                </a>
+                <p>A women-led organization delivering extraordinary events across East Africa.</p>
+                <p class="footer-tagline"><em>Transforming Ideas into Experiences</em></p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#gallery">Portfolio</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <div class="footer-contact"><span>📍</span><span>Elgeyo Marakwet Road, Nairobi</span></div>
+                <div class="footer-contact"><span>📞</span><a href="tel:+254720440062">+254 720 44 00 62</a></div>
+                <div class="footer-contact"><span>✉️</span><a href="mailto:info@progigs.co.ke">info@progigs.co.ke</a></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>&copy; 2026 Pro Gigs Audio Visual Limited. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="book.js"></script>
 </body>

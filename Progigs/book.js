@@ -1,8 +1,9 @@
-// Restrict event date selection to today and future dates only
-document.addEventListener("DOMContentLoaded", () => {
+/* Pro Gigs Audio Visual — Booking Form Script */
+
+// Set minimum date to today
+document.addEventListener('DOMContentLoaded', () => {
     const dateInput = document.getElementById('eventDate');
-    if(dateInput) {
-        // Gets today's date formatted as YYYY-MM-DD
+    if (dateInput) {
         const today = new Date().toISOString().split('T')[0];
         dateInput.setAttribute('min', today);
     }
@@ -10,69 +11,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.getElementById('booking-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    
-    // Set the minimum selectable date to today
-    const dateInput = document.getElementById('eventDate');
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.setAttribute('min', today);
 
-    // Grab UI elements
-    const form = document.getElementById('booking-form');
-    const submitBtn = document.getElementById('submit-btn');
-    const successMessage = document.getElementById('success-message');
+    const form       = document.getElementById('booking-form');
+    const submitBtn  = document.getElementById('submit-btn');
+    const successMsg = document.getElementById('success-message');
 
-    // Change button state to show it's working
-    submitBtn.innerText = "Sending Request...";
-    submitBtn.disabled = true;
-    submitBtn.style.opacity = "0.7";
+    // Basic validation: at least one service selected
+    const checked = document.querySelectorAll('input[name="services"]:checked');
+    if (checked.length === 0) {
+        alert('Please select at least one service required.');
+        return;
+    }
 
-    // Gather form data
+    // Animate button to loading state
+    submitBtn.textContent = 'Sending Request…';
+    submitBtn.disabled    = true;
+    submitBtn.style.opacity = '0.7';
+
+    // Collect form data
+    const services = Array.from(checked).map(cb => cb.value);
     const formData = {
-        name: document.getElementById('fullName').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        company: document.getElementById('company').value || "N/A",
-        eventType: document.getElementById('eventType').value,
-        eventDate: document.getElementById('eventDate').value,
-        inquiries: document.getElementById('inquiries').value || "None",
-        services: []
+        name:       document.getElementById('fullName').value.trim(),
+        email:      document.getElementById('email').value.trim(),
+        phone:      document.getElementById('phone').value.trim(),
+        company:    document.getElementById('company').value.trim() || 'N/A',
+        eventType:  document.getElementById('eventType').value,
+        eventDate:  document.getElementById('eventDate').value,
+        inquiries:  document.getElementById('inquiries').value.trim() || 'None',
+        services:   services.join(', ')
     };
 
-    // Gather checked services
-    document.querySelectorAll('input[name="services"]:checked').forEach(checkbox => {
-        formData.services.push(checkbox.value);
-    });
-    
-    // Format services into a comma-separated string
-    const servicesString = formData.services.join(', ') || "Not specified";
+    // Google Apps Script endpoint (connected to Google Sheets + email)
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzDRzqeNrwTcrCTTWchPiXE-tngL6wOYcXdgMWWRX4ow3inUQ6zhMd5nM0-50hu0vpFhA/exec';
 
-    // Paste your Google Apps Script Web App URL here
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzDRzqeNrwTcrCTTWchPiXE-tngL6wOYcXdgMWWRX4ow3inUQ6zhMd5nM0-50hu0vpFhA/exec'; 
-    
-    // Send data to Google Sheets & Email
     fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors', // Bypasses cross-origin issues
+        method:  'POST',
+        mode:    'no-cors',   // required to bypass CORS on Apps Script
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({...formData, services: servicesString})
+        body:    JSON.stringify(formData)
     })
     .then(() => {
-        // Hide the form and show the success message
-        form.style.display = 'none';
-        successMessage.style.display = 'block';
-        
-        // Scroll smoothly to the top of the container so they see the message
-        window.scrollTo({
-            top: document.querySelector('.form-container').offsetTop - 100,
-            behavior: 'smooth'
-        });
+        // Show success, hide form
+        form.style.display          = 'none';
+        successMsg.style.display    = 'block';
+
+        // Scroll into view smoothly
+        const container = document.querySelector('.form-container');
+        if (container) {
+            window.scrollTo({ top: container.offsetTop - 120, behavior: 'smooth' });
+        }
     })
-    .catch(error => {
-        console.error('Error!', error.message);
-        // Reset button if there's an error so they can try again
-        submitBtn.innerText = "Submit Booking Request";
-        submitBtn.disabled = false;
-        submitBtn.style.opacity = "1";
-        alert("Something went wrong. Please try again or contact us directly via email.");
+    .catch(err => {
+        console.error('Submission error:', err);
+        submitBtn.textContent   = 'Submit Booking Request';
+        submitBtn.disabled      = false;
+        submitBtn.style.opacity = '1';
+        alert('Something went wrong. Please try again or contact us directly at info@progigs.co.ke');
     });
 });
