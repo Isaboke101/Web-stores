@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule a Meeting — Kūgeria Ltd</title>
+  <meta name="description" content="Book a free strategy session with Kūgeria Ltd. Tell us about your project and let's build something remarkable together.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="logo_small.svg" type="image/svg+xml">
+  <style>
+    :root{
+      --bg:#FAFAFA;--green:#004B23;--navy:#052F5F;
+      --gold:#C5A059;--charcoal:#212121;--white:#ffffff;
+      --gray-100:#f3f4f6;--gray-200:#e5e7eb;
+      --gray-400:#9ca3af;--gray-500:#6b7280;
+      --display:'Cormorant Garamond',serif;
+      --body:'Plus Jakarta Sans',sans-serif;
+      --radius:12px;
+      --sh-sm:0 1px 4px rgba(5,47,95,.08),0 1px 2px rgba(5,47,95,.04);
+      --sh-md:0 4px 20px rgba(5,47,95,.10),0 2px 6px rgba(5,47,95,.05);
+      --sh-lg:0 10px 40px rgba(5,47,95,.13);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--body);background:var(--bg);color:var(--charcoal);line-height:1.6;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    button{font-family:var(--body);cursor:pointer}
+
+    /* ── NAV ── */
+    .nav{
+      position:sticky;top:0;z-index:100;
+      background:rgba(250,250,250,.94);-webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--gray-200);
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1200px;margin:0 auto;padding:0 20px}
+    .nav-logo img{height:34px;width:auto;object-fit:contain}
+    .nav-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-500);transition:color .2s}
+    .nav-back:hover{color:var(--navy)}
+
+    /* ── PAGE LAYOUT ── */
+    .page{max-width:1100px;margin:0 auto;padding:44px 20px 80px}
+    .page-grid{display:grid;grid-template-columns:1fr;gap:44px}
+
+    /* ── LEFT PANEL: BIO ── */
+    .bio-panel{}
+    .bio-pill{
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(197,160,89,.1);border:1px solid rgba(197,160,89,.28);
+      color:#7a5e1e;padding:4px 13px;border-radius:100px;
+      font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+      margin-bottom:18px;
+    }
+    .bio-title{
+      font-family:var(--display);font-size:clamp(30px,6vw,48px);
+      font-weight:700;color:var(--navy);line-height:1.1;margin-bottom:14px;
+    }
+    .bio-title em{color:var(--gold);font-style:italic}
+    .bio-sub{font-size:14.5px;color:var(--gray-500);line-height:1.75;margin-bottom:26px;max-width:460px}
+
+    /* Isaac's bio card */
+    .bio-card{
+      background:var(--white);border-radius:var(--radius);
+      border:1px solid var(--gray-200);padding:22px;
+      box-shadow:var(--sh-sm);margin-bottom:26px;
+    }
+    .bio-card-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+    .bio-avatar{
+      width:54px;height:54px;border-radius:50%;
+      background:linear-gradient(135deg,var(--navy),var(--green));
+      display:flex;align-items:center;justify-content:center;
+      font-family:var(--display);font-size:22px;font-weight:700;color:var(--gold);
+      flex-shrink:0;
+    }
+    .bio-card-name{font-family:var(--display);font-size:20px;font-weight:700;color:var(--charcoal)}
+    .bio-card-role{font-size:12px;color:var(--gray-500);margin-top:2px}
+    .bio-card-body{font-size:13px;color:var(--gray-500);line-height:1.7;margin-bottom:14px}
+    .bio-tags{display:flex;flex-wrap:wrap;gap:6px}
+    .bio-tag{
+      padding:4px 11px;border-radius:100px;
+      font-size:11.5px;font-weight:500;
+      background:rgba(5,47,95,.07);color:var(--navy);
+    }
+
+    /* Promise items */
+    .promises{display:flex;flex-direction:column;gap:12px}
+    .promise{
+      display:flex;align-items:flex-start;gap:12px;
+      background:var(--white);border-radius:10px;
+      padding:14px;border:1px solid var(--gray-200);
+    }
+    .promise-icon{
+      width:36px;height:36px;border-radius:8px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:16px;flex-shrink:0;
+    }
+    .p-gr{background:rgba(0,75,35,.08)}
+    .p-nv{background:rgba(5,47,95,.08)}
+    .p-gd{background:rgba(197,160,89,.12)}
+    .promise-text{font-size:13px;color:var(--charcoal);font-weight:500;margin-bottom:2px}
+    .promise-sub{font-size:12px;color:var(--gray-500)}
+
+    /* ── RIGHT PANEL: FORM ── */
+    .form-panel{
+      background:var(--white);border-radius:16px;
+      border:1px solid var(--gray-200);box-shadow:var(--sh-lg);
+      padding:28px 24px;
+    }
+    .form-head{margin-bottom:24px}
+    .form-title{font-family:var(--display);font-size:26px;font-weight:700;color:var(--charcoal);margin-bottom:5px}
+    .form-sub{font-size:13px;color:var(--gray-500);line-height:1.6}
+
+    /* Progress bar */
+    .form-prog{
+      display:flex;gap:5px;margin-bottom:24px;
+    }
+    .prog-step{
+      flex:1;height:3px;border-radius:2px;background:var(--gray-200);
+      transition:background .3s;
+    }
+    .prog-step.done{background:var(--green)}
+    .prog-step.active{background:var(--gold)}
+
+    /* Sections */
+    .fsec{display:none}
+    .fsec.on{display:block}
+    .fsec-label{
+      font-size:11px;font-weight:700;letter-spacing:.12em;
+      text-transform:uppercase;color:var(--gold);margin-bottom:16px;
+    }
+
+    /* Fields */
+    .field{margin-bottom:18px}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:0}
+    .field label{
+      display:block;font-size:12.5px;font-weight:600;
+      color:var(--charcoal);margin-bottom:7px;
+    }
+    .field label span{color:#e53e3e;margin-left:2px}
+    .field input,.field select,.field textarea{
+      width:100%;padding:11px 14px;border-radius:8px;
+      border:1.5px solid var(--gray-200);
+      background:var(--bg);color:var(--charcoal);
+      font-family:var(--body);font-size:14px;
+      transition:border-color .2s,box-shadow .2s;
+      outline:none;
+    }
+    .field input:focus,.field select:focus,.field textarea:focus{
+      border-color:var(--gold);
+      box-shadow:0 0 0 3px rgba(197,160,89,.15);
+    }
+    .field input.err,.field select.err,.field textarea.err{
+      border-color:#e53e3e;
+      box-shadow:0 0 0 3px rgba(229,62,62,.12);
+    }
+    .field textarea{resize:vertical;min-height:100px;line-height:1.65}
+    .field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px}
+    .field-hint{font-size:11.5px;color:var(--gray-400);margin-top:5px}
+    .err-msg{font-size:11.5px;color:#e53e3e;margin-top:4px;display:none}
+    .err-msg.on{display:block}
+
+    /* Meeting type toggle */
+    .meet-toggle{display:flex;gap:9px;flex-wrap:wrap}
+    .mt-opt{
+      flex:1;min-width:110px;padding:11px 14px;border-radius:8px;
+      border:1.5px solid var(--gray-200);background:var(--bg);
+      font-size:13px;font-weight:500;color:var(--gray-500);
+      cursor:pointer;text-align:center;transition:all .2s;
+      display:flex;flex-direction:column;align-items:center;gap:4px;
+    }
+    .mt-opt:hover{border-color:var(--gold);color:var(--navy)}
+    .mt-opt.sel{border-color:var(--navy);background:rgba(5,47,95,.05);color:var(--navy);font-weight:600}
+    .mt-opt .mt-icon{font-size:20px}
+
+    /* Honeypot */
+    .hp-field{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden;pointer-events:none}
+
+    /* Checkboxes / service grid */
+    .svc-checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .svc-check{
+      display:flex;align-items:center;gap:9px;
+      padding:10px 12px;border-radius:8px;
+      border:1.5px solid var(--gray-200);background:var(--bg);
+      cursor:pointer;transition:all .2s;font-size:13px;color:var(--charcoal);
+    }
+    .svc-check input{display:none}
+    .svc-check .cb-box{
+      width:17px;height:17px;border-radius:4px;
+      border:1.5px solid var(--gray-200);flex-shrink:0;
+      display:flex;align-items:center;justify-content:center;
+      font-size:10px;transition:all .2s;background:var(--white);
+    }
+    .svc-check.sel{border-color:var(--gold);background:rgba(197,160,89,.05)}
+    .svc-check.sel .cb-box{background:var(--gold);border-color:var(--gold);color:var(--charcoal)}
+
+    /* Navigation buttons */
+    .form-nav{display:flex;justify-content:space-between;align-items:center;margin-top:22px;gap:11px}
+    .btn{
+      display:inline-flex;align-items:center;gap:7px;
+      padding:11px 22px;border-radius:8px;font-size:13.5px;font-weight:600;
+      border:2px solid transparent;transition:all .22s ease;cursor:pointer;
+    }
+    .btn-gold{background:var(--gold);color:var(--charcoal);border-color:var(--gold)}
+    .btn-gold:hover{background:#b8903e;border-color:#b8903e;transform:translateY(-2px);box-shadow:0 8px 22px rgba(197,160,89,.3)}
+    .btn-ghost{background:transparent;color:var(--charcoal);border-color:var(--gray-200)}
+    .btn-ghost:hover{border-color:var(--gray-400)}
+    .btn-full{width:100%;justify-content:center}
+
+    /* Success state */
+    .success-box{
+      display:none;flex-direction:column;align-items:center;
+      text-align:center;padding:44px 22px;
+    }
+    .success-box.on{display:flex}
+    .suc-icon{font-size:52px;margin-bottom:18px}
+    .suc-title{font-family:var(--display);font-size:28px;font-weight:700;color:var(--green);margin-bottom:10px}
+    .suc-body{font-size:14px;color:var(--gray-500);line-height:1.7;max-width:320px;margin-bottom:22px}
+    .suc-acts{display:flex;flex-direction:column;gap:9px;width:100%}
+
+    /* Loading spinner */
+    .spinner{
+      width:18px;height:18px;border:2px solid rgba(33,33,33,.2);
+      border-top-color:var(--charcoal);border-radius:50%;
+      animation:spin .7s linear infinite;display:none;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .btn.loading .spinner{display:block}
+    .btn.loading .btn-label{display:none}
+
+    /* Toast */
+    .toast{
+      position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+      background:var(--charcoal);color:#fff;padding:12px 22px;border-radius:10px;
+      font-size:13.5px;font-weight:500;z-index:999;white-space:nowrap;
+      transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .35s;opacity:0;
+    }
+    .toast.on{transform:translateX(-50%) translateY(0);opacity:1}
+
+    @media(min-width:860px){
+      .page-grid{grid-template-columns:5fr 6fr;align-items:start}
+      .form-panel{padding:34px 30px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo_small.svg" alt="Kūgeria Ltd"></a>
+    <a href="index.html" class="nav-back">← Back to Portfolio</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="page-grid">
+
+    <!-- ═══ LEFT: BIO PANEL ═══ -->
+    <div class="bio-panel">
+      <div class="bio-pill">Free · No Obligation</div>
+      <h1 class="bio-title">Let's Build<br><em>Something Great</em></h1>
+      <p class="bio-sub">Book a free 30-minute strategy session. We'll map your digital vision, recommend the right approach, and give you a clear next step — no pressure.</p>
+
+      <!-- Isaac's card -->
+      <div class="bio-card">
+        <div class="bio-card-head">
+          <div class="bio-avatar">I</div>
+          <div>
+            <div class="bio-card-name">Isaac Oonge</div>
+            <div class="bio-card-role">Founder · Developer · Consultant</div>
+          </div>
+        </div>
+        <p class="bio-card-body">CS student at The Co-operative University of Kenya and founder of Kūgeria Ltd. I build high-performance web applications, AI-integrated systems, and brand identities that serve as silent sales agents for businesses across Kenya and beyond.</p>
+        <div class="bio-tags">
+          <span class="bio-tag">Python</span>
+          <span class="bio-tag">PHP</span>
+          <span class="bio-tag">AI Integration</span>
+          <span class="bio-tag">M-Pesa API</span>
+          <span class="bio-tag">Full-Stack</span>
+        </div>
+      </div>
+
+      <!-- Promises -->
+      <div class="promises">
+        <div class="promise">
+          <div class="promise-icon p-gr">🚀</div>
+          <div><div class="promise-text">Quick Turnaround</div><div class="promise-sub">Most projects scoped and started within 7 days of our call</div></div>
+        </div>
+        <div class="promise">
+          <div class="promise-icon p-nv">🔒</div>
+          <div><div class="promise-text">Your Info is Safe</div><div class="promise-sub">Submissions are private, secure, and never shared with third parties</div></div>
+        </div>
+        <div class="promise">
+          <div class="promise-icon p-gd">✦</div>
+          <div><div class="promise-text">No Strings Attached</div><div class="promise-sub">The strategy call is free. You only commit when you're ready</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ RIGHT: FORM ═══ -->
+    <div class="form-panel">
+      <div id="formMain">
+        <div class="form-head">
+          <div class="form-title">Book Your Session</div>
+          <div class="form-sub">Fill in the details below. Isaac will confirm within 24 hours.</div>
+        </div>
+
+        <!-- Progress -->
+        <div class="form-prog">
+          <div class="prog-step done" id="ps1"></div>
+          <div class="prog-step" id="ps2"></div>
+          <div class="prog-step" id="ps3"></div>
+        </div>
+
+        <form id="bookingForm" novalidate>
+
+          <!-- ═ STEP 1: Contact ═ -->
+          <div class="fsec on" id="sec1">
+            <div class="fsec-label">Step 1 of 3 — About You</div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="fname">Full Name <span>*</span></label>
+                <input type="text" id="fname" name="fullName" placeholder="e.g. Jane Muthoni" autocomplete="name">
+                <div class="err-msg" id="err-fname">Please enter your full name</div>
+              </div>
+              <div class="field">
+                <label for="fcontact">WhatsApp / Phone <span>*</span></label>
+                <input type="tel" id="fcontact" name="contact" placeholder="+254 7XX XXX XXX" autocomplete="tel">
+                <div class="err-msg" id="err-fcontact">Please enter a valid contact number</div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="femail">Email Address <span>*</span></label>
+              <input type="email" id="femail" name="email" placeholder="you@company.com" autocomplete="email">
+              <div class="err-msg" id="err-femail">Please enter a valid email address</div>
+            </div>
+
+            <div class="field">
+              <label for="fcompany">Company / Business Name</label>
+              <input type="text" id="fcompany" name="company" placeholder="Your business name (optional)">
+            </div>
+
+            <!-- Honeypot (bot trap) -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="website">Website</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="form-nav">
+              <div></div>
+              <button type="button" class="btn btn-gold" onclick="nextStep(1)">
+                <span class="btn-label">Continue →</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ═ STEP 2: Project ═ -->
+          <div class="fsec" id="sec2">
+            <div class="fsec-label">Step 2 of 3 — Your Project</div>
+
+            <div class="field">
+              <label>Service Interest <span>*</span></label>
+              <div class="svc-checks" id="svcChecks">
+                <label class="svc-check" onclick="toggleSvc(this)">
+                  <input type="checkbox" name="services" value="Web Development">
+                  <div class="cb-box"></div> Web Development
+                </label>
+                <label class="svc-check" onclick="toggleSvc(this)">
+                  <input type="checkbox" name="services" value="Mobile App">
+                  <div class="cb-box">  </div> Mobile App
+                </label>
+                <label class="svc-check" onclick="toggleSvc(this)">
+                  <input type="checkbox" name="services" value="AI Integration">
+                  <div class="cb-box"></div> AI Integration
+                </label>
+                <label class="svc-check" onclick="toggleSvc(this)">
+                  <input type="checkbox" name="services" value="Digital Branding">
+                  <div class="cb-box"></div> Digital Branding
+                </label>
+                <label class="svc-check" onclick="toggleSvc(this)">
+                  <input type="checkbox" name="services" value="LMS / ERP System">
+                  <div class="cb-box"></div> LMS / ERP System
+                </label>
+                <label class="svc-check" onclick="toggleSvc(this)">
+                  <input type="checkbox" name="services" value="Not Sure Yet">
+                  <div class="cb-box"></div> Not Sure Yet
+                </label>
+              </div>
+              <div class="err-msg" id="err-svc">Please select at least one service</div>
+            </div>
+
+            <div class="field">
+              <label for="fvision">Product Vision <span>*</span></label>
+              <textarea id="fvision" name="vision" rows="4" placeholder="Describe what you want to build. What problem does it solve? Who is it for? Any features you have in mind?"></textarea>
+              <div class="err-msg" id="err-fvision">Please share a brief description of your project</div>
+              <div class="field-hint">Don't worry about being technical — plain language is perfect.</div>
+            </div>
+
+            <div class="field">
+              <label for="fbudget">Estimated Budget Range</label>
+              <select id="fbudget" name="budget">
+                <option value="">Select a range (optional)</option>
+                <option value="Under KES 30,000">Under KES 30,000</option>
+                <option value="KES 30,000 – 80,000">KES 30,000 – 80,000</option>
+                <option value="KES 80,000 – 200,000">KES 80,000 – 200,000</option>
+                <option value="KES 200,000+">KES 200,000+</option>
+                <option value="Open to Discussion">Open to Discussion</option>
+              </select>
+            </div>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn-ghost" onclick="goStep(1)">← Back</button>
+              <button type="button" class="btn btn-gold" onclick="nextStep(2)">
+                <span class="btn-label">Continue →</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ═ STEP 3: Schedule ═ -->
+          <div class="fsec" id="sec3">
+            <div class="fsec-label">Step 3 of 3 — Schedule</div>
+
+            <div class="field">
+              <label for="fdate">Preferred Date <span>*</span></label>
+              <input type="date" id="fdate" name="proposedDate" min="">
+              <div class="err-msg" id="err-fdate">Please select a preferred date</div>
+            </div>
+
+            <div class="field">
+              <label for="ftime">Preferred Time</label>
+              <select id="ftime" name="preferredTime">
+                <option value="">Select a time (optional)</option>
+                <option value="8:00 AM – 10:00 AM">8:00 AM – 10:00 AM</option>
+                <option value="10:00 AM – 12:00 PM">10:00 AM – 12:00 PM</option>
+                <option value="12:00 PM – 2:00 PM">12:00 PM – 2:00 PM</option>
+                <option value="2:00 PM – 4:00 PM">2:00 PM – 4:00 PM</option>
+                <option value="4:00 PM – 6:00 PM">4:00 PM – 6:00 PM</option>
+                <option value="Flexible">Flexible / Any Time</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Meeting Type <span>*</span></label>
+              <div class="meet-toggle">
+                <div class="mt-opt sel" id="mt-online" onclick="selMeet('Online')">
+                  <div class="mt-icon">💻</div>
+                  <div>Online</div>
+                  <div style="font-size:10.5px;color:var(--gray-400);margin-top:1px">Google Meet / Zoom</div>
+                </div>
+                <div class="mt-opt" id="mt-physical" onclick="selMeet('Physical')">
+                  <div class="mt-icon">📍</div>
+                  <div>Physical</div>
+                  <div style="font-size:10.5px;color:var(--gray-400);margin-top:1px">Nairobi, Kenya</div>
+                </div>
+                <div class="mt-opt" id="mt-phone" onclick="selMeet('Phone Call')">
+                  <div class="mt-icon">📞</div>
+                  <div>Phone Call</div>
+                  <div style="font-size:10.5px;color:var(--gray-400);margin-top:1px">Voice / WhatsApp</div>
+                </div>
+              </div>
+              <input type="hidden" id="fmeettype" name="meetingType" value="Online">
+              <div class="err-msg" id="err-meet">Please select a meeting type</div>
+            </div>
+
+            <div class="field">
+              <label for="freferal">How did you hear about us?</label>
+              <select id="freferal" name="referral">
+                <option value="">Select (optional)</option>
+                <option value="Instagram">Instagram</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="X (Twitter)">X (Twitter)</option>
+                <option value="Referral">Referred by someone</option>
+                <option value="Google Search">Google Search</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn-ghost" onclick="goStep(2)">← Back</button>
+              <button type="submit" class="btn btn-gold btn-full" id="submitBtn">
+                <div class="spinner" id="formSpinner"></div>
+                <span class="btn-label">✦ Book My Session</span>
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div class="success-box" id="successBox">
+        <div class="suc-icon">🎉</div>
+        <div class="suc-title">You're Booked!</div>
+        <p class="suc-body">Thank you! Your details have been submitted. Isaac will reach out within 24 hours to confirm your session. Check your email for a summary.</p>
+        <div class="suc-acts">
+          <a href="index.html" class="btn btn-gold btn-full">← Back to Portfolio</a>
+          <a href="contact.html" class="btn btn-ghost btn-full">Get in Touch Directly</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+  // ── REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT WEB APP URL ──
+  const SCRIPT_URL = 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+
+  // Set min date to tomorrow
+  const tmr = new Date(); tmr.setDate(tmr.getDate()+1);
+  document.getElementById('fdate').min = tmr.toISOString().split('T')[0];
+
+  let currentStep = 1;
+
+  // ── Progress bar ──
+  function updateProg(step) {
+    for(let i=1;i<=3;i++){
+      const el=document.getElementById('ps'+i);
+      el.classList.remove('done','active');
+      if(i<step) el.classList.add('done');
+      else if(i===step) el.classList.add('active');
+    }
+  }
+
+  function goStep(n) {
+    document.getElementById('sec'+currentStep).classList.remove('on');
+    currentStep = n;
+    document.getElementById('sec'+n).classList.add('on');
+    updateProg(n);
+    document.querySelector('.form-panel').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  // ── Validation ──
+  function clearErr(id) {
+    const el=document.getElementById(id);
+    if(el){el.classList.remove('err');const em=document.getElementById('err-'+id);if(em)em.classList.remove('on');}
+  }
+  function showErr(id,msg) {
+    const el=document.getElementById(id);
+    if(el){el.classList.add('err');const em=document.getElementById('err-'+id);if(em){if(msg)em.textContent=msg;em.classList.add('on');}}
+  }
+  function isEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);}
+  function isPhone(v){return v.replace(/\s/g,'').length>=9;}
+
+  function validateStep(step) {
+    let ok=true;
+    if(step===1){
+      const fn=document.getElementById('fname').value.trim();
+      const fc=document.getElementById('fcontact').value.trim();
+      const fe=document.getElementById('femail').value.trim();
+      if(!fn){showErr('fname');ok=false;}else clearErr('fname');
+      if(!isPhone(fc)){showErr('fcontact');ok=false;}else clearErr('fcontact');
+      if(!isEmail(fe)){showErr('femail');ok=false;}else clearErr('femail');
+      // Honeypot check
+      if(document.getElementById('website').value!==''){
+        showToast('Submission blocked.','#e53e3e');return false;
+      }
+    }
+    if(step===2){
+      const checked=[...document.querySelectorAll('#svcChecks input:checked')];
+      const vis=document.getElementById('fvision').value.trim();
+      if(!checked.length){document.getElementById('err-svc').classList.add('on');ok=false;}
+      else document.getElementById('err-svc').classList.remove('on');
+      if(vis.length<20){showErr('fvision','Please describe your project (at least 20 characters)');ok=false;}
+      else clearErr('fvision');
+    }
+    if(step===3){
+      const fd=document.getElementById('fdate').value;
+      if(!fd){showErr('fdate');ok=false;}else clearErr('fdate');
+    }
+    return ok;
+  }
+
+  function nextStep(current){
+    if(!validateStep(current))return;
+    goStep(current+1);
+  }
+
+  // ── Meeting type selection ──
+  function selMeet(type) {
+    ['online','physical','phone'].forEach(t=>document.getElementById('mt-'+t).classList.remove('sel'));
+    document.getElementById('mt-'+type.toLowerCase().replace(' call','').replace(' ','').replace('phonecall','phone')).classList.add('sel');
+    document.getElementById('fmeettype').value=type;
+  }
+  // Fix phone call id
+  document.getElementById('mt-phone').id='mt-phone';
+  function selMeet(type){
+    document.querySelectorAll('.mt-opt').forEach(el=>el.classList.remove('sel'));
+    if(type==='Online')document.getElementById('mt-online').classList.add('sel');
+    else if(type==='Physical')document.getElementById('mt-physical').classList.add('sel');
+    else document.getElementById('mt-phone').classList.add('sel');
+    document.getElementById('fmeettype').value=type;
+  }
+
+  // ── Service checkbox toggle ──
+  function toggleSvc(el) {
+    el.classList.toggle('sel');
+    const cb=el.querySelector('input');
+    cb.checked=!cb.checked;
+    const box=el.querySelector('.cb-box');
+    box.textContent=cb.checked?'✓':'';
+  }
+
+  // ── Toast ──
+  function showToast(msg,bg='#212121'){
+    const t=document.getElementById('toast');
+    t.textContent=msg; t.style.background=bg;
+    t.classList.add('on');
+    setTimeout(()=>t.classList.remove('on'),3200);
+  }
+
+  // ── Form submission ──
+  document.getElementById('bookingForm').addEventListener('submit',async function(e){
+    e.preventDefault();
+    if(!validateStep(3))return;
+
+    const btn=document.getElementById('submitBtn');
+    const spinner=document.getElementById('formSpinner');
+    btn.classList.add('loading'); btn.disabled=true;
+
+    // Gather services
+    const svcs=[...document.querySelectorAll('#svcChecks input:checked')].map(c=>c.value).join(', ');
+
+    const payload = {
+      fullName:    document.getElementById('fname').value.trim(),
+      contact:     document.getElementById('fcontact').value.trim(),
+      email:       document.getElementById('femail').value.trim(),
+      company:     document.getElementById('fcompany').value.trim()||'—',
+      services:    svcs,
+      vision:      document.getElementById('fvision').value.trim(),
+      budget:      document.getElementById('fbudget').value||'Not specified',
+      proposedDate:document.getElementById('fdate').value,
+      preferredTime:document.getElementById('ftime').value||'Flexible',
+      meetingType: document.getElementById('fmeettype').value,
+      referral:    document.getElementById('freferal').value||'—',
+      honeypot:    document.getElementById('website').value,
+      timestamp:   new Date().toISOString()
+    };
+
+    // Block bots
+    if(payload.honeypot){btn.classList.remove('loading');btn.disabled=false;return;}
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method:'POST',
+        mode:'no-cors',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+      });
+      // With no-cors we can't read the response; assume success
+      document.getElementById('formMain').style.display='none';
+      document.getElementById('successBox').classList.add('on');
+      window.scrollTo({top:0,behavior:'smooth'});
+    } catch(err) {
+      btn.classList.remove('loading'); btn.disabled=false;
+      showToast('Submission failed — please try again or email us directly.','#e53e3e');
+    }
+  });
+
+  // Live validation clear on input
+  ['fname','fcontact','femail','fvision','fdate'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.addEventListener('input',()=>clearErr(id));
+  });
+</script>
+</body>
+</html>

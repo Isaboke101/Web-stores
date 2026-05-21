@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kūgeria Ltd — Links</title>
+  <meta name="description" content="Kūgeria Ltd — Transforming attempts into industry-leading digital solutions. Nairobi, Kenya.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="logo_small.svg" type="image/svg+xml">
+  <style>
+    :root {
+      --bg:#FAFAFA; --green:#004B23; --navy:#052F5F;
+      --gold:#C5A059; --charcoal:#212121;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px;scroll-behavior:smooth}
+    body{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      background:var(--bg); color:var(--charcoal);
+      min-height:100vh; display:flex; flex-direction:column;
+      align-items:center; justify-content:flex-start;
+      padding:44px 20px 60px; overflow-x:hidden;
+    }
+
+    /* Subtle background texture */
+    body::before{
+      content:'';position:fixed;inset:0;
+      background:
+        radial-gradient(ellipse 70% 50% at 10% 10%,rgba(5,47,95,.04),transparent),
+        radial-gradient(ellipse 60% 60% at 90% 90%,rgba(0,75,35,.04),transparent);
+      pointer-events:none;z-index:0;
+    }
+
+    .wrap{position:relative;z-index:1;width:100%;max-width:420px;display:flex;flex-direction:column;align-items:center;gap:0}
+
+    /* Avatar */
+    .avatar-ring{
+      width:92px;height:92px;border-radius:50%;
+      padding:3px;
+      background:linear-gradient(135deg,var(--gold),var(--green),var(--navy));
+      margin-bottom:16px;
+      animation:spin-ring 8s linear infinite;
+    }
+    @keyframes spin-ring{to{filter:hue-rotate(30deg)}}
+    .avatar-inner{
+      width:100%;height:100%;border-radius:50%;
+      background:var(--bg);
+      display:flex;align-items:center;justify-content:center;
+      overflow:hidden;
+    }
+    .avatar-inner img{width:82%;height:auto;object-fit:contain;}
+
+    /* Name & tagline */
+    .lt-name{
+      font-family:'Cormorant Garamond',serif;
+      font-size:26px;font-weight:700;color:var(--navy);
+      text-align:center;margin-bottom:6px;letter-spacing:-.01em;
+    }
+    .lt-handle{font-size:12.5px;color:#888;margin-bottom:6px;letter-spacing:.04em;}
+    .lt-tagline{
+      font-size:13px;color:#666;text-align:center;
+      line-height:1.6;max-width:300px;margin-bottom:28px;
+    }
+    .lt-tagline em{color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif;font-size:15px;}
+
+    /* Location pill */
+    .loc-pill{
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(5,47,95,.06);border:1px solid rgba(5,47,95,.1);
+      color:var(--navy);padding:5px 13px;border-radius:100px;
+      font-size:11.5px;font-weight:500;margin-bottom:28px;
+    }
+
+    /* Links */
+    .links{width:100%;display:flex;flex-direction:column;gap:11px;margin-bottom:32px;}
+
+    .lt-btn{
+      width:100%;padding:15px 22px;border-radius:12px;
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-size:14px;font-weight:600;text-align:center;
+      text-decoration:none;cursor:pointer;
+      display:flex;align-items:center;justify-content:space-between;
+      border:2px solid transparent;
+      transition:all .22s cubic-bezier(.34,1.56,.64,1);
+      position:relative;overflow:hidden;
+    }
+    .lt-btn:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.13);}
+    .lt-btn .btn-label{flex:1;text-align:center;}
+    .lt-btn .btn-arrow{font-size:16px;opacity:.6;transition:opacity .2s,transform .2s;}
+    .lt-btn:hover .btn-arrow{opacity:1;transform:translateX(3px);}
+
+    /* Primary – gold */
+    .lt-primary{
+      background:var(--gold);color:var(--charcoal);border-color:var(--gold);
+      box-shadow:0 4px 18px rgba(197,160,89,.3);
+    }
+    .lt-primary:hover{background:#b8903e;border-color:#b8903e;box-shadow:0 10px 28px rgba(197,160,89,.4);}
+
+    /* Navy */
+    .lt-navy{background:var(--navy);color:#fff;border-color:var(--navy);}
+    .lt-navy:hover{background:#0a4080;}
+
+    /* Green */
+    .lt-green{background:var(--green);color:#fff;border-color:var(--green);}
+    .lt-green:hover{background:#005c2c;}
+
+    /* Outline */
+    .lt-outline{background:transparent;color:var(--charcoal);border-color:rgba(33,33,33,.18);}
+    .lt-outline:hover{border-color:var(--gold);color:var(--navy);}
+
+    /* Icon decoration */
+    .btn-icon{width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+
+    /* Divider */
+    .lt-divider{display:flex;align-items:center;gap:12px;width:100%;margin:6px 0 14px;}
+    .lt-divider span{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#aaa;white-space:nowrap;}
+    .lt-divider::before,.lt-divider::after{content:'';flex:1;height:1px;background:rgba(0,0,0,.08);}
+
+    /* Social icons row */
+    .social-row{display:flex;gap:10px;margin-top:4px;}
+    .soc-btn{
+      width:46px;height:46px;border-radius:11px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:16px;text-decoration:none;font-weight:700;
+      border:1.5px solid rgba(0,0,0,.1);
+      color:var(--charcoal);background:var(--white);
+      transition:all .22s ease;
+    }
+    .soc-btn:hover{border-color:var(--gold);color:var(--navy);transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.1);}
+
+    /* Footer */
+    .lt-foot{margin-top:36px;text-align:center;}
+    .lt-foot a{font-size:11.5px;color:var(--navy);font-weight:600;text-decoration:none;}
+    .lt-foot a:hover{color:var(--gold);}
+    .lt-copy{font-size:10.5px;color:#aaa;margin-top:8px;}
+
+    /* Animate in */
+    .fade-up{opacity:0;transform:translateY(18px);animation:fadeUp .6s ease forwards;}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
+    .d1{animation-delay:.08s} .d2{animation-delay:.16s} .d3{animation-delay:.24s}
+    .d4{animation-delay:.30s} .d5{animation-delay:.36s} .d6{animation-delay:.42s}
+    .d7{animation-delay:.48s} .d8{animation-delay:.54s}
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Avatar -->
+  <div class="avatar-ring fade-up">
+    <div class="avatar-inner">
+      <img src="logo.png" alt="Kūgeria Ltd">
+    </div>
+  </div>
+
+  <!-- Identity -->
+  <div class="lt-name fade-up d1">Kūgeria Ltd</div>
+  <div class="lt-handle fade-up d1">@kugeria · Isaac Oonge</div>
+  <p class="lt-tagline fade-up d2">Transforming <em>attempts</em> into industry-leading digital solutions. Web · AI · Branding · Systems.</p>
+  <div class="loc-pill fade-up d2">📍 Nairobi, Kenya</div>
+
+  <!-- Links -->
+  <div class="links">
+
+    <!-- PRIMARY CTA -->
+    <a href="schedule.html" class="lt-btn lt-primary fade-up d3">
+      <div class="btn-icon">📅</div>
+      <span class="btn-label">Schedule a Free Meeting</span>
+      <span class="btn-arrow">→</span>
+    </a>
+
+    <!-- Portfolio -->
+    <a href="index.html" class="lt-btn lt-navy fade-up d4">
+      <div class="btn-icon">🌐</div>
+      <span class="btn-label">View Portfolio &amp; Services</span>
+      <span class="btn-arrow">→</span>
+    </a>
+
+    <div class="lt-divider fade-up d4"><span>Connect</span></div>
+
+    <!-- LinkedIn -->
+    <a href="#" class="lt-btn lt-outline fade-up d5">
+      <div class="btn-icon" style="background:rgba(0,119,181,.1);font-size:13px;font-weight:700;color:#0077b5">in</div>
+      <span class="btn-label">LinkedIn — Isaac Oonge</span>
+      <span class="btn-arrow">→</span>
+    </a>
+
+    <!-- X / Twitter -->
+    <a href="#" class="lt-btn lt-outline fade-up d6">
+      <div class="btn-icon" style="background:rgba(0,0,0,.06);font-size:13px;font-weight:800;color:#000">𝕏</div>
+      <span class="btn-label">X (Twitter) — @kugeria</span>
+      <span class="btn-arrow">→</span>
+    </a>
+
+    <!-- Instagram -->
+    <a href="#" class="lt-btn lt-outline fade-up d7">
+      <div class="btn-icon" style="background:linear-gradient(135deg,rgba(193,53,132,.1),rgba(225,119,47,.1));font-size:14px;">◈</div>
+      <span class="btn-label">Instagram — @kugeria</span>
+      <span class="btn-arrow">→</span>
+    </a>
+
+    <div class="lt-divider fade-up d7"><span>More</span></div>
+
+    <!-- Get in Touch -->
+    <a href="contact.html" class="lt-btn lt-green fade-up d8">
+      <div class="btn-icon">✉️</div>
+      <span class="btn-label">Get in Touch</span>
+      <span class="btn-arrow">→</span>
+    </a>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="lt-foot fade-up d8">
+    <a href="index.html">kugeria.co.ke</a>
+    <div class="lt-copy">© 2026 Kūgeria Ltd · Nairobi, Kenya</div>
+  </div>
+
+</div>
+</body>
+</html>
