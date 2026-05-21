@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kūgeria Ltd — Digital Creative & Technology Consultancy | Nairobi</title>
+  <meta name="description" content="Kūgeria Ltd builds high-performance web applications, AI-integrated systems, and brand identities that work as silent sales agents for your business.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ────────────────────────────────────
+       CSS VARIABLES & RESET
+    ──────────────────────────────────── */
+    :root {
+      --bg: #FAFAFA;
+      --green: #004B23;
+      --navy: #052F5F;
+      --gold: #C5A059;
+      --charcoal: #212121;
+      --white: #ffffff;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --display: 'Cormorant Garamond', serif;
+      --body: 'Plus Jakarta Sans', sans-serif;
+      --sh-sm: 0 1px 4px rgba(5,47,95,.08),0 1px 2px rgba(5,47,95,.04);
+      --sh-md: 0 4px 20px rgba(5,47,95,.10),0 2px 6px rgba(5,47,95,.05);
+      --sh-lg: 0 10px 40px rgba(5,47,95,.14),0 4px 14px rgba(5,47,95,.08);
+      --sh-xl: 0 20px 60px rgba(5,47,95,.18),0 8px 20px rgba(5,47,95,.10);
+      --radius: 12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--body); background: var(--bg); color: var(--charcoal); line-height: 1.6; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { font-family: var(--body); cursor: pointer; }
+
+    /* ────────────────────────────────────
+       UTILITIES
+    ──────────────────────────────────── */
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .section { padding: 72px 0; }
+
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 600; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .tag-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+      animation: blink 2.2s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    .section-label { font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .section-title { font-family: var(--display); font-size: clamp(28px,5vw,48px); font-weight: 700; color: var(--charcoal); line-height: 1.12; margin-bottom: 14px; }
+    .section-sub { font-size: 15px; color: var(--gray-500); line-height: 1.75; max-width: 560px; }
+    em.gold { font-family: var(--display); font-style: italic; color: var(--gold); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 22px; border-radius: 7px; font-size: 13.5px; font-weight: 600;
+      border: 2px solid transparent; transition: all .22s ease; cursor: pointer;
+    }
+    .btn-gold { background: var(--gold); color: var(--charcoal); border-color: var(--gold); }
+    .btn-gold:hover { background: #b8903e; border-color: #b8903e; transform: translateY(-2px); box-shadow: 0 8px 22px rgba(197,160,89,.35); }
+    .btn-navy { background: transparent; color: var(--navy); border-color: var(--navy); }
+    .btn-navy:hover { background: var(--navy); color: var(--white); transform: translateY(-2px); }
+    .btn-ghost { background: transparent; color: var(--charcoal); border-color: var(--gray-200); font-size: 13px; }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-white { background: var(--white); color: var(--navy); border-color: var(--white); }
+    .btn-white:hover { background: var(--gold); border-color: var(--gold); color: var(--charcoal); }
+    .btn-outline-white { background: transparent; color: var(--white); border-color: rgba(255,255,255,.4); }
+    .btn-outline-white:hover { background: rgba(255,255,255,.1); border-color: var(--white); }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal.d1 { transition-delay: .1s; }
+    .reveal.d2 { transition-delay: .2s; }
+    .reveal.d3 { transition-delay: .3s; }
+
+    /* ────────────────────────────────────
+       NAVBAR
+    ──────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(250,250,250,.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--gray-200); transition: box-shadow .3s;
+    }
+    .nav.scrolled { box-shadow: var(--sh-sm); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+
+    .nav-logo { display: flex; align-items: center; gap: 9px; }
+    .nav-mark { width: 34px; height: 34px; flex-shrink: 0; }
+    .nav-wordmark { font-family: var(--display); font-size: 21px; font-weight: 700; color: var(--navy); letter-spacing: -.01em; }
+    .nav-wordmark span { color: var(--gold); }
+
+    .nav-links { display: none; align-items: center; gap: 34px; }
+    .nav-links a { font-size: 13.5px; font-weight: 500; color: var(--charcoal); position: relative; transition: color .2s; }
+    .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px; background:var(--gold); transition:width .22s; }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta { display: none; }
+    .hamburger { width: 36px; height: 36px; display: flex; flex-direction: column; justify-content: center; gap: 5px; padding: 5px; cursor: pointer; }
+    .hamburger span { height: 2px; background: var(--charcoal); border-radius: 2px; transition: all .28s ease; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav { display: none; flex-direction: column; background: var(--white); border-bottom: 1px solid var(--gray-200); padding: 0 20px; overflow: hidden; max-height: 0; transition: max-height .35s ease, padding .35s ease; }
+    .mobile-nav.open { max-height: 400px; padding: 16px 20px 20px; }
+    .mobile-nav a { font-size: 15px; font-weight: 500; padding: 10px 0; border-bottom: 1px solid var(--gray-100); color: var(--charcoal); }
+    .mobile-nav a.mob-cta { margin-top: 12px; background: var(--gold); color: var(--charcoal); border: none; border-radius: 7px; padding: 12px 20px; font-weight: 600; font-size: 14px; text-align: center; display: block; }
+
+    /* ────────────────────────────────────
+       HERO
+    ──────────────────────────────────── */
+    .hero { padding: 52px 0 72px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(197,160,89,.1); border: 1px solid rgba(197,160,89,.28);
+      color: var(--gold); padding: 5px 14px; border-radius: 100px;
+      font-size: 11.5px; font-weight: 600; letter-spacing: .07em;
+      text-transform: uppercase; margin-bottom: 22px;
+    }
+    .hero-title {
+      font-family: var(--display); font-size: clamp(38px, 9vw, 68px);
+      font-weight: 700; line-height: 1.07; color: var(--navy); margin-bottom: 22px;
+    }
+    .hero-title .line-gold { font-style: italic; color: var(--gold); }
+    .hero-title .line-green { color: var(--green); }
+    .hero-body { font-size: 15.5px; color: var(--gray-500); line-height: 1.78; max-width: 460px; margin-bottom: 34px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 11px; margin-bottom: 44px; }
+    .hero-stats { display: flex; gap: 28px; flex-wrap: wrap; }
+    .stat-num { font-family: var(--display); font-size: 30px; font-weight: 700; color: var(--navy); line-height: 1; }
+    .stat-label { font-size: 11.5px; color: var(--gray-400); margin-top: 3px; }
+
+    /* Collage */
+    .hero-collage { position: relative; height: 400px; }
+
+    .hcard {
+      position: absolute; border-radius: 11px; overflow: hidden;
+      box-shadow: var(--sh-lg); cursor: pointer;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .hcard:hover { transform: translateY(-5px) !important; box-shadow: var(--sh-xl) !important; }
+
+    .hc1 { width: 58%; height: 56%; top: 0; left: 0; z-index: 2; }
+    .hc2 { width: 37%; height: 48%; top: 3%; right: 0; z-index: 3; transform: rotate(2.5deg); }
+    .hc3 { width: 52%; height: 46%; bottom: 0; right: 4%; z-index: 1; transform: rotate(-1.5deg); }
+    .hc4 { width: 28%; height: 26%; bottom: 8%; left: 3%; z-index: 4; transform: rotate(1.2deg); border-radius: 11px; }
+
+    /* ── Browser Mockups ── */
+    .mbrow { width:100%; height:100%; display:flex; flex-direction:column; }
+    .mbar { padding:7px 9px; display:flex; align-items:center; gap:4px; flex-shrink:0; }
+    .mdot { width:7px; height:7px; border-radius:50%; }
+    .mdot.r{background:#ff5f57} .mdot.y{background:#febc2e} .mdot.g{background:#28c840}
+    .murl { flex:1; height:13px; border-radius:3px; margin-left:5px; background:rgba(255,255,255,.18); }
+    .mbody { flex:1; padding:10px; display:flex; flex-direction:column; gap:7px; overflow:hidden; }
+
+    /* Branlly – green */
+    .mk-branlly { background: linear-gradient(160deg,#004B23,#006633); }
+    .mk-branlly .mbar { background:#002f16; }
+    .mk-branlly .mhdr { height:22px; background:rgba(255,255,255,.1); border-radius:4px; }
+    .mk-branlly .mhero { height:52px; background:rgba(197,160,89,.3); border-radius:6px; display:flex; align-items:center; padding:0 10px; gap:8px; }
+    .mk-branlly .mhero-circle { width:28px; height:28px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+    .mk-branlly .mhero-lines { flex:1; display:flex; flex-direction:column; gap:4px; }
+    .mk-branlly .mhero-line { height:6px; background:rgba(255,255,255,.4); border-radius:3px; }
+    .mk-branlly .mhero-line.s { width:60%; }
+    .mk-branlly .mgrid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:5px; }
+    .mk-branlly .mgrid-item { background:rgba(255,255,255,.12); border-radius:5px; height:38px; }
+    .mk-branlly .mgrid-item:nth-child(2) { background:rgba(197,160,89,.25); }
+
+    /* Progigs – navy */
+    .mk-progigs { background: linear-gradient(140deg,#052F5F,#0a4d9c); }
+    .mk-progigs .mbar { background:#031e3e; }
+    .mk-progigs .msearch { height:14px; background:rgba(255,255,255,.15); border-radius:7px; }
+    .mk-progigs .mpgrid { display:grid; grid-template-columns:1fr 1fr; gap:4px; flex:1; }
+    .mk-progigs .mpitem { background:rgba(255,255,255,.09); border-radius:4px; }
+    .mk-progigs .mpitem.hi { background:rgba(197,160,89,.25); }
+
+    /* Injili – gold/teal */
+    .mk-injili { background: linear-gradient(150deg,#C5A059,#8a6a2e); }
+    .mk-injili .mbar { background:rgba(0,0,0,.18); }
+    .mk-injili .murl { background:rgba(255,255,255,.25); }
+    .mk-injili .mibanner { height:44px; background:rgba(0,0,0,.15); border-radius:6px; padding:8px; display:flex; flex-direction:column; gap:4px; justify-content:center; }
+    .mk-injili .miline { height:6px; background:rgba(255,255,255,.45); border-radius:3px; }
+    .mk-injili .miline.s { width:55%; }
+    .mk-injili .miarticles { display:flex; flex-direction:column; gap:4px; }
+    .mk-injili .miarticle { height:20px; background:rgba(0,0,0,.1); border-radius:4px; display:flex; align-items:center; gap:5px; padding:0 6px; }
+    .mk-injili .midot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.55); flex-shrink:0; }
+    .mk-injili .mibar { flex:1; height:5px; background:rgba(255,255,255,.3); border-radius:2px; }
+
+    /* Accent card */
+    .mk-accent { background:var(--gold); padding:14px; display:flex; flex-direction:column; justify-content:center; }
+    .mk-accent .ac-icon { font-size:22px; margin-bottom:7px; }
+    .mk-accent .ac-title { font-family:var(--display); font-size:12.5px; font-weight:700; color:var(--charcoal); line-height:1.3; }
+    .mk-accent .ac-sub { font-size:10px; color:rgba(33,33,33,.65); margin-top:3px; }
+
+    /* ────────────────────────────────────
+       TRUST BAR
+    ──────────────────────────────────── */
+    .trust-bar { background:var(--white); border-top:1px solid var(--gray-200); border-bottom:1px solid var(--gray-200); padding:18px 0; }
+    .trust-inner { display:flex; align-items:center; gap:14px; overflow-x:auto; scrollbar-width:none; }
+    .trust-inner::-webkit-scrollbar { display:none; }
+    .trust-label { font-size:10.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gray-400); white-space:nowrap; flex-shrink:0; }
+    .trust-divider { width:1px; height:18px; background:var(--gray-200); flex-shrink:0; }
+    .trust-items { display:flex; gap:28px; align-items:center; flex-shrink:0; }
+    .trust-item { font-family:var(--display); font-size:15px; font-weight:600; color:var(--gray-400); white-space:nowrap; transition:color .2s; }
+    .trust-item:hover { color:var(--navy); }
+
+    /* ────────────────────────────────────
+       SERVICES
+    ──────────────────────────────────── */
+    .services { background:var(--bg); }
+    .svc-header-row { display:flex; flex-direction:column; gap:14px; margin-bottom:28px; }
+    .svc-header-top { display:flex; flex-direction:column; gap:12px; }
+    .tier-pills { display:flex; flex-wrap:wrap; gap:7px; }
+    .pill { padding:6px 15px; border-radius:100px; font-size:12.5px; font-weight:500; border:1.5px solid var(--gray-200); background:transparent; color:var(--gray-500); transition:all .2s; }
+    .pill:hover, .pill.active { background:var(--navy); color:var(--white); border-color:var(--navy); }
+    .pill.active-gold { background:var(--gold); color:var(--charcoal); border-color:var(--gold); }
+    .svc-grid { display:grid; grid-template-columns:1fr; gap:18px; }
+    .svc-card {
+      background:var(--white); border-radius:var(--radius); padding:26px; border:1px solid var(--gray-200);
+      box-shadow:var(--sh-sm); transition:all .28s ease; position:relative; overflow:hidden;
+    }
+    .svc-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background:var(--gray-200); transition:background .28s; }
+    .svc-card:hover { box-shadow:var(--sh-lg); transform:translateY(-4px); border-color:rgba(197,160,89,.3); }
+    .svc-card:hover::before, .svc-card.feat::before { background:var(--green); }
+    .svc-card.feat { border-color:rgba(0,75,35,.18); }
+    .svc-icon { width:46px; height:46px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:18px; font-size:20px; }
+    .ic-gr { background:rgba(0,75,35,.08); }
+    .ic-nv { background:rgba(5,47,95,.08); }
+    .ic-gd { background:rgba(197,160,89,.12); }
+    .ic-bk { background:rgba(33,33,33,.06); }
+    .svc-badge { display:inline-block; padding:3px 9px; border-radius:100px; font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; margin-bottom:9px; }
+    .bg-gr { background:rgba(0,75,35,.1); color:var(--green); }
+    .bg-nv { background:rgba(5,47,95,.1); color:var(--navy); }
+    .bg-gd { background:rgba(197,160,89,.15); color:#7a5e1e; }
+    .bg-bk { background:rgba(33,33,33,.07); color:#444; }
+    .svc-title { font-family:var(--display); font-size:21px; font-weight:700; color:var(--charcoal); margin-bottom:9px; line-height:1.2; }
+    .svc-desc { font-size:13.5px; color:var(--gray-500); line-height:1.65; margin-bottom:14px; }
+    .svc-feats { display:flex; flex-direction:column; gap:5px; }
+    .svc-feat { font-size:12.5px; color:#555; display:flex; align-items:center; gap:7px; }
+    .svc-feat::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+
+    /* ────────────────────────────────────
+       PROJECTS
+    ──────────────────────────────────── */
+    .projects { background:var(--white); }
+    .proj-hdr-row { display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:14px; margin-bottom:36px; }
+
+    /* Editorial layout */
+    .editorial { display:grid; grid-template-columns:1fr; gap:18px; margin-bottom:48px; }
+    .proj-stack { display:flex; flex-direction:column; gap:18px; }
+
+    /* Featured card */
+    .pcard-feat {
+      background:var(--bg); border-radius:14px; overflow:hidden;
+      border:1px solid var(--gray-200); cursor:pointer;
+      transition:all .28s ease;
+    }
+    .pcard-feat:hover { box-shadow:var(--sh-lg); transform:translateY(-4px); }
+    .pcard-feat .pvisual { height:220px; overflow:hidden; }
+    .pcard-feat .pinfo { padding:22px; }
+
+    /* Small card */
+    .pcard-sm {
+      background:var(--bg); border-radius:12px; overflow:hidden;
+      border:1px solid var(--gray-200); cursor:pointer;
+      transition:all .28s ease; display:grid; grid-template-columns:1fr;
+    }
+    .pcard-sm:hover { box-shadow:var(--sh-md); transform:translateY(-3px); }
+    .pcard-sm .pvisual { height:148px; overflow:hidden; }
+    .pcard-sm .pinfo { padding:16px; }
+
+    .pcat { font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); margin-bottom:7px; }
+    .pname { font-family:var(--display); font-size:22px; font-weight:700; color:var(--charcoal); margin-bottom:7px; line-height:1.2; }
+    .pcard-sm .pname { font-size:18px; }
+    .pdesc { font-size:13.5px; color:var(--gray-500); line-height:1.63; margin-bottom:13px; }
+    .ptags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:14px; }
+    .ptag { padding:3px 9px; border-radius:100px; font-size:11px; font-weight:500; background:var(--gray-100); color:var(--gray-500); }
+    .plink { display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600; color:var(--navy); transition:gap .2s, color .2s; }
+    .plink:hover { gap:10px; color:var(--gold); }
+    .plink svg { width:13px; height:13px; }
+
+    /* Full-width browser mockup in cards */
+    .pvbrow { width:100%; height:100%; display:flex; flex-direction:column; }
+    .pvbar { padding:7px 10px; display:flex; align-items:center; gap:4px; flex-shrink:0; }
+    .pvbody { flex:1; overflow:hidden; padding:12px; display:flex; flex-direction:column; gap:8px; }
+
+    /* Branlly full card */
+    .pv-branlly { background:linear-gradient(155deg,#004B23,#006633); }
+    .pv-branlly .pvbar { background:#002f16; }
+    .pv-branlly .pvurl { flex:1; height:12px; border-radius:3px; background:rgba(255,255,255,.15); margin-left:4px; }
+    .bvnav { display:flex; align-items:center; gap:7px; }
+    .bvlogo { width:30px; height:13px; background:var(--gold); border-radius:3px; }
+    .bvlinks { display:flex; gap:5px; }
+    .bvlink { width:28px; height:8px; background:rgba(255,255,255,.25); border-radius:2px; }
+    .bvhero { background:rgba(197,160,89,.22); border-radius:7px; padding:10px; display:flex; flex-direction:column; gap:4px; }
+    .bvline { height:7px; background:rgba(255,255,255,.45); border-radius:3px; }
+    .bvline.s { width:55%; }
+    .bvbtn { width:56px; height:17px; background:var(--gold); border-radius:4px; margin-top:3px; }
+    .bvcards { display:grid; grid-template-columns:1fr 1fr 1fr; gap:5px; }
+    .bvcard { background:rgba(255,255,255,.1); border-radius:5px; height:44px; padding:5px; display:flex; flex-direction:column; gap:3px; }
+    .bvcimg { flex:1; background:rgba(197,160,89,.28); border-radius:3px; }
+    .bvcline { height:5px; background:rgba(255,255,255,.2); border-radius:2px; }
+
+    /* Progigs small */
+    .pv-progigs { background:linear-gradient(140deg,#052F5F,#0c4fa0); }
+    .pv-progigs .pvbar { background:#021e3c; }
+    .pv-progigs .pvurl { flex:1; height:11px; border-radius:3px; background:rgba(255,255,255,.12); margin-left:4px; }
+    .pvhdr { display:flex; align-items:center; gap:6px; }
+    .pvlogo { width:20px; height:11px; background:var(--gold); border-radius:2px; }
+    .pvsearch { flex:1; height:11px; background:rgba(255,255,255,.14); border-radius:6px; }
+    .pvgrid { display:grid; grid-template-columns:1fr 1fr; gap:4px; flex:1; }
+    .pvitem { background:rgba(255,255,255,.09); border-radius:4px; padding:4px; display:flex; flex-direction:column; gap:3px; }
+    .pvitem.hi { background:rgba(197,160,89,.22); }
+    .pvimg { height:20px; background:rgba(255,255,255,.15); border-radius:2px; }
+    .pvline { height:5px; background:rgba(255,255,255,.2); border-radius:2px; }
+    .pvline.s { width:60%; }
+
+    /* Injili small */
+    .pv-injili { background:linear-gradient(150deg,#C5A059,#8a6528); }
+    .pv-injili .pvbar { background:rgba(0,0,0,.2); }
+    .pv-injili .pvurl { flex:1; height:11px; border-radius:3px; background:rgba(255,255,255,.22); margin-left:4px; }
+    .ivbanner { height:40px; background:rgba(0,0,0,.14); border-radius:6px; padding:7px 9px; display:flex; flex-direction:column; justify-content:center; gap:4px; }
+    .ivline { height:6px; background:rgba(255,255,255,.45); border-radius:3px; }
+    .ivline.s { width:60%; }
+    .ivarticles { display:flex; flex-direction:column; gap:4px; }
+    .ivarticle { height:20px; background:rgba(0,0,0,.1); border-radius:4px; display:flex; align-items:center; gap:5px; padding:0 7px; }
+    .ivdot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.55); flex-shrink:0; }
+    .ivbar { flex:1; height:5px; background:rgba(255,255,255,.28); border-radius:2px; }
+
+    /* Personal Lab */
+    .lab-hdr { display:flex; align-items:center; gap:11px; margin-bottom:18px; flex-wrap:wrap; }
+    .lab-title { font-family:var(--display); font-size:24px; font-weight:700; color:var(--charcoal); }
+    .cs-badge { background:var(--navy); color:var(--white); font-size:9.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:3px 9px; border-radius:100px; }
+    .lab-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    @media(min-width:640px){ .lab-grid { grid-template-columns:repeat(3,1fr); } }
+    .lab-card { border-radius:11px; overflow:hidden; position:relative; border:1px solid var(--gray-200); }
+    .lab-vis { height:110px; display:flex; align-items:center; justify-content:center; font-size:26px; }
+    .lab-info { padding:13px; background:var(--white); }
+    .lab-name { font-size:13px; font-weight:600; color:var(--charcoal); margin-bottom:3px; }
+    .lab-desc { font-size:11.5px; color:var(--gray-400); }
+    .cs-overlay {
+      position:absolute; inset:0; background:rgba(5,47,95,.87);
+      backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:7px;
+    }
+    .cs-overlay .ov-icon { font-size:20px; }
+    .cs-overlay .ov-text { font-family:var(--display); font-size:13px; font-weight:600; color:var(--white); }
+    .cs-overlay .ov-sub { font-size:11px; color:rgba(255,255,255,.55); }
+
+    /* ────────────────────────────────────
+       AI SHOWCASE
+    ──────────────────────────────────── */
+    .ai-section { background:var(--bg); }
+    .ai-grid { display:grid; grid-template-columns:1fr; gap:48px; align-items:center; }
+    .ai-feats { display:flex; flex-direction:column; gap:18px; margin-top:26px; }
+    .ai-feat { display:flex; gap:14px; align-items:flex-start; }
+    .ai-icon { width:40px; height:40px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0; }
+    .ai-feat-title { font-weight:600; font-size:13.5px; color:var(--charcoal); margin-bottom:3px; }
+    .ai-feat-desc { font-size:13px; color:var(--gray-500); line-height:1.62; }
+
+    /* Chatbot mockup */
+    .chatbox { background:var(--white); border-radius:18px; box-shadow:var(--sh-lg); overflow:hidden; border:1px solid var(--gray-200); max-width:350px; margin:0 auto; }
+    .cb-head { background:var(--navy); padding:14px 18px; display:flex; align-items:center; gap:11px; }
+    .cb-avatar { width:34px; height:34px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; font-family:var(--display); font-weight:700; font-size:15px; color:var(--charcoal); flex-shrink:0; }
+    .cb-name { font-size:13.5px; font-weight:600; color:var(--white); }
+    .cb-status { display:flex; align-items:center; gap:4px; font-size:10.5px; color:rgba(255,255,255,.55); margin-top:1px; }
+    .cb-dot { width:5px; height:5px; border-radius:50%; background:#22c55e; }
+    .cb-body { padding:14px; background:#f8f9fb; display:flex; flex-direction:column; gap:10px; min-height:230px; }
+    .cb-msg { max-width:84%; padding:9px 13px; border-radius:14px; font-size:12.5px; line-height:1.55; }
+    .cb-msg.bot { background:var(--white); color:var(--charcoal); border-bottom-left-radius:3px; box-shadow:0 1px 4px rgba(0,0,0,.06); align-self:flex-start; }
+    .cb-msg.usr { background:var(--navy); color:var(--white); border-bottom-right-radius:3px; align-self:flex-end; }
+    .cb-opts { display:flex; flex-wrap:wrap; gap:5px; }
+    .cb-opt { padding:5px 11px; border-radius:100px; border:1.5px solid var(--gold); color:var(--gold); font-size:11.5px; font-weight:500; background:transparent; transition:all .2s; }
+    .cb-opt:hover { background:var(--gold); color:var(--charcoal); }
+    .cb-typing { display:flex; align-items:center; gap:3px; padding:8px 11px; background:var(--white); border-radius:14px; border-bottom-left-radius:3px; width:fit-content; box-shadow:0 1px 4px rgba(0,0,0,.06); }
+    .tdot { width:5px; height:5px; border-radius:50%; background:var(--gray-400); animation:tdots 1.4s infinite; }
+    .tdot:nth-child(2){animation-delay:.2s} .tdot:nth-child(3){animation-delay:.4s}
+    @keyframes tdots{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+    .cb-foot { padding:10px 14px; background:var(--white); border-top:1px solid var(--gray-200); display:flex; align-items:center; gap:7px; }
+    .cb-input { flex:1; background:var(--bg); border:1px solid var(--gray-200); border-radius:18px; padding:7px 13px; font-size:12.5px; color:var(--gray-400); font-family:var(--body); outline:none; }
+    .cb-send { width:30px; height:30px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; flex-shrink:0; border:none; cursor:pointer; }
+    .cb-powered { text-align:center; padding:7px; font-size:10px; color:var(--gray-400); background:var(--white); }
+
+    /* ────────────────────────────────────
+       CTA BANNER
+    ──────────────────────────────────── */
+    .cta-band {
+      padding:80px 0;
+      background:linear-gradient(135deg, var(--navy) 0%, var(--green) 100%);
+      position:relative; overflow:hidden;
+    }
+    .cta-band::before {
+      content:''; position:absolute; inset:0; opacity:.03;
+      background-image:radial-gradient(circle, #fff 1px, transparent 1px);
+      background-size:28px 28px;
+    }
+    .cta-inner { position:relative; text-align:center; max-width:620px; margin:0 auto; }
+    .cta-pill { display:inline-block; padding:4px 14px; border-radius:100px; border:1px solid rgba(197,160,89,.4); color:var(--gold); font-size:10.5px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; margin-bottom:18px; }
+    .cta-title { font-family:var(--display); font-size:clamp(30px,6vw,50px); font-weight:700; color:var(--white); line-height:1.1; margin-bottom:14px; }
+    .cta-title em { color:var(--gold); font-style:italic; }
+    .cta-body { font-size:15px; color:rgba(255,255,255,.7); line-height:1.72; margin-bottom:30px; }
+    .cta-acts { display:flex; gap:11px; justify-content:center; flex-wrap:wrap; }
+
+    /* ────────────────────────────────────
+       FOOTER
+    ──────────────────────────────────── */
+    .footer { background:var(--charcoal); padding:60px 0 28px; }
+    .ftr-grid { display:grid; grid-template-columns:1fr; gap:36px; margin-bottom:44px; }
+    .ftr-tagline { font-size:12.5px; color:rgba(255,255,255,.5); line-height:1.72; margin-top:11px; max-width:250px; }
+    .ftr-social { display:flex; gap:8px; margin-top:18px; }
+    .fsoc { width:32px; height:32px; border-radius:7px; background:rgba(255,255,255,.07); display:flex; align-items:center; justify-content:center; font-size:13px; cursor:pointer; transition:background .2s; }
+    .fsoc:hover { background:var(--gold); }
+    .ftr-col-title { font-size:11.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--white); margin-bottom:14px; }
+    .ftr-links { display:flex; flex-direction:column; gap:9px; }
+    .ftr-links a { font-size:13px; color:rgba(255,255,255,.48); transition:color .2s; }
+    .ftr-links a:hover { color:var(--gold); }
+    .ftr-bottom { padding-top:22px; border-top:1px solid rgba(255,255,255,.07); display:flex; flex-direction:column; gap:10px; align-items:center; text-align:center; }
+    .ftr-copy { font-size:11.5px; color:rgba(255,255,255,.3); }
+    .ftr-blinks { display:flex; gap:18px; }
+    .ftr-blinks a { font-size:11.5px; color:rgba(255,255,255,.35); transition:color .2s; }
+    .ftr-blinks a:hover { color:var(--gold); }
+
+    /* ────────────────────────────────────
+       MODAL
+    ──────────────────────────────────── */
+    .modal-wrap { display:none; position:fixed; inset:0; background:rgba(5,47,95,.55); backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); z-index:2000; align-items:flex-end; justify-content:center; }
+    .modal-wrap.on { display:flex; }
+    .modal-box { background:var(--white); width:100%; max-width:580px; border-radius:18px 18px 0 0; padding:24px 22px 36px; max-height:88vh; overflow-y:auto; transform:translateY(100%); transition:transform .4s cubic-bezier(.34,1.56,.64,1); position:relative; }
+    .modal-wrap.on .modal-box { transform:none; }
+    .modal-handle { width:38px; height:4px; background:var(--gray-200); border-radius:2px; margin:0 auto 22px; }
+    .modal-x { position:absolute; top:18px; right:18px; width:30px; height:30px; border-radius:50%; background:var(--gray-100); border:none; cursor:pointer; font-size:15px; color:var(--charcoal); display:flex; align-items:center; justify-content:center; transition:background .2s; }
+    .modal-x:hover { background:var(--gray-200); }
+    .modal-vis { width:100%; height:190px; border-radius:11px; overflow:hidden; margin-bottom:18px; }
+    .modal-pcat { font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); margin-bottom:7px; }
+    .modal-pname { font-family:var(--display); font-size:26px; font-weight:700; color:var(--charcoal); margin-bottom:8px; }
+    .modal-pdesc { font-size:13.5px; color:var(--gray-500); line-height:1.72; margin-bottom:14px; }
+    .modal-tlabel { font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--gray-400); margin-bottom:9px; }
+    .modal-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:22px; }
+    .modal-tag { padding:4px 11px; border-radius:100px; background:rgba(5,47,95,.07); color:var(--navy); font-size:11.5px; font-weight:500; }
+    .modal-acts { display:flex; gap:9px; flex-wrap:wrap; }
+
+    /* ────────────────────────────────────
+       RESPONSIVE BREAKPOINTS
+    ──────────────────────────────────── */
+    @media(min-width:600px){ .svc-grid { grid-template-columns:1fr 1fr; } }
+    @media(min-width:768px){
+      .nav-links { display:flex; }
+      .nav-cta { display:inline-flex; }
+      .hamburger { display:none; }
+      .hero-grid { grid-template-columns:55fr 45fr; }
+      .hero-collage { height:470px; }
+      .svc-header-top { flex-direction:row; align-items:flex-end; justify-content:space-between; }
+      .editorial { grid-template-columns:3fr 2fr; }
+      .pcard-feat .pvisual { height:255px; }
+      .ai-grid { grid-template-columns:1fr 1fr; }
+      .ftr-grid { grid-template-columns:2fr 1fr 1fr 1fr; }
+      .ftr-bottom { flex-direction:row; justify-content:space-between; text-align:left; }
+      .modal-wrap { align-items:center; }
+      .modal-box { border-radius:18px; }
+    }
+    @media(min-width:1024px){
+      .svc-grid { grid-template-columns:repeat(4,1fr); }
+      .editorial { grid-template-columns:5fr 3fr; gap:22px; }
+      .hero-collage { height:510px; }
+      .hc1 { width:57%; height:54%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">
+        <svg class="nav-mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="34" height="34" rx="8" fill="#052F5F"/>
+          <path d="M9 7h4v8l7-8h5L17 16.5l8.5 10.5H20l-7-8.5V27H9V7z" fill="#C5A059"/>
+          <path d="M12.5 13c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2z" fill="#004B23" opacity=".7"/>
+        </svg>
+        <span class="nav-wordmark">Kū<span>g</span>eria</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact-cta">Contact</a></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:10px">
+        <a href="schedule.html" class="btn btn-gold nav-cta">Schedule a Meeting</a>
+        <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobnav">
+    <a href="#home" class="mob-link">Home</a>
+    <a href="#services" class="mob-link">Services</a>
+    <a href="#projects" class="mob-link">Projects</a>
+    <a href="#contact-cta" class="mob-link">Contact</a>
+    <a href="schedule.html" class="mob-cta">Schedule a Meeting →</a>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- Text -->
+      <div class="reveal">
+        <div class="hero-pill">
+          <div class="tag-dot"></div>
+          Nairobi, Kenya · Digital Agency
+        </div>
+        <h1 class="hero-title">
+          Transforming<br>
+          <span class="line-gold">Attempts</span><br>
+          <span class="line-green">Into Realities</span>
+        </h1>
+        <p class="hero-body">Kūgeria Ltd builds high-performance web applications, AI-integrated systems, and brand identities that work as silent sales agents — 24/7, for your business.</p>
+        <div class="hero-actions">
+          <a href="schedule.html" class="btn btn-gold">Schedule a Meeting →</a>
+          <a href="#projects" class="btn btn-navy">View Our Work</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-num">3+</div><div class="stat-label">Client Projects</div></div>
+          <div><div class="stat-num">4</div><div class="stat-label">Service Tiers</div></div>
+          <div><div class="stat-num">100%</div><div class="stat-label">Custom-Built</div></div>
+        </div>
+      </div>
+
+      <!-- Collage -->
+      <div class="reveal d1">
+        <div class="hero-collage">
+
+          <!-- Branlly -->
+          <div class="hcard hc1" onclick="openModal('branlly')">
+            <div class="mbrow mk-branlly">
+              <div class="mbar">
+                <div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div>
+                <div class="murl"></div>
+              </div>
+              <div class="mbody">
+                <div class="mk-branlly mhdr"></div>
+                <div class="mk-branlly mhero">
+                  <div class="mk-branlly mhero-circle"></div>
+                  <div class="mk-branlly mhero-lines">
+                    <div class="mk-branlly mhero-line"></div>
+                    <div class="mk-branlly mhero-line s"></div>
+                  </div>
+                </div>
+                <div class="mk-branlly mgrid">
+                  <div class="mk-branlly mgrid-item"></div>
+                  <div class="mk-branlly mgrid-item"></div>
+                  <div class="mk-branlly mgrid-item"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Progigs -->
+          <div class="hcard hc2" onclick="openModal('progigs')">
+            <div class="mbrow mk-progigs">
+              <div class="mbar"><div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div><div class="murl"></div></div>
+              <div class="mbody" style="gap:5px">
+                <div class="mk-progigs msearch"></div>
+                <div class="mk-progigs mpgrid" style="display:grid;grid-template-columns:1fr 1fr;gap:4px;flex:1">
+                  <div class="mk-progigs mpitem hi"></div>
+                  <div class="mk-progigs mpitem"></div>
+                  <div class="mk-progigs mpitem"></div>
+                  <div class="mk-progigs mpitem"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Injili -->
+          <div class="hcard hc3" onclick="openModal('injili')">
+            <div class="mbrow mk-injili">
+              <div class="mbar"><div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div><div class="murl"></div></div>
+              <div class="mbody">
+                <div class="mk-injili mibanner">
+                  <div class="mk-injili miline"></div>
+                  <div class="mk-injili miline s"></div>
+                </div>
+                <div class="mk-injili miarticles">
+                  <div class="mk-injili miarticle"><div class="mk-injili midot"></div><div class="mk-injili mibar"></div></div>
+                  <div class="mk-injili miarticle"><div class="mk-injili midot"></div><div class="mk-injili mibar"></div></div>
+                  <div class="mk-injili miarticle"><div class="mk-injili midot"></div><div class="mk-injili mibar"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Accent -->
+          <div class="hcard hc4" style="cursor:default">
+            <div class="mk-accent">
+              <div class="ac-icon">🤖</div>
+              <div class="ac-title">AI Integration Available</div>
+              <div class="ac-sub">LLM · Chatbots · Automation</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TRUST BAR ═══════════════ -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-inner">
+      <span class="trust-label">Built With</span>
+      <div class="trust-divider"></div>
+      <div class="trust-items">
+        <span class="trust-item">Python</span>
+        <span class="trust-item">PHP</span>
+        <span class="trust-item">JavaScript</span>
+        <span class="trust-item">M-Pesa API</span>
+        <span class="trust-item">PostgreSQL</span>
+        <span class="trust-item">LLM Integration</span>
+        <span class="trust-item">React</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ SERVICES ═══════════════ -->
+<section class="section services" id="services">
+  <div class="container">
+    <div class="svc-header-row reveal">
+      <div class="svc-header-top">
+        <div>
+          <div class="section-label">What We Build</div>
+          <h2 class="section-title">Services That <em class="gold">Scale</em> With You</h2>
+        </div>
+        <a href="schedule.html" class="btn btn-ghost">Explore all →</a>
+      </div>
+      <div class="tier-pills">
+        <button class="pill active-gold" onclick="filterPill(this)">All Services</button>
+        <button class="pill" onclick="filterPill(this)">Web &amp; Mobile</button>
+        <button class="pill" onclick="filterPill(this)">AI Integration</button>
+        <button class="pill" onclick="filterPill(this)">Branding</button>
+        <button class="pill" onclick="filterPill(this)">Systems</button>
+      </div>
+    </div>
+
+    <div class="svc-grid">
+      <div class="svc-card feat reveal d1">
+        <div class="svc-icon ic-gr">🌐</div>
+        <span class="svc-badge bg-gr">Tier 1 – 3</span>
+        <h3 class="svc-title">Web &amp; Mobile Development</h3>
+        <p class="svc-desc">Custom-built, database-driven web apps and cross-platform mobile solutions engineered for performance and conversion.</p>
+        <div class="svc-feats">
+          <div class="svc-feat">Landing pages &amp; full-stack web apps</div>
+          <div class="svc-feat">M-Pesa &amp; card payment integration</div>
+          <div class="svc-feat">SEO optimization built-in</div>
+          <div class="svc-feat">Responsive, mobile-first design</div>
+        </div>
+      </div>
+      <div class="svc-card reveal d1">
+        <div class="svc-icon ic-nv">🤖</div>
+        <span class="svc-badge bg-nv">AI Services</span>
+        <h3 class="svc-title">AI &amp; Chatbot Integration</h3>
+        <p class="svc-desc">Deploy LLM-powered chatbots that qualify leads, answer customer queries, and automate your business workflows around the clock.</p>
+        <div class="svc-feats">
+          <div class="svc-feat">Custom AI chatbots for your brand</div>
+          <div class="svc-feat">24/7 automated lead generation</div>
+          <div class="svc-feat">Business process automation</div>
+          <div class="svc-feat">Data-driven insights &amp; analytics</div>
+        </div>
+      </div>
+      <div class="svc-card reveal d2">
+        <div class="svc-icon ic-gd">✦</div>
+        <span class="svc-badge bg-gd">Tier 1</span>
+        <h3 class="svc-title">Digital Branding</h3>
+        <p class="svc-desc">Strategic logo design, portfolio creation, and complete corporate identity systems that communicate authority and trust.</p>
+        <div class="svc-feats">
+          <div class="svc-feat">Logo design &amp; brand systems</div>
+          <div class="svc-feat">Portfolio &amp; personal brand sites</div>
+          <div class="svc-feat">Social media visual identity</div>
+          <div class="svc-feat">Brand guidelines &amp; assets</div>
+        </div>
+      </div>
+      <div class="svc-card reveal d2">
+        <div class="svc-icon ic-bk">⚙️</div>
+        <span class="svc-badge bg-bk">Tier 4</span>
+        <h3 class="svc-title">Systems &amp; Dashboards</h3>
+        <p class="svc-desc">Enterprise-grade LMS, ERP, and data analytics dashboards tailored for schools, corporations, and government bodies.</p>
+        <div class="svc-feats">
+          <div class="svc-feat">Learning Management Systems</div>
+          <div class="svc-feat">SQL/PostgreSQL dashboards</div>
+          <div class="svc-feat">Employee portals &amp; ERP</div>
+          <div class="svc-feat">High-level security protocols</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PROJECTS ═══════════════ -->
+<section class="section projects" id="projects">
+  <div class="container">
+    <div class="proj-hdr-row reveal">
+      <div>
+        <div class="section-label">Our Work</div>
+        <h2 class="section-title" style="margin-bottom:0">Client Projects</h2>
+      </div>
+      <a href="#" class="btn btn-ghost">View all →</a>
+    </div>
+
+    <!-- Editorial: Branlly (featured) + Progigs/Injili stack -->
+    <div class="editorial reveal d1">
+
+      <!-- Branlly – featured -->
+      <div class="pcard-feat" onclick="openModal('branlly')">
+        <div class="pvisual">
+          <div class="pvbrow pv-branlly" style="height:100%">
+            <div class="pvbar">
+              <div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div>
+              <div class="pvurl"></div>
+            </div>
+            <div class="pvbody">
+              <div class="bvnav">
+                <div class="bvlogo"></div>
+                <div class="bvlinks"><div class="bvlink"></div><div class="bvlink"></div><div class="bvlink"></div></div>
+              </div>
+              <div class="bvhero"><div class="bvline"></div><div class="bvline s"></div><div class="bvbtn"></div></div>
+              <div class="bvcards">
+                <div class="bvcard"><div class="bvcimg"></div><div class="bvcline"></div></div>
+                <div class="bvcard"><div class="bvcimg"></div><div class="bvcline"></div></div>
+                <div class="bvcard"><div class="bvcimg"></div><div class="bvcline"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pinfo">
+          <div class="pcat">Event Management · Live Domain</div>
+          <h3 class="pname">Branlly</h3>
+          <p class="pdesc">A full-stack event management platform with a client dashboard, booking system, and SEO-optimized web presence — built to convert visitors into clients around the clock.</p>
+          <div class="ptags"><span class="ptag">Full-Stack</span><span class="ptag">Dashboard</span><span class="ptag">SEO</span><span class="ptag">Bookings</span></div>
+          <span class="plink">View Case Study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+
+      <!-- Stack: Progigs + Injili -->
+      <div class="proj-stack">
+        <div class="pcard-sm" onclick="openModal('progigs')">
+          <div class="pvisual">
+            <div class="pvbrow pv-progigs" style="height:100%">
+              <div class="pvbar"><div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div><div class="pvurl"></div></div>
+              <div class="pvbody">
+                <div class="pvhdr"><div class="pvlogo"></div><div class="pvsearch"></div></div>
+                <div class="pvgrid">
+                  <div class="pvitem hi"><div class="pvimg"></div><div class="pvline"></div><div class="pvline s"></div></div>
+                  <div class="pvitem"><div class="pvimg"></div><div class="pvline"></div><div class="pvline s"></div></div>
+                  <div class="pvitem"><div class="pvimg"></div><div class="pvline"></div></div>
+                  <div class="pvitem"><div class="pvimg"></div><div class="pvline"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pinfo">
+            <div class="pcat">Professional Webstore · GitHub Live</div>
+            <h3 class="pname">Progigs</h3>
+            <p class="pdesc">A professional services webstore connecting skilled Kenyan freelancers with clients, featuring M-Pesa checkout and service listing pages.</p>
+            <div class="ptags"><span class="ptag">E-commerce</span><span class="ptag">M-Pesa</span><span class="ptag">PHP</span></div>
+            <span class="plink">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </div>
+
+        <div class="pcard-sm" onclick="openModal('injili')">
+          <div class="pvisual">
+            <div class="pvbrow pv-injili" style="height:100%">
+              <div class="pvbar"><div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div><div class="pvurl"></div></div>
+              <div class="pvbody">
+                <div class="ivbanner"><div class="ivline"></div><div class="ivline s"></div></div>
+                <div class="ivarticles">
+                  <div class="ivarticle"><div class="ivdot"></div><div class="ivbar"></div></div>
+                  <div class="ivarticle"><div class="ivdot"></div><div class="ivbar"></div></div>
+                  <div class="ivarticle"><div class="ivdot"></div><div class="ivbar"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pinfo">
+            <div class="pcat">Digital Media · GitHub Live</div>
+            <h3 class="pname">Injili</h3>
+            <p class="pdesc">A digital media platform engineered for modern storytelling and scalable audience engagement across channels.</p>
+            <div class="ptags"><span class="ptag">Media</span><span class="ptag">Content</span><span class="ptag">JavaScript</span></div>
+            <span class="plink">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Personal Lab -->
+    <div class="reveal d2">
+      <div class="lab-hdr">
+        <h3 class="lab-title">Personal Lab</h3>
+        <span class="cs-badge">Coming Soon</span>
+      </div>
+      <div class="lab-grid">
+        <div class="lab-card"><div class="lab-vis" style="background:rgba(5,47,95,.05)">⚡</div><div class="lab-info"><div class="lab-name">Hackathon 01</div><div class="lab-desc">In progress...</div></div><div class="cs-overlay"><div class="ov-icon">🔬</div><div class="ov-text">In The Lab</div><div class="ov-sub">Something's brewing...</div></div></div>
+        <div class="lab-card"><div class="lab-vis" style="background:rgba(0,75,35,.05)">🧪</div><div class="lab-info"><div class="lab-name">Experiment 02</div><div class="lab-desc">Practice project</div></div><div class="cs-overlay"><div class="ov-icon">🔬</div><div class="ov-text">In The Lab</div><div class="ov-sub">Coming soon...</div></div></div>
+        <div class="lab-card"><div class="lab-vis" style="background:rgba(197,160,89,.08)">🚀</div><div class="lab-info"><div class="lab-name">Side Project 03</div><div class="lab-desc">Personal build</div></div><div class="cs-overlay"><div class="ov-icon">🔬</div><div class="ov-text">In The Lab</div><div class="ov-sub">Stay tuned...</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ AI SHOWCASE ═══════════════ -->
+<section class="section ai-section">
+  <div class="container">
+    <div class="ai-grid">
+      <div class="reveal">
+        <div class="section-label">AI Services</div>
+        <h2 class="section-title">Your Business,<br><em class="gold">Always On</em></h2>
+        <p class="section-sub">Deploy AI-powered systems that handle customer queries, qualify leads, and automate workflows — even when you're offline.</p>
+        <div class="ai-feats">
+          <div class="ai-feat"><div class="ai-icon ic-gr">🤖</div><div><div class="ai-feat-title">Custom LLM Chatbots</div><div class="ai-feat-desc">Branded AI assistants trained on your business context, products, and FAQs for accurate, on-brand responses.</div></div></div>
+          <div class="ai-feat"><div class="ai-icon ic-nv">📊</div><div><div class="ai-feat-title">Lead Qualification Automation</div><div class="ai-feat-desc">Intelligent funnels that score and route leads to your pipeline before you even see their name.</div></div></div>
+          <div class="ai-feat"><div class="ai-icon ic-gd">⚙️</div><div><div class="ai-feat-title">Business Process Automation</div><div class="ai-feat-desc">Automate repetitive workflows — from appointment booking to order tracking — with AI in the loop.</div></div></div>
+        </div>
+        <div style="margin-top:26px"><a href="schedule.html" class="btn btn-gold">Discuss AI for My Business →</a></div>
+      </div>
+
+      <!-- Static chatbot mockup -->
+      <div class="reveal d1">
+        <div class="chatbox">
+          <div class="cb-head">
+            <div class="cb-avatar">K</div>
+            <div><div class="cb-name">Kūgeria Assistant</div><div class="cb-status"><div class="cb-dot"></div>Online · AI-Powered</div></div>
+          </div>
+          <div class="cb-body" id="cbBody">
+            <div class="cb-msg bot">👋 Hello! I'm the Kūgeria AI assistant. How can I help your business today?</div>
+            <div class="cb-opts">
+              <button class="cb-opt" onclick="cbChat(this,'I need a website')">I need a website</button>
+              <button class="cb-opt" onclick="cbChat(this,'AI chatbots')">AI chatbots</button>
+              <button class="cb-opt" onclick="cbChat(this,'Pricing info')">Pricing</button>
+            </div>
+          </div>
+          <div class="cb-foot">
+            <div class="cb-input">Type a message...</div>
+            <button class="cb-send"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#212121" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+          </div>
+          <div class="cb-powered">Powered by Kūgeria AI · Interactive Demo Preview</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA BAND ═══════════════ -->
+<section class="cta-band" id="contact-cta">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="cta-pill">Let's Build Together</div>
+      <h2 class="cta-title">Ready to Build Something <em>Remarkable?</em></h2>
+      <p class="cta-body">Book a free 30-minute strategy call. We'll map out your digital vision, define the right service tier, and give you a clear plan — no strings attached.</p>
+      <div class="cta-acts">
+        <a href="schedule.html" class="btn btn-white">Schedule a Free Call →</a>
+        <a href="contact.html" class="btn btn-outline-white">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="ftr-grid">
+      <div>
+        <div class="nav-logo" style="margin-bottom:0">
+          <svg class="nav-mark" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="8" fill="#C5A059"/><path d="M9 7h4v8l7-8h5L17 16.5l8.5 10.5H20l-7-8.5V27H9V7z" fill="#052F5F"/></svg>
+          <span class="nav-wordmark" style="color:#fff">Kū<span>g</span>eria <span style="font-size:16px;color:rgba(255,255,255,.35);font-family:var(--body);font-weight:300">Ltd</span></span>
+        </div>
+        <p class="ftr-tagline">Transforming attempts into industry-leading digital solutions. Based in Nairobi, building for the world.</p>
+        <div class="ftr-social">
+          <div class="fsoc" title="LinkedIn">in</div>
+          <div class="fsoc" title="X / Twitter">𝕏</div>
+          <div class="fsoc" title="Instagram">◈</div>
+        </div>
+      </div>
+      <div>
+        <div class="ftr-col-title">Navigate</div>
+        <div class="ftr-links">
+          <a href="#home">Home</a><a href="#services">Services</a><a href="#projects">Projects</a>
+          <a href="schedule.html">Schedule</a><a href="contact.html">Contact</a><a href="linktree.html">Linktree</a>
+        </div>
+      </div>
+      <div>
+        <div class="ftr-col-title">Services</div>
+        <div class="ftr-links">
+          <a href="#services">Web Development</a><a href="#services">Mobile Apps</a>
+          <a href="#services">AI Integration</a><a href="#services">Branding</a><a href="#services">Systems &amp; LMS</a>
+        </div>
+      </div>
+      <div>
+        <div class="ftr-col-title">Contact</div>
+        <div class="ftr-links">
+          <a href="schedule.html">Schedule a Meeting</a><a href="contact.html">Get in Touch</a>
+          <a href="mailto:hello@kugeria.co.ke">hello@kugeria.co.ke</a><a href="#">Nairobi, Kenya</a>
+        </div>
+      </div>
+    </div>
+    <div class="ftr-bottom">
+      <div class="ftr-copy">© 2026 Kūgeria Ltd. All rights reserved. Designed &amp; built by Isaac Oonge.</div>
+      <div class="ftr-blinks"><a href="#">Privacy</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════ PROJECT MODAL ═══════════════ -->
+<div class="modal-wrap" id="mwrap" onclick="mOutside(event)">
+  <div class="modal-box" id="mbox">
+    <div class="modal-handle"></div>
+    <button class="modal-x" onclick="closeModal()">✕</button>
+    <div class="modal-vis" id="mvis"></div>
+    <div class="modal-pcat" id="mpcat"></div>
+    <div class="modal-pname" id="mpname"></div>
+    <div class="modal-pdesc" id="mpdesc"></div>
+    <div class="modal-tlabel">Tech Stack</div>
+    <div class="modal-tags" id="mtags"></div>
+    <div class="modal-acts" id="macts"></div>
+  </div>
+</div>
+
+<script>
+// ── Navbar scroll ──
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20));
+
+// ── Hamburger ──
+const ham=document.getElementById('ham'),mob=document.getElementById('mobnav');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open');});
+document.querySelectorAll('.mob-link').forEach(l=>l.addEventListener('click',()=>{ham.classList.remove('open');mob.classList.remove('open');}));
+
+// ── Scroll reveal ──
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// ── Tier pills ──
+function filterPill(el){document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active','active-gold'));el.classList.add('active-gold');}
+
+// ── Project data ──
+const pdata={
+  branlly:{cat:'Event Management · Live Domain',name:'Branlly',
+    desc:'A full-stack event management platform with a client-facing dashboard, booking system, and SEO-optimized web presence. Engineered for event businesses to manage bookings, showcase services, and convert visitors to clients — 24/7.',
+    tags:['Python','PostgreSQL','JavaScript','SEO','Dashboard','Full-Stack'],
+    liveUrl:'#',live:true,vcls:'pv-branlly'},
+  progigs:{cat:'Professional Services Webstore · GitHub Live',name:'Progigs',
+    desc:'A professional services webstore connecting skilled Kenyan freelancers with quality clients. Features service listing pages, M-Pesa payment checkout, and a clean, conversion-optimized UI for the local gig economy.',
+    tags:['PHP','JavaScript','M-Pesa API','MySQL','E-commerce'],
+    liveUrl:'#',live:false,vcls:'pv-progigs'},
+  injili:{cat:'Digital Media Platform · GitHub Live',name:'Injili',
+    desc:'A digital media and content platform engineered for modern storytelling and scalable audience engagement. Features editorial-style layouts, article management, and a clean reading experience for African content creators.',
+    tags:['JavaScript','PHP','CSS3','Content Management','Media'],
+    liveUrl:'#',live:false,vcls:'pv-injili'}
+};
+
+function openModal(k){
+  const p=pdata[k];
+  document.getElementById('mpcat').textContent=p.cat;
+  document.getElementById('mpname').textContent=p.name;
+  document.getElementById('mpdesc').textContent=p.desc;
+  document.getElementById('mvis').className='modal-vis '+p.vcls;
+  document.getElementById('mvis').innerHTML='';
+  document.getElementById('mtags').innerHTML=p.tags.map(t=>`<span class="modal-tag">${t}</span>`).join('');
+  document.getElementById('macts').innerHTML=p.live
+    ?`<a href="${p.liveUrl}" target="_blank" class="btn btn-gold">Visit Live Site →</a><button class="btn btn-navy" onclick="closeModal()">Close</button>`
+    :`<span class="btn btn-ghost" style="cursor:default;opacity:.7">🔒 Private GitHub Project</span><button class="btn btn-navy" onclick="closeModal()">Close</button>`;
+  document.getElementById('mwrap').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('mwrap').classList.remove('on');document.body.style.overflow='';}
+function mOutside(e){if(e.target===document.getElementById('mwrap'))closeModal();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+// ── Chatbot sim ──
+const cbR={
+  'I need a website':'Great choice! We build from personal portfolios (Tier 1) to full e-commerce stores (Tier 3). What type of business are you building for?',
+  'AI chatbots':'We deploy custom LLM chatbots trained on your brand — perfect for 24/7 lead generation and customer support. Want to discuss a proposal?',
+  'Pricing info':'Pricing scales with your needs: one-time setup fees for personal brands, all the way to contract-based enterprise solutions. A free strategy call is the best starting point! 📅'
+};
+function cbChat(btn,msg){
+  const body=document.getElementById('cbBody');
+  body.innerHTML+=`<div class="cb-msg usr">${msg}</div>`;
+  const typ=document.createElement('div');
+  typ.className='cb-typing';
+  typ.innerHTML='<div class="tdot"></div><div class="tdot"></div><div class="tdot"></div>';
+  body.appendChild(typ);
+  btn.disabled=true; btn.style.opacity='.5';
+  setTimeout(()=>{
+    typ.remove();
+    body.innerHTML+=`<div class="cb-msg bot">${cbR[msg]}</div>`;
+    if(msg==='Pricing info') body.innerHTML+=`<div style="margin-top:6px"><a href="schedule.html" class="btn btn-gold" style="font-size:12px;padding:8px 15px">Book Free Strategy Call →</a></div>`;
+  },1100);
+}
+</script>
+</body>
+</html>
