@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get in Touch — Kūgeria Ltd</title>
+  <meta name="description" content="Reach out to Kūgeria Ltd directly via Instagram or Email. Nairobi, Kenya.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="logo_small.svg" type="image/svg+xml">
+  <style>
+    :root{
+      --bg:#FAFAFA;--green:#004B23;--navy:#052F5F;
+      --gold:#C5A059;--charcoal:#212121;--white:#ffffff;
+      --gray-100:#f3f4f6;--gray-200:#e5e7eb;
+      --gray-400:#9ca3af;--gray-500:#6b7280;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px}
+    body{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      background:var(--bg);color:var(--charcoal);
+      min-height:100vh;overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    /* NAV */
+    .nav{
+      position:sticky;top:0;z-index:100;
+      background:rgba(250,250,250,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--gray-200);
+    }
+    .nav-inner{
+      display:flex;align-items:center;justify-content:space-between;
+      height:64px;max-width:1200px;margin:0 auto;padding:0 20px;
+    }
+    .nav-logo img{height:34px;width:auto;object-fit:contain}
+    .nav-back{
+      display:inline-flex;align-items:center;gap:6px;
+      font-size:13px;font-weight:500;color:var(--gray-500);
+      transition:color .2s;
+    }
+    .nav-back:hover{color:var(--navy)}
+
+    /* HERO */
+    .hero{
+      padding:72px 20px 60px;
+      text-align:center;max-width:600px;margin:0 auto;
+    }
+    .hero-pill{
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(197,160,89,.1);border:1px solid rgba(197,160,89,.28);
+      color:#7a5e1e;padding:5px 15px;border-radius:100px;
+      font-size:11px;font-weight:600;letter-spacing:.1em;
+      text-transform:uppercase;margin-bottom:20px;
+    }
+    .dot{
+      width:5px;height:5px;border-radius:50%;background:var(--gold);
+      animation:blink 2s infinite;
+    }
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+    .hero-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(36px,8vw,60px);font-weight:700;
+      color:var(--navy);line-height:1.08;margin-bottom:16px;
+    }
+    .hero-title em{color:var(--gold);font-style:italic}
+    .hero-sub{
+      font-size:15px;color:var(--gray-500);
+      line-height:1.75;margin-bottom:0;
+    }
+
+    /* CARDS GRID */
+    .cards{
+      max-width:900px;margin:0 auto;
+      padding:0 20px 80px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+    }
+
+    .ccard{
+      background:var(--white);border-radius:16px;
+      border:1px solid var(--gray-200);
+      padding:30px 26px;
+      display:flex;flex-direction:column;
+      align-items:flex-start;gap:0;
+      transition:all .28s cubic-bezier(.34,1.56,.64,1);
+      box-shadow:0 1px 4px rgba(5,47,95,.06);
+      position:relative;overflow:hidden;
+    }
+    .ccard::after{
+      content:'';position:absolute;bottom:0;left:0;right:0;
+      height:3px;background:var(--gray-200);
+      transition:background .28s;
+    }
+    .ccard:hover{
+      transform:translateY(-5px);
+      box-shadow:0 14px 40px rgba(5,47,95,.12);
+      border-color:rgba(197,160,89,.3);
+    }
+    .ccard:hover::after{background:var(--gold)}
+
+    /* Platform icon area */
+    .cc-icon-wrap{
+      width:56px;height:56px;border-radius:14px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:24px;margin-bottom:18px;flex-shrink:0;
+    }
+    .ic-ig{background:linear-gradient(135deg,rgba(193,53,132,.12),rgba(225,119,47,.12))}
+    .ic-em{background:rgba(5,47,95,.08)}
+    .ic-wa{background:rgba(37,211,102,.12)}
+    .ic-li{background:rgba(0,119,181,.1)}
+
+    .cc-platform{
+      font-size:11px;font-weight:700;letter-spacing:.12em;
+      text-transform:uppercase;color:var(--gold);margin-bottom:5px;
+    }
+    .cc-name{
+      font-family:'Cormorant Garamond',serif;
+      font-size:24px;font-weight:700;color:var(--charcoal);
+      margin-bottom:8px;
+    }
+    .cc-desc{
+      font-size:13.5px;color:var(--gray-500);
+      line-height:1.68;margin-bottom:22px;flex:1;
+    }
+    .cc-handle{
+      display:inline-flex;align-items:center;gap:6px;
+      font-size:13px;font-weight:600;color:var(--navy);
+      background:var(--gray-100);padding:6px 13px;
+      border-radius:100px;margin-bottom:20px;letter-spacing:.01em;
+    }
+    .cc-btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:12px 22px;border-radius:9px;
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-size:13.5px;font-weight:600;
+      border:2px solid transparent;
+      transition:all .22s ease;cursor:pointer;
+      width:100%;justify-content:center;
+    }
+    .cc-btn:hover{transform:translateY(-2px)}
+    .cb-ig{
+      background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
+      color:#fff;border-color:transparent;
+    }
+    .cb-ig:hover{box-shadow:0 8px 22px rgba(193,53,132,.35)}
+    .cb-em{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .cb-em:hover{background:#0a4080;box-shadow:0 8px 22px rgba(5,47,95,.3)}
+    .cb-wa{background:#25D366;color:#fff;border-color:#25D366}
+    .cb-wa:hover{background:#1ebc5a;box-shadow:0 8px 22px rgba(37,211,102,.35)}
+    .cb-li{background:#0077B5;color:#fff;border-color:#0077B5}
+    .cb-li:hover{background:#006097;box-shadow:0 8px 22px rgba(0,119,181,.3)}
+
+    /* Response time badge */
+    .rt-badge{
+      position:absolute;top:20px;right:20px;
+      display:inline-flex;align-items:center;gap:5px;
+      background:rgba(0,75,35,.08);color:var(--green);
+      padding:4px 10px;border-radius:100px;
+      font-size:10.5px;font-weight:600;
+    }
+    .rt-dot{width:5px;height:5px;border-radius:50%;background:var(--green)}
+
+    /* CTA band */
+    .cta-band{
+      background:linear-gradient(135deg,var(--navy),var(--green));
+      padding:70px 20px;text-align:center;
+      position:relative;overflow:hidden;
+    }
+    .cta-band::before{
+      content:'';position:absolute;inset:0;
+      background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);
+      background-size:26px 26px;
+    }
+    .cta-inner{position:relative;max-width:540px;margin:0 auto}
+    .cta-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(28px,5vw,44px);font-weight:700;
+      color:#fff;line-height:1.12;margin-bottom:13px;
+    }
+    .cta-title em{color:var(--gold);font-style:italic}
+    .cta-sub{
+      font-size:14.5px;color:rgba(255,255,255,.7);
+      line-height:1.72;margin-bottom:26px;
+    }
+    .cta-btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:13px 28px;border-radius:9px;
+      background:var(--gold);color:var(--charcoal);
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-size:14px;font-weight:700;
+      border:2px solid var(--gold);
+      transition:all .22s ease;
+    }
+    .cta-btn:hover{
+      background:#b8903e;border-color:#b8903e;
+      transform:translateY(-3px);
+      box-shadow:0 10px 28px rgba(197,160,89,.4);
+    }
+
+    /* Footer */
+    .footer{
+      background:var(--charcoal);padding:28px 20px;
+      text-align:center;
+    }
+    .footer img{
+      height:32px;width:auto;object-fit:contain;
+      filter:brightness(0) invert(1);opacity:.8;
+      margin:0 auto 12px;
+    }
+    .footer-copy{font-size:11.5px;color:rgba(255,255,255,.35)}
+    .footer-links{
+      display:flex;gap:18px;justify-content:center;
+      margin-top:10px;
+    }
+    .footer-links a{
+      font-size:11.5px;color:rgba(255,255,255,.4);
+      transition:color .2s;
+    }
+    .footer-links a:hover{color:var(--gold)}
+
+    /* Animate */
+    .fade-up{opacity:0;transform:translateY(22px);animation:fadeUp .6s ease forwards}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
+    .d1{animation-delay:.08s}.d2{animation-delay:.16s}
+    .d3{animation-delay:.24s}.d4{animation-delay:.32s}
+    .d5{animation-delay:.40s}
+
+    @media(min-width:640px){
+      .cards{grid-template-columns:1fr 1fr}
+    }
+    @media(min-width:900px){
+      .cards{grid-template-columns:repeat(2,1fr)}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo_small.svg" alt="Kūgeria Ltd"></a>
+    <a href="index.html" class="nav-back">← Back to Portfolio</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-pill"><div class="dot"></div> We respond within 24 hours</div>
+  <h1 class="hero-title">Let's Start a<br><em>Conversation</em></h1>
+  <p class="hero-sub">Choose your preferred channel below. Whether it's a quick question or a full project brief — we're ready to hear from you.</p>
+</div>
+
+<!-- CONTACT CARDS -->
+<div class="cards">
+
+  <!-- Instagram -->
+  <div class="ccard fade-up d1">
+    <div class="rt-badge"><div class="rt-dot"></div> Fast replies</div>
+    <div class="cc-icon-wrap ic-ig">◈</div>
+    <div class="cc-platform">Instagram</div>
+    <div class="cc-name">DM on Instagram</div>
+    <p class="cc-desc">The quickest way to reach Isaac for casual questions, project ideas, or to see behind-the-scenes of what we're building.</p>
+    <div class="cc-handle">📸 @kugeria</div>
+    <a href="https://instagram.com/kugeria" target="_blank" rel="noopener" class="cc-btn cb-ig">
+      ◈ &nbsp;Open Instagram DM →
+    </a>
+  </div>
+
+  <!-- Email -->
+  <div class="ccard fade-up d2">
+    <div class="rt-badge"><div class="rt-dot"></div> Within 24 hrs</div>
+    <div class="cc-icon-wrap ic-em">✉️</div>
+    <div class="cc-platform">Email</div>
+    <div class="cc-name">Send an Email</div>
+    <p class="cc-desc">Best for detailed project briefs, partnership inquiries, or anything that requires a thorough, documented response.</p>
+    <div class="cc-handle">📧 hello@kugeria.co.ke</div>
+    <a href="mailto:hello@kugeria.co.ke?subject=Project Inquiry — Kūgeria Ltd&body=Hi Isaac,%0D%0A%0D%0AI'd like to discuss a project with Kūgeria Ltd.%0D%0A%0D%0AProject idea:%0D%0A%0D%0AMy contact:%0D%0A%0D%0AThanks!" class="cc-btn cb-em">
+      ✉️ &nbsp;Compose Email →
+    </a>
+  </div>
+
+  <!-- WhatsApp -->
+  <div class="ccard fade-up d3">
+    <div class="rt-badge"><div class="rt-dot"></div> Real-time chat</div>
+    <div class="cc-icon-wrap ic-wa">💬</div>
+    <div class="cc-platform">WhatsApp</div>
+    <div class="cc-name">Chat on WhatsApp</div>
+    <p class="cc-desc">Prefer a quick voice note or text? Reach Isaac directly on WhatsApp for responsive, personal communication.</p>
+    <div class="cc-handle">📱 +254 — (via schedule form)</div>
+    <a href="https://wa.me/254700000000?text=Hi%20Isaac%2C%20I%20found%20Kūgeria%20Ltd%20online%20and%20I%27d%20love%20to%20discuss%20a%20project!" target="_blank" rel="noopener" class="cc-btn cb-wa">
+      💬 &nbsp;Open WhatsApp →
+    </a>
+  </div>
+
+  <!-- LinkedIn -->
+  <div class="ccard fade-up d4">
+    <div class="rt-badge" style="background:rgba(0,119,181,.1);color:#0077B5"><div class="rt-dot" style="background:#0077B5"></div> Professional</div>
+    <div class="cc-icon-wrap ic-li" style="font-size:22px;font-weight:800;color:#0077B5">in</div>
+    <div class="cc-platform">LinkedIn</div>
+    <div class="cc-name">Connect on LinkedIn</div>
+    <p class="cc-desc">For professional networking, B2B partnerships, and enterprise inquiries. Follow for updates on projects and industry insights.</p>
+    <div class="cc-handle">in /isaac-oonge</div>
+    <a href="https://linkedin.com/in/isaac-oonge" target="_blank" rel="noopener" class="cc-btn cb-li">
+      in &nbsp;View LinkedIn Profile →
+    </a>
+  </div>
+
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="cta-inner fade-up d5">
+    <h2 class="cta-title">Ready to Go <em>Deeper?</em></h2>
+    <p class="cta-sub">A quick message is great — but a dedicated strategy call is where the real magic happens. Book a free 30-minute session and let's map your vision together.</p>
+    <a href="schedule.html" class="cta-btn">📅 &nbsp;Schedule a Free Meeting →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <img src="logo.svg" alt="Kūgeria Ltd">
+  <div class="footer-copy">© 2026 Kūgeria Ltd · Designed &amp; Built by Isaac Oonge · Nairobi, Kenya</div>
+  <div class="footer-links">
+    <a href="index.html">Portfolio</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="linktree.html">Links</a>
+  </div>
+</footer>
+
+</body>
+</html>

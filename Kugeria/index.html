@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="logo_small.svg" type="image/svg+xml">
+  <link rel="icon" href="images/logo_small.svg" type="image/svg+xml">
   <style>
     /* ────────────────────────────────────
        CSS VARIABLES & RESET
@@ -489,7 +489,7 @@
   <div class="container">
     <div class="nav-inner">
       <a href="#home" class="nav-logo">
-        <img src="logo_small.svg" alt="Kūgeria Ltd" class="nav-mark" style="width:auto;height:34px;object-fit:contain;">
+        <img src="images/logo_small.svg" alt="Kūgeria Ltd" class="nav-mark" style="width:auto;height:34px;object-fit:contain;">
       </a>
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
@@ -727,6 +727,7 @@
       <!-- Branlly – featured -->
       <div class="pcard-feat" onclick="openModal('branlly')">
         <div class="pvisual">
+          <img src="images/branlly-event-management-website-nairobi.png" alt="Branlly Event Management Platform" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
           <div class="pvbrow pv-branlly" style="height:100%">
             <div class="pvbar">
               <div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div>
@@ -759,6 +760,7 @@
       <div class="proj-stack">
         <div class="pcard-sm" onclick="openModal('progigs')">
           <div class="pvisual">
+            <img src="images/progigs-digital-media-kenya.png" alt="Progigs Professional Services Webstore" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
             <div class="pvbrow pv-progigs" style="height:100%">
               <div class="pvbar"><div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div><div class="pvurl"></div></div>
               <div class="pvbody">
@@ -775,14 +777,15 @@
           <div class="pinfo">
             <div class="pcat">Professional Webstore · GitHub Live</div>
             <h3 class="pname">Progigs</h3>
-            <p class="pdesc">A professional services webstore connecting skilled Kenyan freelancers with clients, featuring M-Pesa checkout and service listing pages.</p>
-            <div class="ptags"><span class="ptag">E-commerce</span><span class="ptag">M-Pesa</span><span class="ptag">PHP</span></div>
+            <p class="pdesc">A digital media platform engineered for modern storytelling and scalable audience engagement across channels.</p>
+            <div class="ptags"><span class="ptag">Media</span><span class="ptag">Content</span><span class="ptag">JavaScript</span></div>
             <span class="plink">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </div>
 
         <div class="pcard-sm" onclick="openModal('injili')">
           <div class="pvisual">
+            <img src="images/injili-freelance-services-webstores-kenya.png" alt="Injili Digital Media Platform" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
             <div class="pvbrow pv-injili" style="height:100%">
               <div class="pvbar"><div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div><div class="pvurl"></div></div>
               <div class="pvbody">
@@ -798,8 +801,8 @@
           <div class="pinfo">
             <div class="pcat">Digital Media · GitHub Live</div>
             <h3 class="pname">Injili</h3>
-            <p class="pdesc">A digital media platform engineered for modern storytelling and scalable audience engagement across channels.</p>
-            <div class="ptags"><span class="ptag">Media</span><span class="ptag">Content</span><span class="ptag">JavaScript</span></div>
+            <p class="pdesc">A professional services webstore connecting skilled Kenyan freelancers with clients, featuring M-Pesa checkout and service listing pages.</p>
+            <div class="ptags"><span class="ptag">E-commerce</span><span class="ptag">M-Pesa</span><span class="ptag">PHP</span></div>
             <span class="plink">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </div>
@@ -884,7 +887,7 @@
     <div class="ftr-grid">
       <div>
         <div style="margin-bottom:0">
-          <img src="logo.svg" alt="Kūgeria Ltd" style="height:40px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.9;">
+          <img src="images/logo.svg" alt="Kūgeria Ltd" style="height:40px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.9;">
         </div>
         <p class="ftr-tagline">Transforming attempts into industry-leading digital solutions. Based in Nairobi, building for the world.</p>
         <div class="ftr-social">
@@ -955,38 +958,90 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 function filterPill(el){document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active','active-gold'));el.classList.add('active-gold');}
 
 // ── Project data ──
-const pdata={
-  branlly:{cat:'Event Management · Live Domain',name:'Branlly',
-    desc:'A full-stack event management platform with a client-facing dashboard, booking system, and SEO-optimized web presence. Engineered for event businesses to manage bookings, showcase services, and convert visitors to clients — 24/7.',
-    tags:['Python','PostgreSQL','JavaScript','SEO','Dashboard','Full-Stack'],
-    liveUrl:'#',live:true,vcls:'pv-branlly'},
-  progigs:{cat:'Professional Services Webstore · GitHub Live',name:'Progigs',
-    desc:'A professional services webstore connecting skilled Kenyan freelancers with quality clients. Features service listing pages, M-Pesa payment checkout, and a clean, conversion-optimized UI for the local gig economy.',
-    tags:['PHP','JavaScript','M-Pesa API','MySQL','E-commerce'],
-    liveUrl:'#',live:false,vcls:'pv-progigs'},
-  injili:{cat:'Digital Media Platform · GitHub Live',name:'Injili',
-    desc:'A digital media and content platform engineered for modern storytelling and scalable audience engagement. Features editorial-style layouts, article management, and a clean reading experience for African content creators.',
-    tags:['JavaScript','PHP','CSS3','Content Management','Media'],
-    liveUrl:'#',live:false,vcls:'pv-injili'}
+const pdata = {
+  branlly: {
+    cat: 'Event Management · Live Domain',
+    name: 'Branlly',
+    desc: 'A full-stack event management platform with a client-facing dashboard, booking system, and SEO-optimized web presence. Engineered for event businesses to manage bookings, showcase services, and convert visitors to clients — 24/7.',
+    tags: ['Python','PostgreSQL','JavaScript','SEO','Dashboard','Full-Stack'],
+    liveUrl: 'https://branllyltd.co.ke',
+    live: true,
+    img: 'images/branlly-event-management-website-nairobi.png'
+  },
+  progigs: {
+    cat: 'Professional Services Webstore · GitHub Live',
+    name: 'Progigs',
+    desc: 'A professional services webstore connecting skilled Kenyan freelancers with quality clients. Features service listing pages, M-Pesa payment checkout, and a clean, conversion-optimized UI for the local gig economy.',
+    tags: ['PHP','JavaScript','M-Pesa API','MySQL','E-commerce'],
+    liveUrl: '#',
+    live: false,
+    img: 'images/progigs-digital-media-kenya.png'
+  },
+  injili: {
+    cat: 'Digital Media Platform · GitHub Live',
+    name: 'Injili',
+    desc: 'A digital media and content platform engineered for modern storytelling and scalable audience engagement. Features editorial-style layouts, article management, and a clean reading experience for African content creators.',
+    tags: ['JavaScript','PHP','CSS3','Content Management','Media'],
+    liveUrl: '#',
+    live: false,
+    img: 'images/injili-freelance-services-webstores-kenya.png'
+  }
 };
 
-function openModal(k){
-  const p=pdata[k];
-  document.getElementById('mpcat').textContent=p.cat;
-  document.getElementById('mpname').textContent=p.name;
-  document.getElementById('mpdesc').textContent=p.desc;
-  document.getElementById('mvis').className='modal-vis '+p.vcls;
-  document.getElementById('mvis').innerHTML='';
-  document.getElementById('mtags').innerHTML=p.tags.map(t=>`<span class="modal-tag">${t}</span>`).join('');
-  document.getElementById('macts').innerHTML=p.live
-    ?`<a href="${p.liveUrl}" target="_blank" class="btn btn-gold">Visit Live Site →</a><button class="btn btn-navy" onclick="closeModal()">Close</button>`
-    :`<span class="btn btn-ghost" style="cursor:default;opacity:.7">🔒 Private GitHub Project</span><button class="btn btn-navy" onclick="closeModal()">Close</button>`;
+// ── Open modal ──
+function openModal(k) {
+  const p = pdata[k];
+  document.getElementById('mpcat').textContent  = p.cat;
+  document.getElementById('mpname').textContent = p.name;
+  document.getElementById('mpdesc').textContent = p.desc;
+  document.getElementById('mvis').className     = 'modal-vis';
+
+  // Build image with fallback placeholder if screenshot not yet added
+  var imgEl = new Image();
+  imgEl.alt   = p.name;
+  imgEl.style.cssText = 'width:100%;height:100%;object-fit:cover;object-position:top;border-radius:11px;';
+  imgEl.onerror = function() {
+    // Show a branded placeholder when image file doesn't exist yet
+    document.getElementById('mvis').innerHTML =
+      '<div style="width:100%;height:100%;border-radius:11px;background:linear-gradient(135deg,#052F5F,#004B23);' +
+      'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">' +
+      '<div style="font-size:28px;">🖼️</div>' +
+      '<div style="font-size:12px;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:.05em;">Screenshot coming soon</div>' +
+      '</div>';
+  };
+  imgEl.src = p.img;
+  document.getElementById('mvis').innerHTML = '';
+  document.getElementById('mvis').appendChild(imgEl);
+
+  document.getElementById('mtags').innerHTML = p.tags
+    .map(function(t){ return '<span class="modal-tag">' + t + '</span>'; })
+    .join('');
+
+  document.getElementById('macts').innerHTML = p.live
+    ? '<a href="' + p.liveUrl + '" target="_blank" class="btn btn-gold">Visit Live Site →</a>' +
+      '<button class="btn btn-navy" onclick="closeModal()">Close</button>'
+    : '<span class="btn btn-ghost" style="cursor:default;opacity:.7">🔒 Private GitHub Project</span>' +
+      '<button class="btn btn-navy" onclick="closeModal()">Close</button>';
+
   document.getElementById('mwrap').classList.add('on');
-  document.body.style.overflow='hidden';
+  document.body.style.overflow = 'hidden';
 }
-function closeModal(){document.getElementById('mwrap').classList.remove('on');document.body.style.overflow='';}
-function mOutside(e){if(e.target===document.getElementById('mwrap'))closeModal();}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+// ── Close modal ──
+function closeModal() {
+  document.getElementById('mwrap').classList.remove('on');
+  document.body.style.overflow = '';
+}
+
+// ── Close when clicking the dark backdrop (outside the box) ──
+function mOutside(e) {
+  if (e.target === document.getElementById('mwrap')) closeModal();
+}
+
+// ── Close with Escape key ──
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
 
 // ── Chatbot sim ──
 const cbR={
@@ -996,16 +1051,16 @@ const cbR={
 };
 function cbChat(btn,msg){
   const body=document.getElementById('cbBody');
-  body.innerHTML+=`<div class="cb-msg usr">${msg}</div>`;
+  body.innerHTML+='<div class="cb-msg usr">'+msg+'</div>';
   const typ=document.createElement('div');
   typ.className='cb-typing';
   typ.innerHTML='<div class="tdot"></div><div class="tdot"></div><div class="tdot"></div>';
   body.appendChild(typ);
   btn.disabled=true; btn.style.opacity='.5';
-  setTimeout(()=>{
+  setTimeout(function(){
     typ.remove();
-    body.innerHTML+=`<div class="cb-msg bot">${cbR[msg]}</div>`;
-    if(msg==='Pricing info') body.innerHTML+=`<div style="margin-top:6px"><a href="schedule.html" class="btn btn-gold" style="font-size:12px;padding:8px 15px">Book Free Strategy Call →</a></div>`;
+    body.innerHTML+='<div class="cb-msg bot">'+cbR[msg]+'</div>';
+    if(msg==='Pricing info') body.innerHTML+='<div style="margin-top:6px"><a href="schedule.html" class="btn btn-gold" style="font-size:12px;padding:8px 15px">Book Free Strategy Call →</a></div>';
   },1100);
 }
 </script>
