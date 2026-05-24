@@ -25,7 +25,7 @@ a{text-decoration:none}
 
 /* ─── NAVBAR ─── */
 #navbar{position:fixed;top:0;left:0;right:0;z-index:500;background:var(--navy);border-bottom:1px solid rgba(201,138,65,.12);transition:all .4s var(--ease)}
-#navbar.scrolled{background:rgba(28,35,41,.97);backdrop-filter:blur(12px)}
+#navbar.scrolled{background:rgba(28,35,41,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
 .nav-container{max-width:1280px;margin:0 auto;padding:0 2.5rem;height:68px;display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;flex-direction:column;line-height:1;cursor:pointer}
 .logo-word{font-family:var(--fd);font-weight:500;font-size:1.5rem;color:var(--white);letter-spacing:.05em}
@@ -469,7 +469,7 @@ footer{background:#111518;padding:4rem 8% 2rem;border-top:1px solid rgba(255,255
   .nav-links,.nav-right .d-only{display:none!important}
   .menu-toggle{display:flex}
   :root{--panel-w:100vw}
-  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero{grid-template-columns:1fr;min-height:0}
   .hero-left{padding:4rem 6%}
   .hero-right{display:none}
   .hero-scroll-hint{display:none}

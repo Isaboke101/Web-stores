@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get in Touch — Kūgeria Ltd</title>
-  <meta name="description" content="Reach out to Kūgeria Ltd directly via Instagram or Email. Nairobi, Kenya.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Primary SEO -->
+  <title>Kūgeria Ltd — Web Development, AI & Branding Agency | Nairobi, Kenya</title>
+  <meta name="description" content="Kūgeria Ltd is a Nairobi-based digital agency building high-performance websites, AI chatbots, and brand identities for Kenyan businesses. Founded by Isaac Oonge.">
+  <meta name="keywords" content="web developer Nairobi, web development Kenya, AI chatbot Kenya, digital agency Nairobi, mobile app developer Kenya, M-Pesa integration, branding Kenya">
+  <meta name="author" content="Isaac Oonge — Kūgeria Ltd">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.kugeria.co.ke/">
+
+  <!-- Open Graph (controls how the link looks when shared on WhatsApp, LinkedIn, X) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.kugeria.co.ke/">
+  <meta property="og:title" content="Kūgeria Ltd — Digital Agency, Nairobi">
+  <meta property="og:description" content="We build websites, AI systems, and brand identities that work as silent sales agents for your business.">
+  <meta property="og:image" content="https://www.kugeria.co.ke/og-image.jpg">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kūgeria Ltd — Digital Agency, Nairobi">
+  <meta name="twitter:description" content="High-performance websites, AI systems, and branding from Nairobi, Kenya.">
+  <meta name="twitter:image" content="https://www.kugeria.co.ke/og-image.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="logo_small.svg" type="image/svg+xml">
+  <link rel="icon" href="images/logo_small.svg" type="image/svg+xml">
   <style>
     :root{
       --bg:#FAFAFA;--green:#004B23;--navy:#052F5F;
@@ -237,13 +255,26 @@
       .cards{grid-template-columns:repeat(2,1fr)}
     }
   </style>
+  <!-- Meta Pixel — replace YOUR_PIXEL_ID with your actual ID from Meta Ads Manager -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', ' 36078474898464653');
+    fbq('track', 'PageView');
+  </script>
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo"><img src="logo_small.svg" alt="Kūgeria Ltd"></a>
+    <a href="index.html" class="nav-logo"><img src="images/logo_small.svg" alt="Kūgeria Ltd"></a>
     <a href="index.html" class="nav-back">← Back to Portfolio</a>
   </div>
 </nav>
@@ -323,7 +354,7 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <img src="logo.svg" alt="Kūgeria Ltd">
+  <img src="images/logo.svg" alt="Kūgeria Ltd">
   <div class="footer-copy">© 2026 Kūgeria Ltd · Designed &amp; Built by Isaac Oonge · Nairobi, Kenya</div>
   <div class="footer-links">
     <a href="index.html">Portfolio</a>
