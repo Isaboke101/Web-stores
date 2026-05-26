@@ -519,15 +519,16 @@
             </div>
 
             <div class="field" style="margin-bottom:14px">
-              <label class="svc-check" style="border:none;padding:0;background:none;gap:10px">
+              <label class="svc-check" id="consentLabel" onclick="toggleConsent(this)" style="border:none;padding:0;background:none;gap:10px">
                 <input type="checkbox" id="fconsent" required aria-required="true">
                 <div class="cb-box" id="consentBox"></div>
                 <span style="font-size:12.5px;color:var(--gray-500);line-height:1.6">
-                  I agree to the 
-                  <a href="privacy.html" target="_blank" style="color:var(--navy);font-weight:600">Privacy Policy</a> 
+                  I agree to the
+                  <a href="privacy.html" target="_blank" style="color:var(--navy);font-weight:600">Privacy Policy</a>
                   and consent to Kūgeria Ltd storing my details to facilitate this meeting request.
                 </span>
               </label>
+              <div class="err-msg" id="err-fconsent">Please accept the Privacy Policy to continue</div>
             </div>
 
             <div class="form-nav">
@@ -564,7 +565,7 @@
 
 <script>
   // ── REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT WEB APP URL ──
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyLsxT69ShhG_POMSq2gXgxCJWjh6yIcHeiVksMWnblRMob63h-4ZI2Tikx2NVkVZiE/exec';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwN8ZSGnYSyJvrJV1IHh3qo1GcAIUKsDvjkQzu_UOwVkOcE_348II8zQ64DTGgbhgxH/exec';
 
   // Set min date to tomorrow
   const tmr = new Date(); tmr.setDate(tmr.getDate()+1);
@@ -633,9 +634,13 @@
         if(selectedDate<=today){showErr('fdate','Please select a future date');ok=false;}
         else clearErr('fdate');
       }
-      if(!document.getElementById('fconsent').checked){
-        showToast('Please accept the privacy policy to continue.','#e53e3e');
-        return false;
+      const consentCb=document.getElementById('fconsent');
+      const consentErr=document.getElementById('err-fconsent');
+      if(!consentCb.checked){
+        if(consentErr)consentErr.classList.add('on');
+        ok=false;
+      }else{
+        if(consentErr)consentErr.classList.remove('on');
       }
     }
     return ok;
@@ -662,6 +667,20 @@
     cb.checked=!cb.checked;
     const box=el.querySelector('.cb-box');
     box.textContent=cb.checked?'✓':'';
+  }
+
+  // ── Consent checkbox toggle ──
+  function toggleConsent(el) {
+    const cb=el.querySelector('input');
+    cb.checked=!cb.checked;
+    const box=el.querySelector('.cb-box');
+    box.textContent=cb.checked?'✓':'';
+    box.style.background=cb.checked?'var(--gold)':'';
+    box.style.borderColor=cb.checked?'var(--gold)':'';
+    if(cb.checked){
+      const em=document.getElementById('err-fconsent');
+      if(em)em.classList.remove('on');
+    }
   }
 
   // ── Toast ──
