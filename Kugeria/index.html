@@ -10,6 +10,9 @@
   <meta name="author" content="Isaac Oonge — Kūgeria Ltd">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.kugeria.co.ke/">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <link rel="preload" href="images/logo_small.svg" as="image" type="image/svg+xml">
 
   <!-- Open Graph (controls how the link looks when shared on WhatsApp, LinkedIn, X) -->
   <meta property="og:type" content="website">
@@ -57,7 +60,27 @@
     img { max-width: 100%; display: block; }
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
-    button { font-family: var(--body); cursor: pointer; }
+    button { font-family: var(--body); cursor: pointer; border: none; background: none; }
+
+    /* ────────────────────────────────────
+       SKIP LINK
+    ──────────────────────────────────── */
+    .skip-link {
+      position: absolute; top: -100%; left: 0; z-index: 9999;
+      padding: 8px 18px; background: var(--navy); color: var(--white);
+      font-size: 14px; font-weight: 600; border-radius: 0 0 8px 0;
+      transition: top .2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ────────────────────────────────────
+       FOCUS VISIBLE
+    ──────────────────────────────────── */
+    :focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px;
+      border-radius: 3px;
+    }
 
     /* ────────────────────────────────────
        UTILITIES
@@ -165,7 +188,7 @@
     .stat-label { font-size: 11.5px; color: var(--gray-400); margin-top: 3px; }
 
     /* Collage */
-    .hero-collage { position: relative; height: 400px; }
+    .hero-collage { position: relative; height: 400px; overflow: hidden; }
 
     .hcard {
       position: absolute; border-radius: 11px; overflow: hidden;
@@ -512,15 +535,31 @@
     fbq('init', ' 36078474898464653');
     fbq('track', 'PageView');
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Kūgeria Ltd",
+    "url": "https://www.kugeria.co.ke",
+    "description": "Digital creative agency building web apps, AI systems, and brand identities",
+    "foundingDate": "2026",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Nairobi",
+      "addressCountry": "KE"
+    }
+  }
+  </script>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- ═══════════════ NAVBAR ═══════════════ -->
 <nav class="nav" id="nav">
   <div class="container">
     <div class="nav-inner">
       <a href="#home" class="nav-logo">
-        <img src="images/logo_small.svg" alt="Kūgeria Ltd" class="nav-mark" style="width:auto;height:34px;object-fit:contain;">
+        <img src="images/logo_small.svg" alt="Kūgeria Ltd" class="nav-mark" width="34" height="34" style="width:auto;height:34px;object-fit:contain;">
       </a>
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
@@ -530,7 +569,7 @@
       </ul>
       <div style="display:flex;align-items:center;gap:10px">
         <a href="schedule.html" class="btn btn-gold nav-cta">Schedule a Meeting</a>
-        <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+        <button class="hamburger" id="ham" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobnav"><span></span><span></span><span></span></button>
       </div>
     </div>
   </div>
@@ -542,6 +581,8 @@
     <a href="schedule.html" class="mob-cta">Schedule a Meeting →</a>
   </div>
 </nav>
+
+<main id="main-content">
 
 <!-- ═══════════════ HERO ═══════════════ -->
 <section class="hero" id="home">
@@ -680,11 +721,11 @@
         <a href="schedule.html" class="btn btn-ghost">Explore all →</a>
       </div>
       <div class="tier-pills">
-        <button class="pill active-gold" onclick="filterPill(this)">All Services</button>
-        <button class="pill" onclick="filterPill(this)">Web &amp; Mobile</button>
-        <button class="pill" onclick="filterPill(this)">AI Integration</button>
-        <button class="pill" onclick="filterPill(this)">Branding</button>
-        <button class="pill" onclick="filterPill(this)">Systems</button>
+        <button class="pill active-gold" type="button" onclick="filterPill(this)">All Services</button>
+        <button class="pill" type="button" onclick="filterPill(this)">Web &amp; Mobile</button>
+        <button class="pill" type="button" onclick="filterPill(this)">AI Integration</button>
+        <button class="pill" type="button" onclick="filterPill(this)">Branding</button>
+        <button class="pill" type="button" onclick="filterPill(this)">Systems</button>
       </div>
     </div>
 
@@ -758,7 +799,7 @@
       <!-- Branlly – featured -->
       <div class="pcard-feat" onclick="openModal('branlly')">
         <div class="pvisual">
-          <img src="images/branlly-event-management-website-nairobi.png" alt="Branlly Event Management Platform" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
+          <img src="images/branlly-event-management-website-nairobi.png" alt="Branlly Event Management Platform" width="800" height="255" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
           <div class="pvbrow pv-branlly" style="height:100%">
             <div class="pvbar">
               <div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div>
@@ -791,7 +832,7 @@
       <div class="proj-stack">
         <div class="pcard-sm" onclick="openModal('progigs')">
           <div class="pvisual">
-            <img src="images/progigs-digital-media-kenya.png" alt="Progigs Professional Services Webstore" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
+            <img src="images/progigs-digital-media-kenya.png" alt="Progigs Professional Services Webstore" width="600" height="148" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
             <div class="pvbrow pv-progigs" style="height:100%">
               <div class="pvbar"><div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div><div class="pvurl"></div></div>
               <div class="pvbody">
@@ -816,7 +857,7 @@
 
         <div class="pcard-sm" onclick="openModal('injili')">
           <div class="pvisual">
-            <img src="images/injili-freelance-services-webstores-kenya.png" alt="Injili Digital Media Platform" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
+            <img src="images/injili-freelance-services-webstores-kenya.png" alt="Injili Digital Media Platform" width="600" height="148" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
             <div class="pvbrow pv-injili" style="height:100%">
               <div class="pvbar"><div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div><div class="pvurl"></div></div>
               <div class="pvbody">
@@ -888,7 +929,7 @@
           </div>
           <div class="cb-foot">
             <div class="cb-input">Type a message...</div>
-            <button class="cb-send"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#212121" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            <button class="cb-send" aria-label="Send message" type="button"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#212121" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
           </div>
           <div class="cb-powered">Powered by Kūgeria AI · Interactive Demo Preview</div>
         </div>
@@ -912,19 +953,21 @@
   </div>
 </section>
 
+</main>
+
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer class="footer">
   <div class="container">
     <div class="ftr-grid">
       <div>
         <div style="margin-bottom:0">
-          <img src="images/logo.svg" alt="Kūgeria Ltd" style="height:40px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.9;">
+          <img src="images/logo.svg" alt="Kūgeria Ltd" width="120" height="40" loading="lazy" style="height:40px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.9;">
         </div>
         <p class="ftr-tagline">Transforming attempts into industry-leading digital solutions. Based in Nairobi, building for the world.</p>
         <div class="ftr-social">
-          <div class="fsoc" title="LinkedIn">in</div>
-          <div class="fsoc" title="X / Twitter">𝕏</div>
-          <div class="fsoc" title="Instagram">◈</div>
+          <a href="https://linkedin.com/in/isaac-oonge" class="fsoc" aria-label="LinkedIn — Isaac Oonge" target="_blank" rel="noopener noreferrer">in</a>
+          <a href="#" class="fsoc" aria-label="X / Twitter — @kugeria">𝕏</a>
+          <a href="https://instagram.com/kugeria" class="fsoc" aria-label="Instagram — @kugeria" target="_blank" rel="noopener noreferrer">◈</a>
         </div>
       </div>
       <div>
@@ -951,16 +994,16 @@
     </div>
     <div class="ftr-bottom">
       <div class="ftr-copy">© 2026 Kūgeria Ltd. All rights reserved. Designed &amp; built by Isaac Oonge.</div>
-      <div class="ftr-blinks"><a href="#">Privacy</a><a href="#">Terms</a></div>
+      <div class="ftr-blinks"><a href="privacy.html">Privacy</a><a href="#">Terms</a></div>
     </div>
   </div>
 </footer>
 
 <!-- ═══════════════ PROJECT MODAL ═══════════════ -->
-<div class="modal-wrap" id="mwrap" onclick="mOutside(event)">
+<div class="modal-wrap" id="mwrap" role="dialog" aria-modal="true" aria-labelledby="mpname" onclick="mOutside(event)">
   <div class="modal-box" id="mbox">
     <div class="modal-handle"></div>
-    <button class="modal-x" onclick="closeModal()">✕</button>
+    <button class="modal-x" onclick="closeModal()" aria-label="Close project details" type="button">✕</button>
     <div class="modal-vis" id="mvis"></div>
     <div class="modal-pcat" id="mpcat"></div>
     <div class="modal-pname" id="mpname"></div>
@@ -978,12 +1021,26 @@ window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20)
 
 // ── Hamburger ──
 const ham=document.getElementById('ham'),mob=document.getElementById('mobnav');
-ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open');});
-document.querySelectorAll('.mob-link').forEach(l=>l.addEventListener('click',()=>{ham.classList.remove('open');mob.classList.remove('open');}));
+ham.addEventListener('click',function(){
+  const isOpen=ham.classList.toggle('open');
+  mob.classList.toggle('open',isOpen);
+  ham.setAttribute('aria-expanded',String(isOpen));
+});
+document.querySelectorAll('.mob-link').forEach(function(l){
+  l.addEventListener('click',function(){
+    ham.classList.remove('open');
+    mob.classList.remove('open');
+    ham.setAttribute('aria-expanded','false');
+  });
+});
 
 // ── Scroll reveal ──
-const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');})},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+if('IntersectionObserver' in window){
+  const ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
+}else{
+  document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
+}
 
 // ── Tier pills ──
 function filterPill(el){document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active','active-gold'));el.classList.add('active-gold');}

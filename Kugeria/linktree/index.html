@@ -4,12 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Primary SEO -->
-  <title>Kūgeria Ltd — Web Development, AI & Branding Agency | Nairobi, Kenya</title>
+  <title>Links — Kūgeria Ltd | Isaac Oonge · Nairobi</title>
   <meta name="description" content="Kūgeria Ltd is a Nairobi-based digital agency building high-performance websites, AI chatbots, and brand identities for Kenyan businesses. Founded by Isaac Oonge.">
   <meta name="keywords" content="web developer Nairobi, web development Kenya, AI chatbot Kenya, digital agency Nairobi, mobile app developer Kenya, M-Pesa integration, branding Kenya">
   <meta name="author" content="Isaac Oonge — Kūgeria Ltd">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.kugeria.co.ke/">
+  <link rel="canonical" href="https://www.kugeria.co.ke/linktree/">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <link rel="preload" href="../images/logo_small.svg" as="image" type="image/svg+xml">
 
   <!-- Open Graph (controls how the link looks when shared on WhatsApp, LinkedIn, X) -->
   <meta property="og:type" content="website">
@@ -74,7 +77,7 @@
     .lt-name{
       font-family:'Cormorant Garamond',serif;
       font-size:26px;font-weight:700;color:var(--navy);
-      text-align:center;margin-bottom:6px;letter-spacing:-.01em;
+      text-align:center;margin:0 0 6px;letter-spacing:-.01em;
     }
     .lt-handle{font-size:12.5px;color:#888;margin-bottom:6px;letter-spacing:.04em;}
     .lt-tagline{
@@ -154,6 +157,9 @@
     .lt-foot a:hover{color:var(--gold);}
     .lt-copy{font-size:10.5px;color:#aaa;margin-top:8px;}
 
+    /* ── FOCUS VISIBLE ── */
+    :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:3px}
+
     /* Animate in */
     .fade-up{opacity:0;transform:translateY(18px);animation:fadeUp .6s ease forwards;}
     @keyframes fadeUp{to{opacity:1;transform:none}}
@@ -163,17 +169,18 @@
   </style>
 </head>
 <body>
+<main>
 <div class="wrap">
 
   <!-- Avatar -->
   <div class="avatar-ring fade-up">
     <div class="avatar-inner">
-      <img src="../images/logo.svg" alt="Kūgeria Ltd">
+      <img src="../images/logo.svg" alt="Kūgeria Ltd" width="82" height="82">
     </div>
   </div>
 
   <!-- Identity -->
-  <div class="lt-name fade-up d1">Kūgeria Ltd</div>
+  <h1 class="lt-name fade-up d1">Kūgeria Ltd</h1>
   <div class="lt-handle fade-up d1">@kugeria · Isaac Oonge</div>
   <p class="lt-tagline fade-up d2">Transforming <em>attempts</em> into industry-leading digital solutions. Web · AI · Branding · Systems.</p>
   <div class="loc-pill fade-up d2">📍 Nairobi, Kenya</div>
@@ -236,5 +243,6 @@
   </div>
 
 </div>
+</main>
 </body>
 </html>

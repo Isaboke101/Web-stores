@@ -4,12 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Primary SEO -->
-  <title>Kūgeria Ltd — Web Development, AI & Branding Agency | Nairobi, Kenya</title>
+  <title>Contact Us — Kūgeria Ltd | Digital Agency Nairobi</title>
   <meta name="description" content="Kūgeria Ltd is a Nairobi-based digital agency building high-performance websites, AI chatbots, and brand identities for Kenyan businesses. Founded by Isaac Oonge.">
   <meta name="keywords" content="web developer Nairobi, web development Kenya, AI chatbot Kenya, digital agency Nairobi, mobile app developer Kenya, M-Pesa integration, branding Kenya">
   <meta name="author" content="Isaac Oonge — Kūgeria Ltd">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.kugeria.co.ke/">
+  <link rel="canonical" href="https://www.kugeria.co.ke/contact.html">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <link rel="preload" href="images/logo_small.svg" as="image" type="image/svg+xml">
 
   <!-- Open Graph (controls how the link looks when shared on WhatsApp, LinkedIn, X) -->
   <meta property="og:type" content="website">
@@ -43,6 +46,10 @@
     }
     a{text-decoration:none;color:inherit}
     img{max-width:100%;display:block}
+    button{font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;border:none;background:none}
+
+    /* ── FOCUS VISIBLE ── */
+    :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:3px}
 
     /* NAV */
     .nav{
@@ -274,10 +281,12 @@
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo"><img src="images/logo_small.svg" alt="Kūgeria Ltd"></a>
+    <a href="index.html" class="nav-logo"><img src="images/logo_small.svg" alt="Kūgeria Ltd" width="34" height="34"></a>
     <a href="index.html" class="nav-back">← Back to Portfolio</a>
   </div>
 </nav>
+
+<main id="main-content">
 
 <!-- HERO -->
 <div class="hero">
@@ -352,14 +361,16 @@
   </div>
 </div>
 
+</main>
+
 <!-- FOOTER -->
 <footer class="footer">
-  <img src="images/logo.svg" alt="Kūgeria Ltd">
+  <img src="images/logo.svg" alt="Kūgeria Ltd" width="120" height="40" loading="lazy">
   <div class="footer-copy">© 2026 Kūgeria Ltd · Designed &amp; Built by Isaac Oonge · Nairobi, Kenya</div>
   <div class="footer-links">
     <a href="index.html">Portfolio</a>
     <a href="schedule.html">Schedule</a>
-    <a href="linktree.html">Links</a>
+    <a href="linktree/index.html">Links</a>
   </div>
 </footer>
 
