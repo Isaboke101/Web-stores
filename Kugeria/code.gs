@@ -20,8 +20,8 @@
  */
 
 // ── CONFIG — UPDATE THESE ──────────────────────────────────────
-const SHEET_ID     = 'YOUR_GOOGLE_SHEET_ID_HERE';   // From the Sheet URL: /d/SHEET_ID/edit
-const NOTIFY_EMAIL = 'hello@kugeria.co.ke';          // Where to receive booking alerts
+const SHEET_ID     = '19Q-Y7F_lDz62l6TJM2rY4C2huvgw6aN50xZopfk4MTk';
+const NOTIFY_EMAIL = 'isaacoonge8isaboke@gmail.com'; // Where to receive booking alerts
 const SHEET_TAB    = 'Bookings';                     // Sheet tab name
 const DASH_TAB     = 'Dashboard';                   // Analytics dashboard tab name
 const BRAND_NAME   = 'Kūgeria Ltd';
@@ -152,20 +152,19 @@ function writeToSheet(data) {
     sheet.setFrozenRows(1);
   }
 
-  // Parse the client-sent timestamp safely; fall back to server time if malformed
-  let ts;
+  // Store timestamp as a real Date object so Sheets formats it properly
+  // and createDashboard() can reliably read it back as a Date.
+  let tsDate;
   try {
     const parsed = data.timestamp ? new Date(data.timestamp) : null;
-    ts = (parsed && !isNaN(parsed.getTime()))
-      ? parsed.toLocaleString('en-KE', { timeZone: 'Africa/Nairobi' })
-      : new Date().toLocaleString('en-KE', { timeZone: 'Africa/Nairobi' });
+    tsDate = (parsed && !isNaN(parsed.getTime())) ? parsed : new Date();
   } catch (e) {
-    ts = new Date().toLocaleString('en-KE', { timeZone: 'Africa/Nairobi' });
+    tsDate = new Date();
   }
 
   // Append the booking row
   sheet.appendRow([
-    ts,
+    tsDate,
     data.fullName      || '—',
     data.email         || '—',
     data.contact       || '—',
@@ -392,163 +391,198 @@ function sendConfirmationEmail(data) {
  *  7. Popular Time Slots — which time windows are most requested
  */
 function createDashboard() {
-  const ss       = SpreadsheetApp.openById(SHEET_ID);
-  const bookings = ss.getSheetByName(SHEET_TAB);
+  try {
 
-  if (!bookings || bookings.getLastRow() < 2) {
-    Logger.log('No booking data found. Dashboard not created.');
-    return;
-  }
+    var ss       = SpreadsheetApp.openById(SHEET_ID);
+    var bookings = ss.getSheetByName(SHEET_TAB);
 
-  // Read all data rows (skip the header)
-  const numRows = bookings.getLastRow() - 1;
-  const raw     = bookings.getRange(2, 1, numRows, 13).getValues();
+    if (!bookings || bookings.getLastRow() < 2) {
+      Logger.log('createDashboard: No booking data found — Bookings sheet is empty or missing.');
+      return;
+    }
 
-  // Column indices (0-based):
-  // 0=Timestamp  1=Name  2=Email  3=Contact  4=Company
-  // 5=Services   6=Vision  7=Budget  8=Date  9=Time
-  // 10=MeetType  11=Referral  12=Status
-  const COL = { ts: 0, services: 5, budget: 7, time: 9, meetType: 10, referral: 11, status: 12 };
+    // Read all data rows (skip the header row)
+    var numRows = bookings.getLastRow() - 1;
+    var raw     = bookings.getRange(2, 1, numRows, 13).getValues();
+    Logger.log('createDashboard: Read ' + numRows + ' rows from ' + SHEET_TAB);
 
-  // Aggregate counts
-  const serviceCount  = {};
-  const referralCount = {};
-  const budgetCount   = {};
-  const meetCount     = {};
-  const monthCount    = {};
-  const timeCount     = {};
+    // Column indices (0-based):
+    // 0=Timestamp  1=Name  2=Email  3=Contact  4=Company
+    // 5=Services   6=Vision  7=Budget  8=Date  9=Time
+    // 10=MeetType  11=Referral  12=Status
+    var C_TS = 0, C_SVC = 5, C_BUD = 7, C_TIME = 9,
+        C_MEET = 10, C_REF = 11, C_STAT = 12;
 
-  for (const row of raw) {
-    // Services may be comma-separated (multi-select)
-    const svcs = String(row[COL.services] || '').split(',').map(s => s.trim()).filter(Boolean);
-    svcs.forEach(s => { serviceCount[s] = (serviceCount[s] || 0) + 1; });
+    // Aggregate counts
+    var serviceCount  = {};
+    var referralCount = {};
+    var budgetCount   = {};
+    var meetCount     = {};
+    var monthCount    = {};
+    var timeCount     = {};
+    var confirmedCount = 0, newCount = 0;
 
-    const ref = String(row[COL.referral] || '—').trim();
-    referralCount[ref] = (referralCount[ref] || 0) + 1;
+    for (var i = 0; i < raw.length; i++) {
+      var dataRow = raw[i];
 
-    const bud = String(row[COL.budget] || '—').trim();
-    budgetCount[bud] = (budgetCount[bud] || 0) + 1;
-
-    const mt = String(row[COL.meetType] || '—').trim();
-    meetCount[mt] = (meetCount[mt] || 0) + 1;
-
-    try {
-      const d = new Date(row[COL.ts]);
-      if (!isNaN(d.getTime())) {
-        const key = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
-        monthCount[key] = (monthCount[key] || 0) + 1;
+      // Services — may be comma-separated (multi-select)
+      var svcs = String(dataRow[C_SVC] || '').split(',');
+      for (var s = 0; s < svcs.length; s++) {
+        var svc = svcs[s].trim();
+        if (svc) serviceCount[svc] = (serviceCount[svc] || 0) + 1;
       }
-    } catch (e) {}
 
-    const ts = String(row[COL.time] || 'Flexible').trim();
-    timeCount[ts] = (timeCount[ts] || 0) + 1;
-  }
+      var ref = String(dataRow[C_REF] || '—').trim();
+      referralCount[ref] = (referralCount[ref] || 0) + 1;
 
-  // Status totals
-  const confirmedCount = raw.filter(r => String(r[COL.status]).toLowerCase().includes('confirmed')).length;
-  const newCount       = raw.filter(r => String(r[COL.status]).toLowerCase().includes('new')).length;
+      var bud = String(dataRow[C_BUD] || '—').trim();
+      budgetCount[bud] = (budgetCount[bud] || 0) + 1;
 
-  // Clear or create the Dashboard tab
-  let dash = ss.getSheetByName(DASH_TAB);
-  if (dash) {
-    dash.clearContents();
-    dash.clearFormats();
-  } else {
-    dash = ss.insertSheet(DASH_TAB);
-    ss.setActiveSheet(dash);
-    ss.moveActiveSheet(2);
-  }
+      var mt = String(dataRow[C_MEET] || '—').trim();
+      meetCount[mt] = (meetCount[mt] || 0) + 1;
 
-  let row = 1;
+      var slot = String(dataRow[C_TIME] || 'Flexible').trim();
+      timeCount[slot] = (timeCount[slot] || 0) + 1;
 
-  function writeHeader(title) {
-    dash.getRange(row, 1, 1, 2)
-        .merge()
-        .setValue(title)
-        .setBackground(BRAND_COLOR)
-        .setFontColor('#FFFFFF')
-        .setFontWeight('bold')
-        .setFontSize(11);
-    row++;
-  }
+      // Monthly volume — handle both Date objects and legacy locale strings
+      try {
+        var tsVal = dataRow[C_TS];
+        var d = (tsVal instanceof Date) ? tsVal : new Date(String(tsVal));
+        if (!isNaN(d.getTime())) {
+          var month = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2);
+          monthCount[month] = (monthCount[month] || 0) + 1;
+        }
+      } catch (tsErr) {
+        Logger.log('createDashboard: Could not parse timestamp on row ' + (i + 2) + ': ' + tsErr);
+      }
 
-  function writeRow(label, value, isSubHeader) {
-    dash.getRange(row, 1).setValue(label);
-    dash.getRange(row, 2).setValue(value);
-    if (isSubHeader) {
-      dash.getRange(row, 1, 1, 2).setBackground('#f3f4f6').setFontWeight('bold');
+      // Status counts
+      var status = String(dataRow[C_STAT]).toLowerCase();
+      if (status.indexOf('confirmed') !== -1) confirmedCount++;
+      if (status.indexOf('new')       !== -1) newCount++;
     }
-    row++;
-  }
 
-  function writeSortedTable(countObj) {
-    Object.entries(countObj)
-      .sort((a, b) => b[1] - a[1])
-      .forEach(([label, count]) => writeRow(label, count));
-  }
+    // ── Clear or create the Dashboard tab ──
+    var dash = ss.getSheetByName(DASH_TAB);
+    if (dash) {
+      dash.clearContents();
+      dash.clearFormats();
+      Logger.log('createDashboard: Cleared existing Dashboard sheet.');
+    } else {
+      dash = ss.insertSheet(DASH_TAB);
+      Logger.log('createDashboard: Created new Dashboard sheet.');
+    }
 
-  function spacer() { row++; }
+    // ── Write helpers ──
+    // Uses a shared cursor variable to track the current write position.
+    var cursor = 1;
 
-  // 1. Summary KPIs
-  writeHeader('SUMMARY');
-  writeRow('Total Bookings',    numRows);
-  writeRow('New (Unreviewed)',  newCount);
-  writeRow('Confirmed',         confirmedCount);
-  writeRow('Other Statuses',    numRows - newCount - confirmedCount);
-  spacer();
-
-  // 2. Service Demand
-  writeHeader('SERVICE DEMAND');
-  writeRow('Service', 'Count', true);
-  writeSortedTable(serviceCount);
-  spacer();
-
-  // 3. Referral Sources
-  writeHeader('REFERRAL SOURCES');
-  writeRow('Source', 'Count', true);
-  writeSortedTable(referralCount);
-  spacer();
-
-  // 4. Budget Distribution
-  writeHeader('BUDGET DISTRIBUTION');
-  writeRow('Budget Range', 'Count', true);
-  writeSortedTable(budgetCount);
-  spacer();
-
-  // 5. Meeting Type Preferences
-  writeHeader('MEETING TYPE PREFERENCES');
-  writeRow('Type', 'Count', true);
-  writeSortedTable(meetCount);
-  spacer();
-
-  // 6. Monthly Volume (chronological order)
-  writeHeader('MONTHLY VOLUME');
-  writeRow('Month (YYYY-MM)', 'Bookings', true);
-  Object.entries(monthCount)
-    .sort((a, b) => a[0].localeCompare(b[0]))
-    .forEach(([month, count]) => writeRow(month, count));
-  spacer();
-
-  // 7. Popular Time Slots
-  writeHeader('PREFERRED TIME SLOTS');
-  writeRow('Time Slot', 'Count', true);
-  writeSortedTable(timeCount);
-
-  // Final formatting
-  dash.setColumnWidth(1, 240);
-  dash.setColumnWidth(2, 100);
-  const lastUsedRow = row - 1;
-  for (let r = 1; r <= lastUsedRow; r++) {
-    const val = dash.getRange(r, 2).getValue();
-    if (typeof val === 'number') {
-      dash.getRange(r, 2)
-          .setHorizontalAlignment('center')
+    function writeHeader(title) {
+      dash.getRange(cursor, 1, 1, 2)
+          .merge()
+          .setValue(title)
+          .setBackground(BRAND_COLOR)
+          .setFontColor('#FFFFFF')
           .setFontWeight('bold')
-          .setFontColor(BRAND_COLOR);
+          .setFontSize(11);
+      cursor++;
     }
-  }
 
-  Logger.log('Dashboard created/updated. ' + numRows + ' bookings processed.');
+    function writeDashRow(label, value, isSubHeader) {
+      dash.getRange(cursor, 1).setValue(label);
+      if (value !== null && value !== undefined) {
+        dash.getRange(cursor, 2).setValue(value);
+      }
+      if (isSubHeader) {
+        dash.getRange(cursor, 1, 1, 2)
+            .setBackground('#f3f4f6')
+            .setFontWeight('bold');
+      }
+      cursor++;
+    }
+
+    function writeSortedCounts(countObj) {
+      var entries = Object.keys(countObj).map(function(k) { return [k, countObj[k]]; });
+      entries.sort(function(a, b) { return b[1] - a[1]; });
+      for (var j = 0; j < entries.length; j++) {
+        writeDashRow(entries[j][0], entries[j][1]);
+      }
+    }
+
+    function spacer() { cursor++; }
+
+    // ── 1. Summary KPIs ──
+    writeHeader('SUMMARY');
+    writeDashRow('Total Bookings',   numRows);
+    writeDashRow('New (Unreviewed)', newCount);
+    writeDashRow('Confirmed',        confirmedCount);
+    writeDashRow('Other Statuses',   numRows - newCount - confirmedCount);
+    spacer();
+
+    // ── 2. Service Demand ──
+    writeHeader('SERVICE DEMAND');
+    writeDashRow('Service', 'Count', true);
+    writeSortedCounts(serviceCount);
+    spacer();
+
+    // ── 3. Referral Sources ──
+    writeHeader('REFERRAL SOURCES');
+    writeDashRow('Source', 'Count', true);
+    writeSortedCounts(referralCount);
+    spacer();
+
+    // ── 4. Budget Distribution ──
+    writeHeader('BUDGET DISTRIBUTION');
+    writeDashRow('Budget Range', 'Count', true);
+    writeSortedCounts(budgetCount);
+    spacer();
+
+    // ── 5. Meeting Type Preferences ──
+    writeHeader('MEETING TYPE PREFERENCES');
+    writeDashRow('Type', 'Count', true);
+    writeSortedCounts(meetCount);
+    spacer();
+
+    // ── 6. Monthly Volume (chronological) ──
+    writeHeader('MONTHLY VOLUME');
+    writeDashRow('Month (YYYY-MM)', 'Bookings', true);
+    var months = Object.keys(monthCount).sort();
+    for (var m = 0; m < months.length; m++) {
+      writeDashRow(months[m], monthCount[months[m]]);
+    }
+    spacer();
+
+    // ── 7. Popular Time Slots ──
+    writeHeader('PREFERRED TIME SLOTS');
+    writeDashRow('Time Slot', 'Count', true);
+    writeSortedCounts(timeCount);
+
+    // ── Column sizing ──
+    dash.setColumnWidth(1, 240);
+    dash.setColumnWidth(2, 100);
+
+    // ── Batch-format numeric cells in column B ──
+    var lastWrittenRow = cursor - 1;
+    var colBValues = dash.getRange(1, 2, lastWrittenRow, 1).getValues();
+    for (var r = 0; r < colBValues.length; r++) {
+      if (typeof colBValues[r][0] === 'number') {
+        dash.getRange(r + 1, 2)
+            .setHorizontalAlignment('center')
+            .setFontWeight('bold')
+            .setFontColor(BRAND_COLOR);
+      }
+    }
+
+    // Flush all pending Sheets API calls
+    SpreadsheetApp.flush();
+
+    Logger.log('createDashboard: Done. ' + numRows + ' bookings processed, ' + lastWrittenRow + ' rows written.');
+
+  } catch (err) {
+    Logger.log('createDashboard ERROR: ' + err.toString());
+    Logger.log('Stack: ' + err.stack);
+    throw err; // re-throw so Apps Script marks the run as failed
+  }
 }
 
 
