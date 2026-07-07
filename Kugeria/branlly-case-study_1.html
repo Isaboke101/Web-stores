@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: Branlly — Event Management Platform | Kūgeria Ltd</title>
+  <meta name="description" content="How Kūgeria Ltd built Branlly, a full-stack event management platform with a client dashboard, booking system, and SEO-optimised web presence.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#052F5F">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/logo_small.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" href="images/logo_small.png">
+  <link rel="apple-touch-icon" href="images/logo_small.png">
+  <style>
+    :root{
+      --bg:#FAFAFA;--green:#004B23;--navy:#052F5F;--gold:#C5A059;--charcoal:#212121;
+      --white:#fff;--gray-200:#e5e7eb;--gray-400:#9ca3af;--gray-500:#6b7280;
+      --display:'Cormorant Garamond',serif;--body:'Plus Jakarta Sans',sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--body);background:var(--bg);color:var(--charcoal);line-height:1.7}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .nav{position:sticky;top:0;z-index:100;background:rgba(250,250,250,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--gray-200)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1000px;margin:0 auto;padding:0 20px}
+    .nav-inner img{height:34px;width:auto}
+    .nav-back{font-size:13px;color:var(--gray-500);font-weight:500;transition:color .2s}
+    .nav-back:hover{color:var(--navy)}
+    .wrap{max-width:820px;margin:0 auto;padding:52px 20px 90px}
+    .cat{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+    h1{font-family:var(--display);font-size:clamp(34px,7vw,54px);color:var(--navy);line-height:1.08;margin-bottom:16px}
+    .intro{font-size:16px;color:var(--gray-500);line-height:1.75;margin-bottom:34px;max-width:640px}
+    .meta-bar{display:flex;flex-wrap:wrap;gap:26px;padding:20px 0;border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);margin-bottom:44px}
+    .meta-item .m-label{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-400);margin-bottom:3px}
+    .meta-item .m-val{font-size:14px;font-weight:600;color:var(--charcoal)}
+    .hero-img{
+      width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;margin-bottom:52px;
+      background:linear-gradient(150deg,var(--green),#006633);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 14px 44px rgba(0,75,35,.2);
+    }
+    .hero-img img{width:100%;height:100%;object-fit:cover;object-position:top}
+    .hero-img .ph{text-align:center;color:rgba(255,255,255,.8);padding:20px}
+    .hero-img .ph .ic{font-size:44px;margin-bottom:8px}
+    .hero-img .ph .tx{font-size:13px}
+    h2{font-family:var(--display);font-size:clamp(24px,4.5vw,32px);color:var(--charcoal);margin:46px 0 14px;line-height:1.15}
+    h2 .step-tag{display:block;font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+    p{font-size:14.5px;color:#3d3d3d;margin-bottom:14px}
+    ul{padding-left:22px;margin-bottom:16px}
+    li{font-size:14.5px;color:#3d3d3d;margin-bottom:7px}
+    .pull{
+      font-family:var(--display);font-size:21px;font-style:italic;color:var(--navy);
+      border-left:3px solid var(--gold);padding:6px 0 6px 22px;margin:30px 0;line-height:1.5;
+    }
+    .stack-grid{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px}
+    .stack-pill{padding:6px 15px;border-radius:100px;background:rgba(5,47,95,.07);color:var(--navy);font-size:12.5px;font-weight:600}
+    .outcome-grid{display:grid;grid-template-columns:1fr;gap:14px;margin:22px 0}
+    @media(min-width:600px){.outcome-grid{grid-template-columns:repeat(3,1fr)}}
+    .outcome-card{background:var(--white);border:1px solid var(--gray-200);border-radius:12px;padding:22px;text-align:center}
+    .outcome-num{font-family:var(--display);font-size:32px;font-weight:700;color:var(--green);line-height:1}
+    .outcome-label{font-size:12px;color:var(--gray-500);margin-top:6px;line-height:1.5}
+    .cta-band{
+      background:linear-gradient(135deg,var(--navy),var(--green));
+      border-radius:18px;padding:44px 30px;text-align:center;margin-top:60px;
+    }
+    .cta-band h3{font-family:var(--display);font-size:clamp(24px,5vw,34px);color:#fff;margin-bottom:10px}
+    .cta-band h3 em{color:var(--gold);font-style:italic}
+    .cta-band p{color:rgba(255,255,255,.7);font-size:14px;margin-bottom:24px}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:9px;
+      font-size:14px;font-weight:700;border:2px solid var(--gold);
+      background:var(--gold);color:var(--charcoal);transition:all .22s ease;
+    }
+    .btn:hover{background:#b8903e;border-color:#b8903e;transform:translateY(-2px);box-shadow:0 10px 26px rgba(197,160,89,.4)}
+    .footer{background:var(--charcoal);padding:26px 20px;text-align:center;font-size:11.5px;color:rgba(255,255,255,.4);margin-top:70px}
+    .footer a{color:var(--gold)}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html"><img src="images/logo.svg" alt="Kūgeria Ltd"></a>
+    <a href="index.html#projects" class="nav-back">← All Projects</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="cat">Case Study · Event Management · Live Platform</div>
+  <h1>Branlly: Turning an Event Business Into a 24/7 Booking Machine</h1>
+  <p class="intro">How a Nairobi event management company went from handling every inquiry by phone to running a full digital platform with a client dashboard, automated bookings, and an SEO-optimised presence that works while they sleep.</p>
+
+  <div class="meta-bar">
+    <div class="meta-item"><div class="m-label">Client</div><div class="m-val">Branlly</div></div>
+    <div class="meta-item"><div class="m-label">Industry</div><div class="m-val">Event Management</div></div>
+    <div class="meta-item"><div class="m-label">Location</div><div class="m-val">Nairobi, Kenya</div></div>
+    <div class="meta-item"><div class="m-label">Status</div><div class="m-val">Live · Own Domain</div></div>
+  </div>
+
+  <div class="hero-img">
+    <img src="images/branlly-event-management-website-nairobi.png" alt="Branlly event management platform — homepage">
+  </div>
+
+  <h2><span class="step-tag">01 — The Problem</span>Every Booking Lived in Someone's Phone</h2>
+  <p>Before the platform, Branlly's entire booking pipeline ran on phone calls, WhatsApp messages, and memory. Inquiries came in at all hours, event details lived in scattered chats, and every missed call was potentially a missed client. There was no central place where a prospective client could see services, check credibility, and commit — the business was invisible outside its immediate network.</p>
+  <p>The brief was clear: Branlly needed a digital presence that didn't just describe the business, but actively operated it — capturing bookings, organising client information, and building trust with people who had never heard of them.</p>
+
+  <h2><span class="step-tag">02 — The Approach</span>A Platform, Not a Brochure</h2>
+  <p>Rather than a static showcase site, we designed Branlly as a working platform with three connected layers:</p>
+  <ul>
+    <li><strong>Public-facing site</strong> — an SEO-optimised web presence presenting services, past events, and social proof, structured to rank for event-management searches in Nairobi.</li>
+    <li><strong>Booking system</strong> — a structured intake flow that captures event type, date, scale, and budget, replacing the back-and-forth of phone screening.</li>
+    <li><strong>Client dashboard</strong> — a private area where clients track their event details and status, cutting the "just checking in" calls dramatically.</li>
+  </ul>
+  <div class="pull">"The site had to do the talking, the qualifying, and the organising — so the team could focus on delivering great events."</div>
+  <p>The stack was chosen for reliability and maintainability: a database-driven backend for bookings and client records, and a fast, mobile-first frontend, since most of Branlly's audience discovers them on a phone.</p>
+  <div class="stack-grid">
+    <span class="stack-pill">Python</span>
+    <span class="stack-pill">PostgreSQL</span>
+    <span class="stack-pill">JavaScript</span>
+    <span class="stack-pill">SEO Architecture</span>
+    <span class="stack-pill">Client Dashboard</span>
+    <span class="stack-pill">Responsive Design</span>
+  </div>
+
+  <h2><span class="step-tag">03 — The Outcome</span>Bookings Without the Phone Tag</h2>
+  <p>Branlly now runs on its own domain as a live, fully operational platform. Inquiries arrive structured and pre-qualified, client communication happens in one place, and the business has a professional footprint it can point any prospective client to.</p>
+  <div class="outcome-grid">
+    <div class="outcome-card">
+      <div class="outcome-num">24/7</div>
+      <div class="outcome-label">Booking capture — inquiries arrive structured even outside business hours</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-num">1</div>
+      <div class="outcome-label">Central dashboard replacing scattered WhatsApp threads and call notes</div>
+    </div>
+    <div class="outcome-card">
+      <div class="outcome-num">100%</div>
+      <div class="outcome-label">Custom-built and client-owned — no templates, no platform lock-in</div>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <h3>Want Results Like <em>This?</em></h3>
+    <p>Book a free 30-minute strategy call and let's map what a platform like Branlly's would look like for your business.</p>
+    <a href="schedule.html" class="btn">Schedule a Free Call →</a>
+  </div>
+</div>
+
+<footer class="footer">
+  © 2026 Kūgeria Ltd · <a href="index.html">Home</a> · <a href="index.html#projects">Projects</a> · <a href="contact.html">Contact</a>
+</footer>
+</body>
+</html>

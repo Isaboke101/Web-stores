@@ -3,33 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <!-- Primary SEO -->
-  <title>Kūgeria Ltd — Web Development, AI & Branding Agency | Nairobi, Kenya</title>
-  <meta name="description" content="Kūgeria Ltd is a Nairobi-based digital agency building high-performance websites, AI chatbots, and brand identities for Kenyan businesses. Founded by Isaac Oonge.">
-  <meta name="keywords" content="web developer Nairobi, web development Kenya, AI chatbot Kenya, digital agency Nairobi, mobile app developer Kenya, M-Pesa integration, branding Kenya">
-  <meta name="author" content="Isaac Oonge — Kūgeria Ltd">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.kugeria.co.ke/">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-  <link rel="preload" href="images/logo_small.svg" as="image" type="image/svg+xml">
-
-  <!-- Open Graph (controls how the link looks when shared on WhatsApp, LinkedIn, X) -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.kugeria.co.ke/">
-  <meta property="og:title" content="Kūgeria Ltd — Digital Agency, Nairobi">
-  <meta property="og:description" content="We build websites, AI systems, and brand identities that work as silent sales agents for your business.">
-  <meta property="og:image" content="https://www.kugeria.co.ke/og-image.svg">
-
-  <!-- Twitter/X Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Kūgeria Ltd — Digital Agency, Nairobi">
-  <meta name="twitter:description" content="High-performance websites, AI systems, and branding from Nairobi, Kenya.">
-  <meta name="twitter:image" content="https://www.kugeria.co.ke/og-image.svg">
+  <title>Kūgeria Ltd — Digital Creative & Technology Consultancy | Nairobi</title>
+  <meta name="description" content="Kūgeria Ltd builds high-performance web applications, AI-integrated systems, and brand identities that work as silent sales agents for your business.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="images/logo_small.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" href="images/logo_small.png">
+  <link rel="apple-touch-icon" href="images/logo_small.png">
+  <meta name="theme-color" content="#052F5F">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Kūgeria Ltd",
+    "url": "https://www.kugeria.co.ke",
+    "description": "Digital creative agency building web apps, AI systems, and brand identities",
+    "foundingDate": "2026",
+    "founder": { "@type": "Person", "name": "Isaac Oonge" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Nairobi", "addressCountry": "KE" },
+    "priceRange": "KES"
+  }
+  </script>
   <style>
     /* ────────────────────────────────────
        CSS VARIABLES & RESET
@@ -60,27 +55,7 @@
     img { max-width: 100%; display: block; }
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
-    button { font-family: var(--body); cursor: pointer; border: none; background: none; }
-
-    /* ────────────────────────────────────
-       SKIP LINK
-    ──────────────────────────────────── */
-    .skip-link {
-      position: absolute; top: -100%; left: 0; z-index: 9999;
-      padding: 8px 18px; background: var(--navy); color: var(--white);
-      font-size: 14px; font-weight: 600; border-radius: 0 0 8px 0;
-      transition: top .2s;
-    }
-    .skip-link:focus { top: 0; }
-
-    /* ────────────────────────────────────
-       FOCUS VISIBLE
-    ──────────────────────────────────── */
-    :focus-visible {
-      outline: 3px solid var(--gold);
-      outline-offset: 2px;
-      border-radius: 3px;
-    }
+    button { font-family: var(--body); cursor: pointer; }
 
     /* ────────────────────────────────────
        UTILITIES
@@ -188,7 +163,7 @@
     .stat-label { font-size: 11.5px; color: var(--gray-400); margin-top: 3px; }
 
     /* Collage */
-    .hero-collage { position: relative; height: 400px; overflow: hidden; }
+    .hero-collage { position: relative; height: 400px; }
 
     .hcard {
       position: absolute; border-radius: 11px; overflow: hidden;
@@ -295,6 +270,8 @@
     .svc-feats { display:flex; flex-direction:column; gap:5px; }
     .svc-feat { font-size:12.5px; color:#555; display:flex; align-items:center; gap:7px; }
     .svc-feat::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+    .svc-price { margin-top:16px; padding-top:14px; border-top:1px dashed var(--gray-200); font-size:12px; color:var(--gray-400); }
+    .svc-price strong { display:block; font-family:var(--display); font-size:19px; font-weight:700; color:var(--navy); margin-top:2px; }
 
     /* ────────────────────────────────────
        PROJECTS
@@ -497,6 +474,129 @@
     .modal-acts { display:flex; gap:9px; flex-wrap:wrap; }
 
     /* ────────────────────────────────────
+       ABOUT
+    ──────────────────────────────────── */
+    .about { background:var(--white); }
+    .about-grid { display:grid; grid-template-columns:1fr; gap:36px; align-items:center; }
+    .about-photo {
+      width:100%; max-width:340px; margin:0 auto; aspect-ratio:4/5;
+      border-radius:16px; overflow:hidden; position:relative;
+      background:linear-gradient(160deg,var(--navy),var(--green));
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:var(--sh-lg);
+    }
+    .about-photo img { width:100%; height:100%; object-fit:cover; }
+    .about-photo .ph-placeholder { text-align:center; color:rgba(255,255,255,.75); padding:20px; }
+    .about-photo .ph-placeholder .ph-ic { font-size:44px; margin-bottom:10px; }
+    .about-photo .ph-placeholder .ph-tx { font-size:12.5px; line-height:1.6; }
+    .about-badge {
+      position:absolute; bottom:14px; left:14px; right:14px;
+      background:rgba(250,250,250,.94); backdrop-filter:blur(8px);
+      border-radius:10px; padding:10px 14px;
+    }
+    .about-badge .ab-name { font-family:var(--display); font-size:17px; font-weight:700; color:var(--charcoal); }
+    .about-badge .ab-role { font-size:11.5px; color:var(--gray-500); }
+    .about-points { display:flex; flex-direction:column; gap:12px; margin-top:22px; }
+    .about-point { display:flex; gap:11px; align-items:flex-start; font-size:13.5px; color:#444; line-height:1.6; }
+    .about-point::before { content:'✦'; color:var(--gold); flex-shrink:0; margin-top:1px; }
+
+    /* ────────────────────────────────────
+       PROCESS
+    ──────────────────────────────────── */
+    .process { background:var(--bg); }
+    .proc-grid { display:grid; grid-template-columns:1fr; gap:16px; margin-top:36px; counter-reset:step; }
+    .proc-card {
+      background:var(--white); border-radius:var(--radius);
+      border:1px solid var(--gray-200); padding:24px;
+      position:relative; transition:all .25s ease;
+    }
+    .proc-card:hover { box-shadow:var(--sh-md); transform:translateY(-3px); border-color:rgba(197,160,89,.35); }
+    .proc-num {
+      width:40px; height:40px; border-radius:50%;
+      background:rgba(197,160,89,.14); color:#7a5e1e;
+      font-family:var(--display); font-size:19px; font-weight:700;
+      display:flex; align-items:center; justify-content:center; margin-bottom:14px;
+    }
+    .proc-title { font-family:var(--display); font-size:19px; font-weight:700; color:var(--charcoal); margin-bottom:7px; }
+    .proc-desc { font-size:13px; color:var(--gray-500); line-height:1.65; }
+    .proc-time { display:inline-block; margin-top:11px; font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--green); background:rgba(0,75,35,.07); padding:3px 10px; border-radius:100px; }
+
+    /* ────────────────────────────────────
+       TESTIMONIALS
+    ──────────────────────────────────── */
+    .testimonials { background:var(--white); }
+    .testi-grid { display:grid; grid-template-columns:1fr; gap:16px; margin-top:36px; }
+    .testi-card {
+      background:var(--bg); border-radius:var(--radius);
+      border:1px solid var(--gray-200); padding:24px;
+      display:flex; flex-direction:column; gap:14px;
+      transition:all .25s ease;
+    }
+    .testi-card:hover { box-shadow:var(--sh-md); transform:translateY(-3px); }
+    .testi-stars { color:var(--gold); font-size:14px; letter-spacing:2px; }
+    .testi-quote { font-size:13.5px; color:#444; line-height:1.72; font-style:italic; flex:1; }
+    .testi-who { display:flex; align-items:center; gap:11px; }
+    .testi-av {
+      width:38px; height:38px; border-radius:50%; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      font-family:var(--display); font-weight:700; font-size:15px; color:var(--white);
+    }
+    .testi-name { font-size:13px; font-weight:600; color:var(--charcoal); }
+    .testi-biz { font-size:11.5px; color:var(--gray-400); }
+
+    /* ────────────────────────────────────
+       FAQ
+    ──────────────────────────────────── */
+    .faq { background:var(--bg); }
+    .faq-list { max-width:720px; margin:32px auto 0; display:flex; flex-direction:column; gap:11px; }
+    .faq-item {
+      background:var(--white); border:1px solid var(--gray-200);
+      border-radius:11px; overflow:hidden; transition:border-color .25s;
+    }
+    .faq-item.open { border-color:rgba(197,160,89,.45); }
+    .faq-q {
+      width:100%; display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:17px 20px; background:none; border:none;
+      font-family:var(--body); font-size:14px; font-weight:600;
+      color:var(--charcoal); text-align:left; cursor:pointer;
+    }
+    .faq-q .faq-ic {
+      width:26px; height:26px; border-radius:50%; flex-shrink:0;
+      background:rgba(197,160,89,.12); color:#7a5e1e;
+      display:flex; align-items:center; justify-content:center;
+      font-size:15px; transition:transform .3s ease;
+    }
+    .faq-item.open .faq-ic { transform:rotate(45deg); }
+    .faq-a { max-height:0; overflow:hidden; transition:max-height .35s ease; }
+    .faq-a-inner { padding:0 20px 18px; font-size:13.5px; color:var(--gray-500); line-height:1.72; }
+
+    /* ────────────────────────────────────
+       WHATSAPP FLOAT + STICKY MOBILE CTA
+    ──────────────────────────────────── */
+    .wa-float {
+      position:fixed; bottom:22px; right:18px; z-index:1500;
+      width:54px; height:54px; border-radius:50%;
+      background:#25D366; box-shadow:0 6px 22px rgba(37,211,102,.4);
+      display:flex; align-items:center; justify-content:center;
+      transition:transform .22s ease, box-shadow .22s ease;
+    }
+    .wa-float:hover { transform:translateY(-4px) scale(1.05); box-shadow:0 10px 30px rgba(37,211,102,.5); }
+    .wa-float svg { width:28px; height:28px; }
+
+    .sticky-cta {
+      position:fixed; bottom:0; left:0; right:0; z-index:1400;
+      background:rgba(250,250,250,.96); backdrop-filter:blur(12px);
+      border-top:1px solid var(--gray-200);
+      padding:10px 16px; display:flex; gap:10px; align-items:center;
+      transform:translateY(110%); transition:transform .35s ease;
+    }
+    .sticky-cta.show { transform:none; }
+    .sticky-cta .sc-text { flex:1; font-size:12px; font-weight:600; color:var(--charcoal); line-height:1.35; }
+    .sticky-cta .sc-text span { display:block; font-size:10.5px; font-weight:400; color:var(--gray-500); }
+    .sticky-cta .btn { padding:10px 18px; font-size:13px; white-space:nowrap; }
+    @media(min-width:768px){ .sticky-cta { display:none; } .wa-float { bottom:28px; right:28px; } }
+
+    /* ────────────────────────────────────
        RESPONSIVE BREAKPOINTS
     ──────────────────────────────────── */
     @media(min-width:600px){ .svc-grid { grid-template-columns:1fr 1fr; } }
@@ -510,6 +610,9 @@
       .editorial { grid-template-columns:3fr 2fr; }
       .pcard-feat .pvisual { height:255px; }
       .ai-grid { grid-template-columns:1fr 1fr; }
+      .about-grid { grid-template-columns:2fr 3fr; gap:52px; }
+      .proc-grid { grid-template-columns:repeat(4,1fr); }
+      .testi-grid { grid-template-columns:repeat(3,1fr); }
       .ftr-grid { grid-template-columns:2fr 1fr 1fr 1fr; }
       .ftr-bottom { flex-direction:row; justify-content:space-between; text-align:left; }
       .modal-wrap { align-items:center; }
@@ -522,44 +625,15 @@
       .hc1 { width:57%; height:54%; }
     }
   </style>
-  <!-- Meta Pixel — replace YOUR_PIXEL_ID with your actual ID from Meta Ads Manager -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', ' 36078474898464653');
-    fbq('track', 'PageView');
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Kūgeria Ltd",
-    "url": "https://www.kugeria.co.ke",
-    "description": "Digital creative agency building web apps, AI systems, and brand identities",
-    "foundingDate": "2026",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Nairobi",
-      "addressCountry": "KE"
-    }
-  }
-  </script>
 </head>
 <body>
-<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- ═══════════════ NAVBAR ═══════════════ -->
 <nav class="nav" id="nav">
   <div class="container">
     <div class="nav-inner">
       <a href="#home" class="nav-logo">
-        <img src="images/logo_small.svg" alt="Kūgeria Ltd" class="nav-mark" width="34" height="34" style="width:auto;height:34px;object-fit:contain;">
+        <img src="images/logo_small.svg" alt="Kūgeria Ltd" class="nav-mark" style="width:auto;height:34px;object-fit:contain;">
       </a>
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
@@ -569,7 +643,7 @@
       </ul>
       <div style="display:flex;align-items:center;gap:10px">
         <a href="schedule.html" class="btn btn-gold nav-cta">Schedule a Meeting</a>
-        <button class="hamburger" id="ham" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobnav"><span></span><span></span><span></span></button>
+        <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
       </div>
     </div>
   </div>
@@ -581,8 +655,6 @@
     <a href="schedule.html" class="mob-cta">Schedule a Meeting →</a>
   </div>
 </nav>
-
-<main id="main-content">
 
 <!-- ═══════════════ HERO ═══════════════ -->
 <section class="hero" id="home">
@@ -618,61 +690,17 @@
 
           <!-- Branlly -->
           <div class="hcard hc1" onclick="openModal('branlly')">
-            <div class="mbrow mk-branlly">
-              <div class="mbar">
-                <div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div>
-                <div class="murl"></div>
-              </div>
-              <div class="mbody">
-                <div class="mk-branlly mhdr"></div>
-                <div class="mk-branlly mhero">
-                  <div class="mk-branlly mhero-circle"></div>
-                  <div class="mk-branlly mhero-lines">
-                    <div class="mk-branlly mhero-line"></div>
-                    <div class="mk-branlly mhero-line s"></div>
-                  </div>
-                </div>
-                <div class="mk-branlly mgrid">
-                  <div class="mk-branlly mgrid-item"></div>
-                  <div class="mk-branlly mgrid-item"></div>
-                  <div class="mk-branlly mgrid-item"></div>
-                </div>
-              </div>
-            </div>
+            <img src="images/branlly-event-management-website-nairobi.png" alt="Branlly — event management website by Kūgeria Ltd" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top left;">
           </div>
 
           <!-- Progigs -->
           <div class="hcard hc2" onclick="openModal('progigs')">
-            <div class="mbrow mk-progigs">
-              <div class="mbar"><div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div><div class="murl"></div></div>
-              <div class="mbody" style="gap:5px">
-                <div class="mk-progigs msearch"></div>
-                <div class="mk-progigs mpgrid" style="display:grid;grid-template-columns:1fr 1fr;gap:4px;flex:1">
-                  <div class="mk-progigs mpitem hi"></div>
-                  <div class="mk-progigs mpitem"></div>
-                  <div class="mk-progigs mpitem"></div>
-                  <div class="mk-progigs mpitem"></div>
-                </div>
-              </div>
-            </div>
+            <img src="images/progigs-digital-media-kenya.png" alt="Pro Gigs — events company website by Kūgeria Ltd" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top left;">
           </div>
 
           <!-- Injili -->
           <div class="hcard hc3" onclick="openModal('injili')">
-            <div class="mbrow mk-injili">
-              <div class="mbar"><div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div><div class="murl"></div></div>
-              <div class="mbody">
-                <div class="mk-injili mibanner">
-                  <div class="mk-injili miline"></div>
-                  <div class="mk-injili miline s"></div>
-                </div>
-                <div class="mk-injili miarticles">
-                  <div class="mk-injili miarticle"><div class="mk-injili midot"></div><div class="mk-injili mibar"></div></div>
-                  <div class="mk-injili miarticle"><div class="mk-injili midot"></div><div class="mk-injili mibar"></div></div>
-                  <div class="mk-injili miarticle"><div class="mk-injili midot"></div><div class="mk-injili mibar"></div></div>
-                </div>
-              </div>
-            </div>
+            <img src="images/injili-freelance-services-webstores-kenya.png" alt="Injili Apparel — faith-inspired e-commerce store by Kūgeria Ltd" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top left;">
           </div>
 
           <!-- Accent -->
@@ -721,11 +749,11 @@
         <a href="schedule.html" class="btn btn-ghost">Explore all →</a>
       </div>
       <div class="tier-pills">
-        <button class="pill active-gold" type="button" onclick="filterPill(this)">All Services</button>
-        <button class="pill" type="button" onclick="filterPill(this)">Web &amp; Mobile</button>
-        <button class="pill" type="button" onclick="filterPill(this)">AI Integration</button>
-        <button class="pill" type="button" onclick="filterPill(this)">Branding</button>
-        <button class="pill" type="button" onclick="filterPill(this)">Systems</button>
+        <button class="pill active-gold" onclick="filterPill(this)">All Services</button>
+        <button class="pill" onclick="filterPill(this)">Web &amp; Mobile</button>
+        <button class="pill" onclick="filterPill(this)">AI Integration</button>
+        <button class="pill" onclick="filterPill(this)">Branding</button>
+        <button class="pill" onclick="filterPill(this)">Systems</button>
       </div>
     </div>
 
@@ -741,6 +769,9 @@
           <div class="svc-feat">SEO optimization built-in</div>
           <div class="svc-feat">Responsive, mobile-first design</div>
         </div>
+        <!-- ADJUST: set your real starting price -->
+        <div class="svc-price">Starting from<strong>KES 15,000</strong>
+        </div>
       </div>
       <div class="svc-card reveal d1">
         <div class="svc-icon ic-nv">🤖</div>
@@ -752,6 +783,9 @@
           <div class="svc-feat">24/7 automated lead generation</div>
           <div class="svc-feat">Business process automation</div>
           <div class="svc-feat">Data-driven insights &amp; analytics</div>
+        </div>
+        <!-- ADJUST: set your real starting price -->
+        <div class="svc-price">Starting from<strong>KES 25,000</strong>
         </div>
       </div>
       <div class="svc-card reveal d2">
@@ -765,6 +799,9 @@
           <div class="svc-feat">Social media visual identity</div>
           <div class="svc-feat">Brand guidelines &amp; assets</div>
         </div>
+        <!-- ADJUST: set your real starting price -->
+        <div class="svc-price">Starting from<strong>KES 8,000</strong>
+        </div>
       </div>
       <div class="svc-card reveal d2">
         <div class="svc-icon ic-bk">⚙️</div>
@@ -777,6 +814,45 @@
           <div class="svc-feat">Employee portals &amp; ERP</div>
           <div class="svc-feat">High-level security protocols</div>
         </div>
+        <div class="svc-price">Enterprise pricing<strong>Custom Quote</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PROCESS ═══════════════ -->
+<section class="section process" id="process">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">From Idea to Launch in <em class="gold">Four Steps</em></h2>
+      <p class="section-sub" style="margin:0 auto">No confusion, no surprises. Here's exactly what happens after you book your free call.</p>
+    </div>
+    <div class="proc-grid reveal d1">
+      <div class="proc-card">
+        <div class="proc-num">1</div>
+        <h3 class="proc-title">Discovery Call</h3>
+        <p class="proc-desc">A free 30-minute session where we map your vision, goals, and target audience. You talk — we listen and ask the right questions.</p>
+        <span class="proc-time">30 mins · Free</span>
+      </div>
+      <div class="proc-card">
+        <div class="proc-num">2</div>
+        <h3 class="proc-title">Proposal &amp; Quote</h3>
+        <p class="proc-desc">Within 48 hours you receive a clear proposal: scope, timeline, deliverables, and a transparent fixed quote. No hidden costs.</p>
+        <span class="proc-time">Within 48 hrs</span>
+      </div>
+      <div class="proc-card">
+        <div class="proc-num">3</div>
+        <h3 class="proc-title">Build &amp; Review</h3>
+        <p class="proc-desc">We build in milestones with regular check-ins. You review progress at each stage and request refinements before we move forward.</p>
+        <span class="proc-time">1–6 weeks</span>
+      </div>
+      <div class="proc-card">
+        <div class="proc-num">4</div>
+        <h3 class="proc-title">Launch &amp; Support</h3>
+        <p class="proc-desc">Your project goes live with full handover, training, and optional ongoing maintenance so it keeps performing long after launch.</p>
+        <span class="proc-time">Ongoing</span>
       </div>
     </div>
   </div>
@@ -799,25 +875,7 @@
       <!-- Branlly – featured -->
       <div class="pcard-feat" onclick="openModal('branlly')">
         <div class="pvisual">
-          <img src="images/branlly-event-management-website-nairobi.png" alt="Branlly Event Management Platform" width="800" height="255" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
-          <div class="pvbrow pv-branlly" style="height:100%">
-            <div class="pvbar">
-              <div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div>
-              <div class="pvurl"></div>
-            </div>
-            <div class="pvbody">
-              <div class="bvnav">
-                <div class="bvlogo"></div>
-                <div class="bvlinks"><div class="bvlink"></div><div class="bvlink"></div><div class="bvlink"></div></div>
-              </div>
-              <div class="bvhero"><div class="bvline"></div><div class="bvline s"></div><div class="bvbtn"></div></div>
-              <div class="bvcards">
-                <div class="bvcard"><div class="bvcimg"></div><div class="bvcline"></div></div>
-                <div class="bvcard"><div class="bvcimg"></div><div class="bvcline"></div></div>
-                <div class="bvcard"><div class="bvcimg"></div><div class="bvcline"></div></div>
-              </div>
-            </div>
-          </div>
+          <img src="images/branlly-event-management-website-nairobi.png" alt="Branlly — event management platform homepage" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;">
         </div>
         <div class="pinfo">
           <div class="pcat">Event Management · Live Domain</div>
@@ -832,48 +890,25 @@
       <div class="proj-stack">
         <div class="pcard-sm" onclick="openModal('progigs')">
           <div class="pvisual">
-            <img src="images/progigs-digital-media-kenya.png" alt="Progigs Professional Services Webstore" width="600" height="148" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
-            <div class="pvbrow pv-progigs" style="height:100%">
-              <div class="pvbar"><div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div><div class="pvurl"></div></div>
-              <div class="pvbody">
-                <div class="pvhdr"><div class="pvlogo"></div><div class="pvsearch"></div></div>
-                <div class="pvgrid">
-                  <div class="pvitem hi"><div class="pvimg"></div><div class="pvline"></div><div class="pvline s"></div></div>
-                  <div class="pvitem"><div class="pvimg"></div><div class="pvline"></div><div class="pvline s"></div></div>
-                  <div class="pvitem"><div class="pvimg"></div><div class="pvline"></div></div>
-                  <div class="pvitem"><div class="pvimg"></div><div class="pvline"></div></div>
-                </div>
-              </div>
-            </div>
+            <img src="images/progigs-digital-media-kenya.png" alt="Pro Gigs — events production company website" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;">
           </div>
           <div class="pinfo">
-            <div class="pcat">Professional Webstore · GitHub Live</div>
+            <div class="pcat">Events Company Website · GitHub Live</div>
             <h3 class="pname">Progigs</h3>
-            <p class="pdesc">A digital media platform engineered for modern storytelling and scalable audience engagement across channels.</p>
-            <div class="ptags"><span class="ptag">Media</span><span class="ptag">Content</span><span class="ptag">JavaScript</span></div>
+            <p class="pdesc">A bold, dark-themed website for a Nairobi events production company — animated hero, portfolio showcase, and a booking form wired straight into their workflow.</p>
+            <div class="ptags"><span class="ptag">Events</span><span class="ptag">Booking Form</span><span class="ptag">Apps Script</span></div>
             <span class="plink">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </div>
 
         <div class="pcard-sm" onclick="openModal('injili')">
           <div class="pvisual">
-            <img src="images/injili-freelance-services-webstores-kenya.png" alt="Injili Digital Media Platform" width="600" height="148" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:11px;">
-            <div class="pvbrow pv-injili" style="height:100%">
-              <div class="pvbar"><div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div><div class="pvurl"></div></div>
-              <div class="pvbody">
-                <div class="ivbanner"><div class="ivline"></div><div class="ivline s"></div></div>
-                <div class="ivarticles">
-                  <div class="ivarticle"><div class="ivdot"></div><div class="ivbar"></div></div>
-                  <div class="ivarticle"><div class="ivdot"></div><div class="ivbar"></div></div>
-                  <div class="ivarticle"><div class="ivdot"></div><div class="ivbar"></div></div>
-                </div>
-              </div>
-            </div>
+            <img src="images/injili-freelance-services-webstores-kenya.png" alt="Injili Apparel — faith-inspired e-commerce store" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;">
           </div>
           <div class="pinfo">
-            <div class="pcat">Digital Media · GitHub Live</div>
+            <div class="pcat">E-commerce · Faith Apparel · GitHub Live</div>
             <h3 class="pname">Injili</h3>
-            <p class="pdesc">A professional services webstore connecting skilled Kenyan freelancers with clients, featuring M-Pesa checkout and service listing pages.</p>
+            <p class="pdesc">A made-to-order faith-inspired apparel store with full M-Pesa checkout, order notifications, and a premium editorial shopping experience.</p>
             <div class="ptags"><span class="ptag">E-commerce</span><span class="ptag">M-Pesa</span><span class="ptag">PHP</span></div>
             <span class="plink">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
@@ -891,6 +926,53 @@
         <div class="lab-card"><div class="lab-vis" style="background:rgba(5,47,95,.05)">⚡</div><div class="lab-info"><div class="lab-name">Hackathon 01</div><div class="lab-desc">In progress...</div></div><div class="cs-overlay"><div class="ov-icon">🔬</div><div class="ov-text">In The Lab</div><div class="ov-sub">Something's brewing...</div></div></div>
         <div class="lab-card"><div class="lab-vis" style="background:rgba(0,75,35,.05)">🧪</div><div class="lab-info"><div class="lab-name">Experiment 02</div><div class="lab-desc">Practice project</div></div><div class="cs-overlay"><div class="ov-icon">🔬</div><div class="ov-text">In The Lab</div><div class="ov-sub">Coming soon...</div></div></div>
         <div class="lab-card"><div class="lab-vis" style="background:rgba(197,160,89,.08)">🚀</div><div class="lab-info"><div class="lab-name">Side Project 03</div><div class="lab-desc">Personal build</div></div><div class="cs-overlay"><div class="ov-icon">🔬</div><div class="ov-text">In The Lab</div><div class="ov-sub">Stay tuned...</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TESTIMONIALS ═══════════════
+     NOTE: These are draft quotes. Send each to the client for
+     approval (or replace with their own words) before launch. -->
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto">
+      <div class="section-label">Client Words</div>
+      <h2 class="section-title">Trusted by Businesses <em class="gold">Like Yours</em></h2>
+    </div>
+    <div class="testi-grid reveal d1">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Isaac delivered exactly what we envisioned — a platform that manages our bookings while we focus on running events. Professional from the first call to launch."</p>
+        <div class="testi-who">
+          <div class="testi-av" style="background:var(--green)">B</div>
+          <div>
+            <div class="testi-name">Branlly</div>
+            <div class="testi-biz">Event Management · Nairobi</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"The new site finally matches the energy we bring to our events. Clients see our work, feel the vibe, and book — before we've even spoken to them."</p>
+        <div class="testi-who">
+          <div class="testi-av" style="background:var(--navy)">P</div>
+          <div>
+            <div class="testi-name">Progigs</div>
+            <div class="testi-biz">Events Production · Nairobi</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"From M-Pesa checkout to order notifications, everything just works. Isaac built us a store that sells while we focus on the designs — exactly what we needed."</p>
+        <div class="testi-who">
+          <div class="testi-av" style="background:var(--gold);color:var(--charcoal)">I</div>
+          <div>
+            <div class="testi-name">Injili</div>
+            <div class="testi-biz">Faith Apparel · E-commerce</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -929,10 +1011,94 @@
           </div>
           <div class="cb-foot">
             <div class="cb-input">Type a message...</div>
-            <button class="cb-send" aria-label="Send message" type="button"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#212121" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            <button class="cb-send"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#212121" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
           </div>
           <div class="cb-powered">Powered by Kūgeria AI · Interactive Demo Preview</div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="about-photo">
+          <!-- REPLACE: when you have a professional photo, use: and delete the placeholder div below -->
+               <img src="images/profile.png" alt="Isaac Oonge — Founder, Kūgeria Ltd"> 
+          <div class="about-badge">
+            <div class="ab-name">Isaac Oonge</div>
+            <div class="ab-role">Founder · Developer · Consultant</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <div class="section-label">The Person Behind Kūgeria</div>
+        <h2 class="section-title">Why I Started <em class="gold">Kūgeria</em></h2>
+        <p class="section-sub">Kūgeria is Kikuyu for "to try, to attempt, to innovate." I started this agency on a simple belief: every bold business attempt deserves engineering that matches its ambition. Too many Kenyan businesses settle for templated websites that sit idle — I build digital systems that actively work as silent sales agents, around the clock.</p>
+        <div class="about-points">
+          <div class="about-point">Computer Science student at The Co-operative University of Kenya, active in the IEEE Student Branch</div>
+          <div class="about-point">Full-stack developer working across Python, PHP, JavaScript, and AI/LLM integration</div>
+          <div class="about-point">Every project is built custom — no page builders, no bloated templates, full ownership of your code</div>
+          <div class="about-point">Based in Nairobi, working with clients across Kenya and beyond</div>
+        </div>
+        <div style="margin-top:26px"><a href="schedule.html" class="btn btn-gold">Work With Me →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section class="section faq" id="faq">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto">
+      <div class="section-label">Common Questions</div>
+      <h2 class="section-title">Before You <em class="gold">Ask</em></h2>
+    </div>
+    <div class="faq-list reveal d1">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          How much does a website cost?
+          <span class="faq-ic">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">It depends on the scope. A personal portfolio starts from around KES 15,000, business sites with payment integration from KES 45,000, and full e-commerce or enterprise systems are quoted per project. After our free discovery call you receive a fixed, transparent quote — no hidden costs, no surprises mid-project.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          How long does a project take?
+          <span class="faq-ic">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">A landing page or portfolio typically takes 1–2 weeks. Multi-page business sites take 2–4 weeks. E-commerce stores and custom systems run 4–8 weeks depending on complexity. You'll get a clear timeline in your proposal, and progress check-ins at every milestone.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          Do you offer maintenance after launch?
+          <span class="faq-ic">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Growth and Scale tier projects include optional monthly maintenance covering updates, backups, security, and small content changes. You can also choose a full handover and manage the site yourself — you own 100% of the code either way.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          Do I need to provide the content and images?
+          <span class="faq-ic">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Ideally you provide your business details, photos, and any existing branding. If you don't have them, that's fine — copywriting, logo design, and brand identity are part of the Digital Branding service and can be bundled into your project.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          Can you integrate M-Pesa payments?
+          <span class="faq-ic">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes — M-Pesa integration via the Safaricom Daraja API is one of our core specialities, alongside card payments for international customers. Your customers pay directly on your website and you receive instant confirmation.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          What if I already have a website that needs improving?
+          <span class="faq-ic">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Redesigns and rebuilds are welcome. We audit your existing site, keep what works, and rebuild what doesn't — often preserving your existing integrations, content, and SEO value in the process.</div></div>
       </div>
     </div>
   </div>
@@ -953,21 +1119,19 @@
   </div>
 </section>
 
-</main>
-
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer class="footer">
   <div class="container">
     <div class="ftr-grid">
       <div>
         <div style="margin-bottom:0">
-          <img src="images/logo.svg" alt="Kūgeria Ltd" width="120" height="40" loading="lazy" style="height:40px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.9;">
+          <img src="images/logo.svg" alt="Kūgeria Ltd" style="height:40px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.9;">
         </div>
         <p class="ftr-tagline">Transforming attempts into industry-leading digital solutions. Based in Nairobi, building for the world.</p>
         <div class="ftr-social">
-          <a href="https://linkedin.com/in/isaac-oonge" class="fsoc" aria-label="LinkedIn — Isaac Oonge" target="_blank" rel="noopener noreferrer">in</a>
-          <a href="#" class="fsoc" aria-label="X / Twitter — @kugeria">𝕏</a>
-          <a href="https://instagram.com/kugeria" class="fsoc" aria-label="Instagram — @kugeria" target="_blank" rel="noopener noreferrer">◈</a>
+          <div class="fsoc" title="LinkedIn">in</div>
+          <div class="fsoc" title="X / Twitter">𝕏</div>
+          <div class="fsoc" title="Instagram">◈</div>
         </div>
       </div>
       <div>
@@ -994,16 +1158,29 @@
     </div>
     <div class="ftr-bottom">
       <div class="ftr-copy">© 2026 Kūgeria Ltd. All rights reserved. Designed &amp; built by Isaac Oonge.</div>
-      <div class="ftr-blinks"><a href="privacy.html">Privacy</a><a href="#">Terms</a></div>
+      <div class="ftr-blinks"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="blog/website-cost-kenya-2026.html">Insights</a></div>
     </div>
   </div>
 </footer>
 
+<!-- ═══════════════ WHATSAPP FLOAT ═══════════════
+     REPLACE 254700000000 with your real business WhatsApp number -->
+<a href="https://wa.me/254700000000?text=Hi%20Isaac%2C%20I%20found%20the%20K%C5%ABgeria%20website%20and%20I%27d%20like%20to%20discuss%20a%20project."
+   class="wa-float" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="#fff"><path d="M16 2.9C8.8 2.9 3 8.7 3 15.9c0 2.3.6 4.5 1.7 6.5L3 29l6.8-1.8c1.9 1 4 1.6 6.2 1.6 7.2 0 13-5.8 13-13S23.2 2.9 16 2.9zm0 23.7c-2 0-3.9-.5-5.5-1.5l-.4-.2-4 1 1.1-3.9-.3-.4c-1.1-1.7-1.7-3.7-1.7-5.7 0-6 4.9-10.8 10.8-10.8s10.8 4.9 10.8 10.8-4.8 10.7-10.8 10.7zm5.9-8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1c-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.3s0-.5.1-.6l.5-.6c.2-.2.2-.4.3-.6s0-.5 0-.6c0-.2-.7-1.8-1-2.4-.3-.6-.5-.5-.7-.6h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.4c.2.2 2.3 3.5 5.5 4.9.8.3 1.4.5 1.8.7.8.2 1.5.2 2 .1.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<!-- ═══════════════ STICKY MOBILE CTA ═══════════════ -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sc-text">Ready to start?<span>Free 30-min strategy call</span></div>
+  <a href="schedule.html" class="btn btn-gold">Schedule →</a>
+</div>
+
 <!-- ═══════════════ PROJECT MODAL ═══════════════ -->
-<div class="modal-wrap" id="mwrap" role="dialog" aria-modal="true" aria-labelledby="mpname" onclick="mOutside(event)">
+<div class="modal-wrap" id="mwrap" onclick="mOutside(event)">
   <div class="modal-box" id="mbox">
     <div class="modal-handle"></div>
-    <button class="modal-x" onclick="closeModal()" aria-label="Close project details" type="button">✕</button>
+    <button class="modal-x" onclick="closeModal()">✕</button>
     <div class="modal-vis" id="mvis"></div>
     <div class="modal-pcat" id="mpcat"></div>
     <div class="modal-pname" id="mpname"></div>
@@ -1021,26 +1198,12 @@ window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20)
 
 // ── Hamburger ──
 const ham=document.getElementById('ham'),mob=document.getElementById('mobnav');
-ham.addEventListener('click',function(){
-  const isOpen=ham.classList.toggle('open');
-  mob.classList.toggle('open',isOpen);
-  ham.setAttribute('aria-expanded',String(isOpen));
-});
-document.querySelectorAll('.mob-link').forEach(function(l){
-  l.addEventListener('click',function(){
-    ham.classList.remove('open');
-    mob.classList.remove('open');
-    ham.setAttribute('aria-expanded','false');
-  });
-});
+ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open');});
+document.querySelectorAll('.mob-link').forEach(l=>l.addEventListener('click',()=>{ham.classList.remove('open');mob.classList.remove('open');}));
 
 // ── Scroll reveal ──
-if('IntersectionObserver' in window){
-  const ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.1});
-  document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
-}else{
-  document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
-}
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
 // ── Tier pills ──
 function filterPill(el){document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active','active-gold'));el.classList.add('active-gold');}
@@ -1052,31 +1215,30 @@ const pdata = {
     name: 'Branlly',
     desc: 'A full-stack event management platform with a client-facing dashboard, booking system, and SEO-optimized web presence. Engineered for event businesses to manage bookings, showcase services, and convert visitors to clients — 24/7.',
     tags: ['Python','PostgreSQL','JavaScript','SEO','Dashboard','Full-Stack'],
-    liveUrl: 'https://branllyltd.co.ke',
+    liveUrl: 'branlly-case-study.html',
     live: true,
     img: 'images/branlly-event-management-website-nairobi.png'
   },
   progigs: {
-    cat: 'Professional Services Webstore · GitHub Live',
+    cat: 'Events Company Website · GitHub Live',
     name: 'Progigs',
-    desc: 'A professional services webstore connecting skilled Kenyan freelancers with quality clients. Features service listing pages, M-Pesa payment checkout, and a clean, conversion-optimized UI for the local gig economy.',
-    tags: ['PHP','JavaScript','M-Pesa API','MySQL','E-commerce'],
+    desc: 'A complete redesign for Pro Gigs, a Nairobi events production company. A bold dark aesthetic with an animated hero, client showcase, service portfolio, and a booking form connected to their workflow — built to match the energy of their events.',
+    tags: ['JavaScript','CSS3','Booking Form','Google Apps Script','Responsive Design'],
     liveUrl: '#',
     live: false,
     img: 'images/progigs-digital-media-kenya.png'
   },
   injili: {
-    cat: 'Digital Media Platform · GitHub Live',
+    cat: 'E-commerce · Faith Apparel · GitHub Live',
     name: 'Injili',
-    desc: 'A digital media and content platform engineered for modern storytelling and scalable audience engagement. Features editorial-style layouts, article management, and a clean reading experience for African content creators.',
-    tags: ['JavaScript','PHP','CSS3','Content Management','Media'],
+    desc: 'A made-to-order, faith-inspired apparel store. Premium editorial shopping experience with full M-Pesa STK Push checkout, automated order notifications via email and SMS, and a limited-edition drop model for the Genesis Collection.',
+    tags: ['PHP','MySQL','M-Pesa Daraja','E-commerce','Order Notifications'],
     liveUrl: '#',
     live: false,
     img: 'images/injili-freelance-services-webstores-kenya.png'
   }
 };
 
-// ── Open modal ──
 function openModal(k) {
   const p = pdata[k];
   document.getElementById('mpcat').textContent  = p.cat;
@@ -1084,29 +1246,16 @@ function openModal(k) {
   document.getElementById('mpdesc').textContent = p.desc;
   document.getElementById('mvis').className     = 'modal-vis';
 
-  // Build image with fallback placeholder if screenshot not yet added
-  var imgEl = new Image();
-  imgEl.alt   = p.name;
-  imgEl.style.cssText = 'width:100%;height:100%;object-fit:cover;object-position:top;border-radius:11px;';
-  imgEl.onerror = function() {
-    // Show a branded placeholder when image file doesn't exist yet
-    document.getElementById('mvis').innerHTML =
-      '<div style="width:100%;height:100%;border-radius:11px;background:linear-gradient(135deg,#052F5F,#004B23);' +
-      'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">' +
-      '<div style="font-size:28px;">🖼️</div>' +
-      '<div style="font-size:12px;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:.05em;">Screenshot coming soon</div>' +
-      '</div>';
-  };
-  imgEl.src = p.img;
-  document.getElementById('mvis').innerHTML = '';
-  document.getElementById('mvis').appendChild(imgEl);
+  document.getElementById('mvis').innerHTML =
+    '<img src="' + p.img + '" alt="' + p.name + '" ' +
+    'style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:11px;">';
 
   document.getElementById('mtags').innerHTML = p.tags
     .map(function(t){ return '<span class="modal-tag">' + t + '</span>'; })
     .join('');
 
   document.getElementById('macts').innerHTML = p.live
-    ? '<a href="' + p.liveUrl + '" target="_blank" class="btn btn-gold">Visit Live Site →</a>' +
+    ? '<a href="' + p.liveUrl + '" class="btn btn-gold">Read Full Case Study →</a>' +
       '<button class="btn btn-navy" onclick="closeModal()">Close</button>'
     : '<span class="btn btn-ghost" style="cursor:default;opacity:.7">🔒 Private GitHub Project</span>' +
       '<button class="btn btn-navy" onclick="closeModal()">Close</button>';
@@ -1114,22 +1263,6 @@ function openModal(k) {
   document.getElementById('mwrap').classList.add('on');
   document.body.style.overflow = 'hidden';
 }
-
-// ── Close modal ──
-function closeModal() {
-  document.getElementById('mwrap').classList.remove('on');
-  document.body.style.overflow = '';
-}
-
-// ── Close when clicking the dark backdrop (outside the box) ──
-function mOutside(e) {
-  if (e.target === document.getElementById('mwrap')) closeModal();
-}
-
-// ── Close with Escape key ──
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeModal();
-});
 
 // ── Chatbot sim ──
 const cbR={
@@ -1139,17 +1272,44 @@ const cbR={
 };
 function cbChat(btn,msg){
   const body=document.getElementById('cbBody');
-  body.innerHTML+='<div class="cb-msg usr">'+msg+'</div>';
+  body.innerHTML+=`<div class="cb-msg usr">${msg}</div>`;
   const typ=document.createElement('div');
   typ.className='cb-typing';
   typ.innerHTML='<div class="tdot"></div><div class="tdot"></div><div class="tdot"></div>';
   body.appendChild(typ);
   btn.disabled=true; btn.style.opacity='.5';
-  setTimeout(function(){
+  setTimeout(()=>{
     typ.remove();
-    body.innerHTML+='<div class="cb-msg bot">'+cbR[msg]+'</div>';
-    if(msg==='Pricing info') body.innerHTML+='<div style="margin-top:6px"><a href="schedule.html" class="btn btn-gold" style="font-size:12px;padding:8px 15px">Book Free Strategy Call →</a></div>';
+    body.innerHTML+=`<div class="cb-msg bot">${cbR[msg]}</div>`;
+    if(msg==='Pricing info') body.innerHTML+=`<div style="margin-top:6px"><a href="schedule.html" class="btn btn-gold" style="font-size:12px;padding:8px 15px">Book Free Strategy Call →</a></div>`;
   },1100);
+}
+
+// ── FAQ accordion ──
+function toggleFaq(btn){
+  var item = btn.parentElement;
+  var ans  = item.querySelector('.faq-a');
+  var isOpen = item.classList.contains('open');
+  // close others
+  document.querySelectorAll('.faq-item.open').forEach(function(o){
+    o.classList.remove('open');
+    o.querySelector('.faq-a').style.maxHeight = '0';
+    o.querySelector('.faq-q').setAttribute('aria-expanded','false');
+  });
+  if(!isOpen){
+    item.classList.add('open');
+    ans.style.maxHeight = ans.scrollHeight + 'px';
+    btn.setAttribute('aria-expanded','true');
+  }
+}
+
+// ── Sticky mobile CTA (appears after 35% scroll) ──
+var stickyCta = document.getElementById('stickyCta');
+if (stickyCta) {
+  window.addEventListener('scroll', function(){
+    var pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    stickyCta.classList.toggle('show', pct > 0.35 && pct < 0.92);
+  });
 }
 </script>
 </body>
