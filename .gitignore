@@ -1,0 +1,17 @@
+# Credentials — never commit
+.env
+
+# PHPMailer library — installed manually
+lib/
+
+# Uploaded product images
+uploads/products/*
+!uploads/products/.gitkeep
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log

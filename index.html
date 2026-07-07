@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Injil Apparel | The Genesis Collection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ─── VARIABLES ─── */
+:root {
+  --navy:#1C2329; --navy-mid:#252D35; --gold:#C98A41; --gold-dk:#a87232; --gold-lt:#e8b96a;
+  --cream:#F8F5F0; --stone:#EDEDE9; --white:#FFFFFF; --muted:#888882; --charcoal:#2D3139;
+  --ease:cubic-bezier(.25,.46,.45,.94); --ease-out:cubic-bezier(.16,1,.3,1);
+  --fd:'Cormorant Garamond',Georgia,serif; --fb:'DM Sans',system-ui,sans-serif;
+  --panel-w:480px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--cream);color:var(--navy);font-family:var(--fb);font-weight:300;overflow-x:hidden}
+input,button,select,textarea{font-family:var(--fb)}
+a{text-decoration:none}
+
+/* ─── NAVBAR ─── */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:500;background:var(--navy);border-bottom:1px solid rgba(201,138,65,.12);transition:all .4s var(--ease)}
+#navbar.scrolled{background:rgba(28,35,41,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.nav-container{max-width:1280px;margin:0 auto;padding:0 2.5rem;height:68px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;flex-direction:column;line-height:1;cursor:pointer}
+.logo-word{font-family:var(--fd);font-weight:500;font-size:1.5rem;color:var(--white);letter-spacing:.05em}
+.logo-sub{font-size:.52rem;font-weight:400;color:var(--gold);letter-spacing:.35em;text-transform:uppercase;margin-top:2px}
+.nav-links{display:flex;list-style:none;gap:2.5rem}
+.nav-links a{color:rgba(255,255,255,.7);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:400;transition:color .25s}
+.nav-links a:hover{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:1.25rem}
+.nav-icon-btn{color:rgba(255,255,255,.7);font-size:1rem;background:none;border:none;cursor:pointer;transition:color .25s;position:relative;display:flex;align-items:center;justify-content:center;width:36px;height:36px}
+.nav-icon-btn:hover{color:var(--gold)}
+.cart-badge{position:absolute;top:-4px;right:-4px;width:16px;height:16px;border-radius:50%;background:var(--gold);color:var(--white);font-size:.58rem;font-weight:500;display:flex;align-items:center;justify-content:center;transition:transform .2s;pointer-events:none}
+.cart-badge.bump{transform:scale(1.4)}
+.menu-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.3rem;cursor:pointer;width:40px;height:40px;align-items:center;justify-content:center;border-radius:2px}
+
+/* ─── SHARED BACKDROP ─── */
+.backdrop{position:fixed;inset:0;background:rgba(0,0,0,0);z-index:900;pointer-events:none;transition:background .35s}
+.backdrop.open{background:rgba(0,0,0,.55);pointer-events:all}
+
+/* ─── SHARED PANEL BASE ─── */
+.panel{position:fixed;top:0;right:0;width:var(--panel-w);max-width:100vw;height:100vh;background:var(--white);z-index:1000;display:flex;flex-direction:column;transform:translateX(110%);transition:transform .45s var(--ease-out);overflow:hidden}
+.panel.open{transform:translateX(0)}
+.panel-head{padding:1.4rem 1.6rem;border-bottom:1px solid var(--stone);display:flex;align-items:center;gap:1rem;flex-shrink:0}
+.panel-back{background:none;border:none;color:var(--navy);cursor:pointer;font-size:.9rem;opacity:.5;width:32px;height:32px;display:flex;align-items:center;justify-content:center;transition:opacity .2s;border-radius:2px}
+.panel-back:hover{opacity:1;background:var(--stone)}
+.panel-head-title{font-family:var(--fd);font-size:1.25rem;font-weight:500;flex:1}
+.panel-close{background:none;border:none;color:var(--navy);cursor:pointer;font-size:1.1rem;opacity:.45;width:32px;height:32px;display:flex;align-items:center;justify-content:center;transition:opacity .2s;border-radius:2px}
+.panel-close:hover{opacity:1;background:var(--stone)}
+.panel-body{flex:1;overflow-y:auto;overflow-x:hidden}
+.panel-foot{padding:1.25rem 1.6rem;border-top:1px solid var(--stone);flex-shrink:0}
+
+/* ─── NAV DRAWER (left) ─── */
+#nav-drawer{position:fixed;top:0;left:0;width:360px;max-width:88vw;height:100vh;background:var(--navy);z-index:1100;display:flex;flex-direction:column;transform:translateX(-110%);transition:transform .45s var(--ease-out);overflow:hidden}
+#nav-drawer.open{transform:translateX(0)}
+.nd-head{padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07)}
+.nd-close{background:none;border:none;color:rgba(255,255,255,.5);font-size:1.2rem;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;transition:color .2s}
+.nd-close:hover{color:var(--white)}
+.nd-body{flex:1;overflow-y:auto;padding-bottom:1rem}
+.nd-section{padding:1.5rem 1.5rem .75rem;border-bottom:1px solid rgba(255,255,255,.07)}
+.nd-section-label{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.3);font-weight:400;margin-bottom:1rem}
+.nd-nav-link{display:flex;align-items:center;justify-content:space-between;padding:.7rem 0;cursor:pointer;transition:all .2s;border-radius:4px}
+.nd-nav-link:hover .nd-link-text{color:var(--gold)}
+.nd-nav-link:hover .nd-link-arrow{opacity:1;transform:translateX(3px)}
+.nd-link-text{font-family:var(--fd);font-size:1.4rem;font-weight:300;color:var(--white);letter-spacing:.02em}
+.nd-link-sub{font-size:.65rem;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;margin-top:1px}
+.nd-link-arrow{color:var(--gold);font-size:.75rem;opacity:.4;transition:all .25s}
+.nd-badge{background:var(--gold);color:var(--white);font-size:.55rem;letter-spacing:.1em;padding:3px 7px;border-radius:2px;text-transform:uppercase;font-weight:500}
+.nd-account-guest{padding:1rem 0}
+.nd-account-guest p{font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:1.1rem}
+.nd-account-btns{display:flex;gap:.75rem}
+.nd-btn-signin{flex:1;background:var(--gold);color:var(--white);border:none;padding:.7rem 1rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;cursor:pointer;border-radius:2px;transition:background .2s}
+.nd-btn-signin:hover{background:var(--gold-dk)}
+.nd-btn-register{flex:1;background:none;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.2);padding:.7rem 1rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s}
+.nd-btn-register:hover{border-color:rgba(255,255,255,.5);color:var(--white)}
+.nd-user-card{display:flex;align-items:center;gap:.9rem;padding:.75rem 0 1.25rem}
+.nd-avatar{width:44px;height:44px;border-radius:50%;background:var(--gold);color:var(--white);font-size:.95rem;font-weight:500;display:flex;align-items:center;justify-content:center;font-family:var(--fd);flex-shrink:0}
+.nd-user-name{font-size:.95rem;color:var(--white);font-weight:400;margin-bottom:2px}
+.nd-user-email{font-size:.72rem;color:rgba(255,255,255,.4)}
+.nd-account-link{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0;cursor:pointer;transition:color .2s}
+.nd-account-link:hover .nd-acct-label{color:var(--gold)}
+.nd-acct-label{font-size:.82rem;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:.6rem}
+.nd-acct-label i{font-size:.8rem;width:16px;color:rgba(255,255,255,.35)}
+.nd-acct-arrow{font-size:.65rem;color:rgba(255,255,255,.25)}
+.nd-util-link{display:flex;align-items:center;gap:.75rem;padding:.55rem 0;cursor:pointer;transition:color .2s}
+.nd-util-link:hover .nd-util-text{color:rgba(255,255,255,.9)}
+.nd-util-text{font-size:.8rem;color:rgba(255,255,255,.5)}
+.nd-util-link i{font-size:.78rem;color:rgba(255,255,255,.25);width:16px}
+.nd-foot{padding:1.25rem 1.5rem;border-top:1px solid rgba(255,255,255,.07)}
+.nd-social{display:flex;gap:.6rem;margin-bottom:1rem}
+.nd-social a{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:.82rem;transition:all .2s}
+.nd-social a:hover{border-color:var(--gold);color:var(--gold)}
+.nd-copy{font-size:.6rem;color:rgba(255,255,255,.18);letter-spacing:.1em}
+
+/* ─── AUTH PANEL ─── */
+.auth-tabs{display:flex;border-bottom:1px solid var(--stone);flex-shrink:0}
+.auth-tab{flex:1;padding:1rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .25s;font-family:var(--fb)}
+.auth-tab.active{color:var(--navy);border-bottom-color:var(--gold)}
+.auth-form-wrap{padding:2rem 1.6rem}
+.auth-welcome{font-family:var(--fd);font-size:1.6rem;font-weight:300;margin-bottom:.35rem}
+.auth-sub{font-size:.82rem;color:var(--muted);margin-bottom:2rem;line-height:1.6}
+.form-group{margin-bottom:1.25rem}
+.form-label{display:block;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;font-weight:400}
+.form-input{width:100%;padding:.85rem 1rem;border:1px solid var(--stone);background:var(--cream);color:var(--navy);font-size:.88rem;border-radius:2px;outline:none;transition:border-color .2s;font-family:var(--fb)}
+.form-input:focus{border-color:var(--gold);background:var(--white)}
+.form-input::placeholder{color:var(--muted);font-size:.82rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.form-hint{font-size:.7rem;color:var(--muted);margin-top:.4rem;line-height:1.5}
+.btn-form-submit{width:100%;background:var(--navy);color:var(--white);border:none;padding:1.05rem;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;cursor:pointer;border-radius:2px;transition:background .2s;margin-top:.5rem;display:flex;align-items:center;justify-content:center;gap:.6rem;font-family:var(--fb)}
+.btn-form-submit:hover{background:var(--charcoal)}
+.auth-divider{display:flex;align-items:center;gap:1rem;margin:1.5rem 0}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--stone)}
+.auth-divider span{font-size:.7rem;color:var(--muted);letter-spacing:.1em;white-space:nowrap}
+.btn-social-auth{width:100%;background:var(--white);color:var(--navy);border:1px solid var(--stone);padding:.85rem;font-size:.8rem;cursor:pointer;border-radius:2px;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.6rem;font-family:var(--fb)}
+.btn-social-auth:hover{border-color:var(--navy);background:var(--cream)}
+.auth-switch{text-align:center;margin-top:1.5rem;font-size:.78rem;color:var(--muted)}
+.auth-switch button{background:none;border:none;color:var(--gold);cursor:pointer;font-size:.78rem;font-family:var(--fb);text-decoration:underline}
+.forgot-link{font-size:.72rem;color:var(--muted);cursor:pointer;float:right;transition:color .2s}
+.forgot-link:hover{color:var(--gold)}
+
+/* ─── PRODUCT DETAIL PANEL ─── */
+.pd-image-area{background:var(--navy);aspect-ratio:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0}
+.pd-image-area::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(201,138,65,.07) 0%,transparent 70%)}
+.pd-thumbs{display:flex;gap:.5rem;padding:.75rem 1.6rem;border-bottom:1px solid var(--stone);flex-shrink:0}
+.pd-thumb{width:48px;height:48px;border-radius:2px;cursor:pointer;overflow:hidden;border:2px solid transparent;transition:border-color .2s;flex-shrink:0}
+.pd-thumb.active{border-color:var(--gold)}
+.pd-thumb-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:.6rem}
+.pd-info{padding:1.6rem}
+.pd-tag{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:400;margin-bottom:.6rem;display:block}
+.pd-name{font-family:var(--fd);font-size:1.75rem;font-weight:400;line-height:1.1;margin-bottom:.3rem}
+.pd-verse{font-family:var(--fd);font-style:italic;font-size:.9rem;color:var(--muted);margin-bottom:1rem}
+.pd-price{font-size:1.15rem;font-weight:500;color:var(--navy);margin-bottom:1.4rem}
+.pd-section-label{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:.6rem;display:block}
+.pd-colors{display:flex;gap:.5rem;margin-bottom:1.4rem}
+.pd-color{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:border-color .2s;outline:2px solid transparent;outline-offset:2px;position:relative}
+.pd-color.active{outline-color:var(--gold)}
+.pd-sizes{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem}
+.pd-size-btn{padding:.55rem .9rem;border:1px solid var(--stone);background:var(--white);color:var(--navy);font-size:.78rem;cursor:pointer;border-radius:2px;transition:all .2s;font-family:var(--fb);position:relative}
+.pd-size-btn:hover:not(.oos-btn){border-color:var(--navy)}
+.pd-size-btn.active-size{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.pd-size-btn.oos-btn{color:var(--stone);cursor:not-allowed;position:relative;overflow:hidden}
+.pd-size-btn.oos-btn::after{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:var(--stone);transform:rotate(-20deg)}
+.pd-stock-msg{font-size:.72rem;margin-bottom:1.4rem;min-height:1.1em;transition:color .2s}
+.pd-stock-low{color:#C0392B}
+.pd-stock-ok{color:#27AE60}
+.pd-add-btn{width:100%;background:var(--gold);color:var(--white);border:none;padding:1.1rem;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;cursor:pointer;border-radius:2px;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:.75rem;font-family:var(--fb)}
+.pd-add-btn:hover{background:var(--gold-dk);transform:translateY(-1px)}
+.pd-add-btn:active{transform:translateY(0)}
+.pd-wish-btn{width:100%;background:none;color:var(--navy);border:1px solid var(--stone);padding:.85rem;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.6rem;font-family:var(--fb)}
+.pd-wish-btn:hover{border-color:var(--navy)}
+.pd-wish-btn.wished{color:var(--gold);border-color:var(--gold)}
+.pd-accordion{border-top:1px solid var(--stone);margin-top:1.4rem}
+.pd-acc-item{border-bottom:1px solid var(--stone)}
+.pd-acc-trigger{width:100%;background:none;border:none;padding:1rem 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);font-family:var(--fb)}
+.pd-acc-trigger i{font-size:.7rem;color:var(--muted);transition:transform .25s}
+.pd-acc-trigger.open i{transform:rotate(180deg)}
+.pd-acc-body{max-height:0;overflow:hidden;transition:max-height .35s var(--ease)}
+.pd-acc-body.open{max-height:200px}
+.pd-acc-body p{font-size:.82rem;color:var(--muted);line-height:1.75;padding-bottom:1rem}
+.pd-size-guide-link{font-size:.7rem;color:var(--gold);cursor:pointer;text-decoration:underline}
+
+/* ─── CART PANEL ─── */
+.cart-item{display:flex;gap:.9rem;padding:1rem 1.6rem;border-bottom:1px solid var(--stone)}
+.cart-item-img{width:68px;height:82px;border-radius:3px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cart-item-info{flex:1;min-width:0}
+.cart-item-name{font-family:var(--fd);font-size:.98rem;font-weight:500;color:var(--navy);margin-bottom:.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cart-item-meta{font-size:.7rem;color:var(--muted);margin-bottom:.5rem}
+.cart-qty-row{display:flex;align-items:center;gap:.5rem}
+.qty-btn{width:26px;height:26px;border:1px solid var(--stone);background:none;color:var(--navy);border-radius:2px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .15s;font-family:var(--fb)}
+.qty-btn:hover{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.qty-num{font-size:.85rem;min-width:22px;text-align:center;font-weight:400}
+.cart-remove{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.75rem;margin-left:auto;transition:color .2s;padding:4px}
+.cart-remove:hover{color:#C0392B}
+.cart-item-price{font-size:.9rem;font-weight:500;color:var(--navy);flex-shrink:0;align-self:flex-start;padding-top:.1rem}
+.cart-empty-state{text-align:center;padding:4rem 2rem}
+.cart-empty-state i{font-size:2.5rem;color:var(--stone);display:block;margin-bottom:1.25rem}
+.cart-empty-state p{font-size:.85rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.6}
+.cart-summary{padding:1rem 1.6rem .5rem}
+.cart-summary-row{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);margin-bottom:.4rem}
+.cart-summary-row.total{font-size:.92rem;color:var(--navy);font-weight:500;border-top:1px solid var(--stone);padding-top:.75rem;margin-top:.5rem}
+.btn-checkout{width:100%;background:var(--navy);color:var(--white);border:none;padding:1.1rem;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;cursor:pointer;border-radius:2px;font-family:var(--fb);transition:background .2s;display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:.75rem}
+.btn-checkout:hover{background:var(--charcoal)}
+.cart-trust{display:flex;align-items:center;justify-content:center;gap:1.5rem}
+.trust-item{display:flex;align-items:center;gap:.3rem;font-size:.65rem;color:var(--muted)}
+.trust-item i{font-size:.7rem}
+
+/* ─── CHECKOUT PANEL ─── */
+#checkout-panel{width:100%;max-width:100vw}
+.checkout-progress{display:flex;align-items:center;justify-content:center;gap:0;padding:.75rem 1.6rem;border-bottom:1px solid var(--stone);flex-shrink:0}
+.progress-step{display:flex;align-items:center;gap:.4rem}
+.progress-dot{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--stone);background:var(--white);color:var(--muted);font-size:.65rem;display:flex;align-items:center;justify-content:center;font-weight:500;transition:all .3s;flex-shrink:0}
+.progress-dot.active{border-color:var(--gold);background:var(--gold);color:var(--white)}
+.progress-dot.done{border-color:var(--navy);background:var(--navy);color:var(--white)}
+.progress-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .3s}
+.progress-label.active{color:var(--navy);font-weight:500}
+.progress-line{width:32px;height:1px;background:var(--stone);margin:0 .25rem;flex-shrink:0}
+.co-step{padding:1.6rem;display:none}
+.co-step.active{display:block}
+.co-step-title{font-family:var(--fd);font-size:1.3rem;font-weight:400;margin-bottom:.25rem}
+.co-step-sub{font-size:.8rem;color:var(--muted);margin-bottom:1.6rem;line-height:1.6}
+.co-order-mini{background:var(--cream);border-radius:3px;padding:1rem;margin-bottom:1.5rem}
+.co-order-item{display:flex;justify-content:space-between;align-items:center;font-size:.82rem;margin-bottom:.3rem}
+.co-order-item:last-child{margin-bottom:0}
+.co-order-label{color:var(--muted)}
+.co-order-total-row{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--stone);padding-top:.6rem;margin-top:.5rem}
+.co-order-total-row span{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.co-order-total-row strong{font-size:.98rem;color:var(--navy)}
+.delivery-options{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.4rem}
+.delivery-opt{display:flex;align-items:center;gap:.85rem;padding:.9rem 1rem;border:1px solid var(--stone);border-radius:2px;cursor:pointer;transition:border-color .2s}
+.delivery-opt:hover,.delivery-opt.selected{border-color:var(--navy)}
+.delivery-opt.selected{background:rgba(28,35,41,.03)}
+.delivery-opt input[type=radio]{accent-color:var(--navy);width:14px;height:14px;flex-shrink:0}
+.delivery-opt-info{flex:1}
+.delivery-opt-name{font-size:.82rem;color:var(--navy);font-weight:400}
+.delivery-opt-desc{font-size:.7rem;color:var(--muted);margin-top:1px}
+.delivery-opt-price{font-size:.82rem;font-weight:500;color:var(--navy)}
+.payment-methods{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.4rem}
+.payment-method{border:1px solid var(--stone);border-radius:2px;overflow:hidden;cursor:pointer;transition:border-color .2s}
+.payment-method:hover,.payment-method.selected{border-color:var(--navy)}
+.payment-method-head{display:flex;align-items:center;gap:.85rem;padding:.9rem 1rem}
+.payment-method-head input[type=radio]{accent-color:var(--navy);width:14px;height:14px;flex-shrink:0}
+.pay-label{font-size:.82rem;color:var(--navy);font-weight:400;flex:1}
+.pay-chip-pill{font-size:.58rem;letter-spacing:.08em;padding:3px 8px;border-radius:10px;font-weight:500}
+.pay-mpesa-chip{background:#4CAF50;color:var(--white)}
+.pay-card-icons{display:flex;gap:.3rem;font-size:.75rem;color:var(--muted)}
+.payment-fields{padding:0 1rem 1rem;display:none}
+.payment-fields.show{display:block}
+.payment-fields .form-input{margin-top:.4rem}
+.mpesa-note{font-size:.72rem;color:var(--muted);line-height:1.6;margin-top:.6rem;padding:.75rem;background:rgba(76,175,80,.06);border-radius:2px;border-left:3px solid #4CAF50}
+.card-row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.4rem}
+.co-nav-row{display:flex;align-items:center;gap:.75rem;margin-top:1rem}
+.btn-co-back{background:none;border:1px solid var(--stone);color:var(--navy);padding:.85rem 1.25rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;font-family:var(--fb);transition:all .2s;display:flex;align-items:center;gap:.4rem}
+.btn-co-back:hover{border-color:var(--navy)}
+.btn-co-next{flex:1;background:var(--navy);color:var(--white);border:none;padding:.95rem;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;cursor:pointer;border-radius:2px;font-family:var(--fb);transition:background .2s;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.btn-co-next:hover{background:var(--charcoal)}
+.btn-co-pay{background:var(--gold);color:var(--white);border:none;padding:1.1rem;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;cursor:pointer;border-radius:2px;font-family:var(--fb);width:100%;display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:1rem;transition:background .2s}
+.btn-co-pay:hover{background:var(--gold-dk)}
+.co-confirm{text-align:center;padding:3rem 1.6rem}
+.confirm-icon{width:64px;height:64px;border-radius:50%;background:rgba(39,174,96,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:1.5rem;color:#27AE60}
+.confirm-title{font-family:var(--fd);font-size:2rem;font-weight:300;margin-bottom:.5rem}
+.confirm-order-num{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem}
+.confirm-detail{font-size:.85rem;color:var(--muted);line-height:1.75;margin-bottom:2rem}
+.confirm-detail span{color:var(--navy);font-weight:400}
+.confirm-actions{display:flex;flex-direction:column;gap:.75rem}
+.btn-track{background:var(--navy);color:var(--white);border:none;padding:1rem;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;cursor:pointer;border-radius:2px;font-family:var(--fb);transition:background .2s;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.btn-track:hover{background:var(--charcoal)}
+.btn-continue-shopping{background:none;color:var(--navy);border:1px solid var(--stone);padding:.85rem;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;font-family:var(--fb);transition:all .2s}
+.btn-continue-shopping:hover{border-color:var(--navy)}
+.processing-overlay{display:none;flex-direction:column;align-items:center;justify-content:center;padding:3rem;text-align:center}
+.processing-overlay.show{display:flex}
+.spinner{width:48px;height:48px;border:2px solid var(--stone);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1.5rem}
+
+/* ─── ACCOUNT PANEL ─── */
+.account-hero{background:var(--navy);padding:2rem 1.6rem 1.75rem;flex-shrink:0;position:relative;overflow:hidden}
+.account-hero::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;border:1px solid rgba(201,138,65,.1)}
+.account-hero::after{content:'';position:absolute;bottom:-30px;left:-20px;width:100px;height:100px;border-radius:50%;border:1px solid rgba(201,138,65,.08)}
+.acct-avatar-large{width:60px;height:60px;border-radius:50%;background:var(--gold);color:var(--white);font-size:1.25rem;font-weight:500;display:flex;align-items:center;justify-content:center;font-family:var(--fd);margin-bottom:1rem;position:relative;z-index:1}
+.acct-name{font-family:var(--fd);font-size:1.4rem;font-weight:400;color:var(--white);margin-bottom:.2rem;position:relative;z-index:1}
+.acct-email{font-size:.75rem;color:rgba(255,255,255,.45);margin-bottom:.1rem;position:relative;z-index:1}
+.acct-since{font-size:.65rem;color:rgba(255,255,255,.25);letter-spacing:.1em;position:relative;z-index:1}
+.acct-quick-stats{display:flex;padding:1rem 1.6rem;border-bottom:1px solid var(--stone);gap:0;flex-shrink:0}
+.acct-stat{flex:1;text-align:center;padding:.5rem}
+.acct-stat:not(:last-child){border-right:1px solid var(--stone)}
+.acct-stat-num{font-family:var(--fd);font-size:1.4rem;font-weight:400;color:var(--navy);line-height:1;margin-bottom:.25rem}
+.acct-stat-label{font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.acct-section{padding:1.25rem 1.6rem}
+.acct-section-title{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:block}
+.order-card{background:var(--cream);border-radius:3px;padding:1rem;margin-bottom:.75rem;border:1px solid transparent;transition:border-color .2s;cursor:pointer}
+.order-card:hover{border-color:var(--stone)}
+.order-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.4rem}
+.order-num{font-size:.7rem;color:var(--muted);letter-spacing:.08em}
+.order-status{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:10px;font-weight:500}
+.status-delivered{background:rgba(39,174,96,.12);color:#1E8449}
+.status-processing{background:rgba(201,138,65,.12);color:var(--gold-dk)}
+.status-confirmed{background:rgba(28,35,41,.08);color:var(--navy)}
+.order-card-items{font-size:.82rem;color:var(--navy);margin-bottom:.3rem;font-weight:400}
+.order-card-meta{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)}
+.order-card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:.6rem;padding-top:.6rem;border-top:1px solid var(--stone)}
+.order-reorder-btn{background:none;border:1px solid var(--stone);color:var(--navy);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;cursor:pointer;border-radius:2px;font-family:var(--fb);transition:all .2s}
+.order-reorder-btn:hover{border-color:var(--navy);background:var(--navy);color:var(--white)}
+.order-track-btn{font-size:.68rem;color:var(--gold);cursor:pointer;display:flex;align-items:center;gap:.3rem;background:none;border:none;font-family:var(--fb)}
+.wishlist-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.wishlist-item{background:var(--white);border:1px solid var(--stone);border-radius:3px;overflow:hidden;cursor:pointer;transition:border-color .2s}
+.wishlist-item:hover{border-color:var(--navy)}
+.wishlist-thumb{height:80px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.wishlist-info{padding:.6rem}
+.wishlist-name{font-size:.8rem;font-weight:400;color:var(--navy);margin-bottom:.2rem}
+.wishlist-price{font-size:.72rem;color:var(--muted)}
+.acct-edit-btn{width:100%;background:none;border:1px solid var(--stone);color:var(--navy);padding:.8rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;font-family:var(--fb);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.5rem;margin-bottom:.75rem}
+.acct-edit-btn:hover{border-color:var(--navy)}
+.acct-signout-btn{width:100%;background:none;border:1px solid transparent;color:#C0392B;padding:.8rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;font-family:var(--fb);transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.acct-signout-btn:hover{border-color:rgba(192,57,43,.2);background:rgba(192,57,43,.04)}
+
+/* ─── HERO SECTION ─── */
+.hero{min-height:100vh;background:var(--navy);display:grid;grid-template-columns:1fr 1fr;padding-top:68px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 70% 50%,rgba(201,138,65,.06) 0%,transparent 70%);pointer-events:none}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:6rem 5% 6rem 8%;position:relative;z-index:1}
+.hero-eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:400;margin-bottom:2rem;opacity:0;animation:fadeUp .8s var(--ease) .2s forwards}
+.hero-title{font-family:var(--fd);font-size:clamp(3.5rem,6vw,6rem);font-weight:300;color:var(--white);line-height:1.05;margin-bottom:2rem;opacity:0;animation:fadeUp .9s var(--ease) .4s forwards}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:.95rem;line-height:1.75;color:rgba(255,255,255,.55);max-width:380px;margin-bottom:3rem;font-weight:300;opacity:0;animation:fadeUp .9s var(--ease) .6s forwards}
+.hero-actions{display:flex;align-items:center;gap:2rem;opacity:0;animation:fadeUp .9s var(--ease) .8s forwards}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;background:var(--gold);color:var(--white);padding:1rem 2.25rem;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;border-radius:2px;transition:all .3s var(--ease);font-family:var(--fb);border:none;cursor:pointer}
+.btn-primary:hover{background:var(--gold-dk);transform:translateY(-2px)}
+.btn-ghost{color:rgba(255,255,255,.6);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:.5rem;transition:color .25s;font-family:var(--fb);background:none;border:none;cursor:pointer}
+.btn-ghost:hover{color:var(--white)}
+.hero-right{display:flex;align-items:center;justify-content:center;padding:6rem 8% 6rem 5%;position:relative;z-index:1;opacity:0;animation:fadeIn 1.2s var(--ease) .5s forwards}
+
+/* CSS tee art */
+.tshirt-mockup{width:340px;height:400px;position:relative}
+.tshirt-body{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:260px;height:320px;background:#0d1117;border-radius:0 0 12px 12px;border:1px solid rgba(255,255,255,.07)}
+.tshirt-body::before{content:'';position:absolute;top:0;left:-50px;width:50px;height:90px;background:#0d1117;border-radius:0 0 0 20px;border-left:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)}
+.tshirt-body::after{content:'';position:absolute;top:0;right:-50px;width:50px;height:90px;background:#0d1117;border-radius:0 0 20px 0;border-right:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)}
+.tshirt-collar{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);width:90px;height:40px;border-radius:0 0 50% 50%;background:#0d1117;border:1px solid rgba(255,255,255,.07);z-index:2}
+.tshirt-graphic{position:absolute;top:50%;left:50%;transform:translate(-50%,-45%);width:160px;text-align:center;z-index:3}
+.tshirt-graphic .g-line1{font-family:var(--fd);font-size:.6rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;font-weight:400;display:block;margin-bottom:8px}
+.tshirt-graphic .g-main{font-family:var(--fd);font-size:2rem;font-weight:300;font-style:italic;color:var(--white);line-height:1;display:block;margin-bottom:8px}
+.tshirt-graphic .g-ref{font-family:var(--fb);font-size:.55rem;letter-spacing:.4em;color:rgba(255,255,255,.35);text-transform:uppercase;display:block}
+.tshirt-graphic .g-divider{width:40px;height:1px;background:var(--gold);margin:10px auto;opacity:.5}
+.mockup-label{position:absolute;bottom:-2.5rem;left:50%;transform:translateX(-50%);text-align:center;white-space:nowrap}
+.mockup-label span{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.hero-scroll-hint{position:absolute;bottom:2.5rem;left:8%;display:flex;align-items:center;gap:.75rem;opacity:0;animation:fadeIn 1s var(--ease) 1.5s forwards;z-index:1}
+.scroll-line{width:40px;height:1px;background:rgba(255,255,255,.2);position:relative;overflow:hidden}
+.scroll-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--gold);animation:scrollLine 2s ease 2s infinite}
+.scroll-text{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+
+/* ─── TICKER ─── */
+.ticker{background:var(--gold);overflow:hidden;padding:.6rem 0;white-space:nowrap}
+.ticker-inner{display:inline-flex;animation:ticker 22s linear infinite}
+.ticker-item{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--white);font-weight:400;padding:0 3rem;opacity:.9}
+
+/* ─── COLLECTION ─── */
+.section-collection{padding:7rem 8%;background:var(--cream)}
+.section-header{text-align:center;margin-bottom:4.5rem}
+.section-eyebrow{font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);font-weight:400;display:block;margin-bottom:1rem}
+.section-title{font-family:var(--fd);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:var(--navy);line-height:1.1;margin-bottom:1rem}
+.section-sub{font-size:.9rem;color:var(--muted);line-height:1.7;max-width:480px;margin:0 auto}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.product-card{background:var(--white);border-radius:4px;overflow:hidden;cursor:pointer;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(28,35,41,.12)}
+.product-img-wrap{position:relative;overflow:hidden;aspect-ratio:3/4}
+.product-img-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;transition:transform .6s var(--ease)}
+.product-card:hover .product-img-bg{transform:scale(1.03)}
+.bg-navy{background:var(--navy)} .bg-stone{background:#E8E5E0} .bg-charcoal{background:#2A2A2A} .bg-dusty{background:#C5BFB8}
+.mini-tee{width:90px;height:110px;position:relative}
+.mini-tee-body{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:70px;height:88px;border-radius:0 0 6px 6px}
+.mini-tee-body::before{content:'';position:absolute;top:0;left:-14px;width:14px;height:28px;border-radius:0 0 0 8px}
+.mini-tee-body::after{content:'';position:absolute;top:0;right:-14px;width:14px;height:28px;border-radius:0 0 8px 0}
+.mini-collar{position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:26px;height:14px;border-radius:0 0 50% 50%;z-index:2}
+.tee-black .mini-tee-body,.tee-black .mini-tee-body::before,.tee-black .mini-tee-body::after,.tee-black .mini-collar{background:#0d1117}
+.tee-white .mini-tee-body,.tee-white .mini-tee-body::before,.tee-white .mini-tee-body::after,.tee-white .mini-collar{background:#F8F8F6;border:1px solid rgba(0,0,0,.1)}
+.tee-olive .mini-tee-body,.tee-olive .mini-tee-body::before,.tee-olive .mini-tee-body::after,.tee-olive .mini-collar{background:#4A4A3A}
+.tee-cream .mini-tee-body,.tee-cream .mini-tee-body::before,.tee-cream .mini-tee-body::after,.tee-cream .mini-collar{background:#EDE8E0}
+.product-graphic-abs{position:absolute;text-align:center;width:100%}
+.product-tag{position:absolute;top:.9rem;left:.9rem;background:var(--gold);color:var(--white);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:3px 9px;border-radius:2px;font-weight:500;z-index:10}
+.product-tag.sold-out-tag{background:#888882}
+.product-hover-add{position:absolute;bottom:0;left:0;right:0;background:var(--navy);padding:.75rem 1rem;transform:translateY(100%);transition:transform .35s var(--ease)}
+.product-card:hover .product-hover-add{transform:translateY(0)}
+.hover-size-row{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.5rem}
+.hover-size-btn{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);font-size:.58rem;padding:3px 7px;cursor:pointer;border-radius:2px;font-family:var(--fb);transition:all .2s}
+.hover-size-btn:hover,.hover-size-btn.act{background:var(--gold);border-color:var(--gold);color:var(--white)}
+.hover-size-btn.oos-h{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.hover-add-btn{width:100%;background:var(--gold);color:var(--white);border:none;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;padding:.55rem;cursor:pointer;border-radius:2px;font-family:var(--fb);font-weight:500;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:.4rem}
+.hover-add-btn:hover{background:var(--gold-dk)}
+.product-info{padding:1rem}
+.product-name{font-family:var(--fd);font-size:1.05rem;font-weight:500;margin-bottom:.2rem}
+.product-verse-tag{font-size:.7rem;color:var(--muted);font-style:italic;font-family:var(--fd);margin-bottom:.55rem}
+.product-bottom{display:flex;align-items:center;justify-content:space-between}
+.product-price{font-size:.9rem;font-weight:500}
+.color-dots{display:flex;gap:4px}
+.cdot{width:11px;height:11px;border-radius:50%;border:1.5px solid rgba(0,0,0,.1);cursor:pointer}
+
+/* ─── FEATURED DROP ─── */
+.section-drop{background:var(--navy);display:grid;grid-template-columns:1fr 1fr;min-height:560px}
+.drop-visual{background:#0d1117;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:5rem 4rem}
+.drop-visual::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(201,138,65,.08) 0%,transparent 70%)}
+.drop-tee{width:220px;height:270px;position:relative;z-index:1}
+.drop-tee-body{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:170px;height:210px;background:#FAFAF8;border-radius:0 0 10px 10px}
+.drop-tee-body::before{content:'';position:absolute;top:0;left:-36px;width:36px;height:64px;background:#FAFAF8;border-radius:0 0 0 14px}
+.drop-tee-body::after{content:'';position:absolute;top:0;right:-36px;width:36px;height:64px;background:#FAFAF8;border-radius:0 0 14px 0}
+.drop-collar{position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:60px;height:30px;background:#FAFAF8;border-radius:0 0 50% 50%;z-index:2}
+.drop-tee-art{position:absolute;top:50%;left:50%;transform:translate(-50%,-40%);text-align:center;width:130px;z-index:3}
+.art-circle{width:80px;height:80px;border-radius:50%;border:1px solid rgba(201,138,65,.4);margin:0 auto 8px;display:flex;align-items:center;justify-content:center;position:relative}
+.art-circle::before{content:'';position:absolute;inset:6px;border-radius:50%;border:1px solid rgba(201,138,65,.25)}
+.art-cross{width:22px;height:22px;position:relative}
+.art-cross::before{content:'';position:absolute;width:2px;height:22px;background:var(--gold);top:0;left:50%;transform:translateX(-50%)}
+.art-cross::after{content:'';position:absolute;width:16px;height:2px;background:var(--gold);top:35%;left:50%;transform:translate(-50%,-50%)}
+.art-text{font-family:var(--fb);font-size:.45rem;letter-spacing:.2em;color:rgba(201,138,65,.8);text-transform:uppercase;display:block}
+.drop-content{display:flex;flex-direction:column;justify-content:center;padding:5rem 8% 5rem 6%}
+.drop-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:400;margin-bottom:1.5rem}
+.drop-badge::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s ease infinite}
+.drop-title{font-family:var(--fd);font-size:clamp(2.2rem,4vw,3.5rem);font-weight:300;color:var(--white);line-height:1.05;margin-bottom:1.5rem}
+.drop-desc{font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:2.5rem;max-width:400px;font-weight:300}
+.drop-meta{display:flex;gap:2rem;margin-bottom:2.5rem}
+.drop-meta-item label{display:block;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.25rem}
+.drop-meta-item span{font-size:.9rem;color:var(--white);font-weight:400}
+.drop-actions{display:flex;align-items:center;gap:1.5rem}
+
+/* ─── ABOUT ─── */
+.section-about{padding:8rem 8%;display:grid;grid-template-columns:1fr 1.2fr;gap:8rem;align-items:center;background:var(--cream)}
+.about-eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.5rem}
+.about-title{font-family:var(--fd);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;color:var(--navy);line-height:1.1;margin-bottom:2rem}
+.about-title em{font-style:italic;color:var(--gold)}
+.about-body{font-size:.92rem;line-height:1.85;color:rgba(28,35,41,.65);margin-bottom:1.25rem}
+.about-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-top:1rem;border-bottom:1px solid var(--navy);padding-bottom:2px;transition:color .2s,border-color .2s}
+.about-link:hover{color:var(--gold);border-color:var(--gold)}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.stat-card{background:var(--white);padding:2rem 1.5rem;border-radius:4px}
+.stat-card:nth-child(2){margin-top:2rem} .stat-card:nth-child(4){margin-top:-2rem}
+.stat-number{font-family:var(--fd);font-size:2.8rem;font-weight:300;color:var(--navy);line-height:1;margin-bottom:.5rem}
+.stat-number span{color:var(--gold)}
+.stat-label{font-size:.75rem;color:var(--muted);letter-spacing:.08em;line-height:1.5}
+
+/* ─── NEWSLETTER ─── */
+.section-newsletter{background:var(--navy);padding:6rem 8%;text-align:center}
+.nl-eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.5rem}
+.nl-title{font-family:var(--fd);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:1rem}
+.nl-sub{font-size:.9rem;color:rgba(255,255,255,.45);margin-bottom:2.5rem;line-height:1.7}
+.nl-form{display:flex;max-width:460px;margin:0 auto}
+.nl-form input{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-right:none;color:var(--white);padding:1rem 1.25rem;font-size:.85rem;font-family:var(--fb);border-radius:2px 0 0 2px;outline:none;transition:border-color .2s}
+.nl-form input::placeholder{color:rgba(255,255,255,.3)}
+.nl-form input:focus{border-color:rgba(201,138,65,.5)}
+.nl-form button{background:var(--gold);color:var(--white);border:none;padding:1rem 1.75rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;font-family:var(--fb);cursor:pointer;border-radius:0 2px 2px 0;transition:background .2s}
+.nl-form button:hover{background:var(--gold-dk)}
+.nl-note{font-size:.7rem;color:rgba(255,255,255,.2);margin-top:1rem}
+
+/* ─── FOOTER ─── */
+footer{background:#111518;padding:4rem 8% 2rem;border-top:1px solid rgba(255,255,255,.05)}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-logo-word{display:block;font-family:var(--fd);font-size:1.4rem;color:var(--white);letter-spacing:.05em;margin-bottom:4px}
+.footer-logo-sub{display:block;font-size:.52rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem}
+.footer-brand-desc{font-size:.8rem;color:rgba(255,255,255,.3);line-height:1.75;margin-bottom:1.5rem;max-width:240px}
+.footer-social{display:flex;gap:.6rem}
+.footer-social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:all .2s}
+.footer-social a:hover{border-color:var(--gold);color:var(--gold)}
+.footer-col h4{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.5);font-weight:400;margin-bottom:1.25rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.footer-col ul a{font-size:.8rem;color:rgba(255,255,255,.3);transition:color .2s}
+.footer-col ul a:hover{color:rgba(255,255,255,.8)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:2rem;display:flex;align-items:center;justify-content:space-between}
+.footer-bottom p{font-size:.72rem;color:rgba(255,255,255,.2)}
+.footer-pays{display:flex;gap:.5rem}
+.pay-pill{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.3);font-size:.58rem;padding:4px 8px;border-radius:2px}
+
+/* ─── TOAST ─── */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--navy);color:var(--white);padding:.8rem 1.75rem;border-radius:2px;font-size:.8rem;letter-spacing:.05em;z-index:9000;transition:transform .4s var(--ease);display:flex;align-items:center;gap:.6rem;white-space:nowrap;box-shadow:0 8px 30px rgba(0,0,0,.25);pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast i{color:var(--gold)}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+@keyframes scrollLine{from{left:-100%}to{left:100%}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ─── MOBILE ─── */
+@media(max-width:1024px){.product-grid{grid-template-columns:repeat(2,1fr)}.stat-card:nth-child(2),.stat-card:nth-child(4){margin-top:0}.footer-top{grid-template-columns:1fr 1fr;gap:2rem}}
+@media(max-width:768px){
+  .nav-links,.nav-right .d-only{display:none!important}
+  .menu-toggle{display:flex}
+  :root{--panel-w:100vw}
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-left{padding:4rem 6%}
+  .hero-right{display:none}
+  .hero-scroll-hint{display:none}
+  .section-drop{grid-template-columns:1fr}
+  .drop-visual{min-height:280px;padding:3rem}
+  .drop-content{padding:3rem 6%}
+  .section-about{grid-template-columns:1fr;gap:3rem;padding:5rem 6%}
+  .about-stats{order:-1}
+  .stat-card:nth-child(2),.stat-card:nth-child(4){margin-top:0}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:1rem}
+  .nl-form{flex-direction:column}
+  .nl-form input{border-right:1px solid rgba(255,255,255,.15);border-bottom:none;border-radius:2px 2px 0 0}
+  .nl-form button{border-radius:0 0 2px 2px}
+  .checkout-progress .progress-label{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ─── -->
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="logo" onclick="closeAllPanels()">
+      <span class="logo-word">injili</span>
+      <span class="logo-sub">Apparel</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#collection">Genesis Collection</a></li>
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="nav-icon-btn d-only" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button class="nav-icon-btn d-only" title="Wishlist"><i class="fa-regular fa-heart"></i></button>
+      <button class="nav-icon-btn" title="Your bag" onclick="openPanel('cart')">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-badge" id="cart-count">0</span>
+      </button>
+      <button class="nav-icon-btn d-only" title="Account" onclick="openPanel('account')"><i class="fa-regular fa-user"></i></button>
+    </div>
+    <button class="menu-toggle" id="hamburger" onclick="openNavDrawer()" aria-label="Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── SHARED BACKDROP ─── -->
+<div class="backdrop" id="backdrop" onclick="closeAllPanels()"></div>
+
+<!-- ═══════════════════════════════════════════
+     NAV DRAWER (hamburger menu — mobile primary)
+════════════════════════════════════════════ -->
+<div id="nav-drawer">
+  <div class="nd-head">
+    <div class="logo">
+      <span class="logo-word" style="font-size:1.2rem">injil</span>
+      <span class="logo-sub">Apparel</span>
+    </div>
+    <button class="nd-close" onclick="closeNavDrawer()"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+
+  <div class="nd-body">
+    <!-- Main Navigation -->
+    <div class="nd-section">
+      <div class="nd-section-label">Navigate</div>
+      <div class="nd-nav-link" onclick="scrollToSection('home')">
+        <div><div class="nd-link-text">Home</div></div>
+        <i class="fa-solid fa-arrow-right nd-link-arrow"></i>
+      </div>
+      <div class="nd-nav-link" onclick="scrollToSection('collection')">
+        <div>
+          <div class="nd-link-text">Genesis Collection</div>
+          <div class="nd-link-sub">Drop 001 — 4 Designs</div>
+        </div>
+        <i class="fa-solid fa-arrow-right nd-link-arrow"></i>
+      </div>
+      <div class="nd-nav-link" onclick="scrollToSection('about')">
+        <div><div class="nd-link-text">Our Story</div></div>
+        <i class="fa-solid fa-arrow-right nd-link-arrow"></i>
+      </div>
+      <div class="nd-nav-link">
+        <div>
+          <div class="nd-link-text" style="display:flex;align-items:center;gap:.75rem">Member Drops <span class="nd-badge">Soon</span></div>
+          <div class="nd-link-sub">Exclusive access for members</div>
+        </div>
+        <i class="fa-solid fa-arrow-right nd-link-arrow"></i>
+      </div>
+    </div>
+
+    <!-- Account Section — Guest -->
+    <div class="nd-section" id="nd-guest-section">
+      <div class="nd-section-label">My Account</div>
+      <div class="nd-account-guest">
+        <p>Sign in to track orders, access your wishlist, and get first access to new drops.</p>
+        <div class="nd-account-btns">
+          <button class="nd-btn-signin" onclick="openPanel('auth','signin')">Sign In</button>
+          <button class="nd-btn-register" onclick="openPanel('auth','register')">Register</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Account Section — Logged In (hidden by default) -->
+    <div class="nd-section" id="nd-user-section" style="display:none">
+      <div class="nd-section-label">My Account</div>
+      <div class="nd-user-card">
+        <div class="nd-avatar" id="nd-avatar">AK</div>
+        <div>
+          <div class="nd-user-name" id="nd-user-name">Amara Kamau</div>
+          <div class="nd-user-email" id="nd-user-email">amara.k@gmail.com</div>
+        </div>
+      </div>
+      <div class="nd-account-link" onclick="openPanel('account')">
+        <span class="nd-acct-label"><i class="fa-regular fa-user"></i> My Profile</span>
+        <i class="fa-solid fa-chevron-right nd-acct-arrow"></i>
+      </div>
+      <div class="nd-account-link" onclick="openPanel('account');switchAcctTab('orders')">
+        <span class="nd-acct-label"><i class="fa-regular fa-bag-shopping"></i> My Orders</span>
+        <i class="fa-solid fa-chevron-right nd-acct-arrow"></i>
+      </div>
+      <div class="nd-account-link" onclick="openPanel('account');switchAcctTab('wishlist')">
+        <span class="nd-acct-label"><i class="fa-regular fa-heart"></i> Wishlist <span style="background:var(--gold);color:var(--white);font-size:.55rem;padding:2px 6px;border-radius:10px;margin-left:.3rem">2</span></span>
+        <i class="fa-solid fa-chevron-right nd-acct-arrow"></i>
+      </div>
+      <div class="nd-account-link" onclick="openPanel('cart')">
+        <span class="nd-acct-label"><i class="fa-regular fa-bag-shopping"></i> My Bag <span id="nd-cart-count" style="background:var(--gold);color:var(--white);font-size:.55rem;padding:2px 6px;border-radius:10px;margin-left:.3rem">0</span></span>
+        <i class="fa-solid fa-chevron-right nd-acct-arrow"></i>
+      </div>
+    </div>
+
+    <!-- Utility Links -->
+    <div class="nd-section">
+      <div class="nd-section-label">Help</div>
+      <div class="nd-util-link">
+        <i class="fa-regular fa-ruler"></i>
+        <span class="nd-util-text">Size Guide</span>
+      </div>
+      <div class="nd-util-link">
+        <i class="fa-regular fa-location-dot"></i>
+        <span class="nd-util-text">Track My Order</span>
+      </div>
+      <div class="nd-util-link">
+        <i class="fa-regular fa-circle-question"></i>
+        <span class="nd-util-text">Help & Support</span>
+      </div>
+      <div class="nd-util-link">
+        <i class="fa-regular fa-envelope"></i>
+        <span class="nd-util-text">Contact Us</span>
+      </div>
+    </div>
+
+    <!-- Sign Out (only shown when logged in) -->
+    <div class="nd-section" id="nd-signout-section" style="display:none">
+      <div class="nd-util-link" onclick="handleSignOut()" style="cursor:pointer">
+        <i class="fa-solid fa-right-from-bracket" style="color:rgba(192,57,43,.6)"></i>
+        <span class="nd-util-text" style="color:rgba(192,57,43,.7)">Sign Out</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="nd-foot">
+    <div class="nd-social">
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+    <div class="nd-copy">© 2025 Injil Apparel · Nairobi, Kenya</div>
+  </div>
+</div>
+
+<!-- ═════════════════════════════════
+     AUTH PANEL (Sign In / Register)
+══════════════════════════════════ -->
+<div class="panel" id="auth-panel">
+  <div class="panel-head">
+    <button class="panel-back" onclick="closePanel('auth-panel')"><i class="fa-solid fa-arrow-left"></i></button>
+    <span class="panel-head-title" id="auth-panel-title">Welcome Back</span>
+    <button class="panel-close" onclick="closePanel('auth-panel')"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="auth-tabs">
+    <button class="auth-tab active" id="tab-signin" onclick="switchAuthTab('signin')">Sign In</button>
+    <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Create Account</button>
+  </div>
+  <div class="panel-body">
+    <!-- Sign In Form -->
+    <div class="auth-form-wrap" id="form-signin">
+      <div class="auth-welcome">Welcome back.</div>
+      <div class="auth-sub">Sign in to access your orders, wishlist, and exclusive member drops.</div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input class="form-input" type="email" placeholder="amara@example.com" id="si-email">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password <span class="forgot-link" onclick="showToast('Password reset email sent',true)">Forgot?</span></label>
+        <input class="form-input" type="password" placeholder="••••••••" id="si-pass">
+      </div>
+      <button class="btn-form-submit" onclick="handleSignIn()">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In
+      </button>
+      <div class="auth-divider"><span>or continue with</span></div>
+      <button class="btn-social-auth"><img src="https://www.google.com/favicon.ico" width="16" height="16" style="border-radius:2px" alt=""> Continue with Google</button>
+      <div class="auth-switch">Don't have an account? <button onclick="switchAuthTab('register')">Create one free</button></div>
+    </div>
+    <!-- Register Form -->
+    <div class="auth-form-wrap" id="form-register" style="display:none">
+      <div class="auth-welcome">Join Injil.</div>
+      <div class="auth-sub">Create your account to get early drop access and order tracking.</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input class="form-input" type="text" placeholder="Amara" id="reg-first">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <input class="form-input" type="text" placeholder="Kamau" id="reg-last">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input class="form-input" type="email" placeholder="amara@example.com" id="reg-email">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone Number</label>
+        <input class="form-input" type="tel" placeholder="0712 345 678" id="reg-phone">
+        <div class="form-hint">We use this for order updates and M-Pesa payments.</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input class="form-input" type="password" placeholder="At least 8 characters" id="reg-pass">
+      </div>
+      <button class="btn-form-submit" onclick="handleRegister()">
+        <i class="fa-solid fa-user-plus"></i> Create My Account
+      </button>
+      <div class="auth-switch">Already have an account? <button onclick="switchAuthTab('signin')">Sign in</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═════════════════════════════════
+     PRODUCT DETAIL PANEL
+══════════════════════════════════ -->
+<div class="panel" id="product-panel">
+  <div class="panel-head" style="border:none;padding-bottom:0">
+    <button class="panel-back" onclick="closePanel('product-panel')"><i class="fa-solid fa-arrow-left"></i></button>
+    <span class="panel-head-title" id="pd-panel-title"></span>
+    <button class="panel-close" onclick="closePanel('product-panel')"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="panel-body">
+    <div class="pd-image-area" id="pd-image-area"></div>
+    <div class="pd-thumbs" id="pd-thumbs"></div>
+    <div class="pd-info">
+      <span class="pd-tag" id="pd-tag"></span>
+      <h2 class="pd-name" id="pd-name"></h2>
+      <div class="pd-verse" id="pd-verse"></div>
+      <div class="pd-price" id="pd-price"></div>
+      <!-- Color -->
+      <span class="pd-section-label">Colour: <strong id="pd-selected-color"></strong></span>
+      <div class="pd-colors" id="pd-colors"></div>
+      <!-- Size -->
+      <span class="pd-section-label" style="margin-top:1rem">Size: <strong id="pd-selected-size">Select</strong> &nbsp;<span class="pd-size-guide-link" onclick="showToast('Size guide coming soon!',true)">Size Guide</span></span>
+      <div class="pd-sizes" id="pd-sizes"></div>
+      <div class="pd-stock-msg" id="pd-stock-msg"></div>
+      <!-- CTAs -->
+      <button class="pd-add-btn" id="pd-add-btn" onclick="pdAddToCart()">
+        <i class="fa-solid fa-bag-shopping"></i> Add to Bag
+      </button>
+      <button class="pd-wish-btn" id="pd-wish-btn" onclick="toggleWishlist()">
+        <i class="fa-regular fa-heart"></i> Add to Wishlist
+      </button>
+      <!-- Accordion -->
+      <div class="pd-accordion">
+        <div class="pd-acc-item">
+          <button class="pd-acc-trigger" onclick="toggleAcc(this)">
+            Material & Quality <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="pd-acc-body"><p id="acc-material"></p></div>
+        </div>
+        <div class="pd-acc-item">
+          <button class="pd-acc-trigger" onclick="toggleAcc(this)">
+            Fit & Sizing <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="pd-acc-body"><p id="acc-fit"></p></div>
+        </div>
+        <div class="pd-acc-item">
+          <button class="pd-acc-trigger" onclick="toggleAcc(this)">
+            Care Instructions <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="pd-acc-body"><p>Machine wash cold, inside out. Tumble dry low. Do not bleach. Iron on reverse. Wash dark colours separately.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═════════════════════════════════
+     CART PANEL
+══════════════════════════════════ -->
+<div class="panel" id="cart-panel">
+  <div class="panel-head">
+    <button class="panel-back" onclick="closePanel('cart-panel')"><i class="fa-solid fa-arrow-left"></i></button>
+    <span class="panel-head-title">Your Bag</span>
+    <button class="panel-close" onclick="closePanel('cart-panel')"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="panel-body" id="cart-body">
+    <div class="cart-empty-state" id="cart-empty">
+      <i class="fa-regular fa-bag-shopping"></i>
+      <p>Your bag is empty.<br>Go find something beautiful.</p>
+      <button class="btn-primary" onclick="closePanel('cart-panel');document.getElementById('collection').scrollIntoView({behavior:'smooth'})">
+        Shop the Collection
+      </button>
+    </div>
+    <div id="cart-items-list"></div>
+  </div>
+  <div class="panel-foot" id="cart-foot" style="display:none">
+    <div class="cart-summary" id="cart-summary"></div>
+    <div style="padding:.5rem 1.6rem 0">
+      <button class="btn-checkout" onclick="openPanel('checkout')">
+        <i class="fa-solid fa-lock"></i> Proceed to Checkout
+      </button>
+      <div class="cart-trust">
+        <span class="trust-item"><i class="fa-solid fa-shield-halved"></i> Secure</span>
+        <span class="trust-item"><i class="fa-solid fa-rotate-left"></i> Free Returns</span>
+        <span class="trust-item"><i class="fa-solid fa-truck"></i> Fast Delivery</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═════════════════════════════════
+     CHECKOUT PANEL (multi-step)
+══════════════════════════════════ -->
+<div class="panel" id="checkout-panel">
+  <div class="panel-head">
+    <button class="panel-back" id="co-back-btn" onclick="coBack()"><i class="fa-solid fa-arrow-left"></i></button>
+    <span class="panel-head-title">Checkout</span>
+    <button class="panel-close" onclick="closePanel('checkout-panel')"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <!-- Progress -->
+  <div class="checkout-progress" id="co-progress">
+    <div class="progress-step">
+      <div class="progress-dot active" id="pdot-1">1</div>
+      <span class="progress-label active" id="plbl-1">Details</span>
+    </div>
+    <div class="progress-line"></div>
+    <div class="progress-step">
+      <div class="progress-dot" id="pdot-2">2</div>
+      <span class="progress-label" id="plbl-2">Delivery</span>
+    </div>
+    <div class="progress-line"></div>
+    <div class="progress-step">
+      <div class="progress-dot" id="pdot-3">3</div>
+      <span class="progress-label" id="plbl-3">Payment</span>
+    </div>
+  </div>
+
+  <div class="panel-body" style="padding:0">
+    <!-- Step 1: Details -->
+    <div class="co-step active" id="co-step-1">
+      <div class="co-step-title">Your Details</div>
+      <div class="co-step-sub">We'll use this to keep you updated on your order.</div>
+      <div class="co-order-mini" id="co-mini-summary"></div>
+      <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" id="co-name" placeholder="Amara Kamau"></div>
+      <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" id="co-email" type="email" placeholder="amara@example.com"></div>
+      <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" id="co-phone" type="tel" placeholder="0712 345 678"></div>
+      <div class="co-nav-row">
+        <button class="btn-co-next" onclick="coNext(1)">Delivery Details <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <!-- Step 2: Delivery -->
+    <div class="co-step" id="co-step-2">
+      <div class="co-step-title">Delivery</div>
+      <div class="co-step-sub">Choose how you'd like to receive your order.</div>
+      <div class="delivery-options">
+        <label class="delivery-opt selected" id="del-1">
+          <input type="radio" name="delivery" value="standard" checked onchange="selectDelivery(this,'del-1',200)">
+          <div class="delivery-opt-info">
+            <div class="delivery-opt-name">Standard Delivery</div>
+            <div class="delivery-opt-desc">3–5 business days · Nairobi & surrounds</div>
+          </div>
+          <div class="delivery-opt-price">KSh 200</div>
+        </label>
+        <label class="delivery-opt" id="del-2">
+          <input type="radio" name="delivery" value="express" onchange="selectDelivery(this,'del-2',500)">
+          <div class="delivery-opt-info">
+            <div class="delivery-opt-name">Express Delivery</div>
+            <div class="delivery-opt-desc">Next business day · Nairobi only</div>
+          </div>
+          <div class="delivery-opt-price">KSh 500</div>
+        </label>
+        <label class="delivery-opt" id="del-3">
+          <input type="radio" name="delivery" value="pickup" onchange="selectDelivery(this,'del-3',0)">
+          <div class="delivery-opt-info">
+            <div class="delivery-opt-name">Pickup</div>
+            <div class="delivery-opt-desc">Collect from Westlands, Nairobi · Ready in 2 hrs</div>
+          </div>
+          <div class="delivery-opt-price" style="color:#27AE60">Free</div>
+        </label>
+      </div>
+      <div id="address-section">
+        <div class="form-group"><label class="form-label">Street Address</label><input class="form-input" id="co-addr" placeholder="e.g. 14 Ngong Road, Kilimani"></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">City</label><input class="form-input" id="co-city" placeholder="Nairobi"></div>
+          <div class="form-group"><label class="form-label">Area / Estate</label><input class="form-input" id="co-area" placeholder="e.g. Westlands"></div>
+        </div>
+        <div class="form-group"><label class="form-label">Delivery Notes (optional)</label><input class="form-input" id="co-notes" placeholder="e.g. Call on arrival, gate code 1234"></div>
+      </div>
+      <div class="co-nav-row">
+        <button class="btn-co-back" onclick="coBack()"><i class="fa-solid fa-arrow-left"></i> Back</button>
+        <button class="btn-co-next" onclick="coNext(2)">Payment <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <!-- Step 3: Payment -->
+    <div class="co-step" id="co-step-3">
+      <div class="co-step-title">Payment</div>
+      <div class="co-step-sub">All payments are secure and encrypted.</div>
+      <div class="co-order-mini" id="co-final-summary"></div>
+      <div class="payment-methods">
+        <div class="payment-method selected" id="pm-mpesa">
+          <div class="payment-method-head" onclick="selectPayment('mpesa')">
+            <input type="radio" name="payment" value="mpesa" checked>
+            <span class="pay-label">M-Pesa</span>
+            <span class="pay-chip-pill pay-mpesa-chip">STK Push</span>
+          </div>
+          <div class="payment-fields show" id="pf-mpesa">
+            <div class="form-group" style="margin-bottom:.5rem">
+              <label class="form-label">M-Pesa Phone Number</label>
+              <input class="form-input" id="co-mpesa-phone" type="tel" placeholder="0712 345 678">
+            </div>
+            <div class="mpesa-note">We'll send an M-Pesa STK push prompt to your phone. Enter your PIN to confirm payment.</div>
+          </div>
+        </div>
+        <div class="payment-method" id="pm-card">
+          <div class="payment-method-head" onclick="selectPayment('card')">
+            <input type="radio" name="payment" value="card">
+            <span class="pay-label">Debit / Credit Card</span>
+            <span class="pay-card-icons"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i></span>
+          </div>
+          <!-- Visa / Mastercard — Coming Soon placeholder -->
+          <div class="payment-method" id="pm-card" style="opacity:.6;cursor:not-allowed">
+            <div class="payment-method-head" style="cursor:not-allowed">
+              <div style="display:flex;align-items:center;justify-content:space-between;
+                          width:100%;gap:.75rem">
+                <div style="display:flex;align-items:center;gap:.75rem">
+                  <span class="pay-card-icons" style="font-size:1.3rem;color:var(--muted)">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                  </span>
+                  <span class="pay-label" style="color:var(--muted)">
+                    Debit / Credit Card
+                  </span>
+                </div>
+                <span style="font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;
+                            background:var(--navy);color:var(--gold);padding:4px 10px;
+                            border-radius:10px;font-weight:500;white-space:nowrap;
+                            font-family:var(--fb)">
+                  Coming Soon
+                </span>
+              </div>
+            </div>
+            <div style="padding:.5rem 1rem .75rem;font-size:.75rem;color:var(--muted);
+                        line-height:1.6;border-top:1px solid var(--stone)">
+              Card payments via Visa and Mastercard are coming soon. 
+              Please use M-Pesa to complete your order for now.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="co-nav-row" style="flex-direction:column;gap:.5rem">
+        <button class="btn-co-pay" id="pay-btn" onclick="handlePayment()">
+          <i class="fa-solid fa-lock"></i> <span id="pay-btn-label">Pay KSh 0</span>
+        </button>
+        <button class="btn-co-back" style="width:100%;justify-content:center" onclick="coBack()"><i class="fa-solid fa-arrow-left"></i> Back</button>
+      </div>
+      <div class="processing-overlay" id="processing">
+        <div class="spinner"></div>
+        <div style="font-family:var(--fd);font-size:1.3rem;font-weight:300;margin-bottom:.4rem">Processing Payment</div>
+        <div style="font-size:.82rem;color:var(--muted)" id="processing-msg">Sending STK push to your phone…</div>
+      </div>
+    </div>
+
+    <!-- Step 4: Confirmation -->
+    <div class="co-step" id="co-step-4">
+      <div class="co-confirm">
+        <div class="confirm-icon"><i class="fa-solid fa-check"></i></div>
+        <div class="confirm-title">Order Confirmed.</div>
+        <div class="confirm-order-num" id="confirm-order-num">#INJ-2025-0000</div>
+        <div class="confirm-detail">
+          Thank you, <span id="confirm-name">there</span>. Your order has been confirmed.<br>
+          A receipt has been sent to <span id="confirm-email">your email</span>.<br><br>
+          Estimated delivery: <span>3–5 business days</span>
+        </div>
+        <div class="confirm-actions">
+          <button class="btn-track" onclick="openPanel('account')">
+            <i class="fa-solid fa-location-dot"></i> View My Orders
+          </button>
+          <button class="btn-continue-shopping" onclick="closeAllPanels()">Continue Shopping</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═════════════════════════════════
+     ACCOUNT / PROFILE PANEL
+══════════════════════════════════ -->
+<div class="panel" id="account-panel">
+  <div class="panel-head" style="border:none;padding-bottom:.5rem">
+    <button class="panel-back" onclick="closePanel('account-panel')"><i class="fa-solid fa-arrow-left"></i></button>
+    <span class="panel-head-title">My Account</span>
+    <button class="panel-close" onclick="closePanel('account-panel')"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="panel-body">
+    <!-- Guest state -->
+    <div id="acct-guest-view" style="padding:3rem 1.6rem;text-align:center">
+      <div style="font-family:var(--fd);font-size:1.8rem;font-weight:300;margin-bottom:.5rem">Your Account</div>
+      <div style="font-size:.85rem;color:var(--muted);margin-bottom:2rem;line-height:1.6">Sign in to view your orders, wishlist, and profile.</div>
+      <button class="btn-form-submit" onclick="openPanel('auth','signin')" style="width:auto;padding:1rem 2rem;margin:0 auto .75rem">Sign In</button>
+      <div style="font-size:.78rem;color:var(--muted);margin-top:.75rem">No account? <span style="color:var(--gold);cursor:pointer;text-decoration:underline" onclick="openPanel('auth','register')">Create one free</span></div>
+    </div>
+    <!-- Logged-in state -->
+    <div id="acct-user-view" style="display:none">
+      <div class="account-hero">
+        <div class="acct-avatar-large" id="acct-avatar-large">AK</div>
+        <div class="acct-name" id="acct-display-name">Amara Kamau</div>
+        <div class="acct-email" id="acct-display-email">amara.k@gmail.com</div>
+        <div class="acct-since">Member since January 2025</div>
+      </div>
+      <div class="acct-quick-stats">
+        <div class="acct-stat"><div class="acct-stat-num">2</div><div class="acct-stat-label">Orders</div></div>
+        <div class="acct-stat"><div class="acct-stat-num">2</div><div class="acct-stat-label">Wishlist</div></div>
+        <div class="acct-stat"><div class="acct-stat-num">KSh<br><span style="font-size:.9rem">7,600</span></div><div class="acct-stat-label">Spent</div></div>
+      </div>
+      <!-- Orders -->
+      <div class="acct-section" id="orders-section">
+        <span class="acct-section-title">My Orders</span>
+        <div class="order-card">
+          <div class="order-card-head">
+            <span class="order-num">#INJ-2025-0041</span>
+            <span class="order-status status-confirmed">Confirmed</span>
+          </div>
+          <div class="order-card-items">In The Beginning — Size M</div>
+          <div class="order-card-meta"><span>28 Jan 2025</span><span>KSh 3,800</span></div>
+          <div class="order-card-foot">
+            <button class="order-reorder-btn" onclick="showToast('Added to bag!',true)">Reorder</button>
+            <button class="order-track-btn"><i class="fa-solid fa-location-dot"></i> Track Order</button>
+          </div>
+        </div>
+        <div class="order-card">
+          <div class="order-card-head">
+            <span class="order-num">#INJ-2025-0038</span>
+            <span class="order-status status-delivered">Delivered</span>
+          </div>
+          <div class="order-card-items">Light Carrier — Size L</div>
+          <div class="order-card-meta"><span>15 Jan 2025</span><span>KSh 3,800</span></div>
+          <div class="order-card-foot">
+            <button class="order-reorder-btn" onclick="showToast('Added to bag!',true)">Reorder</button>
+            <button class="order-track-btn"><i class="fa-solid fa-check" style="color:#27AE60"></i> Delivered</button>
+          </div>
+        </div>
+      </div>
+      <!-- Wishlist -->
+      <div class="acct-section" id="wishlist-section">
+        <span class="acct-section-title">Wishlist</span>
+        <div class="wishlist-grid">
+          <div class="wishlist-item" onclick="openProductDetail(3)">
+            <div class="wishlist-thumb" style="background:#2A2A2A">🌿</div>
+            <div class="wishlist-info">
+              <div class="wishlist-name">The Garden</div>
+              <div class="wishlist-price">KSh 4,200</div>
+            </div>
+          </div>
+          <div class="wishlist-item" onclick="openProductDetail(4)">
+            <div class="wishlist-thumb" style="background:#C5BFB8">VII</div>
+            <div class="wishlist-info">
+              <div class="wishlist-name">Seventh Day</div>
+              <div class="wishlist-price">KSh 3,800</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Profile actions -->
+      <div class="acct-section">
+        <span class="acct-section-title">Settings</span>
+        <button class="acct-edit-btn" onclick="showToast('Profile editor coming soon!',true)">
+          <i class="fa-regular fa-pen-to-square"></i> Edit Profile
+        </button>
+        <button class="acct-signout-btn" onclick="handleSignOut()">
+          <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═════════════════════════════
+     MAIN PAGE CONTENT
+══════════════════════════════ -->
+<section id="home" class="hero">
+  <div class="hero-left">
+    <span class="hero-eyebrow">The Genesis Collection — 2025</span>
+    <h1 class="hero-title">Walk by<br><em>Faith.</em></h1>
+    <p class="hero-sub">Premium graphic apparel designed with purpose. Each piece is a limited-edition expression of scripture, crafted for the generation that wears their conviction.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})">
+        <i class="fa-solid fa-arrow-down"></i> Shop the Drop
+      </button>
+      <button class="btn-ghost" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+        Our Story <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="tshirt-mockup">
+      <div class="tshirt-collar"></div>
+      <div class="tshirt-body">
+        <div class="tshirt-graphic">
+          <span class="g-line1">Genesis Collection</span>
+          <div class="g-divider"></div>
+          <span class="g-main">In The<br>Beginning</span>
+          <div class="g-divider"></div>
+          <span class="g-ref">Genesis 1:1</span>
+        </div>
+      </div>
+      <div class="mockup-label"><span>In The Beginning — KSh 3,800</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Scroll to explore</span>
+  </div>
+</section>
+
+<div class="ticker"><div class="ticker-inner">
+  <span class="ticker-item">Free delivery on orders over KSh 5,000</span><span class="ticker-item">✦</span>
+  <span class="ticker-item">Genesis Collection — Limited Drops</span><span class="ticker-item">✦</span>
+  <span class="ticker-item">100% Premium 240gsm Cotton</span><span class="ticker-item">✦</span>
+  <span class="ticker-item">Faith — Purpose — Style</span><span class="ticker-item">✦</span>
+  <span class="ticker-item">Free delivery on orders over KSh 5,000</span><span class="ticker-item">✦</span>
+  <span class="ticker-item">Genesis Collection — Limited Drops</span><span class="ticker-item">✦</span>
+  <span class="ticker-item">100% Premium 240gsm Cotton</span><span class="ticker-item">✦</span>
+  <span class="ticker-item">Faith — Purpose — Style</span><span class="ticker-item">✦</span>
+</div></div>
+
+<section id="collection" class="section-collection">
+  <div class="section-header">
+    <span class="section-eyebrow">Drop 001</span>
+    <h2 class="section-title">The Genesis Collection</h2>
+    <p class="section-sub">Four designs. Each one rooted in scripture, finished for the street. Limited quantities — once they're gone, they're gone.</p>
+  </div>
+  <div class="product-grid" id="product-grid"></div>
+</section>
+
+<section class="section-drop">
+  <div class="drop-visual">
+    <div class="drop-tee">
+      <div class="drop-collar"></div>
+      <div class="drop-tee-body">
+        <div class="drop-tee-art">
+          <div class="art-circle"><div class="art-cross"></div></div>
+          <span class="art-text">Light Carrier — John 8:12</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="drop-content">
+    <span class="drop-badge">Featured Drop</span>
+    <h2 class="drop-title">The Light<br>Carrier Tee</h2>
+    <p class="drop-desc">Our most requested design. A minimal cross motif on premium 240gsm cotton — quiet enough for everyday wear, intentional enough to start a conversation.</p>
+    <div class="drop-meta">
+      <div class="drop-meta-item"><label>Material</label><span>240gsm Cotton</span></div>
+      <div class="drop-meta-item"><label>Fit</label><span>Relaxed Unisex</span></div>
+      <div class="drop-meta-item"><label>Price</label><span>KSh 3,800</span></div>
+    </div>
+    <div class="drop-actions">
+      <button class="btn-primary" onclick="openProductDetail(2)">
+        <i class="fa-solid fa-eye"></i> View Details
+      </button>
+      <button class="btn-ghost" style="color:rgba(255,255,255,.6)" onclick="pdirectAddToCart(2)">
+        Add to Bag <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section-about">
+  <div>
+    <span class="about-eyebrow">Our Story</span>
+    <h2 class="about-title">More than<br>just <em>clothing.</em></h2>
+    <p class="about-body">Injil Apparel was born from a simple conviction: that faith is something you carry everywhere — including what you wear. We design for the generation that refuses to separate who they are from what they believe.</p>
+    <p class="about-body">Every piece in the Genesis Collection is a conversation starter, a quiet declaration, and a piece of wearable art — produced in limited runs so that each drop feels like the moment it is.</p>
+    <a href="#" class="about-link">Read the full story <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+  <div class="about-stats">
+    <div class="stat-card reveal"><div class="stat-number">100<span>%</span></div><div class="stat-label">Premium heavyweight cotton. No shortcuts.</div></div>
+    <div class="stat-card reveal"><div class="stat-number"><span>✦</span> 4</div><div class="stat-label">Designs in the Genesis Collection.</div></div>
+    <div class="stat-card reveal"><div class="stat-number">Limited<span>.</span></div><div class="stat-label">Each drop is finite by design.</div></div>
+    <div class="stat-card reveal"><div class="stat-number">NBO<span>.</span></div><div class="stat-label">Nairobi-born. Delivering across Kenya.</div></div>
+  </div>
+</section>
+
+<section id="contact" class="section-newsletter">
+  <span class="nl-eyebrow">Stay in the Loop</span>
+  <h2 class="nl-title">First access to<br>every new drop.</h2>
+  <p class="nl-sub">Join the Injil community. Get early access to new collections, behind-the-scenes stories, and exclusive member offers — before anyone else.</p>
+  <div class="nl-form">
+    <input type="email" placeholder="Your email address">
+    <button onclick="subscribeNewsletter(this)">Join the List</button>
+  </div>
+  <p class="nl-note">No spam. Unsubscribe anytime.</p>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <span class="footer-logo-word">injili</span>
+      <span class="footer-logo-sub">Apparel</span>
+      <p class="footer-brand-desc">Faith-rooted apparel for the generation that wears their conviction. Nairobi-born, built for the world.</p>
+      <div class="footer-social">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Shop</h4><ul><li><a href="#">Genesis Collection</a></li><li><a href="#">New Arrivals</a></li><li><a href="#">Bestsellers</a></li><li><a href="#">Member Drops</a></li></ul></div>
+    <div class="footer-col"><h4>Support</h4><ul><li><a href="size-guide.php">Size Guide</a></li><li><a href="shipping.php">Shipping Info</a></li><li><a href="shipping.php">Returns</a></li><li><a href="track-lookup.php">Track Order</a></li><li><a href="contact.php">Contact Us</a></li></ul></div>
+    <div class="footer-col"><h4>Brand</h4><ul><li><a href="#">Our Story</a></li><li><a href="#">Design Lab</a></li><li><a href="#">Lookbook</a></li><li><a href="#">Wholesale</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Injili Apparel. All rights reserved.</p>
+    <div class="footer-pays">
+      <span class="pay-pill">M-Pesa</span><span class="pay-pill">Visa</span><span class="pay-pill">Mastercard</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i><span id="toast-msg">Done</span></div>
+
+<!-- ═════════════════ JAVASCRIPT ═════════════════ -->
+<script>
+/* SITE_ROOT: base URL of this installation (no trailing slash).
+   Must match how XAMPP serves the project.
+   If you rename the folder or move to a domain, change this one line. */
+const SITE_ROOT = '/injili';
+</script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

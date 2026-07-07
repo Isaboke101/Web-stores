@@ -1,0 +1,23 @@
+# Injili Apparel — Apache security rules
+
+# Block direct browser access to config and service files
+# (they can still be require_once'd by PHP, just not fetched directly)
+<FilesMatch "^(config|services)/">
+    Require all denied
+</FilesMatch>
+
+# Deny access to the .env file
+<Files ".env">
+    Require all denied
+</Files>
+
+# Deny access to the sql directory
+<FilesMatch "^sql/">
+    Require all denied
+</FilesMatch>
+
+# Prevent directory listing
+Options -Indexes
+
+# PHP error display: off in production
+# php_flag display_errors Off
