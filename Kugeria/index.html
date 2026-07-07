@@ -594,7 +594,9 @@
     .sticky-cta .sc-text { flex:1; font-size:12px; font-weight:600; color:var(--charcoal); line-height:1.35; }
     .sticky-cta .sc-text span { display:block; font-size:10.5px; font-weight:400; color:var(--gray-500); }
     .sticky-cta .btn { padding:10px 18px; font-size:13px; white-space:nowrap; }
-    @media(min-width:768px){ .sticky-cta { display:none; } .wa-float { bottom:28px; right:28px; } }
+    .wa-float { transition:transform .22s ease, box-shadow .22s ease, bottom .3s ease; }
+    .wa-float.lifted { bottom:88px; }
+    @media(min-width:768px){ .sticky-cta { display:none; } .wa-float { bottom:28px; right:28px; } .wa-float.lifted { bottom:28px; } }
 
     /* ────────────────────────────────────
        RESPONSIVE BREAKPOINTS
@@ -690,17 +692,61 @@
 
           <!-- Branlly -->
           <div class="hcard hc1" onclick="openModal('branlly')">
-            <img src="images/branlly-event-management-website-nairobi.png" alt="Branlly — event management website by Kūgeria Ltd" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top left;">
+            <div class="mbrow mk-branlly">
+              <div class="mbar">
+                <div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div>
+                <div class="murl"></div>
+              </div>
+              <div class="mbody">
+                <div class="mk-branlly mhdr"></div>
+                <div class="mk-branlly mhero">
+                  <div class="mk-branlly mhero-circle"></div>
+                  <div class="mk-branlly mhero-lines">
+                    <div class="mk-branlly mhero-line"></div>
+                    <div class="mk-branlly mhero-line s"></div>
+                  </div>
+                </div>
+                <div class="mk-branlly mgrid">
+                  <div class="mk-branlly mgrid-item"></div>
+                  <div class="mk-branlly mgrid-item"></div>
+                  <div class="mk-branlly mgrid-item"></div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Progigs -->
           <div class="hcard hc2" onclick="openModal('progigs')">
-            <img src="images/progigs-digital-media-kenya.png" alt="Pro Gigs — events company website by Kūgeria Ltd" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top left;">
+            <div class="mbrow mk-progigs">
+              <div class="mbar"><div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div><div class="murl"></div></div>
+              <div class="mbody" style="gap:5px">
+                <div class="mk-progigs msearch"></div>
+                <div class="mk-progigs mpgrid" style="display:grid;grid-template-columns:1fr 1fr;gap:4px;flex:1">
+                  <div class="mk-progigs mpitem hi"></div>
+                  <div class="mk-progigs mpitem"></div>
+                  <div class="mk-progigs mpitem"></div>
+                  <div class="mk-progigs mpitem"></div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Injili -->
           <div class="hcard hc3" onclick="openModal('injili')">
-            <img src="images/injili-freelance-services-webstores-kenya.png" alt="Injili Apparel — faith-inspired e-commerce store by Kūgeria Ltd" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top left;">
+            <div class="mbrow mk-injili">
+              <div class="mbar"><div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div><div class="murl"></div></div>
+              <div class="mbody">
+                <div class="mk-injili mibanner">
+                  <div class="mk-injili miline"></div>
+                  <div class="mk-injili miline s"></div>
+                </div>
+                <div class="mk-injili miarticles">
+                  <div class="mk-injili miarticle"><div class="mk-injili midot"></div><div class="mk-injili mibar"></div></div>
+                  <div class="mk-injili miarticle"><div class="mk-injili midot"></div><div class="mk-injili mibar"></div></div>
+                  <div class="mk-injili miarticle"><div class="mk-injili midot"></div><div class="mk-injili mibar"></div></div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Accent -->
@@ -1026,8 +1072,13 @@
     <div class="about-grid">
       <div class="reveal">
         <div class="about-photo">
-          <!-- REPLACE: when you have a professional photo, use: and delete the placeholder div below -->
-               <img src="images/profile.png" alt="Isaac Oonge — Founder, Kūgeria Ltd"> 
+          <!-- REPLACE: when you have a professional photo, use:
+               <img src="images/isaac-oonge-kugeria.jpg" alt="Isaac Oonge — Founder, Kūgeria Ltd"> 
+               and delete the placeholder div below -->
+          <div class="ph-placeholder">
+            <div class="ph-ic">📷</div>
+            <div class="ph-tx">Your professional photo goes here<br>(4:5 portrait, ~800×1000px)</div>
+          </div>
           <div class="about-badge">
             <div class="ab-name">Isaac Oonge</div>
             <div class="ab-role">Founder · Developer · Consultant</div>
@@ -1138,7 +1189,7 @@
         <div class="ftr-col-title">Navigate</div>
         <div class="ftr-links">
           <a href="#home">Home</a><a href="#services">Services</a><a href="#projects">Projects</a>
-          <a href="schedule.html">Schedule</a><a href="contact.html">Contact</a><a href="linktree/index.html">Linktree</a>
+          <a href="schedule.html">Schedule</a><a href="contact.html">Contact</a><a href="linktree/">Linktree</a>
         </div>
       </div>
       <div>
@@ -1264,6 +1315,23 @@ function openModal(k) {
   document.body.style.overflow = 'hidden';
 }
 
+// ── Close modal ──
+function closeModal() {
+  document.getElementById('mwrap').classList.remove('on');
+  document.body.style.overflow = '';
+}
+
+// ── Close when clicking the dark backdrop ──
+function mOutside(e) {
+  if (e.target === document.getElementById('mwrap')) closeModal();
+}
+
+// ── Close with Escape key ──
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+
 // ── Chatbot sim ──
 const cbR={
   'I need a website':'Great choice! We build from personal portfolios (Tier 1) to full e-commerce stores (Tier 3). What type of business are you building for?',
@@ -1305,10 +1373,13 @@ function toggleFaq(btn){
 
 // ── Sticky mobile CTA (appears after 35% scroll) ──
 var stickyCta = document.getElementById('stickyCta');
+var waFloat   = document.querySelector('.wa-float');
 if (stickyCta) {
   window.addEventListener('scroll', function(){
     var pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-    stickyCta.classList.toggle('show', pct > 0.35 && pct < 0.92);
+    var show = pct > 0.35 && pct < 0.92;
+    stickyCta.classList.toggle('show', show);
+    if (waFloat) waFloat.classList.toggle('lifted', show);
   });
 }
 </script>
