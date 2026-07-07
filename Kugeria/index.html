@@ -228,7 +228,7 @@
        TRUST BAR
     ──────────────────────────────────── */
     .trust-bar { background:var(--white); border-top:1px solid var(--gray-200); border-bottom:1px solid var(--gray-200); padding:18px 0; }
-    .trust-inner { display:flex; align-items:center; gap:14px; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; }
+    .trust-inner { display:flex; align-items:center; gap:14px; overflow-x:auto; -ms-overflow-style:none; }
     .trust-inner::-webkit-scrollbar { display:none; }
     .trust-label { font-size:10.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gray-400); white-space:nowrap; flex-shrink:0; }
     .trust-divider { width:1px; height:18px; background:var(--gray-200); flex-shrink:0; }
@@ -491,7 +491,7 @@
     .about-photo .ph-placeholder .ph-tx { font-size:12.5px; line-height:1.6; }
     .about-badge {
       position:absolute; bottom:14px; left:14px; right:14px;
-      background:rgba(250,250,250,.94); backdrop-filter:blur(8px);
+      background:rgba(250,250,250,.94); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
       border-radius:10px; padding:10px 14px;
     }
     .about-badge .ab-name { font-family:var(--display); font-size:17px; font-weight:700; color:var(--charcoal); }
@@ -585,7 +585,7 @@
 
     .sticky-cta {
       position:fixed; bottom:0; left:0; right:0; z-index:1400;
-      background:rgba(250,250,250,.96); backdrop-filter:blur(12px);
+      background:rgba(250,250,250,.96); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
       border-top:1px solid var(--gray-200);
       padding:10px 16px; display:flex; gap:10px; align-items:center;
       transform:translateY(110%); transition:transform .35s ease;
