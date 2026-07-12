@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://www.kugeria.co.ke/sitemap.xml
+Sitemap: https://www.kugeria.co.ke/blog/sitemap.php

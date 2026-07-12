@@ -1,35 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Primary SEO -->
-  <title>Schedule a Free Meeting — Kūgeria Ltd | Digital Agency Nairobi</title>
-  <meta name="description" content="Kūgeria Ltd is a Nairobi-based digital agency building high-performance websites, AI chatbots, and brand identities for Kenyan businesses. Founded by Isaac Oonge.">
-  <meta name="keywords" content="web developer Nairobi, web development Kenya, AI chatbot Kenya, digital agency Nairobi, mobile app developer Kenya, M-Pesa integration, branding Kenya">
-  <meta name="author" content="Isaac Oonge — Kūgeria Ltd">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.kugeria.co.ke/schedule.html">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-  <link rel="preload" href="images/logo_small.svg" as="image" type="image/svg+xml">
-
-  <!-- Open Graph (controls how the link looks when shared on WhatsApp, LinkedIn, X) -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.kugeria.co.ke/">
-  <meta property="og:title" content="Kūgeria Ltd — Digital Agency, Nairobi">
-  <meta property="og:description" content="We build websites, AI systems, and brand identities that work as silent sales agents for your business.">
-  <meta property="og:image" content="https://www.kugeria.co.ke/og-image.svg">
-
-  <!-- Twitter/X Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Kūgeria Ltd — Digital Agency, Nairobi">
-  <meta name="twitter:description" content="High-performance websites, AI systems, and branding from Nairobi, Kenya.">
-  <meta name="twitter:image" content="https://www.kugeria.co.ke/og-image.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule a Meeting — Kūgeria Ltd</title>
+  <meta name="description" content="Book a free strategy session with Kūgeria Ltd. Tell us about your project and let's build something remarkable together.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="images/logo_small.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" href="images/logo_small.png">
+  <link rel="apple-touch-icon" href="images/logo_small.png">
+  <meta name="theme-color" content="#052F5F">
   <style>
     :root{
       --bg:#FAFAFA;--green:#004B23;--navy:#052F5F;
@@ -53,16 +35,13 @@
     /* ── NAV ── */
     .nav{
       position:sticky;top:0;z-index:100;
-      background:rgba(250,250,250,.94);-webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+      background:rgba(250,250,250,.94);backdrop-filter:blur(14px);
       border-bottom:1px solid var(--gray-200);
     }
     .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1200px;margin:0 auto;padding:0 20px}
     .nav-logo img{height:34px;width:auto;object-fit:contain}
     .nav-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--gray-500);transition:color .2s}
     .nav-back:hover{color:var(--navy)}
-
-    /* ── FOCUS VISIBLE ── */
-    :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:3px}
 
     /* ── PAGE LAYOUT ── */
     .page{max-width:1100px;margin:0 auto;padding:44px 20px 80px}
@@ -157,8 +136,7 @@
 
     /* Fields */
     .field{margin-bottom:18px}
-    .field-row{display:grid;grid-template-columns:1fr;gap:0;margin-bottom:0}
-    @media(min-width:480px){.field-row{grid-template-columns:1fr 1fr;gap:14px}}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:0}
     .field label{
       display:block;font-size:12.5px;font-weight:600;
       color:var(--charcoal);margin-bottom:7px;
@@ -243,6 +221,18 @@
     .suc-title{font-family:var(--display);font-size:28px;font-weight:700;color:var(--green);margin-bottom:10px}
     .suc-body{font-size:14px;color:var(--gray-500);line-height:1.7;max-width:320px;margin-bottom:22px}
     .suc-acts{display:flex;flex-direction:column;gap:9px;width:100%}
+    .suc-section{width:100%;text-align:left;margin-top:28px;padding-top:22px;border-top:1px solid var(--gray-200)}
+    .suc-sec-label{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;text-align:center}
+    .suc-reads{display:flex;flex-direction:column;gap:9px}
+    .suc-read{display:block;background:var(--bg);border:1px solid var(--gray-200);border-radius:10px;padding:13px 15px;transition:all .22s ease}
+    .suc-read:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 6px 18px rgba(5,47,95,.09)}
+    .suc-read-cat{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+    .suc-read-title{font-size:13.5px;font-weight:600;color:var(--charcoal);line-height:1.4;margin-top:2px}
+    .suc-contacts{display:flex;flex-direction:column;gap:8px}
+    .suc-contact{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--charcoal)}
+    .suc-contact .sc-ic{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;background:rgba(5,47,95,.06)}
+    .suc-contact a{color:var(--navy);font-weight:600}
+    .suc-contact a:hover{color:var(--gold)}
 
     /* Loading spinner */
     .spinner{
@@ -267,32 +257,21 @@
       .page-grid{grid-template-columns:5fr 6fr;align-items:start}
       .form-panel{padding:34px 30px}
     }
+      .wa-float{position:fixed;bottom:22px;right:18px;z-index:1500;width:54px;height:54px;border-radius:50%;background:#25D366;box-shadow:0 6px 22px rgba(37,211,102,.4);display:flex;align-items:center;justify-content:center;transition:transform .22s ease}
+    .wa-float:hover{transform:translateY(-4px) scale(1.05)}
+    .wa-float svg{width:28px;height:28px}
   </style>
-  <!-- Meta Pixel — replace YOUR_PIXEL_ID with your actual ID from Meta Ads Manager -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', ' 36078474898464653');
-    fbq('track', 'PageView');
-  </script>
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo"><img src="images/logo_small.svg" alt="Kūgeria Ltd" width="34" height="34"></a>
+    <a href="index.html" class="nav-logo"><img src="images/logo.svg" alt="Kūgeria Ltd"></a>
     <a href="index.html" class="nav-back">← Back to Portfolio</a>
   </div>
 </nav>
 
-<main id="main-content">
 <div class="page">
   <div class="page-grid">
 
@@ -362,19 +341,19 @@
             <div class="field-row">
               <div class="field">
                 <label for="fname">Full Name <span>*</span></label>
-                <input type="text" id="fname" name="fullName" placeholder="e.g. Jane Muthoni" autocomplete="name" aria-required="true">
+                <input type="text" id="fname" name="fullName" placeholder="e.g. Jane Muthoni" autocomplete="name">
                 <div class="err-msg" id="err-fname">Please enter your full name</div>
               </div>
               <div class="field">
                 <label for="fcontact">WhatsApp / Phone <span>*</span></label>
-                <input type="tel" id="fcontact" name="contact" placeholder="+254 7XX XXX XXX" autocomplete="tel" aria-required="true">
+                <input type="tel" id="fcontact" name="contact" placeholder="+254 7XX XXX XXX" autocomplete="tel">
                 <div class="err-msg" id="err-fcontact">Please enter a valid contact number</div>
               </div>
             </div>
 
             <div class="field">
               <label for="femail">Email Address <span>*</span></label>
-              <input type="email" id="femail" name="email" placeholder="you@company.com" autocomplete="email" aria-required="true">
+              <input type="email" id="femail" name="email" placeholder="you@company.com" autocomplete="email">
               <div class="err-msg" id="err-femail">Please enter a valid email address</div>
             </div>
 
@@ -434,7 +413,7 @@
 
             <div class="field">
               <label for="fvision">Product Vision <span>*</span></label>
-              <textarea id="fvision" name="vision" rows="4" placeholder="Describe what you want to build. What problem does it solve? Who is it for? Any features you have in mind?" aria-required="true"></textarea>
+              <textarea id="fvision" name="vision" rows="4" placeholder="Describe what you want to build. What problem does it solve? Who is it for? Any features you have in mind?"></textarea>
               <div class="err-msg" id="err-fvision">Please share a brief description of your project</div>
               <div class="field-hint">Don't worry about being technical — plain language is perfect.</div>
             </div>
@@ -465,7 +444,7 @@
 
             <div class="field">
               <label for="fdate">Preferred Date <span>*</span></label>
-              <input type="date" id="fdate" name="proposedDate" min="" aria-required="true">
+              <input type="date" id="fdate" name="proposedDate" min="">
               <div class="err-msg" id="err-fdate">Please select a preferred date</div>
             </div>
 
@@ -518,17 +497,20 @@
               </select>
             </div>
 
-            <div class="field" style="margin-bottom:14px">
-              <label class="svc-check" id="consentLabel" onclick="toggleConsent(this)" style="border:none;padding:0;background:none;gap:10px">
-                <input type="checkbox" id="fconsent" required aria-required="true">
-                <div class="cb-box" id="consentBox"></div>
-                <span style="font-size:12.5px;color:var(--gray-500);line-height:1.6">
-                  I agree to the
-                  <a href="privacy.html" target="_blank" style="color:var(--navy);font-weight:600">Privacy Policy</a>
-                  and consent to Kūgeria Ltd storing my details to facilitate this meeting request.
+            <!-- Privacy & Terms consent (required — Kenya DPA) -->
+            <div class="field" style="margin-bottom:6px">
+              <label for="fconsent" style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-weight:400;margin-bottom:0">
+                <input type="checkbox" id="fconsent" name="consent"
+                       style="width:16px;height:16px;margin-top:2px;accent-color:var(--gold);flex-shrink:0;cursor:pointer">
+                <span style="font-size:12.5px;color:var(--gray-500);line-height:1.65">
+                  I have read and agree to the
+                  <a href="privacy.html" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600">Privacy Policy</a>
+                  and
+                  <a href="terms.html" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600">Terms of Service</a>,
+                  and consent to Kūgeria Ltd storing my details to facilitate this meeting request. <span style="color:#e53e3e">*</span>
                 </span>
               </label>
-              <div class="err-msg" id="err-fconsent">Please accept the Privacy Policy to continue</div>
+              <div class="err-msg" id="err-consent">Please accept the Privacy Policy and Terms to continue</div>
             </div>
 
             <div class="form-nav">
@@ -552,13 +534,29 @@
           <a href="index.html" class="btn btn-gold btn-full">← Back to Portfolio</a>
           <a href="contact.html" class="btn btn-ghost btn-full">Get in Touch Directly</a>
         </div>
+
+        <!-- While-you-wait: recent tech reads (filled from the blog; hidden if unavailable) -->
+        <div class="suc-section" id="sucReads" style="display:none">
+          <div class="suc-sec-label">While You Wait — Recent Tech Reads</div>
+          <div class="suc-reads" id="sucReadsList"></div>
+        </div>
+
+        <!-- Business contacts -->
+        <div class="suc-section">
+          <div class="suc-sec-label">Reach Us Directly</div>
+          <div class="suc-contacts">
+            <div class="suc-contact"><div class="sc-ic">✉️</div><a href="mailto:hello@kugeria.co.ke">hello@kugeria.co.ke</a></div>
+            <!-- REPLACE 254700000000 with your business WhatsApp number -->
+            <div class="suc-contact"><div class="sc-ic">💬</div><a href="https://wa.me/254700000000" target="_blank" rel="noopener">WhatsApp Kūgeria Ltd</a></div>
+            <div class="suc-contact"><div class="sc-ic">◈</div><a href="https://instagram.com/kugeria" target="_blank" rel="noopener">@kugeria on Instagram</a></div>
+            <div class="suc-contact"><div class="sc-ic">📍</div><span>Nairobi, Kenya</span></div>
+          </div>
+        </div>
       </div>
     </div>
 
   </div>
 </div>
-
-</main>
 
 <!-- Toast -->
 <div class="toast" id="toast"></div>
@@ -626,22 +624,11 @@
       else clearErr('fvision');
     }
     if(step===3){
-      const fdEl=document.getElementById('fdate');
-      const fd=fdEl.value;
-      if(!fd){showErr('fdate');ok=false;}else{
-        const selectedDate=new Date(fd+'T00:00:00');
-        const today=new Date();today.setHours(0,0,0,0);
-        if(selectedDate<=today){showErr('fdate','Please select a future date');ok=false;}
-        else clearErr('fdate');
-      }
-      const consentCb=document.getElementById('fconsent');
-      const consentErr=document.getElementById('err-fconsent');
-      if(!consentCb.checked){
-        if(consentErr)consentErr.classList.add('on');
-        ok=false;
-      }else{
-        if(consentErr)consentErr.classList.remove('on');
-      }
+      const fd=document.getElementById('fdate').value;
+      if(!fd){showErr('fdate');ok=false;}else clearErr('fdate');
+      if(!document.getElementById('fconsent').checked){
+        document.getElementById('err-consent').classList.add('on');ok=false;
+      } else document.getElementById('err-consent').classList.remove('on');
     }
     return ok;
   }
@@ -652,8 +639,15 @@
   }
 
   // ── Meeting type selection ──
+  function selMeet(type) {
+    ['online','physical','phone'].forEach(t=>document.getElementById('mt-'+t).classList.remove('sel'));
+    document.getElementById('mt-'+type.toLowerCase().replace(' call','').replace(' ','').replace('phonecall','phone')).classList.add('sel');
+    document.getElementById('fmeettype').value=type;
+  }
+  // Fix phone call id
+  document.getElementById('mt-phone').id='mt-phone';
   function selMeet(type){
-    document.querySelectorAll('.mt-opt').forEach(function(el){el.classList.remove('sel');});
+    document.querySelectorAll('.mt-opt').forEach(el=>el.classList.remove('sel'));
     if(type==='Online')document.getElementById('mt-online').classList.add('sel');
     else if(type==='Physical')document.getElementById('mt-physical').classList.add('sel');
     else document.getElementById('mt-phone').classList.add('sel');
@@ -667,20 +661,6 @@
     cb.checked=!cb.checked;
     const box=el.querySelector('.cb-box');
     box.textContent=cb.checked?'✓':'';
-  }
-
-  // ── Consent checkbox toggle ──
-  function toggleConsent(el) {
-    const cb=el.querySelector('input');
-    cb.checked=!cb.checked;
-    const box=el.querySelector('.cb-box');
-    box.textContent=cb.checked?'✓':'';
-    box.style.background=cb.checked?'var(--gold)':'';
-    box.style.borderColor=cb.checked?'var(--gold)':'';
-    if(cb.checked){
-      const em=document.getElementById('err-fconsent');
-      if(em)em.classList.remove('on');
-    }
   }
 
   // ── Toast ──
@@ -733,12 +713,33 @@
       document.getElementById('formMain').style.display='none';
       document.getElementById('successBox').classList.add('on');
       window.scrollTo({top:0,behavior:'smooth'});
-      fbq('track', 'Lead'); // Fires when someone books a meeting
+      loadRecentReads();
     } catch(err) {
       btn.classList.remove('loading'); btn.disabled=false;
       showToast('Submission failed — please try again or email us directly.','#e53e3e');
     }
   });
+
+  // Consent: clear error on tick
+  document.getElementById('fconsent').addEventListener('change', function(){
+    if(this.checked) document.getElementById('err-consent').classList.remove('on');
+  });
+
+  // ── Recent blog reads on the success screen (fails silently if blog is offline) ──
+  async function loadRecentReads() {
+    try {
+      var r = await fetch('blog/latest.php');
+      var d = await r.json();
+      if (!d.ok || !d.posts.length) return;
+      var list = document.getElementById('sucReadsList');
+      list.innerHTML = d.posts.map(function(p){
+        return '<a class="suc-read" href="' + p.url + '">' +
+               '<div class="suc-read-cat">' + p.category + '</div>' +
+               '<div class="suc-read-title">' + p.title + '</div></a>';
+      }).join('');
+      document.getElementById('sucReads').style.display = 'block';
+    } catch (e) { /* blog unreachable — section stays hidden */ }
+  }
 
   // Live validation clear on input
   ['fname','fcontact','femail','fvision','fdate'].forEach(id=>{
@@ -746,5 +747,9 @@
     if(el) el.addEventListener('input',()=>clearErr(id));
   });
 </script>
+<!-- WhatsApp float — REPLACE 254700000000 with your business number -->
+<a href="https://wa.me/254700000000?text=Hi%20Isaac%2C%20I%27d%20like%20to%20discuss%20a%20project." class="wa-float" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="#fff"><path d="M16 2.9C8.8 2.9 3 8.7 3 15.9c0 2.3.6 4.5 1.7 6.5L3 29l6.8-1.8c1.9 1 4 1.6 6.2 1.6 7.2 0 13-5.8 13-13S23.2 2.9 16 2.9zm0 23.7c-2 0-3.9-.5-5.5-1.5l-.4-.2-4 1 1.1-3.9-.3-.4c-1.1-1.7-1.7-3.7-1.7-5.7 0-6 4.9-10.8 10.8-10.8s10.8 4.9 10.8 10.8-4.8 10.7-10.8 10.7zm5.9-8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1c-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.3s0-.5.1-.6l.5-.6c.2-.2.2-.4.3-.6s0-.5 0-.6c0-.2-.7-1.8-1-2.4-.3-.6-.5-.5-.7-.6h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.4c.2.2 2.3 3.5 5.5 4.9.8.3 1.4.5 1.8.7.8.2 1.5.2 2 .1.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
 </body>
 </html>
