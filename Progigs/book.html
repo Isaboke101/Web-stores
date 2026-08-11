@@ -1,153 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Book your event with Pro Gigs Audio Visual Limited — Nairobi's premier event management company. Submit your event details and we'll get back to you.">
-    <title>Book Your Event | Pro Gigs Audio Visual</title>
-    <link rel="icon" type="image/png" href="./src/logo.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book an Event | Pro Gigs Audio Visual Ltd, Nairobi</title>
+<meta name="description" content="Book your event with Pro Gigs Audio Visual Limited, Nairobi. Submit your event details, date and service requirements and our team responds within 24 hours.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#027ce6">
+<link rel="canonical" href="https://progigs.co.ke/book.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Book an Event | Pro Gigs Audio Visual Ltd">
+<meta property="og:description" content="Submit your event details and our Nairobi team will respond within 24 hours.">
+<meta property="og:url" content="https://progigs.co.ke/book.html">
+<meta property="og:image" content="https://progigs.co.ke/src/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="./src/favicon.png">
+<link rel="apple-touch-icon" href="./src/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://progigs.co.ke/"},
+    {"@type":"ListItem","position":2,"name":"Book an Event","item":"https://progigs.co.ke/book.html"}
+  ]
+}
+</script>
 </head>
 <body>
 
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
-        <a href="index.html" class="logo-link" aria-label="Pro Gigs Audio Visual - Home">
-            <img src="src/logo.svg" alt="Pro Gigs Audio Visual Logo" class="nav-logo">
-        </a>
-        <a href="index.html" class="btn-ghost" style="font-size:0.88rem; padding: 0.5rem 1.2rem; border-color: rgba(255,255,255,0.3);">← Back to Home</a>
-    </nav>
+<a href="#main" class="skip-link">Skip to main content</a>
 
-    <header class="booking-hero">
-        <h1>Plan Your Event</h1>
-        <p>Fill out the details below — our team will respond promptly to begin planning your perfect event.</p>
-    </header>
+<nav class="navbar" id="navbar" aria-label="Main navigation">
+    <a href="index.html" class="logo-link" aria-label="Pro Gigs Audio Visual — Home">
+        <img src="src/logo.svg" alt="Pro Gigs Audio Visual Logo" class="nav-logo" width="180" height="52">
+    </a>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#industries">Industries</a></li>
+        <li><a href="index.html#gallery">Our Work</a></li>
+        <li><a href="index.html#clients">Clients</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li class="nav-cta-mobile"><a href="index.html">&larr; Back Home</a></li>
+    </ul>
+    <div class="nav-right">
+        <a href="index.html" class="btn-nav-cta">&larr; Back Home</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+    </div>
+</nav>
+<div class="nav-overlay" id="nav-overlay"></div>
 
-    <section style="background: var(--off); padding-bottom: 5rem;">
-        <div class="form-container">
+<main id="main">
+<header class="booking-hero">
+    <h1>Plan Your Event</h1>
+    <p>Tell us what you need. Our team responds within 24 hours.</p>
+</header>
 
-            <form id="booking-form" novalidate>
+<section class="form-page">
+    <div class="form-container">
+        <form id="booking-form" novalidate>
 
+            <div class="form-group">
+                <label for="fullName">Full Name *</label>
+                <input type="text" id="fullName" class="form-control" placeholder="Your full name" required autocomplete="name">
+            </div>
+
+            <div class="grid-2-col">
                 <div class="form-group">
-                    <label for="fullName">Full Name *</label>
-                    <input type="text" id="fullName" class="form-control" placeholder="Your full name" required autocomplete="name">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" class="form-control" placeholder="you@example.com" required autocomplete="email">
                 </div>
-
-                <div class="grid-2-col">
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" class="form-control" placeholder="you@example.com" required autocomplete="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" class="form-control" placeholder="+254 7XX XXX XXX" required autocomplete="tel">
-                    </div>
-                </div>
-
                 <div class="form-group">
-                    <label for="company">Company / Organization (Optional)</label>
-                    <input type="text" id="company" class="form-control" placeholder="Your company or organisation name" autocomplete="organization">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="+254 7XX XXX XXX" required autocomplete="tel">
                 </div>
+            </div>
 
-                <div class="grid-2-col" style="border-top: 1px solid #eef2fb; padding-top: 1.8rem; margin-top: 0.5rem;">
-                    <div class="form-group">
-                        <label for="eventType">Type of Event *</label>
-                        <select id="eventType" class="form-control" required>
-                            <option value="">Select Event Type…</option>
-                            <option value="Corporate Summit">Corporate Summit / Conference</option>
-                            <option value="Brand Activation">Brand Activation / Product Launch</option>
-                            <option value="Gala Dinner">Gala Dinner / Awards</option>
-                            <option value="Team Building">Team Building</option>
-                            <option value="Private Event">Private Event / Special Occasion</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="eventDate">Estimated Event Date *</label>
-                        <input type="date" id="eventDate" class="form-control" required>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="company">Company / Organisation (Optional)</label>
+                <input type="text" id="company" class="form-control" placeholder="Your organisation name" autocomplete="organization">
+            </div>
 
-                <div class="form-group" style="border-top: 1px solid #eef2fb; padding-top: 1.8rem;">
-                    <label>Services Required (Select all that apply) *</label>
-                    <div class="checkbox-grid">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="services" value="Event Management"> Event Management
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="services" value="Audio Visual Solutions"> Audio Visual Solutions
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="services" value="Set Design & Production"> Set Design &amp; Production
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="services" value="Logistics & Vendors"> Logistics &amp; Vendors
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="services" value="Team Building Facilitation"> Team Building
-                        </label>
-                    </div>
-                </div>
-
+            <div class="grid-2-col" style="border-top:1px solid #EEE; padding-top:1.8rem; margin-top:.5rem;">
                 <div class="form-group">
-                    <label for="inquiries">Additional Details or Custom Requirements</label>
-                    <textarea id="inquiries" class="form-control" rows="5" placeholder="Describe any specific needs, venue ideas, expected attendance, or questions you have for our team…"></textarea>
+                    <label for="eventType">Type of Event *</label>
+                    <select id="eventType" class="form-control" required>
+                        <option value="">Select event type&hellip;</option>
+                        <option value="Corporate Summit">Corporate Summit / Conference</option>
+                        <option value="Brand Activation">Brand Activation / Product Launch</option>
+                        <option value="Gala Dinner">Gala Dinner / Awards</option>
+                        <option value="Team Building">Team Building</option>
+                        <option value="Religious Event">Religious / Community Event</option>
+                        <option value="Educational Event">Educational / Graduation</option>
+                        <option value="Private Event">Private Event / Special Occasion</option>
+                        <option value="Other">Other</option>
+                    </select>
                 </div>
-
-                <button type="submit" id="submit-btn" class="btn-primary" style="width: 100%; font-size: 1.05rem; padding: 1.1rem; border-radius: 10px; margin-top: 0.5rem;">
-                    Submit Booking Request
-                </button>
-
-                <p style="text-align:center; font-size:0.82rem; color:var(--muted); margin-top: 1rem;">
-                    Our team will be in touch within 24 hours of receiving your request.
-                </p>
-            </form>
-
-            <!-- Success State -->
-            <div id="success-message" class="success-message">
-                <div style="font-size: 3.5rem; margin-bottom: 1rem;">🎉</div>
-                <h2>Request Received!</h2>
-                <p>Thank you for reaching out to Pro Gigs Audio Visual. We've received your event details and our team will contact you shortly to begin planning your extraordinary event.</p>
-                <a href="index.html" class="btn-primary" style="display: inline-block; width: auto;">Return to Homepage</a>
+                <div class="form-group">
+                    <label for="eventDate">Estimated Event Date *</label>
+                    <input type="date" id="eventDate" class="form-control" required>
+                </div>
             </div>
 
+            <div class="grid-2-col" style="margin-top:0;">
+                <div class="form-group">
+                    <label for="guests">Expected Guests</label>
+                    <select id="guests" class="form-control">
+                        <option value="">Select range&hellip;</option>
+                        <option value="Under 50">Under 50</option>
+                        <option value="50 - 150">50 &ndash; 150</option>
+                        <option value="150 - 500">150 &ndash; 500</option>
+                        <option value="500 - 1000">500 &ndash; 1,000</option>
+                        <option value="Over 1000">Over 1,000</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="venue">Venue / Location</label>
+                    <input type="text" id="venue" class="form-control" placeholder="Venue name or area (if known)">
+                </div>
+            </div>
+
+            <div class="form-group" style="border-top:1px solid #EEE; padding-top:1.8rem;">
+                <label>Services Required (select all that apply) *</label>
+                <div class="checkbox-grid">
+                    <label class="checkbox-label"><input type="checkbox" name="services" value="Event Management"> Event Management</label>
+                    <label class="checkbox-label"><input type="checkbox" name="services" value="Set Design &amp; Production"> Set Design &amp; Production</label>
+                    <label class="checkbox-label"><input type="checkbox" name="services" value="Audio &amp; Sound"> Audio &amp; Sound</label>
+                    <label class="checkbox-label"><input type="checkbox" name="services" value="Lighting Design"> Lighting Design</label>
+                    <label class="checkbox-label"><input type="checkbox" name="services" value="Video &amp; Live Streaming"> Video &amp; Live Streaming</label>
+                    <label class="checkbox-label"><input type="checkbox" name="services" value="Team Building"> Team Building</label>
+                    <label class="checkbox-label"><input type="checkbox" name="services" value="Logistics &amp; Vendors"> Logistics &amp; Vendors</label>
+                    <label class="checkbox-label"><input type="checkbox" name="services" value="Not Sure Yet"> Not Sure Yet</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inquiries">Additional Details</label>
+                <textarea id="inquiries" class="form-control" rows="5" placeholder="Tell us about your objectives, theme ideas, budget range or any specific requirements&hellip;"></textarea>
+            </div>
+
+            <button type="submit" id="submit-btn" class="btn-solid" style="width:100%; padding:1.15rem; font-size:.95rem;">
+                Submit Booking Request
+            </button>
+
+            <p style="text-align:center; font-size:.82rem; color:#6E6E6E; margin-top:1rem;">
+                Our team will be in touch within 24 hours.
+            </p>
+        </form>
+
+        <div id="success-message" class="success-message">
+            <h2>Request Received</h2>
+            <p>Thank you for reaching out to Pro Gigs Audio Visual. We have your event details and will contact you shortly to begin planning.</p>
+            <a href="index.html" class="btn-solid">Return to Homepage</a>
         </div>
-    </section>
+    </div>
+</section>
+</main>
 
-    <footer class="footer" role="contentinfo">
-        <div class="container footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" aria-label="Pro Gigs home">
-                    <img src="src/logo.svg" alt="Pro Gigs Logo" class="footer-logo">
-                </a>
-                <p>An Event management organization delivering extraordinary events across East Africa.</p>
-                <p class="footer-tagline"><em>Transforming Ideas into Experiences</em></p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html#home">Home</a></li>
-                    <li><a href="index.html#about">About Us</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="index.html#gallery">Portfolio</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <div class="footer-contact"><span>📍</span><span>Elgeyo Marakwet Road, Nairobi</span></div>
-                <div class="footer-contact"><span>📞</span><a href="tel:+254720440062">+254 720 44 00 62</a></div>
-                <div class="footer-contact"><span>✉️</span><a href="mailto:info@progigs.co.ke">info@progigs.co.ke</a></div>
-            </div>
+<footer class="footer">
+    <div class="wrap footer-grid">
+        <div class="footer-brand">
+            <a href="index.html" aria-label="Pro Gigs Audio Visual home">
+                <img src="src/logo.svg" alt="Pro Gigs Audio Visual Logo" class="footer-logo" width="180" height="56">
+            </a>
+            <p>An events and audio visual company bringing creativity, technical precision, and proven expertise to every project we undertake.</p>
+            <p class="footer-tagline"><em>Transforming Ideas into Experiences</em></p>
         </div>
-        <div class="footer-bottom">
-            <div class="container footer-bottom-inner">
-                <p>&copy; 2026 Pro Gigs Audio Visual Limited. All Rights Reserved.</p>
-            </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#industries">Industries</a></li>
+                <li><a href="index.html#gallery">Our Work</a></li>
+                <li><a href="index.html#clients">Clients</a></li>
+            </ul>
         </div>
-    </footer>
+        <div class="footer-col">
+            <h4>Services</h4>
+            <ul>
+                <li><a href="index.html#services">Event Management</a></li>
+                <li><a href="index.html#services">Set Design &amp; Production</a></li>
+                <li><a href="index.html#services">Audio &amp; Sound</a></li>
+                <li><a href="index.html#services">Lighting Design</a></li>
+                <li><a href="index.html#services">Video &amp; Streaming</a></li>
+                <li><a href="index.html#services">Team Building</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contact Info</h4>
+            <div class="footer-contact"><span aria-hidden="true">📍</span><span>Elgeyo Marakwet Road, Elgeyo Square, Nairobi</span></div>
+            <div class="footer-contact"><span aria-hidden="true">📞</span><a href="tel:+254720440062">+254 720 44 00 62</a></div>
+            <div class="footer-contact"><span aria-hidden="true">✉️</span><a href="mailto:info@progigs.co.ke">info@progigs.co.ke</a></div>
+            <div class="footer-contact"><span aria-hidden="true">✉️</span><a href="mailto:progigsaudiovisual@gmail.com">progigsaudiovisual@gmail.com</a></div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="wrap footer-bottom-inner">
+            <p>&copy; 2026 Pro Gigs Audio Visual Limited. All Rights Reserved.</p>
+            <p>Nairobi, Kenya &nbsp;·&nbsp; East Africa</p>
+        </div>
+    </div>
+</footer>
 
-    <script src="book.js"></script>
+<a href="https://wa.me/254720440062" class="wa-float" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1s-.5-.1-.7.1-.8 1-.9 1.2-.4.2-.7.1a8.2 8.2 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.5 1 2.9 1.2 3 2.1 3.2 5 4.5c.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1s1.8-.7 2-1.4.2-1.3.2-1.4-.3-.2-.6-.4z"/><path d="M12 0A12 12 0 0 0 1.5 17.9L0 24l6.3-1.6A12 12 0 1 0 12 0zm0 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8z"/></svg>
+</a>
+
+<script src="book.js"></script>
 </body>
 </html>
