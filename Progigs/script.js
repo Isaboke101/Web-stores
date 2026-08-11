@@ -293,13 +293,17 @@ mod('reveal', function () {
     }, 3000);
 });
 
-/* ── 7 · WHATSAPP FORM ──────────────────────────────── */
-mod('whatsapp-form', function () {
-    var form = document.getElementById('whatsapp-form');
+/* ── 7 · CONTACT FORM → EMAIL ───────────────────────── */
+mod('contact-form', function () {
+    var form = document.getElementById('contact-form');
     if (!form) return;
+
+    // Client's preferred inbox
+    var TO = 'progigsaudiovisual@gmail.com';
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
+
         var name = document.getElementById('clientName').value.trim();
         var type = document.getElementById('eventType').value.trim();
         var msg  = document.getElementById('clientMessage').value.trim();
@@ -308,10 +312,18 @@ mod('whatsapp-form', function () {
             alert('Please fill in all three fields before sending.');
             return;
         }
-        var text = 'Hello Pro Gigs!\n\nMy name is *' + name + '*.\n' +
-                   "I'm enquiring about a *" + type + '*.\n\n' + msg +
-                   '\n\nLooking forward to hearing from you.';
-        window.open('https://wa.me/254720440062?text=' + encodeURIComponent(text),
-                    '_blank', 'noopener,noreferrer');
+
+        var subject = 'Event Enquiry: ' + type + ' — ' + name;
+        var body =
+            'Hello Pro Gigs Audio Visual,' + '\n\n' +
+            'My name is ' + name + '.' + '\n' +
+            'I would like to enquire about a ' + type + '.' + '\n\n' +
+            'Event details:' + '\n' + msg + '\n\n' +
+            'Looking forward to hearing from you.' + '\n\n' +
+            name;
+
+        window.location.href = 'mailto:' + TO +
+            '?subject=' + encodeURIComponent(subject) +
+            '&body='    + encodeURIComponent(body);
     });
 });
