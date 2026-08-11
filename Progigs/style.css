@@ -28,6 +28,7 @@
 
     --f-head: 'Anton', 'Arial Narrow', sans-serif;
     --f-body: 'DM Sans', 'Segoe UI', sans-serif;
+    --logo-h: 80px;
 
     --r:   6px;
     --r-l: 14px;
@@ -125,7 +126,7 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
     transition:padding var(--t), background var(--t);
 }
 .navbar.scrolled { padding:.55rem 5%; background:rgba(0,0,0,.98); border-bottom-color:var(--blue-35); }
-.nav-logo { height:52px; width:auto; max-width:190px; object-fit:contain; }
+.nav-logo { height:var(--logo-h); width:auto; max-width:190px; object-fit:contain; }
 .logo-link { display:flex; align-items:center; }
 .nav-links { display:flex; gap:1.9rem; align-items:center; }
 .nav-links a {
