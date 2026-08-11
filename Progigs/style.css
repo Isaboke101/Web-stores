@@ -28,13 +28,15 @@
 
     --f-head: 'Anton', 'Arial Narrow', sans-serif;
     --f-body: 'DM Sans', 'Segoe UI', sans-serif;
-    --logo-h: 80px;
 
     --r:   6px;
     --r-l: 14px;
     --sh:   0 6px 28px rgba(0,0,0,0.10);
     --sh-d: 0 18px 60px rgba(0,0,0,0.55);
     --t:   0.32s cubic-bezier(0.4,0,0.2,1);
+
+    /* Navbar logo height — change this one value to resize */
+    --logo-h: 72px;
 }
 
 /* ── RESET ─────────────────────────────────────────────── */
@@ -125,8 +127,18 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
     border-bottom:1px solid var(--line-d);
     transition:padding var(--t), background var(--t);
 }
-.navbar.scrolled { padding:.55rem 5%; background:rgba(0,0,0,.98); border-bottom-color:var(--blue-35); }
-.nav-logo { height:var(--logo-h); width:auto; max-width:190px; object-fit:contain; }
+.navbar.scrolled { padding:.35rem 5%; background:rgba(0,0,0,.98); border-bottom-color:var(--blue-35); }
+.navbar.scrolled .nav-logo { height:calc(var(--logo-h, 72px) * 0.8); }
+/* ── LOGO SIZING ──────────────────────────────────────────
+   Adjust --logo-h to resize the navbar logo site-wide.
+   SVG is vector, so any size stays perfectly sharp.        */
+.nav-logo {
+    height: var(--logo-h, 72px);
+    width: auto;              /* preserves aspect ratio     */
+    max-width: none;          /* no cap = no letterboxing   */
+    object-fit: contain;
+    transition: height var(--t);
+}
 .logo-link { display:flex; align-items:center; }
 .nav-links { display:flex; gap:1.9rem; align-items:center; }
 .nav-links a {
@@ -399,15 +411,22 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
 }
 .logo-grid li {
     background:var(--white); display:grid; place-items:center;
-    padding:2.2rem 1.5rem; min-height:130px; transition:background var(--t);
+    padding:2rem 1.4rem; min-height:150px; transition:background var(--t);
 }
 .logo-grid li:hover { background:var(--wash); }
 .logo-grid img {
-    max-height:56px; width:auto; max-width:100%; object-fit:contain;
-    filter:grayscale(100%); opacity:.55;
+    /* Logos are pre-normalised to a 400x200 transparent canvas,
+       so a single max-height keeps every one optically balanced. */
+    max-height:76px; width:auto; max-width:100%; object-fit:contain;
+    filter:grayscale(100%); opacity:.6;
     transition:filter var(--t), opacity var(--t), transform var(--t);
 }
-.logo-grid li:hover img { filter:grayscale(0); opacity:1; transform:scale(1.06); }
+.logo-grid li:hover img { filter:grayscale(0); opacity:1; transform:scale(1.05); }
+
+/* Vivo Energy keeps its dark background panel, so never grey it out
+   or it reads as a muddy rectangle. */
+.logo-grid img[src*="vivo-energy"] { filter:none; opacity:.85; }
+.logo-grid li:hover img[src*="vivo-energy"] { opacity:1; }
 
 /* ═══════════════════════════════════════════════════════
    8 · CONTACT  (dark)
@@ -465,7 +484,7 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
    ═══════════════════════════════════════════════════════ */
 .footer { background:var(--ink-1); color:var(--grey); padding:5rem 0 0; border-top:1px solid var(--line-d); }
 .footer-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr 1.2fr; gap:3rem; padding-bottom:3.5rem; border-bottom:1px solid var(--line-d); }
-.footer-logo { height:56px; width:auto; margin-bottom:1.2rem; object-fit:contain; }
+.footer-logo { height:88px; width:auto; max-width:none; margin-bottom:1.2rem; object-fit:contain; }
 .footer-brand p { font-size:.9rem; max-width:290px; }
 .footer-tagline { margin-top:1rem !important; color:var(--blue) !important; font-size:.88rem !important; font-weight:600; }
 .footer-col h4 { font-size:.76rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--white); margin-bottom:1.3rem; }
@@ -594,6 +613,8 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
     .sec { padding:4rem 0; }
     .hamburger { display:flex; }
     .btn-nav-cta { display:none; }
+    :root { --logo-h: 54px; }
+    .footer-logo { height:70px; }
     /* ── Mobile dropdown menu ── */
     .nav-links {
         position:absolute; top:100%; left:0; right:0; width:100%;
@@ -648,8 +669,8 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
     .gal figcaption { transform:translateY(0); padding:1.6rem .8rem .7rem; font-size:.8rem; }
     .gal figcaption span { font-size:.58rem; }
     .logo-grid { grid-template-columns:repeat(3,1fr); }
-    .logo-grid li { padding:1.5rem 1rem; min-height:100px; }
-    .logo-grid img { max-height:42px; }
+    .logo-grid li { padding:1.2rem .9rem; min-height:110px; }
+    .logo-grid img { max-height:54px; }
     .c-right { padding:1.8rem; }
     .footer-grid { grid-template-columns:1fr; gap:2.2rem; }
     .grid-2-col, .checkbox-grid { grid-template-columns:1fr; }
