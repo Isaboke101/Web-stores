@@ -11,7 +11,8 @@
     --black:  #000000;
 
     /* ── Derived tints (same hues, no new colours) ── */
-    --blue-d:  #0165BC;                    /* blue darkened for hover */
+    /* NOTE: no second blue exists. Hover states use opacity/brightness
+       on the exact brand blue so #027CE6 is the only blue on the site. */
     --blue-06: rgba(2,124,230,0.06);
     --blue-12: rgba(2,124,230,0.12);
     --blue-20: rgba(2,124,230,0.20);
@@ -92,7 +93,7 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
     transition:background var(--t), transform var(--t), box-shadow var(--t);
     box-shadow:0 6px 22px var(--blue-35);
 }
-.btn-solid:hover { background:var(--blue-d); transform:translateY(-2px); box-shadow:0 10px 30px var(--blue-35); }
+.btn-solid:hover { filter:brightness(0.88); transform:translateY(-2px); box-shadow:0 10px 30px var(--blue-35); }
 
 .btn-line {
     display:inline-block; padding:.95rem 2.2rem;
@@ -112,7 +113,7 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
     text-transform:uppercase; border-radius:var(--r);
     transition:background var(--t); white-space:nowrap;
 }
-.btn-nav-cta:hover { background:var(--blue-d); }
+.btn-nav-cta:hover { filter:brightness(0.88); }
 
 /* ═══════════════════════════════════════════════════════
    NAVBAR
@@ -475,7 +476,7 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
     font-weight:700; font-size:.9rem; letter-spacing:.06em; text-transform:uppercase;
     border-radius:var(--r); transition:background var(--t), transform var(--t);
 }
-.btn-wa:hover { background:var(--blue-d); transform:translateY(-2px); }
+.btn-wa:hover { filter:brightness(0.88); transform:translateY(-2px); }
 .c-alt { text-align:center; font-size:.85rem; color:var(--grey); margin-top:1.1rem; }
 .c-alt a { color:var(--blue); font-weight:600; }
 
@@ -537,7 +538,7 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
     background:var(--blue); color:var(--white); border-radius:50%;
     box-shadow:0 8px 26px var(--blue-35); transition:transform var(--t), background var(--t);
 }
-.wa-float:hover { transform:scale(1.08); background:var(--blue-d); }
+.wa-float:hover { transform:scale(1.08); filter:brightness(0.88); }
 
 /* Reveal animation */
 .rv { opacity:0; transform:translateY(26px); transition:opacity .65s ease, transform .65s ease; }
@@ -651,7 +652,7 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
         border-radius:var(--r); font-weight:700; font-size:.85rem;
         letter-spacing:.07em; text-transform:uppercase;
     }
-    .nav-cta-mobile a:hover { background:var(--blue-d); }
+    .nav-cta-mobile a:hover { filter:brightness(0.88); }
     /* Overlay sits below the dropdown, above the page */
     .nav-overlay { display:block; top:66px; pointer-events:none; }
 
