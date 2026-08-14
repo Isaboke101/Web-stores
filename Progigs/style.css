@@ -270,7 +270,7 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
 .a-img-main { width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center; border-radius:var(--r-l); }
 .a-img-sub {
     position:absolute; right:-2rem; bottom:3rem;
-    width:56%; aspect-ratio:16/9; object-fit:cover; object-position:center;
+    width:56%; aspect-ratio:2/1; object-fit:cover; object-position:center;
     border-radius:var(--r-l); border:6px solid var(--white); box-shadow:var(--sh);
 }
 .a-badge {
@@ -355,6 +355,13 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
 }
 .ind:hover { transform:translateY(-6px); box-shadow:0 16px 44px rgba(0,0,0,.16); }
 .ind img { width:100%; aspect-ratio:16/9; object-fit:cover; object-position:center; transition:transform .6s ease; }
+
+/* Per-photo crop tuning.
+   KenGen is a 4:3 source in a 16:9 card, so the top/bottom get trimmed.
+   Biasing to 34% lifts the crop window upward, keeping the podium and the
+   KenGen logo on the LED screen centred instead of the front row of chairs.
+   Lower % = show more of the top. Raise it to show more of the floor. */
+.ind img[src*="kengen"] { object-position:center 34%; }
 .ind:hover img { transform:scale(1.06); }
 .ind-body { padding:1.6rem 1.5rem 1.8rem; border-top:3px solid var(--blue); }
 .ind-body h3 { font-size:1.2rem; margin-bottom:.5rem; }
