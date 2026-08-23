@@ -37,7 +37,7 @@
     --t:   0.32s cubic-bezier(0.4,0,0.2,1);
 
     /* Navbar logo height — change this one value to resize */
-    --logo-h: 72px;
+    --logo-h: 88px;
 }
 
 /* ── RESET ─────────────────────────────────────────────── */
@@ -122,19 +122,19 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
     position:fixed; inset:0 0 auto 0; z-index:1000;
     /* anchors the mobile dropdown */
     display:flex; align-items:center; justify-content:space-between;
-    padding:.85rem 5%;
+    padding:.35rem 5%;   /* slim padding — the logo fills the bar instead */
     background:rgba(0,0,0,.92);
     backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
     border-bottom:1px solid var(--line-d);
     transition:padding var(--t), background var(--t);
 }
-.navbar.scrolled { padding:.35rem 5%; background:rgba(0,0,0,.98); border-bottom-color:var(--blue-35); }
-.navbar.scrolled .nav-logo { height:calc(var(--logo-h, 72px) * 0.8); }
+.navbar.scrolled { padding:.15rem 5%; background:rgba(0,0,0,.98); border-bottom-color:var(--blue-35); }
+.navbar.scrolled .nav-logo { height:calc(var(--logo-h, 88px) * 0.75); }
 /* ── LOGO SIZING ──────────────────────────────────────────
    Adjust --logo-h to resize the navbar logo site-wide.
    SVG is vector, so any size stays perfectly sharp.        */
 .nav-logo {
-    height: var(--logo-h, 72px);
+    height: var(--logo-h, 88px);
     width: auto;              /* preserves aspect ratio     */
     max-width: none;          /* no cap = no letterboxing   */
     object-fit: contain;
@@ -248,7 +248,10 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
     width:40px; height:40px; flex-shrink:0; display:grid; place-items:center;
     background:rgba(255,255,255,.16); border-radius:50%; color:var(--white);
 }
-.strip-item span:last-child { display:flex; flex-direction:column; font-size:.88rem; line-height:1.35; }
+.strip-item span:last-child { display:flex; flex-direction:column; font-size:.88rem; line-height:1.45; }
+/* Each phone number is its own tap target */
+.strip-item span a { color:var(--white); transition:opacity var(--t); }
+.strip-item span a:hover { opacity:.8; text-decoration:underline; }
 .strip-item strong { font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; opacity:.8; font-weight:700; }
 .strip-cta {
     justify-self:end; padding:.8rem 1.7rem;
@@ -483,7 +486,7 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
    ═══════════════════════════════════════════════════════ */
 .footer { background:var(--ink-1); color:var(--grey); padding:5rem 0 0; border-top:1px solid var(--line-d); }
 .footer-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr 1.2fr; gap:3rem; padding-bottom:3.5rem; border-bottom:1px solid var(--line-d); }
-.footer-logo { height:88px; width:auto; max-width:none; margin-bottom:1.2rem; object-fit:contain; }
+.footer-logo { height:112px; width:auto; max-width:none; margin-bottom:1.2rem; object-fit:contain; }
 .footer-brand p { font-size:.9rem; max-width:290px; }
 .footer-tagline { margin-top:1rem !important; color:var(--blue) !important; font-size:.88rem !important; font-weight:600; }
 .footer-col h4 { font-size:.76rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--white); margin-bottom:1.3rem; }
@@ -612,8 +615,8 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
     .sec { padding:4rem 0; }
     .hamburger { display:flex; }
     .btn-nav-cta { display:none; }
-    :root { --logo-h: 54px; }
-    .footer-logo { height:70px; }
+    :root { --logo-h: 64px; }
+    .footer-logo { height:88px; }
     /* ── Mobile dropdown menu ── */
     .nav-links {
         position:absolute; top:100%; left:0; right:0; width:100%;
