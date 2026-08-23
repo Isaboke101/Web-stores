@@ -267,10 +267,12 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
 
 .about-media { position:relative; }
 /* 3/4 matches a portrait source, so nothing meaningful is lost */
-.a-img-main { width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center; border-radius:var(--r-l); }
+.a-img-main { width:100%; height:auto; display:block; border-radius:var(--r-l); }
 .a-img-sub {
     position:absolute; right:-2rem; bottom:3rem;
-    width:56%; aspect-ratio:2/1; object-fit:cover; object-position:center;
+    /* Natural, uncropped. 4:3 source is taller than the old wide inset,
+       so 50% width keeps the overlap balanced. Adjust % to taste. */
+    width:50%; height:auto;
     border-radius:var(--r-l); border:6px solid var(--white); box-shadow:var(--sh);
 }
 .a-badge {
@@ -348,21 +350,14 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
    5 · INDUSTRIES
    ═══════════════════════════════════════════════════════ */
 .industries { background:var(--wash); }
-.ind-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.4rem; }
+.ind-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.4rem; align-items:start; }
 .ind {
     background:var(--white); border-radius:var(--r-l);
     overflow:hidden; box-shadow:var(--sh); transition:transform var(--t), box-shadow var(--t);
 }
-.ind:hover { transform:translateY(-6px); box-shadow:0 16px 44px rgba(0,0,0,.16); }
-.ind img { width:100%; aspect-ratio:16/9; object-fit:cover; object-position:center; transition:transform .6s ease; }
+/* Cards are static: no lift, no zoom — photos display exactly as shot. */
+.ind img { width:100%; height:auto; display:block; }
 
-/* Per-photo crop tuning.
-   KenGen is a 4:3 source in a 16:9 card, so the top/bottom get trimmed.
-   Biasing to 34% lifts the crop window upward, keeping the podium and the
-   KenGen logo on the LED screen centred instead of the front row of chairs.
-   Lower % = show more of the top. Raise it to show more of the floor. */
-.ind img[src*="kengen"] { object-position:center 34%; }
-.ind:hover img { transform:scale(1.06); }
 .ind-body { padding:1.6rem 1.5rem 1.8rem; border-top:3px solid var(--blue); }
 .ind-body h3 { font-size:1.2rem; margin-bottom:.5rem; }
 .ind-body p { color:var(--grey-t); font-size:.9rem; }
@@ -424,20 +419,13 @@ h1, h2, h3, .svc-n, .a-badge-num, .mini-stats strong {
     background:var(--white); display:grid; place-items:center;
     padding:2rem 1.4rem; min-height:150px; transition:background var(--t);
 }
-.logo-grid li:hover { background:var(--wash); }
+
 .logo-grid img {
     /* Logos are pre-normalised to a 400x200 transparent canvas,
-       so a single max-height keeps every one optically balanced. */
+       so a single max-height keeps every one optically balanced.
+       Shown in full colour, static — no greyscale, no hover effects. */
     max-height:76px; width:auto; max-width:100%; object-fit:contain;
-    filter:grayscale(100%); opacity:.6;
-    transition:filter var(--t), opacity var(--t), transform var(--t);
 }
-.logo-grid li:hover img { filter:grayscale(0); opacity:1; transform:scale(1.05); }
-
-/* Vivo Energy keeps its dark background panel, so never grey it out
-   or it reads as a muddy rectangle. */
-.logo-grid img[src*="vivo-energy"] { filter:none; opacity:.85; }
-.logo-grid li:hover img[src*="vivo-energy"] { opacity:1; }
 
 /* ═══════════════════════════════════════════════════════
    8 · CONTACT  (dark)
