@@ -22,15 +22,23 @@ try {
 
   if ($q->rowCount() === 0) out(true, "You're already subscribed — great taste! 🎉");
 
-  // Welcome email
+  // Welcome email — branded HTML with plain-text fallback
   $subject = 'Welcome to ' . SITE_NAME;
   $bodyTxt = "Karibu!\n\nYou're now subscribed to Kūgeria Insights. "
            . "You'll get an email whenever a new article is published.\n\n"
            . "Browse everything so far: " . SITE_URL . "/\n\n"
            . "— Isaac Oonge, Kūgeria Ltd\n\n"
            . "Unsubscribe any time with one click:\n" . unsub_link($email);
-  @mail($email, $subject, $bodyTxt,
-        "From: " . SITE_NAME . " <" . FROM_EMAIL . ">\r\nReply-To: " . FROM_EMAIL);
+
+  $bodyHtml = '<p>Karibu! 👋</p>'
+            . '<p>You\'re now subscribed to <strong>Kūgeria Insights</strong>. '
+            . 'You\'ll get an email whenever a new article is published — practical, '
+            . 'no-fluff guides on web development, M-Pesa, AI, and digital growth for Kenyan businesses.</p>'
+            . '<p style="color:#6b7280">— Isaac Oonge, Kūgeria Ltd</p>';
+  $footerNote = 'Unsubscribe any time with one click: <a href="' . esc(unsub_link($email)) . '" style="color:#052F5F">' . esc(unsub_link($email)) . '</a>';
+
+  send_mail($email, $subject, $bodyTxt,
+    email_template('Welcome to Kūgeria Insights', $bodyHtml, 'Browse the Blog', SITE_URL . '/', $footerNote));
 
   out(true, "Subscribed! Check your inbox for a welcome note. 🎉");
 } catch (Throwable $e) {
