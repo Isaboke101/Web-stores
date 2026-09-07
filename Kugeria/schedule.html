@@ -11,7 +11,6 @@
   <link rel="icon" href="images/logo_small.svg" type="image/svg+xml">
   <link rel="icon" type="image/png" href="images/logo_small.png">
   <link rel="apple-touch-icon" href="images/logo_small.png">
-  <meta name="theme-color" content="#052F5F">
   <style>
     :root{
       --bg:#FAFAFA;--green:#004B23;--navy:#052F5F;
@@ -35,7 +34,7 @@
     /* ── NAV ── */
     .nav{
       position:sticky;top:0;z-index:100;
-      background:rgba(250,250,250,.94);backdrop-filter:blur(14px);
+      background:rgba(250,250,250,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
       border-bottom:1px solid var(--gray-200);
     }
     .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1200px;margin:0 auto;padding:0 20px}
@@ -48,7 +47,15 @@
     .page-grid{display:grid;grid-template-columns:1fr;gap:44px}
 
     /* ── LEFT PANEL: BIO ── */
-    .bio-panel{}
+    .bio-panel{display:block}
+    .mt-sub{font-size:10.5px;color:var(--gray-400);margin-top:1px}
+    .consent-field{margin-bottom:6px}
+    .consent-label{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-weight:400;margin-bottom:0}
+    .consent-checkbox{width:16px;height:16px;margin-top:2px;accent-color:var(--gold);flex-shrink:0;cursor:pointer}
+    .consent-copy{font-size:12.5px;color:var(--gray-500);line-height:1.65}
+    .consent-copy a{color:var(--navy);font-weight:600}
+    .required-mark{color:#e53e3e}
+    .hidden-section{display:none}
     .bio-pill{
       display:inline-flex;align-items:center;gap:6px;
       background:rgba(197,160,89,.1);border:1px solid rgba(197,160,89,.28);
@@ -182,6 +189,8 @@
 
     /* Checkboxes / service grid */
     .svc-checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .svc-group{grid-column:1/-1;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-top:8px}
+    .svc-group:first-child{margin-top:0}
     .svc-check{
       display:flex;align-items:center;gap:9px;
       padding:10px 12px;border-radius:8px;
@@ -383,31 +392,39 @@
             <div class="field">
               <label>Service Interest <span>*</span></label>
               <div class="svc-checks" id="svcChecks">
-                <label class="svc-check" onclick="toggleSvc(this)">
-                  <input type="checkbox" name="services" value="Web Development">
-                  <div class="cb-box"></div> Web Development
-                </label>
-                <label class="svc-check" onclick="toggleSvc(this)">
-                  <input type="checkbox" name="services" value="Mobile App">
-                  <div class="cb-box">  </div> Mobile App
-                </label>
-                <label class="svc-check" onclick="toggleSvc(this)">
-                  <input type="checkbox" name="services" value="AI Integration">
-                  <div class="cb-box"></div> AI Integration
-                </label>
-                <label class="svc-check" onclick="toggleSvc(this)">
-                  <input type="checkbox" name="services" value="Digital Branding">
-                  <div class="cb-box"></div> Digital Branding
-                </label>
-                <label class="svc-check" onclick="toggleSvc(this)">
-                  <input type="checkbox" name="services" value="LMS / ERP System">
-                  <div class="cb-box"></div> LMS / ERP System
-                </label>
-                <label class="svc-check" onclick="toggleSvc(this)">
-                  <input type="checkbox" name="services" value="Not Sure Yet">
-                  <div class="cb-box"></div> Not Sure Yet
-                </label>
-              </div>
+
+                <div class="svc-group">Web &amp; Mobile</div>
+                <label class="svc-check" onclick="toggleSvc(this)"><input type="checkbox" name="services" value="Web &amp; Mobile Development"><div class="cb-box"></div> Web &amp; Mobile Development</label>
+                <label class="svc-check" onclick="toggleSvc(this)"><input type="checkbox" name="services" value="E-commerce Store"><div class="cb-box"></div> E-commerce Store</label>
+                <label class="svc-check" onclick="toggleSvc(this)"><input type="checkbox" name="services" value="Landing / Campaign Page"><div class="cb-box"></div> Landing / Campaign Page</label>
+
+                <div class="svc-group">AI Integration</div>
+                <label class="svc-check" onclick="toggleSvc(this)"><input type="checkbox" name="services" value="AI Chatbot"><div class="cb-box"></div> AI &amp; Chatbot Integration</label>
+                <label class="svc-check" onclick="toggleSvc(this)"><input type="checkbox" name="services" value="AI Workflow Automation"><div class="cb-box"></div> AI Workflow Automation</label>
+
+                <div class="svc-group">Branding</div>
+                <label class="svc-check" onclick="toggleSvc(this)"><input type="checkbox" name="services" value="Logo &amp; Brand Identity"><div class="cb-box"></div> Logo &amp; Brand Identity</label>
+                <label class="svc-check" onclick="toggleSvc(this)"><input type="checkbox" name="services" value="Brand Collateral &amp; Social Kit"><div class="cb-box"></div> Brand Collateral &amp; Social Kit</label>
+
+                <div class="svc-group">Systems</div>
+                <label class="svc-check" onclick="toggleSvc(this)"><input type="checkbox" name="services" value="Custom CMS / Publishing Platform"><div class="cb-box"></div> Custom CMS / Publishing</label>
+                <label class="svc-check" onclick="toggleSvc(this)"><input type="checkbox" name="services" value="Booking &amp; Scheduling System"><div class="cb-box"></div> Booking &amp; Scheduling</label>
+                <label class="svc-check" onclick="toggleSvc(this)"><input type="checkbox" name="services" value="Client Dashboard / Portal"><div class="cb-box"></div> Client Dashboard / Portal</label>
+                <label class="svc-check" onclick="toggleSvc(this)"><input type="checkbox" name="services" value="LMS / ERP / Enterprise System"><div class="cb-box"></div> LMS / ERP / Enterprise</label>
+
+                <div class="svc-group">Data &amp; Analytics</div>
+                <label class="svc-check" onclick="toggleSvc(this)"><input type="checkbox" name="services" value="Business Dashboard"><div class="cb-box"></div> Business Dashboard</label>
+                <label class="svc-check" onclick="toggleSvc(this)"><input type="checkbox" name="services" value="Data Analysis &amp; Reports"><div class="cb-box"></div> Data Analysis &amp; Reports</label>
+
+                <div class="svc-group">Growth</div>
+                <label class="svc-check" onclick="toggleSvc(this)"><input type="checkbox" name="services" value="SEO &amp; Google Visibility"><div class="cb-box"></div> SEO &amp; Google Visibility</label>
+                <label class="svc-check" onclick="toggleSvc(this)"><input type="checkbox" name="services" value="Website Care &amp; Maintenance"><div class="cb-box"></div> Website Care &amp; Maintenance</label>
+                <label class="svc-check" onclick="toggleSvc(this)"><input type="checkbox" name="services" value="Hosting &amp; Domain Setup"><div class="cb-box"></div> Hosting &amp; Domain Setup</label>
+
+                <div class="svc-group"></div>
+                <label class="svc-check" onclick="toggleSvc(this)"><input type="checkbox" name="services" value="Not Sure Yet"><div class="cb-box"></div> Not Sure Yet — advise me</label>
+
+              </div>  
               <div class="err-msg" id="err-svc">Please select at least one service</div>
             </div>
 
@@ -467,17 +484,17 @@
                 <div class="mt-opt sel" id="mt-online" onclick="selMeet('Online')">
                   <div class="mt-icon">💻</div>
                   <div>Online</div>
-                  <div style="font-size:10.5px;color:var(--gray-400);margin-top:1px">Google Meet / Zoom</div>
+                  <div class="mt-sub">Google Meet / Zoom</div>
                 </div>
                 <div class="mt-opt" id="mt-physical" onclick="selMeet('Physical')">
                   <div class="mt-icon">📍</div>
                   <div>Physical</div>
-                  <div style="font-size:10.5px;color:var(--gray-400);margin-top:1px">Nairobi, Kenya</div>
+                  <div class="mt-sub">Nairobi, Kenya</div>
                 </div>
                 <div class="mt-opt" id="mt-phone" onclick="selMeet('Phone Call')">
                   <div class="mt-icon">📞</div>
                   <div>Phone Call</div>
-                  <div style="font-size:10.5px;color:var(--gray-400);margin-top:1px">Voice / WhatsApp</div>
+                  <div class="mt-sub">Voice / WhatsApp</div>
                 </div>
               </div>
               <input type="hidden" id="fmeettype" name="meetingType" value="Online">
@@ -498,16 +515,16 @@
             </div>
 
             <!-- Privacy & Terms consent (required — Kenya DPA) -->
-            <div class="field" style="margin-bottom:6px">
-              <label for="fconsent" style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-weight:400;margin-bottom:0">
+            <div class="field consent-field">
+              <label for="fconsent" class="consent-label">
                 <input type="checkbox" id="fconsent" name="consent"
-                       style="width:16px;height:16px;margin-top:2px;accent-color:var(--gold);flex-shrink:0;cursor:pointer">
-                <span style="font-size:12.5px;color:var(--gray-500);line-height:1.65">
+                       class="consent-checkbox">
+                <span class="consent-copy">
                   I have read and agree to the
-                  <a href="privacy.html" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600">Privacy Policy</a>
+                  <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
                   and
-                  <a href="terms.html" target="_blank" rel="noopener" style="color:var(--navy);font-weight:600">Terms of Service</a>,
-                  and consent to Kūgeria Ltd storing my details to facilitate this meeting request. <span style="color:#e53e3e">*</span>
+                  <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a>,
+                  and consent to Kūgeria Ltd storing my details to facilitate this meeting request. <span class="required-mark">*</span>
                 </span>
               </label>
               <div class="err-msg" id="err-consent">Please accept the Privacy Policy and Terms to continue</div>
@@ -536,7 +553,7 @@
         </div>
 
         <!-- While-you-wait: recent tech reads (filled from the blog; hidden if unavailable) -->
-        <div class="suc-section" id="sucReads" style="display:none">
+        <div class="suc-section hidden-section" id="sucReads">
           <div class="suc-sec-label">While You Wait — Recent Tech Reads</div>
           <div class="suc-reads" id="sucReadsList"></div>
         </div>

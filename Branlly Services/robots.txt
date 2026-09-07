@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Do NOT disallow the folder holding your images —
+# blocking it removes them from Google Images and
+# breaks WhatsApp / LinkedIn link previews.
+
+Sitemap: https://www.branllyltd.co.ke/sitemap.xml

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — Web, AI, Branding, Systems &amp; Data | Kūgeria Ltd</title>
+  <meta name="description" content="Everything Kūgeria Ltd builds for Kenyan businesses: custom websites, e-commerce with M-Pesa, AI chatbots, branding, booking systems, dashboards, data analysis, SEO, and hosting — with transparent starting prices.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.kugeria.co.ke/services.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.kugeria.co.ke/services.html">
+  <meta property="og:title" content="Services — Kūgeria Ltd">
+  <meta property="og:description" content="Custom websites, AI, branding, systems, and data services for Kenyan businesses, with transparent starting prices.">
+  <meta property="og:image" content="https://www.kugeria.co.ke/images/og-image.jpg">
+  <link rel="icon" href="images/logo_small.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" href="images/logo_small.png">
+  <link rel="apple-touch-icon" href="images/logo_small.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#FAFAFA;--green:#004B23;--navy:#052F5F;--gold:#C5A059;--charcoal:#212121;--white:#fff;--gray-200:#e5e7eb;--gray-400:#9ca3af;--gray-500:#6b7280;--display:'Cormorant Garamond',serif;--body:'Plus Jakarta Sans',sans-serif}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--body);background:var(--bg);color:var(--charcoal);line-height:1.7}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .nav{position:sticky;top:0;z-index:100;background:rgba(250,250,250,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--gray-200)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1100px;margin:0 auto;padding:0 20px}
+    .nav-inner img{height:36px;width:auto}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{font-size:13px;color:var(--gray-500);font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--navy)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:9px;font-size:13.5px;font-weight:700;border:2px solid var(--gold);background:var(--gold);color:var(--charcoal);transition:all .22s ease;white-space:nowrap}
+    .btn:hover{background:#b8903e;border-color:#b8903e;transform:translateY(-2px);box-shadow:0 10px 26px rgba(197,160,89,.35)}
+    .btn-ghost{background:transparent;color:var(--navy);border-color:var(--gray-200)}
+    .btn-ghost:hover{background:transparent;border-color:var(--navy);box-shadow:none}
+    .btn-sm{padding:9px 16px;font-size:12.5px}
+
+    .hero{padding:64px 20px 40px;text-align:center;max-width:720px;margin:0 auto}
+    .hero-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+    .hero h1{font-family:var(--display);font-size:clamp(36px,7vw,58px);color:var(--navy);line-height:1.06;margin-bottom:16px}
+    .hero h1 em{color:var(--gold);font-style:italic}
+    .hero p{font-size:15px;color:var(--gray-500);max-width:560px;margin:0 auto 26px}
+
+    /* Category jump pills */
+    .jump{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:0 20px 20px;max-width:900px;margin:0 auto}
+    .jump a{padding:7px 15px;border-radius:100px;font-size:12.5px;font-weight:500;border:1.5px solid var(--gray-200);color:var(--gray-500);transition:all .2s}
+    .jump a:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+    .wrap{max-width:1100px;margin:0 auto;padding:20px 20px 90px}
+    .cat{margin-top:56px;scroll-margin-top:84px}
+    .cat-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--gray-200)}
+    .cat-label{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+    .cat-title{font-family:var(--display);font-size:clamp(26px,4.5vw,34px);color:var(--charcoal);line-height:1.15}
+    .cat-sub{font-size:13.5px;color:var(--gray-500);max-width:520px}
+
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:760px){.grid{grid-template-columns:1fr 1fr}}
+
+    .svc{background:var(--white);border:1px solid var(--gray-200);border-radius:16px;padding:26px;position:relative;overflow:hidden;transition:all .28s ease;display:flex;flex-direction:column}
+    .svc::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--gray-200);transition:background .28s}
+    .svc:hover{box-shadow:0 14px 40px rgba(5,47,95,.1);transform:translateY(-4px);border-color:rgba(197,160,89,.3)}
+    .svc:hover::before{background:var(--green)}
+    .svc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:12px}
+    .svc-icon{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+    .ic-gr{background:rgba(0,75,35,.08)} .ic-nv{background:rgba(5,47,95,.08)} .ic-gd{background:rgba(197,160,89,.12)} .ic-bk{background:rgba(33,33,33,.06)}
+    .svc-badge{display:inline-block;padding:3px 9px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+    .bg-gr{background:rgba(0,75,35,.1);color:var(--green)} .bg-nv{background:rgba(5,47,95,.1);color:var(--navy)} .bg-gd{background:rgba(197,160,89,.15);color:#7a5e1e} .bg-bk{background:rgba(33,33,33,.07);color:#444}
+    .svc h3{font-family:var(--display);font-size:23px;font-weight:700;color:var(--charcoal);line-height:1.2;margin-bottom:8px}
+    .svc-desc{font-size:14px;color:#3d3d3d;line-height:1.7;margin-bottom:14px}
+    .svc-best{font-size:12.5px;color:var(--gray-500);background:var(--bg);border-radius:8px;padding:9px 12px;margin-bottom:14px}
+    .svc-best strong{color:var(--charcoal)}
+    .svc-feats{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;flex:1}
+    .svc-feat{font-size:13px;color:#555;display:flex;align-items:flex-start;gap:8px}
+    .svc-feat::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:8px}
+    .svc-meta{display:flex;flex-wrap:wrap;gap:16px;padding-top:14px;border-top:1px dashed var(--gray-200);align-items:flex-end;justify-content:space-between}
+    .meta-item .m-label{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-400)}
+    .meta-item .m-val{font-family:var(--display);font-size:20px;font-weight:700;color:var(--navy);line-height:1.2}
+    .meta-item .m-val.sm{font-family:var(--body);font-size:13px;font-weight:600;color:var(--charcoal)}
+
+    .cta-band{background:linear-gradient(135deg,var(--navy),var(--green));border-radius:18px;padding:48px 30px;text-align:center;margin-top:70px}
+    .cta-band h3{font-family:var(--display);font-size:clamp(26px,5vw,36px);color:#fff;margin-bottom:10px}
+    .cta-band h3 em{color:var(--gold);font-style:italic}
+    .cta-band p{color:rgba(255,255,255,.72);font-size:14px;max-width:480px;margin:0 auto 26px}
+    .footer{background:var(--charcoal);padding:26px 20px;text-align:center;font-size:11.5px;color:rgba(255,255,255,.4)}
+    .footer a{color:var(--gold)}
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html"><img src="images/logo_small.svg" alt="Kūgeria Ltd"></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="blog/">Insights</a>
+      <a href="schedule.html" class="btn btn-sm">Schedule a Meeting</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">Everything We Build</div>
+  <h1>Services That <em>Scale</em> With You</h1>
+  <p>Sixteen ways we help Kenyan businesses look established, work smarter, and sell more — each custom-built, none templated. Prices are transparent starting points; every project gets a fixed quote before work begins.</p>
+  <a href="schedule.html" class="btn">Book a Free 30-Minute Call →</a>
+</div>
+
+<div class="jump">
+  <a href="#web">Web &amp; Mobile</a>
+  <a href="#ai">AI Integration</a>
+  <a href="#brand">Branding</a>
+  <a href="#systems">Systems</a>
+  <a href="#data">Data &amp; Analytics</a>
+  <a href="#growth">Growth</a>
+</div>
+
+<div class="wrap">
+
+  <!-- ═══ WEB & MOBILE ═══ -->
+  <section class="cat" id="web">
+    <div class="cat-head">
+      <div>
+        <div class="cat-label">01 — Web &amp; Mobile</div>
+        <h2 class="cat-title">Websites and apps built to convert</h2>
+      </div>
+      <p class="cat-sub">From a single landing page to a full store with M-Pesa checkout — fast, mobile-first, and built on code you own.</p>
+    </div>
+    <div class="grid">
+
+      <div class="svc">
+        <div class="svc-top"><div class="svc-icon ic-gr">🌐</div><span class="svc-badge bg-gr">Most Popular</span></div>
+        <h3>Web &amp; Mobile Development</h3>
+        <p class="svc-desc">The core of what we do. A custom-built, database-driven website or web app designed around your business goals — not a theme someone else has used a thousand times. Every site ships mobile-first, SEO-ready, and fast, with M-Pesa or card payments integrated where you need them.</p>
+        <div class="svc-best"><strong>Best for:</strong> businesses that need a professional online presence that actually generates enquiries, not just a brochure.</div>
+        <div class="svc-feats">
+          <div class="svc-feat">Multi-page business websites, portfolios, and full-stack web apps</div>
+          <div class="svc-feat">M-Pesa STK Push and card payment integration, taken live properly</div>
+          <div class="svc-feat">SEO structure, meta tags, sitemaps, and structured data built in</div>
+          <div class="svc-feat">Cross-platform mobile solutions where a native app isn't justified</div>
+          <div class="svc-feat">Full source code and hosting account ownership — you're buying, not renting</div>
+        </div>
+        <div class="svc-meta">
+          <div class="meta-item"><div class="m-label">Starting from</div><div class="m-val">KES 15,000</div></div>
+          <div class="meta-item"><div class="m-label">Typical timeline</div><div class="m-val sm">2 – 4 weeks</div></div>
+          <a href="schedule.html" class="btn btn-sm">Get a Quote →</a>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-top"><div class="svc-icon ic-gr">🛒</div><span class="svc-badge bg-gr">E-commerce</span></div>
+        <h3>E-commerce Stores</h3>
+        <p class="svc-desc">A complete online store: product catalogue, cart, checkout, and order management — with M-Pesa built in so Kenyan customers pay the way they already do. We've built and taken live full stores before, including the payment callbacks and receipts that amateur builds skip.</p>
+        <div class="svc-best"><strong>Best for:</strong> product businesses ready to sell online 24/7 without chasing payment screenshots on WhatsApp.</div>
+        <div class="svc-feats">
+          <div class="svc-feat">Product catalogue with categories, variants, and stock tracking</div>
+          <div class="svc-feat">M-Pesa STK Push checkout with automatic confirmation and receipts</div>
+          <div class="svc-feat">Order notifications to you and your customer by email and SMS</div>
+          <div class="svc-feat">Admin panel to add products, view orders, and manage customers</div>
+          <div class="svc-feat">Delivery options, discount codes, and customer accounts as needed</div>
+        </div>
+        <div class="svc-meta">
+          <div class="meta-item"><div class="m-label">Starting from</div><div class="m-val">KES 45,000</div></div>
+          <div class="meta-item"><div class="m-label">Typical timeline</div><div class="m-val sm">4 – 8 weeks</div></div>
+          <a href="schedule.html" class="btn btn-sm">Get a Quote →</a>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-top"><div class="svc-icon ic-gr">🚀</div><span class="svc-badge bg-gr">Fast Turnaround</span></div>
+        <h3>Landing &amp; Campaign Pages</h3>
+        <p class="svc-desc">One page, one goal. For a product launch, an event, a Google or social ad campaign, or a lead-capture drive — built to do a single thing exceptionally well and delivered in days rather than weeks.</p>
+        <div class="svc-best"><strong>Best for:</strong> campaigns with a deadline, or testing an idea before committing to a full site.</div>
+        <div class="svc-feats">
+          <div class="svc-feat">Focused layout with a single, clear call to action</div>
+          <div class="svc-feat">Lead capture via form, WhatsApp, or email — your choice</div>
+          <div class="svc-feat">Optimised for Google Ads and social traffic (fast load, mobile-first)</div>
+          <div class="svc-feat">Optional countdown, registration, or waitlist functionality</div>
+        </div>
+        <div class="svc-meta">
+          <div class="meta-item"><div class="m-label">Starting from</div><div class="m-val">KES 12,000</div></div>
+          <div class="meta-item"><div class="m-label">Typical timeline</div><div class="m-val sm">3 – 7 days</div></div>
+          <a href="schedule.html" class="btn btn-sm">Get a Quote →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ AI INTEGRATION ═══ -->
+  <section class="cat" id="ai">
+    <div class="cat-head">
+      <div>
+        <div class="cat-label">02 — AI Integration</div>
+        <h2 class="cat-title">AI that works for your business, not just impresses</h2>
+      </div>
+      <p class="cat-sub">We only recommend AI where it pays off. When it does, it handles enquiries and repetitive work around the clock.</p>
+    </div>
+    <div class="grid">
+
+      <div class="svc">
+        <div class="svc-top"><div class="svc-icon ic-nv">🤖</div><span class="svc-badge bg-nv">AI Services</span></div>
+        <h3>AI &amp; Chatbot Integration</h3>
+        <p class="svc-desc">A chatbot trained on your services, prices, FAQs, and tone — answering customer questions instantly on your website or WhatsApp, qualifying leads, and handing over to you when a human is needed. Modern LLM-powered, not the frustrating "press 1" bots of old.</p>
+        <div class="svc-best"><strong>Best for:</strong> businesses getting the same questions repeatedly, or enquiries arriving outside working hours.</div>
+        <div class="svc-feats">
+          <div class="svc-feat">Custom AI assistant trained on your business information</div>
+          <div class="svc-feat">Deployed on your website, WhatsApp Business, or both</div>
+          <div class="svc-feat">Collects lead details before handing over to you</div>
+          <div class="svc-feat">English and Swahili support</div>
+          <div class="svc-feat">Honest advice first — we'll tell you if a chatbot isn't worth it yet</div>
+        </div>
+        <div class="svc-meta">
+          <div class="meta-item"><div class="m-label">Starting from</div><div class="m-val">KES 25,000</div></div>
+          <div class="meta-item"><div class="m-label">Typical timeline</div><div class="m-val sm">1 – 3 weeks</div></div>
+          <a href="schedule.html" class="btn btn-sm">Get a Quote →</a>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-top"><div class="svc-icon ic-nv">⚡</div><span class="svc-badge bg-nv">Automation</span></div>
+        <h3>AI Workflow Automation</h3>
+        <p class="svc-desc">Connect AI to the repetitive parts of running your business — drafting replies, sorting and summarising documents, routing leads, generating reports — so your team spends time on the work that needs a human.</p>
+        <div class="svc-best"><strong>Best for:</strong> teams losing hours each week to copy-paste, sorting, and follow-ups that follow a pattern.</div>
+        <div class="svc-feats">
+          <div class="svc-feat">Automated email and document handling</div>
+          <div class="svc-feat">Smart lead routing and scheduled follow-ups</div>
+          <div class="svc-feat">Custom internal AI tools built for your exact workflow</div>
+          <div class="svc-feat">Integration with the systems you already use</div>
+        </div>
+        <div class="svc-meta">
+          <div class="meta-item"><div class="m-label">Pricing</div><div class="m-val">Custom Quote</div></div>
+          <div class="meta-item"><div class="m-label">Typical timeline</div><div class="m-val sm">Scoped per project</div></div>
+          <a href="schedule.html" class="btn btn-sm">Discuss Your Workflow →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ BRANDING ═══ -->
+  <section class="cat" id="brand">
+    <div class="cat-head">
+      <div>
+        <div class="cat-label">03 — Branding</div>
+        <h2 class="cat-title">Look like the business you're becoming</h2>
+      </div>
+      <p class="cat-sub">A consistent identity across logo, print, and social — so every touchpoint communicates the same authority.</p>
+    </div>
+    <div class="grid">
+
+      <div class="svc">
+        <div class="svc-top"><div class="svc-icon ic-gd">✦</div><span class="svc-badge bg-gd">Identity</span></div>
+        <h3>Logo &amp; Brand Identity</h3>
+        <p class="svc-desc">A logo and complete visual identity system — colour, typography, and usage rules — designed to communicate trust before a single word is read. You receive every source file, so you're never dependent on us to use your own brand.</p>
+        <div class="svc-best"><strong>Best for:</strong> new businesses, or established ones whose current look no longer matches their ambition.</div>
+        <div class="svc-feats">
+          <div class="svc-feat">Logo concepts, refinement rounds, and final files in all formats</div>
+          <div class="svc-feat">Defined colour palette and typography pairing</div>
+          <div class="svc-feat">A brand guidelines document your team can follow</div>
+          <div class="svc-feat">Favicon, social profile marks, and transparent variants</div>
+        </div>
+        <div class="svc-meta">
+          <div class="meta-item"><div class="m-label">Starting from</div><div class="m-val">KES 10,000</div></div>
+          <div class="meta-item"><div class="m-label">Typical timeline</div><div class="m-val sm">1 – 2 weeks</div></div>
+          <a href="schedule.html" class="btn btn-sm">Get a Quote →</a>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-top"><div class="svc-icon ic-gd">🎨</div><span class="svc-badge bg-gd">Collateral</span></div>
+        <h3>Brand Collateral &amp; Social Kits</h3>
+        <p class="svc-desc">Everything that carries your brand beyond the logo. Business cards, letterheads, and email signatures for the professional touchpoints; templates and covers so your social media looks consistent post after post.</p>
+        <div class="svc-best"><strong>Best for:</strong> businesses with a logo but no consistent look across their materials and channels.</div>
+        <div class="svc-feats">
+          <div class="svc-feat">Business cards, letterheads, and invoice templates</div>
+          <div class="svc-feat">Social media post templates, profile images, and covers</div>
+          <div class="svc-feat">Email signatures for the whole team</div>
+          <div class="svc-feat">Presentation and proposal templates</div>
+        </div>
+        <div class="svc-meta">
+          <div class="meta-item"><div class="m-label">Starting from</div><div class="m-val">KES 8,000</div></div>
+          <div class="meta-item"><div class="m-label">Typical timeline</div><div class="m-val sm">1 week</div></div>
+          <a href="schedule.html" class="btn btn-sm">Get a Quote →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ SYSTEMS ═══ -->
+  <section class="cat" id="systems">
+    <div class="cat-head">
+      <div>
+        <div class="cat-label">04 — Systems</div>
+        <h2 class="cat-title">Software that runs part of your business</h2>
+      </div>
+      <p class="cat-sub">When a website isn't enough: platforms, portals, and internal systems built around how you actually operate.</p>
+    </div>
+    <div class="grid">
+
+      <div class="svc">
+        <div class="svc-top"><div class="svc-icon ic-bk">📝</div><span class="svc-badge bg-bk">Publishing</span></div>
+        <h3>Custom CMS &amp; Publishing Platforms</h3>
+        <p class="svc-desc">Your own content platform — a blog, magazine, or multi-author publication — with an admin backend you fully control. Invite guest writers, sell ad placements, grow an email list, and syndicate via RSS and Google News. The blog on this very site runs on one.</p>
+        <div class="svc-best"><strong>Best for:</strong> organisations that publish regularly and want ownership instead of renting space on someone else's platform.</div>
+        <div class="svc-feats">
+          <div class="svc-feat">Admin dashboard with a rich post editor and media uploads</div>
+          <div class="svc-feat">Multi-author support with roles, profiles, and moderation</div>
+          <div class="svc-feat">Built-in ad slots you can sell to advertisers</div>
+          <div class="svc-feat">Email subscriptions, one-click unsubscribe, and RSS feed</div>
+          <div class="svc-feat">SEO structure and Google News readiness</div>
+        </div>
+        <div class="svc-meta">
+          <div class="meta-item"><div class="m-label">Starting from</div><div class="m-val">KES 35,000</div></div>
+          <div class="meta-item"><div class="m-label">Typical timeline</div><div class="m-val sm">3 – 5 weeks</div></div>
+          <a href="schedule.html" class="btn btn-sm">Get a Quote →</a>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-top"><div class="svc-icon ic-bk">📅</div><span class="svc-badge bg-bk">Bookings</span></div>
+        <h3>Booking &amp; Scheduling Systems</h3>
+        <p class="svc-desc">Let clients book consultations, appointments, or services online. Multi-step forms capture exactly what you need to know, confirmations go out automatically, and every request is logged — no more bookings lost in a phone's call history.</p>
+        <div class="svc-best"><strong>Best for:</strong> consultants, clinics, salons, event companies, and anyone who currently takes bookings by phone or WhatsApp.</div>
+        <div class="svc-feats">
+          <div class="svc-feat">Multi-step booking forms with validation</div>
+          <div class="svc-feat">Automatic confirmation emails to you and the client</div>
+          <div class="svc-feat">Records to Google Sheets or a database — your choice</div>
+          <div class="svc-feat">Spam protection and rate limiting built in</div>
+          <div class="svc-feat">Kenya Data Protection Act consent handling</div>
+        </div>
+        <div class="svc-meta">
+          <div class="meta-item"><div class="m-label">Starting from</div><div class="m-val">KES 30,000</div></div>
+          <div class="meta-item"><div class="m-label">Typical timeline</div><div class="m-val sm">2 – 4 weeks</div></div>
+          <a href="schedule.html" class="btn btn-sm">Get a Quote →</a>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-top"><div class="svc-icon ic-bk">🔐</div><span class="svc-badge bg-bk">Portals</span></div>
+        <h3>Client Dashboards &amp; Portals</h3>
+        <p class="svc-desc">A private, login-protected area where your clients track their own projects, orders, or accounts and download their documents — cutting the "just checking in" calls and making you look like a much larger operation.</p>
+        <div class="svc-best"><strong>Best for:</strong> service businesses managing several clients at once who each want to know "where are we with mine?"</div>
+        <div class="svc-feats">
+          <div class="svc-feat">Secure client logins with password recovery</div>
+          <div class="svc-feat">Project, order, or account status tracking</div>
+          <div class="svc-feat">Document and invoice sharing</div>
+          <div class="svc-feat">Role-based access — clients see only their own data</div>
+        </div>
+        <div class="svc-meta">
+          <div class="meta-item"><div class="m-label">Pricing</div><div class="m-val">Custom Quote</div></div>
+          <div class="meta-item"><div class="m-label">Typical timeline</div><div class="m-val sm">Scoped per project</div></div>
+          <a href="schedule.html" class="btn btn-sm">Discuss Your Portal →</a>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-top"><div class="svc-icon ic-bk">⚙️</div><span class="svc-badge bg-bk">Enterprise</span></div>
+        <h3>LMS, ERP &amp; Enterprise Systems</h3>
+        <p class="svc-desc">Larger internal systems for schools, corporations, and government bodies — learning management systems, employee portals, and ERP-style tools — built on robust SQL/PostgreSQL backends with security appropriate to the data they hold.</p>
+        <div class="svc-best"><strong>Best for:</strong> institutions with defined processes that need software shaped around them, not the other way round.</div>
+        <div class="svc-feats">
+          <div class="svc-feat">Learning Management Systems with courses, enrolment, and grading</div>
+          <div class="svc-feat">Employee portals, HR, and internal ERP modules</div>
+          <div class="svc-feat">Role-based permissions and audit trails</div>
+          <div class="svc-feat">Data protection and security protocols throughout</div>
+        </div>
+        <div class="svc-meta">
+          <div class="meta-item"><div class="m-label">Pricing</div><div class="m-val">Custom Quote</div></div>
+          <div class="meta-item"><div class="m-label">Typical timeline</div><div class="m-val sm">6+ weeks</div></div>
+          <a href="schedule.html" class="btn btn-sm">Discuss Your System →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ DATA & ANALYTICS ═══ -->
+  <section class="cat" id="data">
+    <div class="cat-head">
+      <div>
+        <div class="cat-label">05 — Data &amp; Analytics</div>
+        <h2 class="cat-title">Turn the numbers you already have into decisions</h2>
+      </div>
+      <p class="cat-sub">Two ways in: a live dashboard you check daily, or a deep-dive analysis that answers specific questions.</p>
+    </div>
+    <div class="grid">
+
+      <div class="svc">
+        <div class="svc-top"><div class="svc-icon ic-nv">📊</div><span class="svc-badge bg-nv">Dashboards</span></div>
+        <h3>Business Dashboards &amp; Visualisation</h3>
+        <p class="svc-desc">See your business at a glance. We connect the data you already generate — sales, bookings, M-Pesa transactions, website traffic — into a live dashboard built around the numbers you actually care about, filterable by product, period, region, or customer type.</p>
+        <div class="svc-best"><strong>Best for:</strong> owners who currently open five spreadsheets to answer "how did we do this month?"</div>
+        <div class="svc-feats">
+          <div class="svc-feat">Live charts of revenue, orders, bookings, and traffic</div>
+          <div class="svc-feat">Trends over time and comparisons between periods</div>
+          <div class="svc-feat">Filters by product, category, region, or client segment</div>
+          <div class="svc-feat">Runs on your existing data sources — no re-entry</div>
+          <div class="svc-feat">Accessible from your phone or laptop</div>
+        </div>
+        <div class="svc-meta">
+          <div class="meta-item"><div class="m-label">Starting from</div><div class="m-val">KES 20,000</div></div>
+          <div class="meta-item"><div class="m-label">Typical timeline</div><div class="m-val sm">2 – 3 weeks</div></div>
+          <a href="schedule.html" class="btn btn-sm">Get a Quote →</a>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-top"><div class="svc-icon ic-nv">🔍</div><span class="svc-badge bg-nv">Insight Reports</span></div>
+        <h3>Custom Data Analysis &amp; Reports</h3>
+        <p class="svc-desc">You bring the questions — which products are really profitable, which customer segment is growing, where are we losing people — and we bring the answers. A deep-dive into your data with findings and recommendations written in plain language, not statistics jargon.</p>
+        <div class="svc-best"><strong>Best for:</strong> a specific decision you need evidence for, or a recurring monthly read on how the business is trending.</div>
+        <div class="svc-feats">
+          <div class="svc-feat">Analysis scoped to your exact questions and priorities</div>
+          <div class="svc-feat">Customer, product, and segment trend breakdowns</div>
+          <div class="svc-feat">Clear findings with recommended actions</div>
+          <div class="svc-feat">One-off report, or a monthly insight retainer</div>
+        </div>
+        <div class="svc-meta">
+          <div class="meta-item"><div class="m-label">Pricing</div><div class="m-val">Custom Quote</div></div>
+          <div class="meta-item"><div class="m-label">Typical timeline</div><div class="m-val sm">Scoped per brief</div></div>
+          <a href="schedule.html" class="btn btn-sm">Discuss Your Data →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ GROWTH ═══ -->
+  <section class="cat" id="growth">
+    <div class="cat-head">
+      <div>
+        <div class="cat-label">06 — Growth</div>
+        <h2 class="cat-title">Get found, stay online, and never worry about the technical side</h2>
+      </div>
+      <p class="cat-sub">The services that keep working after launch — visibility, upkeep, and infrastructure.</p>
+    </div>
+    <div class="grid">
+
+      <div class="svc">
+        <div class="svc-top"><div class="svc-icon ic-gd">📈</div><span class="svc-badge bg-gd">Visibility</span></div>
+        <h3>SEO &amp; Google Visibility</h3>
+        <p class="svc-desc">Get found by the people already searching for what you do. We fix the technical foundations, set up your Google Business Profile so you appear on Maps, and optimise for the local searches that bring real customers — not vanity rankings.</p>
+        <div class="svc-best"><strong>Best for:</strong> businesses with a website that customers can't find on Google.</div>
+        <div class="svc-feats">
+          <div class="svc-feat">Technical SEO audit and fixes</div>
+          <div class="svc-feat">Google Business Profile setup and optimisation</div>
+          <div class="svc-feat">Search Console, sitemaps, and structured data</div>
+          <div class="svc-feat">Local search optimisation for Nairobi and Kenya</div>
+        </div>
+        <div class="svc-meta">
+          <div class="meta-item"><div class="m-label">Starting from</div><div class="m-val">KES 15,000</div></div>
+          <div class="meta-item"><div class="m-label">Typical timeline</div><div class="m-val sm">1 – 2 weeks</div></div>
+          <a href="schedule.html" class="btn btn-sm">Get a Quote →</a>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-top"><div class="svc-icon ic-gd">🛡️</div><span class="svc-badge bg-gd">Retainer</span></div>
+        <h3>Website Care &amp; Maintenance</h3>
+        <p class="svc-desc">Keep your site fast, secure, and current without thinking about it. A monthly retainer covers updates, backups, security monitoring, and the small changes every business needs — a new price, a new photo, a new team member.</p>
+        <div class="svc-best"><strong>Best for:</strong> anyone who'd rather run their business than remember to back up their website.</div>
+        <div class="svc-feats">
+          <div class="svc-feat">Monthly updates, backups, and uptime monitoring</div>
+          <div class="svc-feat">Security checks and fixes</div>
+          <div class="svc-feat">Small content and design changes included</div>
+          <div class="svc-feat">Priority support via WhatsApp</div>
+        </div>
+        <div class="svc-meta">
+          <div class="meta-item"><div class="m-label">Monthly retainer</div><div class="m-val">KES 5,000 / mo</div></div>
+          <div class="meta-item"><div class="m-label">Commitment</div><div class="m-val sm">Month to month</div></div>
+          <a href="schedule.html" class="btn btn-sm">Start a Retainer →</a>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-top"><div class="svc-icon ic-gd">☁️</div><span class="svc-badge bg-gd">Setup</span></div>
+        <h3>Hosting &amp; Domain Setup</h3>
+        <p class="svc-desc">We handle the technical side of going live: registering your domain, setting up hosting, installing SSL so your site shows the padlock, and creating professional email on your own domain so you're no longer emailing clients from a Gmail address.</p>
+        <div class="svc-best"><strong>Best for:</strong> anyone launching a site, or moving away from a developer who "owns" their hosting.</div>
+        <div class="svc-feats">
+          <div class="svc-feat">Domain registration (.co.ke, .com, and others)</div>
+          <div class="svc-feat">Hosting account setup or migration from another provider</div>
+          <div class="svc-feat">Free SSL certificate installed and auto-renewing</div>
+          <div class="svc-feat">Professional email (you@yourbusiness.co.ke) with forwarding</div>
+          <div class="svc-feat">Everything registered in your name — you own it all</div>
+        </div>
+        <div class="svc-meta">
+          <div class="meta-item"><div class="m-label">Starting from</div><div class="m-val">KES 5,000</div></div>
+          <div class="meta-item"><div class="m-label">Typical timeline</div><div class="m-val sm">1 – 3 days</div></div>
+          <a href="schedule.html" class="btn btn-sm">Get Set Up →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <h3>Not Sure Which One <em>You Need?</em></h3>
+    <p>Book a free 30-minute call. Tell us what you're trying to achieve — we'll recommend the right service, scope it honestly, and give you a fixed quote before any work begins.</p>
+    <a href="schedule.html" class="btn">Schedule a Free Call →</a>
+  </div>
+
+</div>
+
+<footer class="footer">
+  © 2026 Kūgeria Ltd · <a href="index.html">Home</a> · <a href="index.html#projects">Projects</a> · <a href="blog/">Insights</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy</a>
+</footer>
+</body>
+</html>

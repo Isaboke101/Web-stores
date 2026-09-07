@@ -11,7 +11,6 @@
   <link rel="icon" href="images/logo_small.svg" type="image/svg+xml">
   <link rel="icon" type="image/png" href="images/logo_small.png">
   <link rel="apple-touch-icon" href="images/logo_small.png">
-  <meta name="theme-color" content="#052F5F">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -115,7 +114,8 @@
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 66px; }
 
     .nav-logo { display: flex; align-items: center; gap: 9px; }
-    .nav-mark { width: 34px; height: 34px; flex-shrink: 0; }
+    .nav-mark { width: auto; height: 34px; object-fit: contain; flex-shrink: 0; }
+    .nav-actions { display:flex; align-items:center; gap:10px; }
     .nav-wordmark { font-family: var(--display); font-size: 21px; font-weight: 700; color: var(--navy); letter-spacing: -.01em; }
     .nav-wordmark span { color: var(--gold); }
 
@@ -164,6 +164,7 @@
 
     /* Collage */
     .hero-collage { position: relative; height: 400px; }
+    .mbody-tight { gap:5px; }
 
     .hcard {
       position: absolute; border-radius: 11px; overflow: hidden;
@@ -175,7 +176,7 @@
     .hc1 { width: 58%; height: 56%; top: 0; left: 0; z-index: 2; }
     .hc2 { width: 37%; height: 48%; top: 3%; right: 0; z-index: 3; transform: rotate(2.5deg); }
     .hc3 { width: 52%; height: 46%; bottom: 0; right: 4%; z-index: 1; transform: rotate(-1.5deg); }
-    .hc4 { width: 28%; height: 26%; bottom: 8%; left: 3%; z-index: 4; transform: rotate(1.2deg); border-radius: 11px; }
+    .hc4 { width: 28%; height: 26%; bottom: 8%; left: 3%; z-index: 4; transform: rotate(1.2deg); border-radius: 11px; cursor:default; }
 
     /* ── Browser Mockups ── */
     .mbrow { width:100%; height:100%; display:flex; flex-direction:column; }
@@ -272,6 +273,8 @@
     .svc-feat::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--gold); flex-shrink:0; }
     .svc-price { margin-top:16px; padding-top:14px; border-top:1px dashed var(--gray-200); font-size:12px; color:var(--gray-400); }
     .svc-price strong { display:block; font-family:var(--display); font-size:19px; font-weight:700; color:var(--navy); margin-top:2px; }
+    .svc-more-wrap { text-align:center; margin-top:30px; }
+    .svc-more-count { font-size:12px; color:var(--gray-400); margin-top:10px; }
 
     /* ────────────────────────────────────
        PROJECTS
@@ -302,6 +305,10 @@
     .pcard-sm:hover { box-shadow:var(--sh-md); transform:translateY(-3px); }
     .pcard-sm .pvisual { height:148px; overflow:hidden; }
     .pcard-sm .pinfo { padding:16px; }
+    .project-image { width:100%; height:100%; object-fit:cover; object-position:top; }
+    .section-intro { text-align:center; max-width:560px; margin:0 auto; }
+    .section-sub.centered { margin:0 auto; }
+    .section-title.no-bottom { margin-bottom:0; }
 
     .pcat { font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); margin-bottom:7px; }
     .pname { font-family:var(--display); font-size:22px; font-weight:700; color:var(--charcoal); margin-bottom:7px; line-height:1.2; }
@@ -369,6 +376,9 @@
     @media(min-width:640px){ .lab-grid { grid-template-columns:repeat(3,1fr); } }
     .lab-card { border-radius:11px; overflow:hidden; position:relative; border:1px solid var(--gray-200); }
     .lab-vis { height:110px; display:flex; align-items:center; justify-content:center; font-size:26px; }
+    .lab-vis.navy-tint { background:rgba(5,47,95,.05); }
+    .lab-vis.green-tint { background:rgba(0,75,35,.05); }
+    .lab-vis.gold-tint { background:rgba(197,160,89,.08); }
     .lab-info { padding:13px; background:var(--white); }
     .lab-name { font-size:13px; font-weight:600; color:var(--charcoal); margin-bottom:3px; }
     .lab-desc { font-size:11.5px; color:var(--gray-400); }
@@ -414,6 +424,8 @@
     .cb-input { flex:1; background:var(--bg); border:1px solid var(--gray-200); border-radius:18px; padding:7px 13px; font-size:12.5px; color:var(--gray-400); font-family:var(--body); outline:none; }
     .cb-send { width:30px; height:30px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; flex-shrink:0; border:none; cursor:pointer; }
     .cb-powered { text-align:center; padding:7px; font-size:10px; color:var(--gray-400); background:var(--white); }
+    .cb-demo-action { margin-top:6px; }
+    .cb-demo-link { font-size:12px; padding:8px 15px; }
 
     /* ────────────────────────────────────
        CTA BANNER
@@ -441,6 +453,8 @@
     .footer { background:var(--charcoal); padding:60px 0 28px; }
     .ftr-grid { display:grid; grid-template-columns:1fr; gap:36px; margin-bottom:44px; }
     .ftr-tagline { font-size:12.5px; color:rgba(255,255,255,.5); line-height:1.72; margin-top:11px; max-width:250px; }
+    .ftr-logo-wrap { margin-bottom:0; }
+    .ftr-logo { height:40px; width:auto; object-fit:contain; filter:brightness(0) invert(1); opacity:.9; }
     .ftr-social { display:flex; gap:8px; margin-top:18px; }
     .fsoc { width:32px; height:32px; border-radius:7px; background:rgba(255,255,255,.07); display:flex; align-items:center; justify-content:center; font-size:13px; cursor:pointer; transition:background .2s; }
     .fsoc:hover { background:var(--gold); }
@@ -472,6 +486,8 @@
     .modal-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:22px; }
     .modal-tag { padding:4px 11px; border-radius:100px; background:rgba(5,47,95,.07); color:var(--navy); font-size:11.5px; font-weight:500; }
     .modal-acts { display:flex; gap:9px; flex-wrap:wrap; }
+    .modal-image { width:100%; height:100%; object-fit:cover; object-position:top; border-radius:11px; }
+    .private-project { cursor:default; opacity:.7; }
 
     /* ────────────────────────────────────
        ABOUT
@@ -499,6 +515,7 @@
     .about-points { display:flex; flex-direction:column; gap:12px; margin-top:22px; }
     .about-point { display:flex; gap:11px; align-items:flex-start; font-size:13.5px; color:#444; line-height:1.6; }
     .about-point::before { content:'✦'; color:var(--gold); flex-shrink:0; margin-top:1px; }
+    .action-spaced { margin-top:26px; }
 
     /* ────────────────────────────────────
        PROCESS
@@ -541,6 +558,9 @@
       display:flex; align-items:center; justify-content:center;
       font-family:var(--display); font-weight:700; font-size:15px; color:var(--white);
     }
+    .testi-green { background:var(--green); }
+    .testi-navy { background:var(--navy); }
+    .testi-gold { background:var(--gold); color:var(--charcoal); }
     .testi-name { font-size:13px; font-weight:600; color:var(--charcoal); }
     .testi-biz { font-size:11.5px; color:var(--gray-400); }
 
@@ -635,7 +655,7 @@
   <div class="container">
     <div class="nav-inner">
       <a href="#home" class="nav-logo">
-        <img src="images/logo_small.svg" alt="Kūgeria Ltd" class="nav-mark" style="width:auto;height:34px;object-fit:contain;">
+        <img src="images/logo_small.svg" alt="Kūgeria Ltd" class="nav-mark">
       </a>
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
@@ -643,7 +663,7 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact-cta">Contact</a></li>
       </ul>
-      <div style="display:flex;align-items:center;gap:10px">
+      <div class="nav-actions">
         <a href="schedule.html" class="btn btn-gold nav-cta">Schedule a Meeting</a>
         <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
       </div>
@@ -719,9 +739,9 @@
           <div class="hcard hc2" onclick="openModal('progigs')">
             <div class="mbrow mk-progigs">
               <div class="mbar"><div class="mdot r"></div><div class="mdot y"></div><div class="mdot g"></div><div class="murl"></div></div>
-              <div class="mbody" style="gap:5px">
+              <div class="mbody mbody-tight">
                 <div class="mk-progigs msearch"></div>
-                <div class="mk-progigs mpgrid" style="display:grid;grid-template-columns:1fr 1fr;gap:4px;flex:1">
+                <div class="mk-progigs mpgrid">
                   <div class="mk-progigs mpitem hi"></div>
                   <div class="mk-progigs mpitem"></div>
                   <div class="mk-progigs mpitem"></div>
@@ -750,7 +770,7 @@
           </div>
 
           <!-- Accent -->
-          <div class="hcard hc4" style="cursor:default">
+          <div class="hcard hc4">
             <div class="mk-accent">
               <div class="ac-icon">🤖</div>
               <div class="ac-title">AI Integration Available</div>
@@ -792,21 +812,23 @@
           <div class="section-label">What We Build</div>
           <h2 class="section-title">Services That <em class="gold">Scale</em> With You</h2>
         </div>
-        <a href="schedule.html" class="btn btn-ghost">Explore all →</a>
+        <a href="services.html" class="btn btn-ghost">Explore all →</a>
       </div>
       <div class="tier-pills">
-        <button class="pill active-gold" onclick="filterPill(this)">All Services</button>
-        <button class="pill" onclick="filterPill(this)">Web &amp; Mobile</button>
-        <button class="pill" onclick="filterPill(this)">AI Integration</button>
-        <button class="pill" onclick="filterPill(this)">Branding</button>
-        <button class="pill" onclick="filterPill(this)">Systems</button>
+        <button class="pill active-gold" data-filter="all" onclick="filterPill(this)">All Services</button>
+        <button class="pill" data-filter="web" onclick="filterPill(this)">Web &amp; Mobile</button>
+        <button class="pill" data-filter="ai" onclick="filterPill(this)">AI Integration</button>
+        <button class="pill" data-filter="brand" onclick="filterPill(this)">Branding</button>
+        <button class="pill" data-filter="systems" onclick="filterPill(this)">Systems</button>
+        <button class="pill" data-filter="data" onclick="filterPill(this)">Data &amp; Analytics</button>
+        <button class="pill" data-filter="growth" onclick="filterPill(this)">Growth</button>
       </div>
     </div>
 
-    <div class="svc-grid">
-      <div class="svc-card feat reveal d1">
+    <div class="svc-grid" id="svcGrid">
+      <div class="svc-card feat reveal" data-cat="web">
         <div class="svc-icon ic-gr">🌐</div>
-        <span class="svc-badge bg-gr">Tier 1 – 3</span>
+        <span class="svc-badge bg-gr">Most Popular</span>
         <h3 class="svc-title">Web &amp; Mobile Development</h3>
         <p class="svc-desc">Custom-built, database-driven web apps and cross-platform mobile solutions engineered for performance and conversion.</p>
         <div class="svc-feats">
@@ -815,54 +837,223 @@
           <div class="svc-feat">SEO optimization built-in</div>
           <div class="svc-feat">Responsive, mobile-first design</div>
         </div>
-        <!-- ADJUST: set your real starting price -->
         <div class="svc-price">Starting from<strong>KES 15,000</strong>
         </div>
       </div>
-      <div class="svc-card reveal d1">
+      <div class="svc-card reveal" data-cat="ai">
         <div class="svc-icon ic-nv">🤖</div>
         <span class="svc-badge bg-nv">AI Services</span>
         <h3 class="svc-title">AI &amp; Chatbot Integration</h3>
         <p class="svc-desc">Deploy LLM-powered chatbots that qualify leads, answer customer queries, and automate your business workflows around the clock.</p>
         <div class="svc-feats">
           <div class="svc-feat">Custom AI chatbots for your brand</div>
-          <div class="svc-feat">24/7 automated lead generation</div>
-          <div class="svc-feat">Business process automation</div>
-          <div class="svc-feat">Data-driven insights &amp; analytics</div>
+          <div class="svc-feat">Website &amp; WhatsApp deployment</div>
+          <div class="svc-feat">24/7 automated lead qualification</div>
+          <div class="svc-feat">Trained on your services &amp; FAQs</div>
         </div>
-        <!-- ADJUST: set your real starting price -->
         <div class="svc-price">Starting from<strong>KES 25,000</strong>
         </div>
       </div>
-      <div class="svc-card reveal d2">
+      <div class="svc-card reveal" data-cat="brand">
         <div class="svc-icon ic-gd">✦</div>
-        <span class="svc-badge bg-gd">Tier 1</span>
-        <h3 class="svc-title">Digital Branding</h3>
-        <p class="svc-desc">Strategic logo design, portfolio creation, and complete corporate identity systems that communicate authority and trust.</p>
+        <span class="svc-badge bg-gd">Identity</span>
+        <h3 class="svc-title">Logo &amp; Brand Identity</h3>
+        <p class="svc-desc">A logo and visual identity system that communicates authority and trust from the first glance.</p>
         <div class="svc-feats">
-          <div class="svc-feat">Logo design &amp; brand systems</div>
-          <div class="svc-feat">Portfolio &amp; personal brand sites</div>
-          <div class="svc-feat">Social media visual identity</div>
-          <div class="svc-feat">Brand guidelines &amp; assets</div>
+          <div class="svc-feat">Logo design with source files</div>
+          <div class="svc-feat">Colour palette &amp; typography</div>
+          <div class="svc-feat">Brand guidelines document</div>
+          <div class="svc-feat">Print &amp; digital-ready assets</div>
         </div>
-        <!-- ADJUST: set your real starting price -->
+        <div class="svc-price">Starting from<strong>KES 10,000</strong>
+        </div>
+      </div>
+      <div class="svc-card reveal" data-cat="data">
+        <div class="svc-icon ic-nv">📊</div>
+        <span class="svc-badge bg-nv">Dashboards</span>
+        <h3 class="svc-title">Business Dashboards &amp; Visualisation</h3>
+        <p class="svc-desc">See your business at a glance. We connect your sales, bookings, M-Pesa, and web traffic into a live dashboard built around what you care about.</p>
+        <div class="svc-feats">
+          <div class="svc-feat">Live charts of your key numbers</div>
+          <div class="svc-feat">Sales, bookings &amp; traffic trends</div>
+          <div class="svc-feat">Filter by product, period, or region</div>
+          <div class="svc-feat">Runs on your existing data</div>
+        </div>
+        <div class="svc-price">Starting from<strong>KES 20,000</strong>
+        </div>
+      </div>
+      <div class="svc-card reveal" data-cat="web">
+        <div class="svc-icon ic-gr">🛒</div>
+        <span class="svc-badge bg-gr">E-commerce</span>
+        <h3 class="svc-title">E-commerce Stores</h3>
+        <p class="svc-desc">Full online stores with product catalogues, cart, checkout, and M-Pesa payments — built to sell while you sleep.</p>
+        <div class="svc-feats">
+          <div class="svc-feat">Product catalogue &amp; inventory</div>
+          <div class="svc-feat">M-Pesa STK Push checkout</div>
+          <div class="svc-feat">Order &amp; customer notifications</div>
+          <div class="svc-feat">Admin panel to manage everything</div>
+        </div>
+        <div class="svc-price">Starting from<strong>KES 45,000</strong>
+        </div>
+      </div>
+      <div class="svc-card reveal" data-cat="systems">
+        <div class="svc-icon ic-bk">📝</div>
+        <span class="svc-badge bg-bk">Publishing</span>
+        <h3 class="svc-title">Custom CMS &amp; Publishing Platforms</h3>
+        <p class="svc-desc">Your own content platform — blogs, magazines, and multi-author publications — with an admin backend you fully control.</p>
+        <div class="svc-feats">
+          <div class="svc-feat">Multi-author publishing with roles</div>
+          <div class="svc-feat">Media uploads &amp; ad slots</div>
+          <div class="svc-feat">Email subscribers &amp; RSS</div>
+          <div class="svc-feat">SEO &amp; Google News ready</div>
+        </div>
+        <div class="svc-price">Starting from<strong>KES 35,000</strong>
+        </div>
+      </div>
+      <div class="svc-card reveal" data-cat="systems">
+        <div class="svc-icon ic-bk">📅</div>
+        <span class="svc-badge bg-bk">Bookings</span>
+        <h3 class="svc-title">Booking &amp; Scheduling Systems</h3>
+        <p class="svc-desc">Let clients book consultations, appointments, or services online — with automatic confirmations and a record of every request.</p>
+        <div class="svc-feats">
+          <div class="svc-feat">Multi-step booking forms</div>
+          <div class="svc-feat">Automatic email confirmations</div>
+          <div class="svc-feat">Google Sheets or database records</div>
+          <div class="svc-feat">Spam &amp; abuse protection</div>
+        </div>
+        <div class="svc-price">Starting from<strong>KES 30,000</strong>
+        </div>
+      </div>
+      <div class="svc-card reveal" data-cat="growth">
+        <div class="svc-icon ic-gd">📈</div>
+        <span class="svc-badge bg-gd">Visibility</span>
+        <h3 class="svc-title">SEO &amp; Google Visibility</h3>
+        <p class="svc-desc">Get found by the people already searching for what you do — technical SEO, local search, and Google Business setup.</p>
+        <div class="svc-feats">
+          <div class="svc-feat">Technical SEO audit &amp; fixes</div>
+          <div class="svc-feat">Google Business Profile setup</div>
+          <div class="svc-feat">Search Console &amp; sitemaps</div>
+          <div class="svc-feat">Local search optimisation</div>
+        </div>
+        <div class="svc-price">Starting from<strong>KES 15,000</strong>
+        </div>
+      </div>
+      <div class="svc-card reveal" data-cat="web">
+        <div class="svc-icon ic-gr">🚀</div>
+        <span class="svc-badge bg-gr">Fast Turnaround</span>
+        <h3 class="svc-title">Landing &amp; Campaign Pages</h3>
+        <p class="svc-desc">Single-purpose pages built to convert — for product launches, events, ad campaigns, or lead capture.</p>
+        <div class="svc-feats">
+          <div class="svc-feat">Delivered in days, not weeks</div>
+          <div class="svc-feat">Built for a single clear action</div>
+          <div class="svc-feat">Form &amp; WhatsApp lead capture</div>
+          <div class="svc-feat">Ready for Google &amp; social ads</div>
+        </div>
+        <div class="svc-price">Starting from<strong>KES 12,000</strong>
+        </div>
+      </div>
+      <div class="svc-card reveal" data-cat="ai">
+        <div class="svc-icon ic-nv">⚡</div>
+        <span class="svc-badge bg-nv">Automation</span>
+        <h3 class="svc-title">AI Workflow Automation</h3>
+        <p class="svc-desc">Connect AI to the repetitive parts of your business — drafting, sorting, summarising, and routing — so your team focuses on what matters.</p>
+        <div class="svc-feats">
+          <div class="svc-feat">Automated document &amp; email handling</div>
+          <div class="svc-feat">Smart lead routing &amp; follow-ups</div>
+          <div class="svc-feat">Custom AI tools for your workflow</div>
+          <div class="svc-feat">Integration with existing systems</div>
+        </div>
+        <div class="svc-price">Scoped per project<strong>Custom Quote</strong>
+        </div>
+      </div>
+      <div class="svc-card reveal" data-cat="systems">
+        <div class="svc-icon ic-bk">🔐</div>
+        <span class="svc-badge bg-bk">Portals</span>
+        <h3 class="svc-title">Client Dashboards &amp; Portals</h3>
+        <p class="svc-desc">Private, login-protected areas where your clients track their projects, orders, or accounts — cutting the "just checking in" calls.</p>
+        <div class="svc-feats">
+          <div class="svc-feat">Secure client logins</div>
+          <div class="svc-feat">Project &amp; order status tracking</div>
+          <div class="svc-feat">Document sharing</div>
+          <div class="svc-feat">Role-based access control</div>
+        </div>
+        <div class="svc-price">Scoped per project<strong>Custom Quote</strong>
+        </div>
+      </div>
+      <div class="svc-card reveal" data-cat="growth">
+        <div class="svc-icon ic-gd">🛡️</div>
+        <span class="svc-badge bg-gd">Retainer</span>
+        <h3 class="svc-title">Website Care &amp; Maintenance</h3>
+        <p class="svc-desc">Keep your site fast, secure, and up to date without thinking about it — updates, backups, and small changes handled monthly.</p>
+        <div class="svc-feats">
+          <div class="svc-feat">Monthly updates &amp; backups</div>
+          <div class="svc-feat">Security monitoring</div>
+          <div class="svc-feat">Small content &amp; design changes</div>
+          <div class="svc-feat">Priority support</div>
+        </div>
+        <div class="svc-price">Monthly retainer<strong>KES 5,000 / mo</strong>
+        </div>
+      </div>
+      <div class="svc-card reveal" data-cat="brand">
+        <div class="svc-icon ic-gd">🎨</div>
+        <span class="svc-badge bg-gd">Collateral</span>
+        <h3 class="svc-title">Brand Collateral &amp; Social Kits</h3>
+        <p class="svc-desc">Everything that carries your brand beyond the logo — business cards, letterheads, and a consistent social media look.</p>
+        <div class="svc-feats">
+          <div class="svc-feat">Business cards &amp; letterheads</div>
+          <div class="svc-feat">Social media templates &amp; covers</div>
+          <div class="svc-feat">Email signatures</div>
+          <div class="svc-feat">Presentation &amp; proposal templates</div>
+        </div>
         <div class="svc-price">Starting from<strong>KES 8,000</strong>
         </div>
       </div>
-      <div class="svc-card reveal d2">
+      <div class="svc-card reveal" data-cat="systems">
         <div class="svc-icon ic-bk">⚙️</div>
-        <span class="svc-badge bg-bk">Tier 4</span>
-        <h3 class="svc-title">Systems &amp; Dashboards</h3>
-        <p class="svc-desc">Enterprise-grade LMS, ERP, and data analytics dashboards tailored for schools, corporations, and government bodies.</p>
+        <span class="svc-badge bg-bk">Enterprise</span>
+        <h3 class="svc-title">LMS, ERP &amp; Enterprise Systems</h3>
+        <p class="svc-desc">Enterprise-grade learning management, ERP, and internal systems tailored for schools, corporations, and government bodies.</p>
         <div class="svc-feats">
           <div class="svc-feat">Learning Management Systems</div>
-          <div class="svc-feat">SQL/PostgreSQL dashboards</div>
           <div class="svc-feat">Employee portals &amp; ERP</div>
+          <div class="svc-feat">SQL/PostgreSQL backends</div>
           <div class="svc-feat">High-level security protocols</div>
         </div>
         <div class="svc-price">Enterprise pricing<strong>Custom Quote</strong>
         </div>
       </div>
+      <div class="svc-card reveal" data-cat="data">
+        <div class="svc-icon ic-nv">🔍</div>
+        <span class="svc-badge bg-nv">Insight Reports</span>
+        <h3 class="svc-title">Custom Data Analysis &amp; Reports</h3>
+        <p class="svc-desc">You bring the questions, we bring the answers. Deep-dive analysis of your data with clear findings and recommendations you can act on.</p>
+        <div class="svc-feats">
+          <div class="svc-feat">Analysis scoped to your questions</div>
+          <div class="svc-feat">Customer &amp; segment trends</div>
+          <div class="svc-feat">Plain-language findings, not jargon</div>
+          <div class="svc-feat">One-off reports or monthly</div>
+        </div>
+        <div class="svc-price">Scoped per brief<strong>Custom Quote</strong>
+        </div>
+      </div>
+      <div class="svc-card reveal" data-cat="growth">
+        <div class="svc-icon ic-gd">☁️</div>
+        <span class="svc-badge bg-gd">Setup</span>
+        <h3 class="svc-title">Hosting &amp; Domain Setup</h3>
+        <p class="svc-desc">We handle the technical side of going live — domain registration, hosting, SSL, and professional email on your own domain.</p>
+        <div class="svc-feats">
+          <div class="svc-feat">Domain registration (.co.ke, .com)</div>
+          <div class="svc-feat">Hosting setup &amp; migration</div>
+          <div class="svc-feat">Free SSL certificate</div>
+          <div class="svc-feat">Professional email (you@yourbrand)</div>
+        </div>
+        <div class="svc-price">Starting from<strong>KES 5,000</strong>
+        </div>
+      </div>
+    </div>
+    <div class="svc-more-wrap" id="svcMoreWrap">
+      <button class="btn btn-ghost" onclick="loadMoreServices()">Load More Services ↓</button>
+      <div class="svc-more-count" id="svcMoreCount"></div>
     </div>
   </div>
 </section>
@@ -870,10 +1061,10 @@
 <!-- ═══════════════ PROCESS ═══════════════ -->
 <section class="section process" id="process">
   <div class="container">
-    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto">
+    <div class="reveal section-intro">
       <div class="section-label">How It Works</div>
       <h2 class="section-title">From Idea to Launch in <em class="gold">Four Steps</em></h2>
-      <p class="section-sub" style="margin:0 auto">No confusion, no surprises. Here's exactly what happens after you book your free call.</p>
+      <p class="section-sub centered">No confusion, no surprises. Here's exactly what happens after you book your free call.</p>
     </div>
     <div class="proc-grid reveal d1">
       <div class="proc-card">
@@ -910,7 +1101,7 @@
     <div class="proj-hdr-row reveal">
       <div>
         <div class="section-label">Our Work</div>
-        <h2 class="section-title" style="margin-bottom:0">Client Projects</h2>
+        <h2 class="section-title no-bottom">Client Projects</h2>
       </div>
       <a href="#" class="btn btn-ghost">View all →</a>
     </div>
@@ -921,7 +1112,7 @@
       <!-- Branlly – featured -->
       <div class="pcard-feat" onclick="openModal('branlly')">
         <div class="pvisual">
-          <img src="images/branlly-event-management-website-nairobi.png" alt="Branlly — event management platform homepage" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+          <img src="images/branlly-event-management-website-nairobi.png" alt="Branlly — event management platform homepage" loading="lazy" class="project-image">
         </div>
         <div class="pinfo">
           <div class="pcat">Event Management · Live Domain</div>
@@ -936,7 +1127,7 @@
       <div class="proj-stack">
         <div class="pcard-sm" onclick="openModal('progigs')">
           <div class="pvisual">
-            <img src="images/progigs-digital-media-kenya.png" alt="Pro Gigs — events production company website" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+            <img src="images/progigs-digital-media-kenya.png" alt="Pro Gigs — events production company website" loading="lazy" class="project-image">
           </div>
           <div class="pinfo">
             <div class="pcat">Events Company Website · GitHub Live</div>
@@ -949,7 +1140,7 @@
 
         <div class="pcard-sm" onclick="openModal('injili')">
           <div class="pvisual">
-            <img src="images/injili-freelance-services-webstores-kenya.png" alt="Injili Apparel — faith-inspired e-commerce store" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+            <img src="images/injili-freelance-services-webstores-kenya.png" alt="Injili Apparel — faith-inspired e-commerce store" loading="lazy" class="project-image">
           </div>
           <div class="pinfo">
             <div class="pcat">E-commerce · Faith Apparel · GitHub Live</div>
@@ -969,9 +1160,9 @@
         <span class="cs-badge">Coming Soon</span>
       </div>
       <div class="lab-grid">
-        <div class="lab-card"><div class="lab-vis" style="background:rgba(5,47,95,.05)">⚡</div><div class="lab-info"><div class="lab-name">Hackathon 01</div><div class="lab-desc">In progress...</div></div><div class="cs-overlay"><div class="ov-icon">🔬</div><div class="ov-text">In The Lab</div><div class="ov-sub">Something's brewing...</div></div></div>
-        <div class="lab-card"><div class="lab-vis" style="background:rgba(0,75,35,.05)">🧪</div><div class="lab-info"><div class="lab-name">Experiment 02</div><div class="lab-desc">Practice project</div></div><div class="cs-overlay"><div class="ov-icon">🔬</div><div class="ov-text">In The Lab</div><div class="ov-sub">Coming soon...</div></div></div>
-        <div class="lab-card"><div class="lab-vis" style="background:rgba(197,160,89,.08)">🚀</div><div class="lab-info"><div class="lab-name">Side Project 03</div><div class="lab-desc">Personal build</div></div><div class="cs-overlay"><div class="ov-icon">🔬</div><div class="ov-text">In The Lab</div><div class="ov-sub">Stay tuned...</div></div></div>
+        <div class="lab-card"><div class="lab-vis navy-tint">⚡</div><div class="lab-info"><div class="lab-name">Hackathon 01</div><div class="lab-desc">In progress...</div></div><div class="cs-overlay"><div class="ov-icon">🔬</div><div class="ov-text">In The Lab</div><div class="ov-sub">Something's brewing...</div></div></div>
+        <div class="lab-card"><div class="lab-vis green-tint">🧪</div><div class="lab-info"><div class="lab-name">Experiment 02</div><div class="lab-desc">Practice project</div></div><div class="cs-overlay"><div class="ov-icon">🔬</div><div class="ov-text">In The Lab</div><div class="ov-sub">Coming soon...</div></div></div>
+        <div class="lab-card"><div class="lab-vis gold-tint">🚀</div><div class="lab-info"><div class="lab-name">Side Project 03</div><div class="lab-desc">Personal build</div></div><div class="cs-overlay"><div class="ov-icon">🔬</div><div class="ov-text">In The Lab</div><div class="ov-sub">Stay tuned...</div></div></div>
       </div>
     </div>
   </div>
@@ -982,7 +1173,7 @@
      approval (or replace with their own words) before launch. -->
 <section class="section testimonials" id="testimonials">
   <div class="container">
-    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto">
+    <div class="reveal section-intro">
       <div class="section-label">Client Words</div>
       <h2 class="section-title">Trusted by Businesses <em class="gold">Like Yours</em></h2>
     </div>
@@ -991,7 +1182,7 @@
         <div class="testi-stars">★★★★★</div>
         <p class="testi-quote">"Isaac delivered exactly what we envisioned — a platform that manages our bookings while we focus on running events. Professional from the first call to launch."</p>
         <div class="testi-who">
-          <div class="testi-av" style="background:var(--green)">B</div>
+          <div class="testi-av testi-green">B</div>
           <div>
             <div class="testi-name">Branlly</div>
             <div class="testi-biz">Event Management · Nairobi</div>
@@ -1002,7 +1193,7 @@
         <div class="testi-stars">★★★★★</div>
         <p class="testi-quote">"The new site finally matches the energy we bring to our events. Clients see our work, feel the vibe, and book — before we've even spoken to them."</p>
         <div class="testi-who">
-          <div class="testi-av" style="background:var(--navy)">P</div>
+          <div class="testi-av testi-navy">P</div>
           <div>
             <div class="testi-name">Progigs</div>
             <div class="testi-biz">Events Production · Nairobi</div>
@@ -1013,7 +1204,7 @@
         <div class="testi-stars">★★★★★</div>
         <p class="testi-quote">"From M-Pesa checkout to order notifications, everything just works. Isaac built us a store that sells while we focus on the designs — exactly what we needed."</p>
         <div class="testi-who">
-          <div class="testi-av" style="background:var(--gold);color:var(--charcoal)">I</div>
+          <div class="testi-av testi-gold">I</div>
           <div>
             <div class="testi-name">Injili</div>
             <div class="testi-biz">Faith Apparel · E-commerce</div>
@@ -1037,7 +1228,7 @@
           <div class="ai-feat"><div class="ai-icon ic-nv">📊</div><div><div class="ai-feat-title">Lead Qualification Automation</div><div class="ai-feat-desc">Intelligent funnels that score and route leads to your pipeline before you even see their name.</div></div></div>
           <div class="ai-feat"><div class="ai-icon ic-gd">⚙️</div><div><div class="ai-feat-title">Business Process Automation</div><div class="ai-feat-desc">Automate repetitive workflows — from appointment booking to order tracking — with AI in the loop.</div></div></div>
         </div>
-        <div style="margin-top:26px"><a href="schedule.html" class="btn btn-gold">Discuss AI for My Business →</a></div>
+        <div class="action-spaced"><a href="schedule.html" class="btn btn-gold">Discuss AI for My Business →</a></div>
       </div>
 
       <!-- Static chatbot mockup -->
@@ -1057,7 +1248,7 @@
           </div>
           <div class="cb-foot">
             <div class="cb-input">Type a message...</div>
-            <button class="cb-send"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#212121" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            <button class="cb-send" type="button" aria-label="Send message" title="Send message"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#212121" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
           </div>
           <div class="cb-powered">Powered by Kūgeria AI · Interactive Demo Preview</div>
         </div>
@@ -1090,7 +1281,7 @@
           <div class="about-point">Every project is built custom — no page builders, no bloated templates, full ownership of your code</div>
           <div class="about-point">Based in Nairobi, working with clients across Kenya and beyond</div>
         </div>
-        <div style="margin-top:26px"><a href="schedule.html" class="btn btn-gold">Work With Me →</a></div>
+        <div class="action-spaced"><a href="schedule.html" class="btn btn-gold">Work With Me →</a></div>
       </div>
     </div>
   </div>
@@ -1099,7 +1290,7 @@
 <!-- ═══════════════ FAQ ═══════════════ -->
 <section class="section faq" id="faq">
   <div class="container">
-    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto">
+    <div class="reveal section-intro">
       <div class="section-label">Common Questions</div>
       <h2 class="section-title">Before You <em class="gold">Ask</em></h2>
     </div>
@@ -1170,8 +1361,8 @@
   <div class="container">
     <div class="ftr-grid">
       <div>
-        <div style="margin-bottom:0">
-          <img src="images/logo.svg" alt="Kūgeria Ltd" style="height:40px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.9;">
+        <div class="ftr-logo-wrap">
+          <img src="images/logo.svg" alt="Kūgeria Ltd" class="ftr-logo">
         </div>
         <p class="ftr-tagline">Transforming attempts into industry-leading digital solutions. Based in Nairobi, building for the world.</p>
         <div class="ftr-social">
@@ -1252,7 +1443,39 @@ const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.targ
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
 // ── Tier pills ──
-function filterPill(el){document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active','active-gold'));el.classList.add('active-gold');}
+var SVC_STEP = 4, svcShown = SVC_STEP;
+function svcApply(){
+  var active = document.querySelector('.pill.active-gold');
+  var want = active ? (active.getAttribute('data-filter') || 'all') : 'all';
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.svc-card'));
+  var wrap = document.getElementById('svcMoreWrap');
+  var count = document.getElementById('svcMoreCount');
+  if (want === 'all') {
+    cards.forEach(function(card, i){
+      var show = i < svcShown;
+      card.style.display = show ? '' : 'none';
+      if (show) card.classList.add('in');
+    });
+    var total = cards.length, showing = Math.min(svcShown, total);
+    wrap.style.display = showing >= total ? 'none' : '';
+    count.textContent = 'Showing ' + showing + ' of ' + total + ' services';
+  } else {
+    cards.forEach(function(card){
+      var show = card.getAttribute('data-cat') === want;
+      card.style.display = show ? '' : 'none';
+      if (show) card.classList.add('in');
+    });
+    wrap.style.display = 'none';
+  }
+}
+function filterPill(el){
+  document.querySelectorAll('.pill').forEach(function(p){ p.classList.remove('active','active-gold'); });
+  el.classList.add('active-gold');
+  if ((el.getAttribute('data-filter') || 'all') === 'all') svcShown = SVC_STEP;
+  svcApply();
+}
+function loadMoreServices(){ svcShown += SVC_STEP; svcApply(); }
+svcApply();
 
 // ── Project data ──
 const pdata = {
@@ -1294,7 +1517,7 @@ function openModal(k) {
 
   document.getElementById('mvis').innerHTML =
     '<img src="' + p.img + '" alt="' + p.name + '" ' +
-    'style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:11px;">';
+    'class="modal-image">';
 
   document.getElementById('mtags').innerHTML = p.tags
     .map(function(t){ return '<span class="modal-tag">' + t + '</span>'; })
@@ -1303,7 +1526,7 @@ function openModal(k) {
   document.getElementById('macts').innerHTML = p.live
     ? '<a href="' + p.liveUrl + '" class="btn btn-gold">Read Full Case Study →</a>' +
       '<button class="btn btn-navy" onclick="closeModal()">Close</button>'
-    : '<span class="btn btn-ghost" style="cursor:default;opacity:.7">🔒 Private GitHub Project</span>' +
+    : '<span class="btn btn-ghost private-project">🔒 Private GitHub Project</span>' +
       '<button class="btn btn-navy" onclick="closeModal()">Close</button>';
 
   document.getElementById('mwrap').classList.add('on');
@@ -1344,7 +1567,7 @@ function cbChat(btn,msg){
   setTimeout(()=>{
     typ.remove();
     body.innerHTML+=`<div class="cb-msg bot">${cbR[msg]}</div>`;
-    if(msg==='Pricing info') body.innerHTML+=`<div style="margin-top:6px"><a href="schedule.html" class="btn btn-gold" style="font-size:12px;padding:8px 15px">Book Free Strategy Call →</a></div>`;
+    if(msg==='Pricing info') body.innerHTML+=`<div class="cb-demo-action"><a href="schedule.html" class="btn btn-gold cb-demo-link">Book Free Strategy Call →</a></div>`;
   },1100);
 }
 

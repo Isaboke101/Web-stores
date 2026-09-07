@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!--
+       BRANLLY LTD SITEMAP
+       Upload to the web root so it resolves at:
+       https://www.branllyltd.co.ke/sitemap.xml
+
+       IMPORTANT: list only pages that actually exist and return
+       200 OK. A sitemap containing dead URLs is worse than having
+       none, because Google logs those errors against your site.
+
+       Add one url block per real page. Delete what you don't have.
+  -->
+
+  <url>
+    <loc>https://www.branllyltd.co.ke/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!--
+       TEMPLATE. Copy a block out of this comment, paste it above,
+       and change the loc to your real page path.
+
+    <url>
+      <loc>https://www.branllyltd.co.ke/about.html</loc>
+      <lastmod>2026-08-27</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+    </url>
+
+    <url>
+      <loc>https://www.branllyltd.co.ke/services.html</loc>
+      <lastmod>2026-08-27</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.9</priority>
+    </url>
+
+    <url>
+      <loc>https://www.branllyltd.co.ke/portfolio.html</loc>
+      <lastmod>2026-08-27</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+    </url>
+
+    <url>
+      <loc>https://www.branllyltd.co.ke/contact.html</loc>
+      <lastmod>2026-08-27</lastmod>
+      <changefreq>yearly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  -->
+
+</urlset>
